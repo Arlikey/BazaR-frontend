@@ -1,6 +1,13 @@
 @import "tailwindcss";
 
+:root {
+  font-family: 'Montserrat';
+  letter-spacing: 0;
+}
+
 @theme {
+  --tw-leading: 100%;
+
   /*    Brand    */
   --color-primary: #0b1245;
   --color-secondary: #98be2a;
