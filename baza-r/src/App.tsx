@@ -1,7 +1,9 @@
+import Header from "./layouts/Header";
+
 function App() {
   return (
     <>
-    <div className="text-secondary">hello everybody</div>
+      <Header />
     </>
   );
 }

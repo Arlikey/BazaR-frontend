@@ -1,6 +1,6 @@
 import React from "react";
 
-const Catalogue = () => {
+const CatalogueIcon = () => {
   return (
     <svg
       width="19"
@@ -29,4 +29,4 @@ const Catalogue = () => {
   );
 };
 
-export default Catalogue;
+export default CatalogueIcon;
