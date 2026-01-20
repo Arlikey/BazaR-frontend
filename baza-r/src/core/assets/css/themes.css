@@ -1,11 +1,7 @@
 @import "tailwindcss";
 
-:root {
-  font-family: 'Montserrat';
-  letter-spacing: 0;
-}
-
 @theme {
+  /*    Variable to set all line heights to 100%    */
   --tw-leading: 100%;
 
   /*    Brand    */
@@ -18,10 +14,15 @@
   --color-neutral: #848383;
   --color-muted: #a6a5a5;
   --color-subtle: #74789f;
-  
+
   /*    Accents    */
   --color-promotion: #ff0008;
   --color-link: #3e77aa;
   --color-error: #fe4343;
   --color-premium: #fef74c;
+
+  /*    Hovers/Clicks    */
+  --color-hover-primary: #34395b;
+  --color-hover-secondary: #c0e74f;
+  --color-hover-premium: #fffa85;
 }

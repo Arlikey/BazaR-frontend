@@ -1,6 +1,6 @@
 import React from "react";
 
-const Cross = () => {
+const CrossIcon = () => {
   return (
     <svg
       width="10"
@@ -25,4 +25,4 @@ const Cross = () => {
   );
 };
 
-export default Cross;
+export default CrossIcon;

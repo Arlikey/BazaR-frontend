@@ -1,6 +1,6 @@
 import React from "react";
 
-const Burger = () => {
+const BurgerIcon = () => {
   return (
     <svg
       width="18"
@@ -25,4 +25,4 @@ const Burger = () => {
   );
 };
 
-export default Burger;
+export default BurgerIcon;
