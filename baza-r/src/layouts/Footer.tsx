@@ -13,31 +13,7 @@ import VisaLogo from "../core/components/icons/payments/VisaLogo";
 
 const Footer = () => {
   return (
-    <div>
-      <section
-        aria-label="Newsletter"
-        className="bg-primary flex h-32 w-full items-center justify-center"
-      >
-        <div>
-          <span className="text-secondary text-2xl font-semibold uppercase">
-            будьте в курсі вигідних пропозицій!
-          </span>
-        </div>
-        <input
-          type="text"
-          className="bg-on-light border-muted ml-11 h-11 w-92 rounded-4xl border-[0.5px] pl-4.5 outline-none"
-          placeholder="Ел. пошта"
-        />
-        <Button
-          size="md"
-          color="secondary"
-          className="ml-6 h-11 rounded-[41px]"
-        >
-          <span className="text-on-light px-8.5 py-3.5 text-sm font-medium capitalize">
-            підписатися
-          </span>
-        </Button>
-      </section>
+    <footer>
       <div className="mt-9">
         <div className="flex justify-between pr-33 pb-12 pl-14 text-[13px]">
           <section aria-label="Contacts" className="flex flex-col gap-4">
@@ -113,7 +89,7 @@ const Footer = () => {
           </span>
         </div>
       </div>
-    </div>
+    </footer>
   );
 };
 
