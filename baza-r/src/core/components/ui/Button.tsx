@@ -7,6 +7,7 @@ const button = tv({
     color: {
       primary: "bg-primary hover:bg-hover-primary",
       secondary: "bg-secondary hover:bg-hover-secondary",
+      premium: "bg-premium hover:bg-hover-premium",
     },
     size: {
       sm: "h-8 px-2 text-sm",
@@ -14,13 +15,11 @@ const button = tv({
       lg: "h-12 px-4 text-lg",
     },
     shape: {
-      rounded: "rounded-[5px]",
+      icon: "rounded-[5px] w-11.25 h-11.25",
     },
   },
   defaultVariants: {
     color: "primary",
-    size: "md",
-    shape: "rounded",
   },
 });
 
