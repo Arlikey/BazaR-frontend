@@ -1,7 +1,8 @@
 import React, { useState } from "react";
-import Cross from "../../core/components/icons/CrossIcon";
-import Microphone from "../../core/components/icons/MicrophoneIcon";
-import SearchIcon from "../../core/components/icons/SearchIcon";
+import Cross from "../../core/components/icons/ui/CrossIcon";
+import Microphone from "../../core/components/icons/ui/MicrophoneIcon";
+import SearchIcon from "../../core/components/icons/ui/SearchIcon";
+import Button from "../../core/components/ui/Button";
 
 const Search = () => {
   const [searchQuery, setSearchQuery] = useState("");
@@ -22,14 +23,14 @@ const Search = () => {
             <Cross />
           </div>
         )}
-        <button className="cursor-pointer h-full px-3">
+        <button className="h-full cursor-pointer px-3">
           <Microphone />
         </button>
       </div>
       <div className="flex h-full items-center">
-        <button className="bg-secondary hover:bg-hover-secondary flex h-full items-center rounded-r-[20px] px-4 py-2.5">
+        <Button color="secondary" className="font-normal h-full rounded-r-[20px] px-4">
           <span className="capitalize">знайти</span>
-        </button>
+        </Button>
       </div>
     </div>
   );
