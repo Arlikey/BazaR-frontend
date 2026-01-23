@@ -1,0 +1,9 @@
+export { default as BurgerIcon } from "./BurgerIcon";
+export { default as CartIcon } from "./CartIcon";
+export { default as CatalogueIcon } from "./CatalogueIcon";
+export { default as ClockIcon } from "./ClockIcon";
+export { default as CrossIcon } from "./CrossIcon";
+export { default as LogoIcon } from "./LogoIcon";
+export { default as MicrophoneIcon } from "./MicrophoneIcon";
+export { default as SearchIcon } from "./SearchIcon";
+export { default as UserIcon } from "./UserIcon";

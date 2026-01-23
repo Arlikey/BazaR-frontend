@@ -1,12 +1,14 @@
 import React from "react";
-import Logo from "../core/components/icons/ui/LogoIcon";
-import Catalogue from "../core/components/icons/ui/CatalogueIcon";
 import { Link } from "react-router";
-import User from "../core/components/icons/ui/UserIcon";
-import Cart from "../core/components/icons/ui/CartIcon";
 import Search from "../features/Search/Search";
 import Button from "../core/components/ui/Button";
-import BurgerIcon from "../core/components/icons/ui/BurgerIcon";
+import {
+  BurgerIcon,
+  CartIcon,
+  CatalogueIcon,
+  LogoIcon,
+  UserIcon,
+} from "../core/components/icons/ui";
 
 const Header = () => {
   return (
@@ -25,18 +27,22 @@ const Header = () => {
         </Button>
         <div className="ml-29">
           <Link to={"/"}>
-            <Logo />
+            <LogoIcon />
           </Link>
         </div>
-        <Button color="secondary" size="md" className="ml-29 gap-3 rounded-[42px] px-6">
-          <Catalogue />
+        <Button
+          color="secondary"
+          size="md"
+          className="ml-29 gap-3 rounded-[42px] px-6"
+        >
+          <CatalogueIcon />
           <span className="capitalize">каталог</span>
         </Button>
         <div className="ml-31 flex flex-1">
           <Search />
         </div>
         <Button shape="icon" className="ml-29 w-21 flex-col gap-1">
-          <span className="text-on-light text-[10px] capitalize font-normal">
+          <span className="text-on-light text-[10px] font-normal capitalize">
             спробуйте
           </span>
           <span className="bg-premium rounded-[10px] px-2.5 py-1 text-[10px] font-medium uppercase">
@@ -45,10 +51,10 @@ const Header = () => {
         </Button>
         <div className="ml-29 flex items-center gap-2">
           <Button shape="icon">
-            <User />
+            <UserIcon />
           </Button>
           <Button shape="icon" className="relative">
-            <Cart />
+            <CartIcon />
             <div className="bg-secondary absolute top-0.75 right-0.75 flex h-4.5 w-4.5 items-center justify-center rounded-full">
               <span className="text-[12px] font-medium">2</span>
             </div>
