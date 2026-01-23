@@ -1,19 +1,19 @@
 import React from "react";
-import FacebookIcon from "../core/components/icons/social-media/FacebookIcon";
-import InstagramIcon from "../core/components/icons/social-media/InstagramIcon";
-import TelegramIcon from "../core/components/icons/social-media/TelegramIcon";
-import TwitterIcon from "../core/components/icons/social-media/TwitterIcon";
-import ViberIcon from "../core/components/icons/social-media/ViberIcon";
-import YoutubeIcon from "../core/components/icons/social-media/YoutubeIcon";
-import Button from "../core/components/ui/Button";
-import ClockIcon from "../core/components/icons/ui/ClockIcon";
 import { Link } from "react-router";
-import MastercardLogo from "../core/components/icons/payments/MastercardLogo";
-import VisaLogo from "../core/components/icons/payments/VisaLogo";
+import { ClockIcon } from "../core/components/icons/ui";
+import {
+  FacebookIcon,
+  InstagramIcon,
+  TelegramIcon,
+  TwitterIcon,
+  ViberIcon,
+  YoutubeIcon,
+} from "../core/components/icons/social-media";
+import { MastercardLogo, VisaLogo } from "../core/components/icons/payments";
 
 const Footer = () => {
   return (
-    <footer>
+    <footer className="border-muted border-t-[0.5px]">
       <div className="mt-9">
         <div className="flex justify-between pr-33 pb-12 pl-14 text-[13px]">
           <section aria-label="Contacts" className="flex flex-col gap-4">
