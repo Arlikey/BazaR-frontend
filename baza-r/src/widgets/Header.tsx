@@ -1,14 +1,14 @@
 import React from "react";
 import { Link } from "react-router";
 import Search from "../features/Search/Search";
-import Button from "../core/components/ui/Button";
+import Button from "../shared/components/ui/Button";
 import {
   BurgerIcon,
   CartIcon,
   CatalogueIcon,
   LogoIcon,
   UserIcon,
-} from "../core/components/icons/ui";
+} from "../shared/components/icons/ui";
 
 const Header = () => {
   return (

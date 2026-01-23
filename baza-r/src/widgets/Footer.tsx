@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router";
-import { ClockIcon } from "../core/components/icons/ui";
+import { ClockIcon } from "../shared/components/icons/ui";
 import {
   FacebookIcon,
   InstagramIcon,
@@ -8,8 +8,8 @@ import {
   TwitterIcon,
   ViberIcon,
   YoutubeIcon,
-} from "../core/components/icons/social-media";
-import { MastercardLogo, VisaLogo } from "../core/components/icons/payments";
+} from "../shared/components/icons/social-media";
+import { MastercardLogo, VisaLogo } from "../shared/components/icons/payments";
 
 const Footer = () => {
   return (
