@@ -7,3 +7,4 @@ export { default as LogoIcon } from "./LogoIcon";
 export { default as MicrophoneIcon } from "./MicrophoneIcon";
 export { default as SearchIcon } from "./SearchIcon";
 export { default as UserIcon } from "./UserIcon";
+export { default as ArrowIcon } from "./ArrowIcon";
