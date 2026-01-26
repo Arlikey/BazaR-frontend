@@ -1,6 +1,6 @@
-import type { Category } from "../model/Category";
-import { mapCategory } from "../model/map";
-import type { CategoryDto } from "./CategoryDto";
+import type { Category } from "../../model/Category";
+import { mapCategory } from "../../model/map";
+import type { CategoryDto } from "../CategoryDto";
 
 const mock: CategoryDto[] = [
   {

@@ -1,28 +1,56 @@
 @import "tailwindcss";
 
+html,
+body,
+:root {
+  background-color: #f5f5f5;
+}
+
 @theme {
+  --border-thin: 0.5px;
+
   /*    Variable to set all line heights to 100%    */
   --tw-leading: 100%;
 
   /*    Brand    */
-  --color-primary: #0b1245;           /* dark blue   */
-  --color-secondary: #98be2a;         /* light green */
+  --color-primary: #0b1245; /* dark blue   */
+  --color-secondary: #98be2a; /* light green */
 
   /*    Text     */
-  --color-on-dark: #000000;           /* black       */
-  --color-on-light: #ffffff;          /* white       */
-  --color-neutral: #848383;           /* dark gray   */
-  --color-muted: #a6a5a5;             /* light gray  */
-  --color-subtle: #74789f;            /* dusky blue  */
+  --color-on-dark: #000000; /* black       */
+  --color-on-light: #ffffff; /* white       */
+  --color-neutral: #848383; /* dark gray   */
+  --color-subtle: #74789f; /* dusky blue  */
+
+  /*    Neutral  */
+  --color-neutral-100: #dadada; /* light gray */
+  --color-neutral-200: #b1b1b1; /* gray */
+  --color-neutral-300: #a6a5a5; /* dark gray */
 
   /*    Accents    */
-  --color-promotion: #ff0008;         /* light red   */
-  --color-link: #3e77aa;              /* blue        */
-  --color-error: #fe4343;             /* coral red   */
-  --color-premium: #fef74c;           /* yellow      */
+  --color-promotion: #ff0008; /* light red   */
+  --color-link: #3e77aa; /* blue        */
+  --color-error: #fe4343; /* coral red   */
+  --color-premium: #fef74c; /* yellow      */
 
   /*    Hovers/Clicks    */
-  --color-hover-primary: #34395b;     /* sapphire blue  */
-  --color-hover-secondary: #c0e74f;   /* yellow green   */
-  --color-hover-premium: #fffa85;     /* sand yellow    */
+  --color-hover-primary: #34395b; /* sapphire blue  */
+  --color-hover-secondary: #c0e74f; /* yellow green   */
+  --color-hover-premium: #fffa85; /* sand yellow    */
+}
+
+@utility border-thin {
+  border-width: var(--border-thin);
+}
+@utility border-t-thin {
+  border-top-width: var(--border-thin);
+}
+@utility border-r-thin {
+  border-right-width: var(--border-thin);
+}
+@utility border-b-thin {
+  border-bottom-width: var(--border-thin);
+}
+@utility border-l-thin {
+  border-left-width: var(--border-thin);
 }
