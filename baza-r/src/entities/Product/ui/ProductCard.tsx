@@ -1,108 +1,205 @@
-import React from "react";
-import type { ReactNode } from "react";
 import { tv, type VariantProps } from "tailwind-variants";
-
 import type { Product } from "../model/Product";
-import Button from "../../../shared/components/ui/Button";
-import FavouriteIcon from "../../../shared/components/icons/ui/FavouriteIcon";
+import {
+  createContext,
+  useContext,
+  type HTMLAttributes,
+  type ReactNode,
+} from "react";
 
-const productCard = tv({
+type CardVariant = "compact" | "rich";
+
+const card = tv({
   slots: {
-    root: "cursor-pointer relative flex h-full w-full flex-col overflow-hidden rounded-xl bg-on-light bw-thin border-neutral-300 py-5 hover:scale-105 transition-transform",
-    mediaInner: "flex justify-center rounded-lg bg-white aspect-[16/9]",
-    img: "inset-0 object-contain ",
-    content: "flex flex-1 flex-col justify-between gap-2 pl-7 pr-1 mt-7",
-    name: "text-[12px] font-normal line-clamp-2",
-    prices: "flex flex-col gap-2",
+    root: "relative grid h-full w-full overflow-hidden rounded-xl bg-on-light bw-thin border-solid border-neutral-300 grid-rows-[auto_1fr_auto_auto]",
+    top: "relative pt-5 px-0",
+    media:
+      "relative flex items-center justify-center overflow-hidden rounded-lg bg-white px-8 aspect-[16/9]",
+    img: "h-full w-full object-contain",
+    topLeft: "absolute left-4 top-4 z-10 flex flex-col gap-2",
+    topRight: "absolute right-1 top-3 z-10 flex flex-col gap-2",
+    body: "mt-6 pl-7 pr-1",
+    title: "text-[12px] font-normal line-clamp-2",
+    meta: "",
+    prices: "mt-2",
     oldPrice: "text-[12px] text-neutral-300 line-through",
-    currentPrice: "text-[14px] font-normal",
+    currentPrice: "text-[14px] font-normal mt-2",
     currency: "text-[11px]",
-    favBtn:
-      "absolute right-2 top-2 overflow-hidden bg-white hover:bg-hover-light-primary/15",
+    footer: "flex items-end justify-between gap-3 pl-7 pr-1 pb-5",
   },
   variants: {
-    intent: {
-      default: {},
-      promo: { currentPrice: "text-promotion" },
+    variant: {
+      compact: {},
+      rich: {
+        top: "",
+        body: "",
+        prices: "",
+        footer: "",
+        title: "",
+        currentPrice: "",
+      },
     },
   },
-  defaultVariants: {
-    intent: "default",
-  },
+  defaultVariants: { variant: "compact" },
 });
 
-type Props = {
+type ProductCardContextValue = {
   product: Product;
-  className?: string;
+  variant: CardVariant;
+  styles: ReturnType<typeof card>;
+  formatPrice: (value: number) => string;
+};
 
-  onFavouriteClick?: (product: Product) => void;
-  favouriteAriaLabel?: string;
+const ProductCardContext = createContext<ProductCardContextValue | null>(null);
 
-  formatPrice?: (value: number) => string;
-} & VariantProps<typeof productCard>;
+function useProductCard() {
+  const ctx = useContext(ProductCardContext);
+  if (!ctx)
+    throw new Error("ProductCard.* must be used within ProductCard.Root");
+  return ctx;
+}
+
+export function useProductCardProduct(): Product {
+  return useProductCard().product;
+}
 
 function formatPriceUAH(value: number): string {
   return new Intl.NumberFormat("uk-UA").format(value);
 }
 
-export function ProductCard({
-  product,
-  className,
-  onFavouriteClick,
-  favouriteAriaLabel = "Add to favourites",
-  formatPrice = formatPriceUAH,
-}: Props) {
-  const hasOldPrice = product.oldPrice !== null;
-  const isPromo = hasOldPrice && product.oldPrice! > product.currentPrice;
+export type ProductCardRootProps = {
+  product: Product;
+  variant?: CardVariant;
+  formatPrice?: (value: number) => string;
+  children: ReactNode;
+} & Omit<HTMLAttributes<HTMLElement>, "children"> &
+  VariantProps<typeof card>;
 
-  const styles = productCard({
-    intent: isPromo ? "promo" : "default",
-  });
+function Root({
+  product,
+  variant = "compact",
+  formatPrice = formatPriceUAH,
+  className,
+  children,
+  ...rest
+}: ProductCardRootProps) {
+  const styles = card({ variant });
 
   return (
-    <article className={styles.root({ className })}>
-      <div className={styles.mediaInner()}>
-        {product.imageUrl ? (
-          <img
-            src={product.imageUrl}
-            alt={product.name}
-            loading="lazy"
-            decoding="async"
-            className={styles.img()}
-          />
-        ) : (
+    <ProductCardContext.Provider
+      value={{ product, variant, styles, formatPrice }}
+    >
+      <article className={styles.root({ className })} {...rest}>
+        <div className="contents">{children}</div>
+      </article>
+    </ProductCardContext.Provider>
+  );
+}
+
+type SlotProps = { children?: ReactNode; className?: string };
+
+function Top({ children, className }: SlotProps) {
+  const { styles } = useProductCard();
+  return <header className={styles.top({ className })}>{children}</header>;
+}
+
+type MediaProps = {
+  alt?: string;
+  className?: string;
+  fallback?: ReactNode;
+};
+
+function Media({ alt, className, fallback }: MediaProps) {
+  const { product, styles } = useProductCard();
+
+  return (
+    <div className={styles.media({ className })}>
+      {product.imageUrl ? (
+        <img
+          src={product.imageUrl}
+          alt={alt ?? product.name}
+          loading="lazy"
+          decoding="async"
+          className={styles.img()}
+        />
+      ) : (
+        (fallback ?? (
           <div className="flex h-full w-full items-center justify-center text-[12px] text-neutral-400">
             No image
           </div>
-        )}
-      </div>
-
-      <div className={styles.content()}>
-        <span className={styles.name()}>{product.name}</span>
-
-        <div className={styles.prices()}>
-          {hasOldPrice && (
-            <span className={styles.oldPrice()}>
-              {formatPrice(product.oldPrice!)}{" "}
-              <span className={styles.currency()}>₴</span>
-            </span>
-          )}
-
-          <span className={styles.currentPrice()}>
-            {formatPrice(product.currentPrice)}{" "}
-            <span className={styles.currency()}>₴</span>
-          </span>
-        </div>
-      </div>
-
-      <Button
-        className={styles.favBtn()}
-        shape="icon"
-        aria-label={favouriteAriaLabel}
-        onClick={() => onFavouriteClick?.(product)}
-      >
-        <FavouriteIcon size="25" />
-      </Button>
-    </article>
+        ))
+      )}
+    </div>
   );
 }
+
+function TopLeft({ children, className }: SlotProps) {
+  const { styles } = useProductCard();
+  return <div className={styles.topLeft({ className })}>{children}</div>;
+}
+
+function TopRight({ children, className }: SlotProps) {
+  const { styles } = useProductCard();
+  return <div className={styles.topRight({ className })}>{children}</div>;
+}
+
+function Body({ children, className }: SlotProps) {
+  const { styles } = useProductCard();
+  return <div className={styles.body({ className })}>{children}</div>;
+}
+
+function Title({ className }: { className?: string }) {
+  const { product, styles } = useProductCard();
+  return <h3 className={styles.title({ className })}>{product.name}</h3>;
+}
+
+function Meta({ children, className }: SlotProps) {
+  const { styles } = useProductCard();
+  return <div className={styles.meta({ className })}>{children}</div>;
+}
+
+type PricesProps = {
+  className?: string;
+  currency?: string;
+};
+
+function Prices({ className, currency = "₴" }: PricesProps) {
+  const { product, styles, formatPrice } = useProductCard();
+  const hasOld = product.oldPrice !== null;
+  const isPromo = hasOld && product.oldPrice! > product.currentPrice;
+
+  return (
+    <div className={styles.prices({ className })}>
+      {hasOld && (
+        <div className={styles.oldPrice()}>
+          {formatPrice(product.oldPrice!)}{" "}
+          <span className={styles.currency()}>{currency}</span>
+        </div>
+      )}
+      <div
+        className={`${styles.currentPrice()} ${isPromo ? "text-promotion" : ""}`}
+      >
+        {formatPrice(product.currentPrice)}{" "}
+        <span className={styles.currency()}>{currency}</span>
+      </div>
+    </div>
+  );
+}
+
+function Footer({ children, className }: SlotProps) {
+  const { styles } = useProductCard();
+  return <div className={styles.footer({ className })}>{children}</div>;
+}
+
+export const ProductCard = {
+  Root,
+  Top,
+  Media,
+  TopLeft,
+  TopRight,
+  Body,
+  Title,
+  Meta,
+  Prices,
+  Footer,
+};
