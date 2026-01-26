@@ -4,6 +4,7 @@ html,
 body,
 :root {
   background-color: #f5f5f5;
+  line-height: 100%;
 }
 
 @theme {
@@ -37,20 +38,21 @@ body,
   --color-hover-primary: #34395b; /* sapphire blue  */
   --color-hover-secondary: #c0e74f; /* yellow green   */
   --color-hover-premium: #fffa85; /* sand yellow    */
+  --color-hover-light-primary: #74789f;
 }
 
-@utility border-thin {
+@utility bw-thin {
   border-width: var(--border-thin);
 }
-@utility border-t-thin {
+@utility bw-t-thin {
   border-top-width: var(--border-thin);
 }
-@utility border-r-thin {
+@utility bw-r-thin {
   border-right-width: var(--border-thin);
 }
-@utility border-b-thin {
+@utility bw-b-thin {
   border-bottom-width: var(--border-thin);
 }
-@utility border-l-thin {
+@utility bw-l-thin {
   border-left-width: var(--border-thin);
 }

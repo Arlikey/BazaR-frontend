@@ -10,7 +10,7 @@ export default function CatalogMenu() {
   if (categories.length === 0) return <p>No categories</p>;
 
   return (
-    <nav className="bg-on-light border-thin max-w-81.25 rounded-xl border-neutral-100 px-6 py-3">
+    <nav className="bg-on-light bw-thin max-w-81.25 rounded-xl border-neutral-100 px-6 py-3">
       <ul>
         {categories.map((category) => (
           <li key={category.id}>

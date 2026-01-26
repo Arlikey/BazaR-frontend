@@ -13,7 +13,7 @@ import { MastercardLogo, VisaLogo } from "../shared/components/icons/payments";
 
 const Footer = () => {
   return (
-    <footer className="border-t-thin border-neutral-300">
+    <footer className="bw-t-thin border-neutral-300">
       <div className="mt-9">
         <div className="flex justify-between pr-33 pb-12 pl-14 text-[13px]">
           <section aria-label="Contacts" className="flex flex-col gap-4">
@@ -77,7 +77,7 @@ const Footer = () => {
             </li>
           </ul>
         </div>
-        <div className="border-t-thin border-neutral-300"></div>
+        <div className="bw-t-thin border-neutral-300"></div>
         <div className="flex items-center justify-between py-9 pr-33 pl-14">
           <div className="flex gap-18">
             <MastercardLogo />
