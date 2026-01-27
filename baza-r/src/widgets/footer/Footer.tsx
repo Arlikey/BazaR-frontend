@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router";
-import { ClockIcon } from "../shared/components/icons/ui";
+import { ClockIcon } from "../../shared/components/icons/ui";
 import {
   FacebookIcon,
   InstagramIcon,
@@ -8,12 +8,12 @@ import {
   TwitterIcon,
   ViberIcon,
   YoutubeIcon,
-} from "../shared/components/icons/social-media";
-import { MastercardLogo, VisaLogo } from "../shared/components/icons/payments";
+} from "../../shared/components/icons/social-media";
+import { MastercardLogo, VisaLogo } from "../../shared/components/icons/payments";
 
 const Footer = () => {
   return (
-    <footer className="bw-t-thin border-neutral-300">
+    <footer className="bw-t-thin hidden border-neutral-300 md:flex">
       <div className="mt-9">
         <div className="flex justify-between pr-33 pb-12 pl-14 text-[13px]">
           <section aria-label="Contacts" className="flex flex-col gap-4">

@@ -1,11 +1,11 @@
 import { tv, type VariantProps } from "tailwind-variants";
-import type { Product } from "../model/Product";
 import {
   createContext,
   useContext,
   type HTMLAttributes,
   type ReactNode,
 } from "react";
+import type { Product } from "../model/Product";
 
 type CardVariant = "compact" | "rich";
 

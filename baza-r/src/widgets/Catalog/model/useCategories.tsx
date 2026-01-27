@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { tryCatch } from "../../../shared/lib/try-catch";
-import CategoryDao from "../../../entities/Category/api/__mocks__/CategoryDao";
-import type { Category } from "../../../entities/Category/model/Category";
+import CategoryDao from "../../../entities/category/api/__mocks__/CategoryDao";
+import type { Category } from "../../../entities/category/model/Category";
 
 export function useCategories() {
   const [categories, setCategories] = useState<Category[]>([]);

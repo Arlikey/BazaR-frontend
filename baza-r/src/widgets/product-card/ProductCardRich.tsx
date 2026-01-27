@@ -1,17 +1,17 @@
 import type { ReactNode } from "react";
-import type { Product } from "../../entities/Product/model/Product";
-import { ProductCard } from "../../entities/Product/ui/ProductCard";
+import type { Product } from "../../entities/product/model/Product";
+import { ProductCard } from "../../entities/product/ui/ProductCard";
 import Button from "../../shared/components/ui/Button";
 import FavouriteIcon from "../../shared/components/icons/ui/FavouriteIcon";
 
 type RichProps = {
   product: Product;
-  badge?: ReactNode; // “АКЦІЯ”
-  compare?: ReactNode; // иконка сравнения
-  availability?: ReactNode; // “Закінчується”
-  rating?: ReactNode; // звезды + отзывы
-  colors?: ReactNode; // выбор цветов
-  buy?: ReactNode; // корзина/купить
+  badge?: ReactNode;
+  compare?: ReactNode;
+  availability?: ReactNode;
+  rating?: ReactNode;
+  colors?: ReactNode;
+  buy?: ReactNode;
   onFavouriteClick?: (p: Product) => void;
 };
 

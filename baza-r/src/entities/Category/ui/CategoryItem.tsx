@@ -1,7 +1,7 @@
 import { tv, type VariantProps } from "tailwind-variants";
 import type { ReactNode } from "react";
-import type { Category } from "../model/Category";
 import { NavLink, type To } from "react-router";
+import type { Category } from "../model/Category";
 
 const categoryItem = tv({
   slots: {

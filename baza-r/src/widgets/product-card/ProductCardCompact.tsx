@@ -1,5 +1,5 @@
-import type { Product } from "../../entities/Product/model/Product";
-import { ProductCard } from "../../entities/Product/ui/ProductCard";
+import type { Product } from "../../entities/product/model/Product";
+import { ProductCard } from "../../entities/product/ui/ProductCard";
 import FavouriteIcon from "../../shared/components/icons/ui/FavouriteIcon";
 import Button from "../../shared/components/ui/Button";
 
