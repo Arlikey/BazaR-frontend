@@ -9,12 +9,17 @@ import {
   ViberIcon,
   YoutubeIcon,
 } from "../../shared/components/icons/social-media";
-import { MastercardLogo, VisaLogo } from "../../shared/components/icons/payments";
+import {
+  MastercardLogo,
+  VisaLogo,
+} from "../../shared/components/icons/payments";
+import LinkGroup from "../link-group/LinkGroup";
+import { footerGroups } from "../../shared/config/footer";
 
 const Footer = () => {
   return (
-    <footer className="bw-t-thin hidden border-neutral-300 md:flex">
-      <div className="mt-9">
+    <footer className="bw-t-thin hidden w-full border-neutral-300 md:flex">
+      <div className="mt-9 w-full">
         <div className="flex justify-between pr-33 pb-12 pl-14 text-[13px]">
           <section aria-label="Contacts" className="flex flex-col gap-4">
             <Link to={""}>
@@ -33,49 +38,7 @@ const Footer = () => {
               <YoutubeIcon />
             </section>
           </section>
-          <ul className="flex gap-44">
-            <li>
-              <span className="font-medium">Допомога</span>
-              <ul className="mt-2 space-y-1">
-                <li>Доставка та оплата</li>
-                <li>Кредит</li>
-                <li>Гарантія</li>
-                <li>Повернення товару</li>
-                <li>Сервісні центри</li>
-                <li>Відстежити замовлення</li>
-              </ul>
-            </li>
-
-            <li>
-              <span className="font-medium">Інформація про компанію</span>
-              <ul className="mt-2 space-y-1">
-                <li>Про нас</li>
-                <li>Умови використання сайту</li>
-                <li>Вакансії</li>
-                <li>Контакти</li>
-              </ul>
-            </li>
-
-            <li>
-              <span className="font-medium">Сервіси</span>
-              <ul className="mt-2 space-y-1">
-                <li>Бонусний рахунок</li>
-                <li>Premium</li>
-                <li>Подарункові сертифікати</li>
-                <li>Обмін</li>
-                <li>Rozetka Travel</li>
-              </ul>
-            </li>
-
-            <li>
-              <span className="font-medium">Партнерам</span>
-              <ul className="mt-2 space-y-1">
-                <li>Франчайзинг</li>
-                <li>Продавати на Розетці</li>
-                <li>Співпраця з нами</li>
-              </ul>
-            </li>
-          </ul>
+          <LinkGroup groups={footerGroups} className="flex gap-44" />
         </div>
         <div className="bw-t-thin border-neutral-300"></div>
         <div className="flex items-center justify-between py-9 pr-33 pl-14">

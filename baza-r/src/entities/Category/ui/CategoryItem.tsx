@@ -2,6 +2,7 @@ import { tv, type VariantProps } from "tailwind-variants";
 import type { ReactNode } from "react";
 import { NavLink, type To } from "react-router";
 import type { Category } from "../model/Category";
+import CustomLink from "../../../shared/components/ui/CustomLink";
 
 const categoryItem = tv({
   slots: {
@@ -52,7 +53,7 @@ export function CategoryItem({
   const styles = categoryItem({ size, intent });
 
   return (
-    <NavLink to={to} className={styles.root({ className })}>
+    <CustomLink to={to} variant="menu" className={styles.root({ className })}>
       <span className={styles.left()}>
         {category.iconUrl && (
           <img
@@ -68,6 +69,6 @@ export function CategoryItem({
       </span>
 
       {trailing && <span className={styles.trailing()}>{trailing}</span>}
-    </NavLink>
+    </CustomLink>
   );
 }

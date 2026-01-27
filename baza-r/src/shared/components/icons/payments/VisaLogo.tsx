@@ -31,7 +31,7 @@ const VisaLogo = () => {
         fill-rule="evenodd"
         clip-rule="evenodd"
         d="M17.0962 12.7637H12.5092L12.4824 12.9532C16.0487 13.8644 18.402 16.1019 19.3816 18.7479L18.3847 13.6906C18.2135 12.9949 17.7143 12.7882 17.0962 12.7637Z"
-        fill="#E89F3E"
+        fill="#98BE2A"
       />
       <path
         fill-rule="evenodd"

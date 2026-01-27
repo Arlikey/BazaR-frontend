@@ -8,6 +8,7 @@ const button = tv({
       primary: "bg-primary hover:bg-hover-primary",
       secondary: "bg-secondary hover:bg-hover-secondary",
       premium: "bg-premium hover:bg-hover-premium",
+      black: "bg-[#221F1F] hover:bg-[#1A1818]",
     },
     size: {
       sm: "h-8 px-2 text-sm",
