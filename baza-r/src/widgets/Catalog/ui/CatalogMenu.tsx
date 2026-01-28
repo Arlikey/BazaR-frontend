@@ -1,5 +1,4 @@
 import { CategoryItem } from "../../../entities/category/ui/CategoryItem";
-import { ArrowIcon } from "../../../shared/components/icons/ui";
 import { useCategories } from "../model/useCategories";
 
 export default function CatalogMenu() {

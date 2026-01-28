@@ -1,6 +1,6 @@
 import { tv, type VariantProps } from "tailwind-variants";
 import type { ReactNode } from "react";
-import { NavLink, type To } from "react-router";
+import { type To } from "react-router";
 import type { Category } from "../model/Category";
 import CustomLink from "../../../shared/components/ui/CustomLink";
 

@@ -1,14 +1,14 @@
-import React, { type ReactNode } from "react";
+import { type ReactNode } from "react";
 import { tv, type VariantProps } from "tailwind-variants";
 
 const button = tv({
-  base: "cursor-pointer inline-flex items-center justify-center font-medium whitespace-nowrap transition-colors select-none focus:outline-none disabled:pointer-events-none disabled:opacity-50",
+  base: "cursor-pointer inline-flex items-center justify-center font-medium whitespace-nowrap transition select-none focus:outline-none disabled:pointer-events-none disabled:opacity-50",
   variants: {
     color: {
       primary: "bg-primary hover:bg-hover-primary",
       secondary: "bg-secondary hover:bg-hover-secondary",
       premium: "bg-premium hover:bg-hover-premium",
-      black: "bg-[#221F1F] hover:bg-[#1A1818]",
+      black: "bg-[#221F1F] hover:bg-[#1A1818] hover:scale-105 ",
     },
     size: {
       sm: "h-8 px-2 text-sm",

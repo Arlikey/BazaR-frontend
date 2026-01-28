@@ -1,4 +1,12 @@
 import type { LinkType } from "./types";
+import {
+  FacebookIcon,
+  InstagramIcon,
+  TelegramIcon,
+  TwitterIcon,
+  ViberIcon,
+  YoutubeIcon,
+} from "../components/icons/social-media";
 
 export const footerGroups: LinkType[] = [
   {
@@ -39,4 +47,13 @@ export const footerGroups: LinkType[] = [
       { label: "Співпраця з нами", to: "/partners/cooperation" },
     ],
   },
+];
+
+export const socialMediaLinks = [
+  { label: "Facebook", href: "#", icon: FacebookIcon },
+  { label: "Twitter", href: "#", icon: TwitterIcon },
+  { label: "YouTube", href: "https://www.youtube.com", icon: YoutubeIcon },
+  { label: "Instagram", href: "#", icon: InstagramIcon },
+  { label: "Viber", href: "#", icon: ViberIcon },
+  { label: "Telegram", href: "#", icon: TelegramIcon },
 ];

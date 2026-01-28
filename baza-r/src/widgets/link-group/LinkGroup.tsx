@@ -1,4 +1,3 @@
-import { Link } from "react-router";
 import type { LinkType } from "../../shared/config/types";
 import CustomLink from "../../shared/components/ui/CustomLink";
 

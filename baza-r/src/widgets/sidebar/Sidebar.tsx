@@ -1,24 +1,15 @@
-import { CategoryItem } from "../../entities/category/ui/CategoryItem";
 import AppleStoreIcon from "../../shared/components/icons/apps/AppleStoreIcon";
 import PlayStoreIcon from "../../shared/components/icons/apps/PlayStoreIcon";
 import {
   MastercardLogo,
   VisaLogo,
 } from "../../shared/components/icons/payments";
-import {
-  FacebookIcon,
-  InstagramIcon,
-  TelegramIcon,
-  TwitterIcon,
-  ViberIcon,
-  YoutubeIcon,
-} from "../../shared/components/icons/social-media";
 import QuestionIcon from "../../shared/components/icons/ui/QuestionIcon";
 import Button from "../../shared/components/ui/Button";
 import CardSection from "../../shared/components/ui/CardSection";
 import CustomLink from "../../shared/components/ui/CustomLink";
-import IconSkeleton from "../../shared/components/ui/IconSkeleton";
-import { footerGroups } from "../../shared/config/footer";
+import SocialLinks from "../../shared/components/ui/SocialLinks";
+import { footerGroups, socialMediaLinks } from "../../shared/config/links";
 import CatalogMenu from "../catalog/ui/CatalogMenu";
 import LinkGroup from "../link-group/LinkGroup";
 
@@ -27,8 +18,8 @@ export function Sidebar() {
     <aside className="flex flex-col gap-4">
       <CatalogMenu />
 
-      <CardSection className="flex items-center gap-2 px-9 py-2">
-        <CustomLink to={"#"}>
+      <CardSection className="flex items-center gap-2 px-6 py-2">
+        <CustomLink to={"#"} variant="menu" className="flex flex-1">
           <span className="flex h-6.25 w-6.25 items-center justify-center">
             <QuestionIcon />
           </span>
@@ -76,33 +67,7 @@ export function Sidebar() {
         <span className="text-neutral text-[13px]">
           Ми в соціальних мережах
         </span>
-        <section aria-label="Social Media" className="flex gap-5">
-          {" "}
-          <IconSkeleton size={24}>
-            {" "}
-            <FacebookIcon />{" "}
-          </IconSkeleton>{" "}
-          <IconSkeleton size={24}>
-            {" "}
-            <TwitterIcon />{" "}
-          </IconSkeleton>{" "}
-          <IconSkeleton size={24}>
-            {" "}
-            <YoutubeIcon />{" "}
-          </IconSkeleton>{" "}
-          <IconSkeleton size={24}>
-            {" "}
-            <InstagramIcon />{" "}
-          </IconSkeleton>{" "}
-          <IconSkeleton size={24}>
-            {" "}
-            <ViberIcon />{" "}
-          </IconSkeleton>{" "}
-          <IconSkeleton size={24}>
-            {" "}
-            <TelegramIcon />{" "}
-          </IconSkeleton>{" "}
-        </section>
+        <SocialLinks items={socialMediaLinks} />
       </CardSection>
 
       <CardSection>

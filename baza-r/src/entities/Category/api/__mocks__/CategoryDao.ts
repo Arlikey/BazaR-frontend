@@ -79,7 +79,7 @@ const mock: CategoryDto[] = [
 
 export default class CategoryDao {
   static async getCategories(): Promise<Category[]> {
-    await new Promise((r) => setTimeout(r, 700));
+    await new Promise((r) => setTimeout(r, 3000));
     return mock.map(mapCategory);
   }
 }

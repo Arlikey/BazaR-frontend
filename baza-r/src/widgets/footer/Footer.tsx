@@ -1,20 +1,12 @@
-import React from "react";
 import { Link } from "react-router";
 import { ClockIcon } from "../../shared/components/icons/ui";
-import {
-  FacebookIcon,
-  InstagramIcon,
-  TelegramIcon,
-  TwitterIcon,
-  ViberIcon,
-  YoutubeIcon,
-} from "../../shared/components/icons/social-media";
 import {
   MastercardLogo,
   VisaLogo,
 } from "../../shared/components/icons/payments";
 import LinkGroup from "../link-group/LinkGroup";
-import { footerGroups } from "../../shared/config/footer";
+import { footerGroups, socialMediaLinks } from "../../shared/config/links";
+import SocialLinks from "../../shared/components/ui/SocialLinks";
 
 const Footer = () => {
   return (
@@ -29,14 +21,7 @@ const Footer = () => {
                 <span className="text-link">Графік роботи Call-центру</span>
               </div>
             </Link>
-            <section aria-label="Social Media" className="flex gap-5">
-              <FacebookIcon />
-              <InstagramIcon />
-              <TelegramIcon />
-              <TwitterIcon />
-              <ViberIcon />
-              <YoutubeIcon />
-            </section>
+            <SocialLinks items={socialMediaLinks} />
           </section>
           <LinkGroup groups={footerGroups} className="flex gap-44" />
         </div>
