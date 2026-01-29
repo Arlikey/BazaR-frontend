@@ -36,7 +36,7 @@ function toSize(value?: number | string): string | undefined {
   return typeof value === "number" ? `${value}px` : value;
 }
 
-export default function LoaderSkeleton({
+export default function Skeleton({
   variant,
   shimmer,
   width,

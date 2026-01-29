@@ -1,5 +1,5 @@
 import type { ComponentType } from "react";
-import IconSkeleton from "./IconSkeleton";
+import IconWrapper from "./IconWrapper";
 
 type Icon = ComponentType;
 
@@ -19,9 +19,9 @@ export default function SocialLinks({ items, size = 24, className }: Props) {
     >
       {items.map(({ label, href, icon: Icon }) => (
         <a key={label} href={href} aria-label={label} target="_blank">
-          <IconSkeleton size={size}>
+          <IconWrapper size={size}>
             <Icon />
-          </IconSkeleton>
+          </IconWrapper>
         </a>
       ))}
     </nav>

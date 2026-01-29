@@ -6,7 +6,7 @@ type Props = {
   children?: ReactNode;
 };
 
-const IconSkeleton = ({ size, className, children }: Props) => {
+const IconWrapper = ({ size, className, children }: Props) => {
   return (
     <span
       className={`inline-flex shrink-0 items-center justify-center [&>svg]:h-full [&>svg]:w-full ${className ?? ""}`}
@@ -18,4 +18,4 @@ const IconSkeleton = ({ size, className, children }: Props) => {
   );
 };
 
-export default IconSkeleton;
+export default IconWrapper;

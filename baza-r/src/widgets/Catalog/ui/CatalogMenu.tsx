@@ -1,12 +1,12 @@
 import { CategoryItem } from "../../../entities/category/ui/CategoryItem";
-import CatalogItemLoader from "../../../shared/components/ui/loaders/CatalogItemLoader";
+import CategoryItemSkeleton from "../../../shared/components/ui/loaders/CategoryItemSkeleton";
 import { useCategories } from "../model/useCategories";
 
 export default function CatalogMenu() {
   const { categories, error, isLoading } = useCategories();
 
   if (error) return <p className="text-error">Failed to load categories</p>;
-  if (isLoading) return <CatalogItemLoader count={8} />;
+  if (isLoading) return <CategoryItemSkeleton count={8} />;
   if (categories.length === 0) return <p>No categories</p>;
 
   return (
