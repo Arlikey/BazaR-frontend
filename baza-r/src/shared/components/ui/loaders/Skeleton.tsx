@@ -1,14 +1,8 @@
-import type { CSSProperties } from "react";
 import { tv, type VariantProps } from "tailwind-variants";
 
 const skeleton = tv({
-  base: "relative overflow-hidden bg-neutral-200/70",
+  base: "inline-flex relative overflow-hidden bg-neutral-200/70 rounded",
   variants: {
-    variant: {
-      rect: "rounded-sm",
-      line: "rounded",
-      circle: "rounded-full",
-    },
     shimmer: {
       true: [
         "after:content-[''] after:absolute after:inset-0 after:-translate-x-full",
@@ -20,39 +14,16 @@ const skeleton = tv({
     },
   },
   defaultVariants: {
-    variant: "rect",
     shimmer: true,
   },
 });
 
 type Props = {
-  width?: number | string;
-  height?: number | string;
   className?: string;
 } & VariantProps<typeof skeleton>;
 
-function toSize(value?: number | string): string | undefined {
-  if (value === undefined) return undefined;
-  return typeof value === "number" ? `${value}px` : value;
-}
-
-export default function Skeleton({
-  variant,
-  shimmer,
-  width,
-  height,
-  className,
-}: Props) {
-  const style: CSSProperties = {
-    width: toSize(width),
-    height: toSize(height),
-  };
-
+export default function Skeleton({ shimmer, className }: Props) {
   return (
-    <div
-      aria-hidden="true"
-      className={skeleton({ variant, shimmer, className })}
-      style={style}
-    />
+    <span aria-hidden="true" className={skeleton({ shimmer, className })} />
   );
 }

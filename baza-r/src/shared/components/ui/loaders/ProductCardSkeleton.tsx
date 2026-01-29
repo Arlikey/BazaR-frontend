@@ -41,26 +41,21 @@ export default function ProductCardSkeleton({
     <article className={s.root({ className })} aria-busy="true" {...rest}>
       <header className={s.top()}>
         <div className={s.mediaWrap()}>
-          <Skeleton width="100%" height="100%" className="rounded-lg" />
+          <Skeleton className="h-full w-full rounded-lg opacity-70" />
         </div>
       </header>
 
       <div className={s.body()}>
-        <div className="space-y-2">
-          <Skeleton variant="line" width={"90%"} height={12} />
-          <Skeleton variant="line" width={"50%"} height={12} />
+        <div className="flex flex-col space-y-2">
+          <Skeleton className="h-3 w-9/10" />
+          <Skeleton className="h-3 w-4/10" />
         </div>
       </div>
 
       <div className={s.footer()}>
         <div className={s.priceStack()}>
-          <Skeleton
-            variant="line"
-            width={72}
-            height={12}
-            className="opacity-70"
-          />
-          <Skeleton variant="line" width={96} height={14} />
+          <Skeleton className="h-3 w-20 opacity-70" />
+          <Skeleton className="h-3.5 w-25" />
         </div>
       </div>
     </article>
