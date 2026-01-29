@@ -12,7 +12,7 @@ const Footer = () => {
   return (
     <footer className="bw-t-thin hidden w-full border-neutral-300 md:flex">
       <div className="mt-9 w-full">
-        <div className="flex justify-between pr-33 pb-12 pl-14 text-[13px]">
+        <div className="mx-auto flex max-w-480 flex-col justify-between gap-8 px-8 pb-12 text-[13px] lg:flex-row xl:gap-50 xl:pr-33 xl:pl-14">
           <section aria-label="Contacts" className="flex flex-col gap-4">
             <Link to={""}>
               <div className="inline-flex items-center gap-3">
@@ -23,15 +23,18 @@ const Footer = () => {
             </Link>
             <SocialLinks items={socialMediaLinks} />
           </section>
-          <LinkGroup groups={footerGroups} className="flex gap-44" />
+          <LinkGroup
+            groups={footerGroups}
+            className="flex flex-1 justify-between gap-4"
+          />
         </div>
-        <div className="bw-t-thin border-neutral-300"></div>
-        <div className="flex items-center justify-between py-9 pr-33 pl-14">
-          <div className="flex gap-18">
+        <div className="bw-t-thin border-neutral-200"></div>
+        <div className="mx-auto flex max-w-480 items-center justify-between gap-6 px-8 py-9 xl:pr-33 xl:pl-14">
+          <div className="flex gap-6 lg:gap-18">
             <MastercardLogo />
             <VisaLogo />
           </div>
-          <span className="text-muted text-[12px] font-normal">
+          <span className="text-[12px] font-normal text-neutral-300">
             © Інтернет-магазин «Розетка™»2001–2022 ТМ використовується на
             підставі ліцензії правовласника RozetkaLTD
           </span>

@@ -12,7 +12,7 @@ export default function LinkGroup({
     <ul className={className}>
       {groups.map((g) => (
         <li key={g.title}>
-          <span className="font-medium">{g.title}</span>
+          <span className="font-medium text-[12px]">{g.title}</span>
           <ul className="mt-2 space-y-2">
             {g.links.map((l) => (
               <li key={l.label}>

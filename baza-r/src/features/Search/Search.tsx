@@ -25,11 +25,11 @@ const Search = () => {
             <CrossIcon />
           </div>
         )}
-        <button className="h-full cursor-pointer px-3">
+        <button className="h-full cursor-pointer px-3 hidden md:flex justify-center items-center">
           <MicrophoneIcon />
         </button>
       </div>
-      <div className="flex h-full items-center">
+      <div className="h-full items-center hidden md:flex">
         <Button
           color="secondary"
           className="h-full rounded-r-[20px] px-4 font-normal"

@@ -19,7 +19,7 @@ export function Sidebar() {
       <CatalogMenu />
 
       <CardSection className="flex items-center gap-2 px-6 py-2">
-        <CustomLink to={"#"} variant="menu" className="flex flex-1">
+        <CustomLink to={"https://www.youtube.com/watch?v=dQw4w9WgXcQ"} target="_blank" variant="menu" className="flex flex-1">
           <span className="flex h-6.25 w-6.25 items-center justify-center">
             <QuestionIcon />
           </span>

@@ -1,7 +1,5 @@
-import type { ReactNode } from "react";
 import type { Product } from "../../../entities/product/model/Product";
 import { ProductCardCompact } from "../../product-card/ProductCardCompact";
-import { ProductCardRich } from "../../product-card/ProductCardRich";
 import ProductCardSkeleton from "../../../shared/components/ui/loaders/ProductCardSkeleton";
 
 type Props = {
@@ -19,7 +17,7 @@ export default function ProductsGrid({
 
   return (
     <section className={className}>
-      <ul className={`grid grid-cols-${columns} gap-2.5`}>
+      <ul className={`grid grid-cols-5 gap-2.5`}>
         <ProductCardSkeleton />
         {products.map((product) => {
           return (

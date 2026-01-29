@@ -18,14 +18,14 @@ const card = tv({
     img: "h-full w-full object-contain",
     topLeft: "absolute left-4 top-4 z-10 flex flex-col gap-2",
     topRight: "absolute right-1 top-3 z-10 flex flex-col gap-2",
-    body: "mt-6 pl-7 pr-1",
+    body: "mt-6 px-5",
     title: "text-[12px] font-normal line-clamp-2",
     meta: "",
     prices: "mt-2",
     oldPrice: "text-[12px] text-neutral-300 line-through",
     currentPrice: "text-[14px] font-normal mt-2",
     currency: "text-[11px]",
-    footer: "flex items-end justify-between gap-3 pl-7 pr-1 pb-5",
+    footer: "flex items-end justify-between gap-3 px-5 pb-5",
   },
   variants: {
     variant: {
