@@ -5,20 +5,22 @@ import Button from "../../shared/components/ui/Button";
 
 type CompactProps = {
   product: Product;
+  className?: string;
   onFavouriteClick?: (p: Product) => void;
 };
 
 export function ProductCardCompact({
   product,
+  className,
   onFavouriteClick,
 }: CompactProps) {
   return (
-    <ProductCard.Root product={product} variant="compact">
+    <ProductCard.Root product={product} variant="compact" className={className}>
       <ProductCard.Top>
         <ProductCard.Media />
         <ProductCard.TopRight>
           <Button
-            className="hover:bg-hover-light-primary/15 overflow-hidden bg-white"
+            className="hover:bg-hover-light-primary/15 overflow-hidden bg-white text-subtle"
             shape="icon"
             aria-label="Add to favourites"
             onClick={() => onFavouriteClick?.(product)}

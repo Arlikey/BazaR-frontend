@@ -1,26 +1,23 @@
-@import "tailwindcss";
-
-@keyframes shimmer {
-  from {
-    transform: translateX(0%);
-  }
-  to {
-    transform: translateX(200%);
-  }
-}
-
-html,
-body,
-:root {
-  background-color: #f5f5f5;
-  line-height: 100%;
-}
-
 @theme {
+  /* Typography scale from design */
+  --text-xs: 0.625rem; /* 10px */
+  --text-sm: 0.75rem; /* 12px */
+  --text-md: 0.8125rem; /* 13px */
+  --text-base: 0.875rem; /* 14px */
+  --text-lg: 1rem; /* 16px */
+  --text-xl: 1.125rem; /* 18px */
+  --text-2xl: 1.5rem; /* 24px */
+  --text-3xl: 1.75rem; /* 28px */
+  --text-4xl: 2.25rem; /* 36px */
+
+  /*    Borders    */
   --border-thin: 0.5px;
 
+  /*    Shadows    */
+  --shadow-sidebar: 6px 5px 20px rgba(0, 0, 0, 25%);
+
   /*    Variable to set all line heights to 100%    */
-  --tw-leading: 100%;
+  --tw-leading: 120%;
 
   /*    Brand    */
   --color-primary: #0b1245; /* dark blue   */
@@ -33,6 +30,7 @@ body,
   --color-subtle: #74789f; /* dusky blue  */
 
   /*    Neutral  */
+  --color-neutral-50: #f5f5f5; /* off white   */
   --color-neutral-100: #dadada; /* light gray */
   --color-neutral-200: #b1b1b1; /* gray */
   --color-neutral-300: #a6a5a5; /* dark gray */
@@ -48,20 +46,5 @@ body,
   --color-hover-secondary: #c0e74f; /* yellow green   */
   --color-hover-premium: #fffa85; /* sand yellow    */
   --color-hover-light-primary: #74789f;
-}
-
-@utility bw-thin {
-  border-width: var(--border-thin);
-}
-@utility bw-t-thin {
-  border-top-width: var(--border-thin);
-}
-@utility bw-r-thin {
-  border-right-width: var(--border-thin);
-}
-@utility bw-b-thin {
-  border-bottom-width: var(--border-thin);
-}
-@utility bw-l-thin {
-  border-left-width: var(--border-thin);
+  --color-hover-link: #549ee1; /* light blue     */
 }

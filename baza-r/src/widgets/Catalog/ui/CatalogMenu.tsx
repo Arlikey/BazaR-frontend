@@ -8,9 +8,15 @@ export default function CatalogMenu() {
   return (
     <nav className="bg-on-light bw-thin max-w-81.25 rounded-xl border-neutral-100 px-6 py-3">
       <ul>
-        <li>
-          <CategoryItemSkeleton />
-        </li>
+        {isLoading && (
+          <>
+            {[...Array(8)].map((_, i) => (
+              <li key={i}>
+                <CategoryItemSkeleton />
+              </li>
+            ))}
+          </>
+        )}
         {categories.map((category) => (
           <li key={category.id}>
             <CategoryItem

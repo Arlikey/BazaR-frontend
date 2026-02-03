@@ -1,4 +1,4 @@
-import { type ReactNode } from "react";
+import { type ButtonHTMLAttributes, type ReactNode } from "react";
 import { tv, type VariantProps } from "tailwind-variants";
 
 const button = tv({
@@ -25,18 +25,27 @@ const button = tv({
 });
 
 type ButtonVariants = VariantProps<typeof button>;
-interface ButtonProps extends ButtonVariants {
+
+type Props = {
   className?: string;
   children: ReactNode;
-  onClick?: () => void;
-}
+} & ButtonVariants &
+  Omit<ButtonHTMLAttributes<HTMLButtonElement>, "className" | "children">;
 
-const Button = (props: ButtonProps) => {
+export default function Button({
+  color,
+  size,
+  shape,
+  className,
+  children,
+  type,
+  ...rest
+}: Props) {
+  const classes = button({ color, size, shape, className });
+
   return (
-    <button className={`${button(props)} ${props.className}`}>
-      {props.children}
+    <button type={type ?? "button"} className={classes} {...rest}>
+      {children}
     </button>
   );
-};
-
-export default Button;
+}

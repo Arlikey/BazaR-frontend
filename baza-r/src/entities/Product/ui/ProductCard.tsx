@@ -11,7 +11,7 @@ type CardVariant = "compact" | "rich";
 
 const card = tv({
   slots: {
-    root: "relative grid h-full w-full overflow-hidden rounded-xl bg-on-light bw-thin border-solid border-neutral-300 grid-rows-[auto_1fr_auto_auto]",
+    root: "relative grid w-full h-full overflow-hidden rounded-xl bg-on-light bw-thin border-solid border-neutral-300 grid-rows-[auto_1fr_auto_auto]",
     top: "relative pt-5 px-0",
     media:
       "relative flex items-center justify-center overflow-hidden rounded-lg bg-white px-8 aspect-[16/9]",
@@ -19,11 +19,11 @@ const card = tv({
     topLeft: "absolute left-4 top-4 z-10 flex flex-col gap-2",
     topRight: "absolute right-1 top-3 z-10 flex flex-col gap-2",
     body: "mt-6 px-5",
-    title: "text-[12px] font-normal line-clamp-2",
+    title: "text-sm font-normal line-clamp-2",
     meta: "",
     prices: "mt-2",
-    oldPrice: "text-[12px] text-neutral-300 line-through",
-    currentPrice: "text-[14px] font-normal mt-2",
+    oldPrice: "text-sm text-neutral-300 line-through",
+    currentPrice: "text-base font-normal mt-2",
     currency: "text-[11px]",
     footer: "flex items-end justify-between gap-3 px-5 pb-5",
   },
@@ -124,7 +124,7 @@ function Media({ alt, className, fallback }: MediaProps) {
         />
       ) : (
         (fallback ?? (
-          <div className="flex h-full w-full items-center justify-center text-[12px] text-neutral-400">
+          <div className="flex h-full w-full items-center justify-center text-sm text-neutral-400">
             No image
           </div>
         ))

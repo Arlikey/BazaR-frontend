@@ -12,11 +12,11 @@ const Search = () => {
   return (
     <div className="bg-on-light flex h-10 flex-1 items-center justify-between rounded-[20px]">
       <div className="flex h-full flex-1 items-center">
-        <div className="ml-5">
+        <div className="text-neutral ml-5">
           <SearchIcon />
         </div>
         <input
-          className="text-neutral ml-3 flex-1 pr-4 outline-0"
+          className="text-neutral ml-3 h-full flex-1 pr-4 outline-0"
           type="text"
           placeholder="Я шукаю..."
         />
@@ -25,11 +25,11 @@ const Search = () => {
             <CrossIcon />
           </div>
         )}
-        <button className="h-full cursor-pointer px-3 hidden md:flex justify-center items-center">
+        <button className="hidden h-full cursor-pointer items-center justify-center px-3 md:flex">
           <MicrophoneIcon />
         </button>
       </div>
-      <div className="h-full items-center hidden md:flex">
+      <div className="hidden h-full items-center md:flex">
         <Button
           color="secondary"
           className="h-full rounded-r-[20px] px-4 font-normal"

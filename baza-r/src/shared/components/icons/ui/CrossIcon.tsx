@@ -1,23 +1,23 @@
-import React from "react";
-
 const CrossIcon = () => {
   return (
     <svg
-      width="10"
-      height="10"
-      viewBox="0 0 10 10"
+      width="17"
+      height="17"
+      viewBox="0 0 17 17"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
     >
       <path
-        d="M0.5 0.5L8.9375 8.9375"
-        stroke="#898888"
+        d="M1 1L15.0625 15.0625"
+        stroke="currentColor"
+        stroke-width="2"
         stroke-linecap="round"
         stroke-linejoin="round"
       />
       <path
-        d="M0.5 8.9375L8.9375 0.5"
-        stroke="#898888"
+        d="M1 15.0625L15.0625 1"
+        stroke="currentColor"
+        stroke-width="2"
         stroke-linecap="round"
         stroke-linejoin="round"
       />

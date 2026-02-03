@@ -1,6 +1,7 @@
 import type { ProductDto } from "../api/ProductDto";
 import type { Product } from "./Product";
 
+
 export function mapProduct(dto: ProductDto): Product {
   return {
     id: dto.id,

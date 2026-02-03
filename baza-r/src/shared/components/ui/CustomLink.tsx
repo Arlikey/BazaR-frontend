@@ -6,8 +6,12 @@ const customLink = tv({
   base: "inline-flex items-center gap-2 outline-none transition-colors underline-offset-3 focus-visible:ring-2 focus-visible:ring-secondary",
   variants: {
     variant: {
-      text: "text-on-dark hover:underline hover:text-secondary",
+      default: "",
+      underline: "text-on-dark hover:underline hover:text-secondary",
       menu: "rounded-sm px-3 py-2 text-on-dark hover:bg-secondary/15 hover:text-secondary hover:underline",
+    },
+    color: {
+      blue: "text-link hover:text-hover-link",
     },
     intent: {
       default: "",
@@ -15,7 +19,7 @@ const customLink = tv({
     },
   },
   defaultVariants: {
-    variant: "text",
+    variant: "underline",
     intent: "default",
   },
 });
@@ -34,11 +38,12 @@ export default function CustomLink({
   children,
   className,
   variant,
+  color,
   intent,
   activeClassName,
   ...rest
 }: Props) {
-  const classes = customLink({ variant, intent, className });
+  const classes = customLink({ variant, color, intent, className });
 
   if (activeClassName) {
     return (

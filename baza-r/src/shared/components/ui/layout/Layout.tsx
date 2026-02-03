@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
 import Header from "../../../../widgets/header/Header";
-import type { Product } from "../../../../entities/product/model/Product";
 import { tryCatch } from "../../../lib/try-catch";
-import ProductDao from "../../../../entities/product/api/__mocks__/ProductDao";
 import { Sidebar } from "../../../../widgets/sidebar/Sidebar";
 import ProductsGrid from "../../../../widgets/product-grid/ui/ProductGrid";
 import Footer from "../../../../widgets/footer/Footer";
+import ProductDao from "../../../../entities/product/api/__mocks__/ProductDao";
+import type { Product } from "../../../../entities/product/model/Product";
 
 export function useProducts() {
   const [products, setProducts] = useState<Product[]>([]);
