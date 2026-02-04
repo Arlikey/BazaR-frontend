@@ -1,14 +1,9 @@
-import Footer from "./widgets/Footer";
-import Header from "./widgets/Header";
+
+import { Layout } from "./shared/components/ui/layout/Layout";
 
 function App() {
-  return (
-    <>
-      <Header />
-      <div className="h-300"></div>
-      <Footer />
-    </>
-  );
+  return <Layout></Layout>;
 }
 
 export default App;
+

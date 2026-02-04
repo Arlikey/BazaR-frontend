@@ -42,7 +42,7 @@ export function Layout() {
     <div className="mx-auto flex min-h-screen flex-col">
       <section
         aria-label="Promotion banner"
-        className="bg-secondary flex h-8 items-center justify-center"
+        className="bg-accent flex h-8 items-center justify-center"
       >
         <span className="text-sm font-medium uppercase lg:text-lg">
           тотальний розпродаж до -50%

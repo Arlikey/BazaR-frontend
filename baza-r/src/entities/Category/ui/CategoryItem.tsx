@@ -8,7 +8,7 @@ const categoryItem = tv({
   slots: {
     root: "group flex w-full items-center justify-between rounded-sm transition-colors outline-none",
     left: "flex items-center gap-2",
-    text: "font-normal text-on-dark underline-offset-3 transition-colors",
+    text: "font-normal text-foreground underline-offset-3 transition-colors",
     icon: "transition-colors",
     trailing: "ml-2 shrink-0 opacity-0 transition-opacity",
   },
@@ -20,9 +20,9 @@ const categoryItem = tv({
     },
     intent: {
       hoverable: {
-        root: "hover:bg-secondary/15 focus-visible:bg-secondary/15",
-        text: "group-hover:text-secondary group-hover:underline group-focus-visible:text-secondary group-focus-visible:underline",
-        icon: "group-hover:text-secondary group-focus-visible:text-secondary",
+        root: "hover:bg-accent/15 focus-visible:bg-accent/15",
+        text: "group-hover:text-accent group-hover:underline group-focus-visible:text-accent group-focus-visible:underline",
+        icon: "group-hover:text-accent group-focus-visible:text-accent",
         trailing: "group-hover:opacity-100 group-focus-visible:opacity-100",
       },
       plain: {},

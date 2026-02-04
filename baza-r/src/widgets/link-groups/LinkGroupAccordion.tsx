@@ -18,7 +18,7 @@ export function LinksGroupAccordionItem({
   return (
     <Accordion.Item value={value} className={className}>
       <Accordion.Header>
-        <Accordion.Trigger className="group hover:text-secondary relative flex w-full cursor-pointer items-center justify-between py-0 text-md font-medium transition outline-none after:absolute after:-inset-2">
+        <Accordion.Trigger className="group hover:text-accent relative flex w-full cursor-pointer items-center justify-between py-0 text-md font-medium transition outline-none after:absolute after:-inset-2">
           {group.title}
           <IconWrapper
             aria-hidden="true"

@@ -32,7 +32,7 @@ export function ProductCardRich({
         {badge && <ProductCard.TopLeft>{badge}</ProductCard.TopLeft>}
         <ProductCard.TopRight>
           <Button
-            className="hover:bg-hover-light-primary/15 overflow-hidden bg-white"
+            className="hover:bg-subtle/15 overflow-hidden bg-surface"
             shape="icon"
             aria-label="Add to favourites"
             onClick={() => onFavouriteClick?.(product)}

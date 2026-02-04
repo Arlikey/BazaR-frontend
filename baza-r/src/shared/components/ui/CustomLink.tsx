@@ -3,19 +3,19 @@ import { Link, NavLink, type LinkProps, type NavLinkProps } from "react-router";
 import { tv, type VariantProps } from "tailwind-variants";
 
 const customLink = tv({
-  base: "inline-flex items-center gap-2 outline-none transition-colors underline-offset-3 focus-visible:ring-2 focus-visible:ring-secondary",
+  base: "inline-flex items-center gap-2 outline-none transition-colors underline-offset-3 focus-visible:ring-2 focus-visible:ring-accent",
   variants: {
     variant: {
       default: "",
-      underline: "text-on-dark hover:underline hover:text-secondary",
-      menu: "rounded-sm px-3 py-2 text-on-dark hover:bg-secondary/15 hover:text-secondary hover:underline",
+      underline: "text-foreground hover:underline hover:text-accent",
+      menu: "rounded-sm px-3 py-2 text-foreground hover:bg-accent/15 hover:text-accent hover:underline",
     },
     color: {
-      blue: "text-link hover:text-hover-link",
+      blue: "text-link hover:text-link-hover",
     },
     intent: {
       default: "",
-      subtle: "text-on-dark hover:text-secondary",
+      subtle: "text-foreground hover:text-accent",
     },
   },
   defaultVariants: {

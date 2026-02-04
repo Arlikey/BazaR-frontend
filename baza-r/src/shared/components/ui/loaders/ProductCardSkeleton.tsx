@@ -6,10 +6,10 @@ type CardVariant = "compact" | "rich";
 
 const productCardSkeleton = tv({
   slots: {
-    root: "relative grid h-full w-full overflow-hidden rounded-xl bg-on-light bw-thin border-solid border-neutral-300 grid-rows-[auto_1fr_auto_auto]",
+    root: "relative grid h-full w-full overflow-hidden rounded-xl bg-surface bw-thin border-solid border-neutral-300 grid-rows-[auto_1fr_auto_auto]",
     top: "relative pt-5",
     mediaWrap:
-      "relative flex items-center justify-center overflow-hidden rounded-lg bg-white px-8 aspect-[16/9]",
+      "relative flex items-center justify-center overflow-hidden rounded-lg bg-surface px-8 aspect-[16/9]",
     body: "mt-6 pl-7 pr-1",
     footer: "flex items-end justify-between gap-3 pl-7 pr-1 pb-5",
     priceStack: "flex flex-col gap-2",

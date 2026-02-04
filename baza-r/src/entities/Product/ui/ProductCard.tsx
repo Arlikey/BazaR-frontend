@@ -11,10 +11,10 @@ type CardVariant = "compact" | "rich";
 
 const card = tv({
   slots: {
-    root: "relative grid w-full h-full overflow-hidden rounded-xl bg-on-light bw-thin border-solid border-neutral-300 grid-rows-[auto_1fr_auto_auto]",
+    root: "relative grid w-full h-full overflow-hidden rounded-xl bg-surface bw-thin border-solid border-neutral-300 grid-rows-[auto_1fr_auto_auto]",
     top: "relative pt-5 px-0",
     media:
-      "relative flex items-center justify-center overflow-hidden rounded-lg bg-white px-8 aspect-[16/9]",
+      "relative flex items-center justify-center overflow-hidden rounded-lg bg-surface px-8 aspect-[16/9]",
     img: "h-full w-full object-contain",
     topLeft: "absolute left-4 top-4 z-10 flex flex-col gap-2",
     topRight: "absolute right-1 top-3 z-10 flex flex-col gap-2",

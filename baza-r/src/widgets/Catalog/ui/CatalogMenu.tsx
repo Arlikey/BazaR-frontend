@@ -6,7 +6,7 @@ export default function CatalogMenu() {
   const { categories, error, isLoading } = useCategories();
 
   return (
-    <nav className="bg-on-light bw-thin max-w-81.25 rounded-xl border-neutral-100 px-6 py-3">
+    <nav className="bg-surface bw-thin max-w-81.25 rounded-xl border-neutral-100 px-6 py-3">
       <ul>
         {isLoading && (
           <>

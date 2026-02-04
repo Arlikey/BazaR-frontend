@@ -10,13 +10,13 @@ const Search = () => {
   const [searchQuery, setSearchQuery] = useState("");
 
   return (
-    <div className="bg-on-light flex h-10 flex-1 items-center justify-between rounded-[20px]">
+    <div className="bg-surface flex h-10 flex-1 items-center justify-between rounded-[20px]">
       <div className="flex h-full flex-1 items-center">
-        <div className="text-neutral ml-5">
+        <div className="text-muted ml-5">
           <SearchIcon />
         </div>
         <input
-          className="text-neutral ml-3 h-full flex-1 pr-4 outline-0"
+          className="text-muted ml-3 h-full flex-1 pr-4 outline-0"
           type="text"
           placeholder="Я шукаю..."
         />

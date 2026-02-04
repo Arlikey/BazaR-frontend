@@ -30,16 +30,16 @@ const Drawer = () => {
   return (
     <div className="flex flex-col gap-4">
       <div>
-        <div className="bg-primary flex h-50 flex-col justify-between px-6 pt-7 pb-9">
+        <div className="bg-brand flex h-50 flex-col justify-between px-6 pt-7 pb-9">
           <Modal.Close className="self-end">
             <Button shape="icon" className="h-9 w-9">
-              <IconWrapper size={16} className="text-on-light">
+              <IconWrapper size={16} className="text-inverse">
                 <CrossIcon />
               </IconWrapper>
             </Button>
           </Modal.Close>
           <div className="flex items-center gap-6 pl-2">
-            <IconWrapper size={45} className="text-on-light">
+            <IconWrapper size={45} className="text-inverse">
               <UserIcon />
             </IconWrapper>
             <div className="flex flex-col gap-0.5">
@@ -47,21 +47,21 @@ const Drawer = () => {
                 <CustomLink
                   to="/profile"
                   variant="default"
-                  className="text-on-light hover:text-secondary text-xl"
+                  className="text-inverse hover:text-accent text-xl"
                 >
                   <span>Вхід</span>
                 </CustomLink>
-                <div className="border-on-light h-5.5 border-r"></div>
+                <div className="border-inverse h-5.5 border-r"></div>
                 <CustomLink
                   to="/profile"
                   variant="default"
-                  className="text-on-light hover:text-secondary text-xl"
+                  className="text-inverse hover:text-accent text-xl"
                 >
                   <span>Реєстрація</span>
                 </CustomLink>
               </div>
               <div>
-                <span className="text-neutral text-base">
+                <span className="text-muted text-base">
                   Авторизуйтесь для отримання розширених можливостей
                 </span>
               </div>
@@ -72,7 +72,7 @@ const Drawer = () => {
           className="border-premium w-full border-5 text-start"
           color="premium"
         >
-          <div className="hover:bg-hover-premium flex h-full w-full items-center justify-between rounded-lg pt-1 pr-8 pb-2 pl-7">
+          <div className="hover:bg-premium-hover flex h-full w-full items-center justify-between rounded-lg pt-1 pr-8 pb-2 pl-7">
             <div className="font-medium">
               <h3 className="text-xl uppercase">premium</h3>
               <span className="text-sm">Безкоштовна доставка весь рік</span>

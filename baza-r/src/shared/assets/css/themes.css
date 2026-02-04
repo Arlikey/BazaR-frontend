@@ -20,14 +20,16 @@
   --tw-leading: 120%;
 
   /*    Brand    */
-  --color-primary: #0b1245; /* dark blue   */
-  --color-secondary: #98be2a; /* light green */
+  --color-brand: #0b1245; /* dark blue   */
+  --color-accent: #98be2a; /* light green */
 
-  /*    Text     */
-  --color-on-dark: #000000; /* black       */
-  --color-on-light: #ffffff; /* white       */
-  --color-neutral: #848383; /* dark gray   */
+  /*    Base     */
+  --color-foreground: #000000; /* black       */
+  --color-inverse: #ffffff; /* white       */
+  --color-foreground-muted: #515151; /* dark gray   */
+  --color-muted: #848383; /* dark gray   */
   --color-subtle: #74789f; /* dusky blue  */
+  --color-surface: #ffffff; /* white       */
 
   /*    Neutral  */
   --color-neutral-50: #f5f5f5; /* off white   */
@@ -41,10 +43,15 @@
   --color-error: #fe4343; /* coral red   */
   --color-premium: #fef74c; /* yellow      */
 
+  /*    UI    */
+  --color-ink: #221f1f; /* near black  */
+  --color-ink-hover: #1a1818; /* darker black */
+  --color-outline: #2d2323; /* deep brown */
+  --color-overlay: rgba(0, 0, 0, 0.3);
+
   /*    Hovers/Clicks    */
-  --color-hover-primary: #34395b; /* sapphire blue  */
-  --color-hover-secondary: #c0e74f; /* yellow green   */
-  --color-hover-premium: #fffa85; /* sand yellow    */
-  --color-hover-light-primary: #74789f;
-  --color-hover-link: #549ee1; /* light blue     */
+  --color-brand-hover: #34395b; /* sapphire blue  */
+  --color-accent-hover: #c0e74f; /* yellow green   */
+  --color-premium-hover: #fffa85; /* sand yellow    */
+  --color-link-hover: #549ee1; /* light blue     */
 }

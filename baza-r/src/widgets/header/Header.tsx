@@ -8,12 +8,13 @@ import {
   LogoIcon,
   UserIcon,
 } from "../../shared/components/icons/ui";
-import { Modal, ModalKeyframes } from "../../shared/components/ui/modal/Modal";
+import { Modal } from "../../shared/components/ui/modal/Modal";
 import Drawer from "../drawer/Drawer";
+import LoginDialog from "../login-dialog/ui/LoginDialog";
 
 export default function Header() {
   return (
-    <header className="bg-primary sticky top-0 z-50 h-16 w-full px-4 md:px-6 lg:h-18 xl:px-8 2xl:px-14">
+    <header className="bg-brand sticky top-0 z-50 h-16 w-full px-4 md:px-6 lg:h-18 xl:px-8 2xl:px-14">
       <div className="mx-auto flex h-full max-w-480 items-center">
         <Modal.Root>
           <Modal.Trigger asChild>
@@ -21,7 +22,7 @@ export default function Header() {
               <Button
                 shape="icon"
                 aria-label="Open menu"
-                className="text-on-light"
+                className="text-inverse"
               >
                 <BurgerIcon />
               </Button>
@@ -30,12 +31,10 @@ export default function Header() {
 
           <Modal.Content
             side="left"
-            contentClassName="scrollbar scrollbar-default overflow-y-scroll"
+            contentClassName="scrollbar scrollbar-default overflow-y-auto"
           >
             <Drawer />
           </Modal.Content>
-
-          <ModalKeyframes />
         </Modal.Root>
 
         <div className="ml-20 hidden xl:flex 2xl:ml-24">
@@ -60,7 +59,7 @@ export default function Header() {
         </div>
         <div className="hidden 2xl:flex">
           <Button shape="icon" className="ml-20 w-21 flex-col gap-1 2xl:ml-24">
-            <span className="text-on-light text-xs font-normal capitalize">
+            <span className="text-inverse text-xs font-normal capitalize">
               спробуйте
             </span>
             <span className="bg-premium rounded-[10px] px-2.5 py-1 text-xs font-medium uppercase">
@@ -68,14 +67,25 @@ export default function Header() {
             </span>
           </Button>
         </div>
-        <div className="text-on-light ml-20 flex items-center gap-2 2xl:ml-24">
-          <Button shape="icon" className="hidden md:flex" aria-label="User">
-            <UserIcon />
-          </Button>
+        <div className="text-inverse ml-20 flex items-center gap-2 2xl:ml-24">
+          <Modal.Root>
+            <Modal.Trigger asChild>
+              <Button shape="icon" className="hidden md:flex" aria-label="User">
+                <UserIcon />
+              </Button>
+            </Modal.Trigger>
+
+            <Modal.Content
+              side="center"
+              contentClassName="scrollbar scrollbar-default overflow-y-auto"
+            >
+              <LoginDialog />
+            </Modal.Content>
+          </Modal.Root>
 
           <Button shape="icon" className="relative" aria-label="Cart">
             <CartIcon />
-            <div className="bg-secondary text-on-dark absolute top-0.75 right-0.75 flex h-4.5 w-4.5 items-center justify-center rounded-full">
+            <div className="bg-accent text-foreground absolute top-0.75 right-0.75 flex h-4.5 w-4.5 items-center justify-center rounded-full">
               <span className="text-sm font-medium">2</span>
             </div>
           </Button>

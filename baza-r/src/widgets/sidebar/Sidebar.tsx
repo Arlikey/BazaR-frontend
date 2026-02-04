@@ -47,7 +47,7 @@ export function Sidebar() {
       </CardSection>
 
       <CardSection className="flex flex-col gap-3 px-7 py-6">
-        <span className="text-neutral text-md">Встановлюйте наші додатки</span>
+        <span className="text-muted text-md">Встановлюйте наші додатки</span>
         <div className="flex gap-6">
           <Button
             size="md"
@@ -67,7 +67,7 @@ export function Sidebar() {
       </CardSection>
 
       <CardSection className="flex flex-col gap-3 px-7 py-4">
-        <span className="text-neutral text-md">Ми в соціальних мережах</span>
+        <span className="text-muted text-md">Ми в соціальних мережах</span>
         <SocialLinks items={socialMediaLinks} />
       </CardSection>
 
@@ -87,3 +87,4 @@ export function Sidebar() {
     </aside>
   );
 }
+

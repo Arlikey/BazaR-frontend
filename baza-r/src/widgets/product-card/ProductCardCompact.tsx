@@ -20,7 +20,7 @@ export function ProductCardCompact({
         <ProductCard.Media />
         <ProductCard.TopRight>
           <Button
-            className="hover:bg-hover-light-primary/15 overflow-hidden bg-white text-subtle"
+            className="hover:bg-subtle/15 overflow-hidden bg-surface text-subtle"
             shape="icon"
             aria-label="Add to favourites"
             onClick={() => onFavouriteClick?.(product)}
