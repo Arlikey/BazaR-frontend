@@ -1,27 +1,31 @@
 import * as Accordion from "@radix-ui/react-accordion";
 
-import CardSection from "../../shared/components/ui/CardSection";
-import SocialLinks from "../../shared/components/ui/SocialLinks";
-import { footerGroups, socialMediaLinks } from "../../shared/config/links";
-import Button from "../../shared/components/ui/Button";
-import PlayStoreIcon from "../../shared/components/icons/apps/PlayStoreIcon";
-import AppleStoreIcon from "../../shared/components/icons/apps/AppleStoreIcon";
-import CustomLink from "../../shared/components/ui/CustomLink";
-import IconWrapper from "../../shared/components/ui/IconWrapper";
-import { LinkGroup } from "../link-groups/LinkGroup";
-import { LinksGroupAccordionItem } from "../link-groups/LinkGroupAccordion";
+import CardSection from "../../../shared/components/ui/CardSection";
+import SocialLinks from "../../../shared/components/ui/SocialLinks";
+import { footerGroups, socialMediaLinks } from "../../../shared/config/links";
+import Button from "../../../shared/components/ui/Button";
+import PlayStoreIcon from "../../../shared/components/icons/apps/PlayStoreIcon";
+import AppleStoreIcon from "../../../shared/components/icons/apps/AppleStoreIcon";
+import CustomLink from "../../../shared/components/ui/CustomLink";
+import IconWrapper from "../../../shared/components/ui/IconWrapper";
+import { LinkGroup } from "../../link-groups/LinkGroup";
+import { LinksGroupAccordionItem } from "../../link-groups/LinkGroupAccordion";
 import {
   AltCartIcon,
   AltCatalogIcon,
   CrossIcon,
   TelephoneIcon,
   UserIcon,
-} from "../../shared/components/icons/ui";
-import { Modal } from "../../shared/components/ui/modal/Modal";
-import ArrowRightIcon from "../../shared/components/icons/ui/ArrowRightIcon";
-import AltQuestionIcon from "../../shared/components/icons/ui/AltQuestionIcon";
+} from "../../../shared/components/icons/ui";
+import { Modal } from "../../../shared/components/ui/modal/Modal";
+import ArrowRightIcon from "../../../shared/components/icons/ui/ArrowRightIcon";
+import AltQuestionIcon from "../../../shared/components/icons/ui/AltQuestionIcon";
+import { useUiStore } from "../../../shared/model/ui.store";
 
 const Drawer = () => {
+  const openAuth = useUiStore((s) => s.openAuth);
+  const closeDrawer = useUiStore((s) => s.closeDrawer);
+
   const help = footerGroups[0];
   const company = footerGroups[1];
   const services = footerGroups[2];
@@ -44,21 +48,25 @@ const Drawer = () => {
             </IconWrapper>
             <div className="flex flex-col gap-0.5">
               <div className="flex gap-3">
-                <CustomLink
-                  to="/profile"
-                  variant="default"
+                <Button
                   className="text-inverse hover:text-accent text-xl"
+                  onClick={() => {
+                    closeDrawer();
+                    openAuth();
+                  }}
                 >
                   <span>Вхід</span>
-                </CustomLink>
+                </Button>
                 <div className="border-inverse h-5.5 border-r"></div>
-                <CustomLink
-                  to="/profile"
-                  variant="default"
+                <Button
                   className="text-inverse hover:text-accent text-xl"
+                  onClick={() => {
+                    closeDrawer();
+                    openAuth("register");
+                  }}
                 >
                   <span>Реєстрація</span>
-                </CustomLink>
+                </Button>
               </div>
               <div>
                 <span className="text-muted text-base">

@@ -3,10 +3,9 @@ import { tv, type VariantProps } from "tailwind-variants";
 
 const inputField = tv({
   slots: {
-    wrapper:
-      "bg-surface bw-thin flex items-center rounded-[20px] border-outline/50",
+    wrapper: "bg-surface bw-thin flex items-center border-outline/50",
     input:
-      "text-foreground placeholder:text-neutral-200 h-full flex-1 text-sm font-medium outline-none bg-transparent",
+      "text-foreground placeholder:text-neutral-200 h-full flex-1 text-sm font-medium rounded-[inherit] outline-none bg-transparent ",
     iconLeft: "ml-4 mr-2 flex items-center",
     iconRight: "ml-2 mr-4 flex items-center",
     error: "mt-1 text-xs text-error",
@@ -17,6 +16,10 @@ const inputField = tv({
       md: { wrapper: "h-10" },
       lg: { wrapper: "h-12" },
     },
+    rounded: {
+      sm: { wrapper: "rounded-[16px]" },
+      md: { wrapper: "rounded-[20px]" },
+    },
     state: {
       default: {},
       error: { wrapper: "border-error" },
@@ -25,6 +28,7 @@ const inputField = tv({
   },
   defaultVariants: {
     size: "md",
+    rounded: "md",
     state: "default",
   },
 });
@@ -99,4 +103,3 @@ export default function InputField({
     </div>
   );
 }
-

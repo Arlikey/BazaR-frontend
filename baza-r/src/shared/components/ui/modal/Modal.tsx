@@ -20,9 +20,9 @@ const modal = tv({
       },
     },
     rounded: {
-      sm: "rounded-[14px]",
-      md: "rounded-[15px]",
-      lg: "rounded-[25px]",
+      sm: { content: "rounded-[14px]" },
+      md: { content: "rounded-[15px]" },
+      lg: { content: "rounded-[25px]" },
     },
   },
   defaultVariants: { side: "left" },

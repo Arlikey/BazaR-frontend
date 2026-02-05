@@ -9,33 +9,27 @@ import {
   UserIcon,
 } from "../../shared/components/icons/ui";
 import { Modal } from "../../shared/components/ui/modal/Modal";
-import Drawer from "../drawer/Drawer";
+import Drawer from "../drawer/ui/Drawer";
 import LoginDialog from "../login-dialog/ui/LoginDialog";
+import { useUiStore } from "../../shared/model/ui.store";
 
 export default function Header() {
+  const openAuth = useUiStore((s) => s.openAuth);
+  const openDrawer = useUiStore((s) => s.openDrawer);
+
   return (
     <header className="bg-brand sticky top-0 z-50 h-16 w-full px-4 md:px-6 lg:h-18 xl:px-8 2xl:px-14">
       <div className="mx-auto flex h-full max-w-480 items-center">
-        <Modal.Root>
-          <Modal.Trigger asChild>
-            <div className="hidden sm:flex">
-              <Button
-                shape="icon"
-                aria-label="Open menu"
-                className="text-inverse"
-              >
-                <BurgerIcon />
-              </Button>
-            </div>
-          </Modal.Trigger>
-
-          <Modal.Content
-            side="left"
-            contentClassName="scrollbar scrollbar-default overflow-y-auto"
+        <div className="hidden sm:flex">
+          <Button
+            shape="icon"
+            aria-label="Open menu"
+            className="text-inverse"
+            onClick={() => openDrawer()}
           >
-            <Drawer />
-          </Modal.Content>
-        </Modal.Root>
+            <BurgerIcon />
+          </Button>
+        </div>
 
         <div className="ml-20 hidden xl:flex 2xl:ml-24">
           <Link to={"/"}>
@@ -68,20 +62,14 @@ export default function Header() {
           </Button>
         </div>
         <div className="text-inverse ml-20 flex items-center gap-2 2xl:ml-24">
-          <Modal.Root>
-            <Modal.Trigger asChild>
-              <Button shape="icon" className="hidden md:flex" aria-label="User">
-                <UserIcon />
-              </Button>
-            </Modal.Trigger>
-
-            <Modal.Content
-              side="center"
-              contentClassName="scrollbar scrollbar-default overflow-y-auto"
-            >
-              <LoginDialog />
-            </Modal.Content>
-          </Modal.Root>
+          <Button
+            shape="icon"
+            className="hidden md:flex"
+            aria-label="User"
+            onClick={() => openAuth()}
+          >
+            <UserIcon />
+          </Button>
 
           <Button shape="icon" className="relative" aria-label="Cart">
             <CartIcon />

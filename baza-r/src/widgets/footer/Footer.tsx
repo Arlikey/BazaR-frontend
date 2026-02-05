@@ -12,18 +12,25 @@ const Footer = () => {
   return (
     <footer className="bw-t-thin hidden w-full border-neutral-300 md:flex">
       <div className="mt-9 w-full">
-        <div className="mx-auto flex max-w-480 flex-col justify-between gap-8 px-8 pb-12 text-md lg:flex-row xl:gap-50 xl:pr-33 xl:pl-14">
+        <div className="text-md mx-auto flex max-w-480 flex-col justify-between gap-8 px-8 pb-12 lg:flex-row xl:gap-50 xl:pr-33 xl:pl-14">
           <section aria-label="Contacts" className="flex flex-col gap-4">
-            <CustomLink to={""} variant="default" color="blue" className="gap-3">
+            <CustomLink
+              to={""}
+              variant="default"
+              color="blue"
+              className="gap-3"
+            >
               <ClockIcon />
 
               <span className="">Графік роботи Call-центру</span>
             </CustomLink>
             <SocialLinks items={socialMediaLinks} />
           </section>
-          {footerGroups.map((group) => (
-            <LinkGroup key={group.title} group={group} />
-          ))}
+          <div className="flex flex-1 gap-4 justify-between">
+            {footerGroups.map((group) => (
+              <LinkGroup key={group.title} group={group} />
+            ))}
+          </div>
         </div>
         <div className="bw-t-thin border-neutral-200"></div>
         <div className="mx-auto flex max-w-480 items-center justify-between gap-6 px-8 py-9 xl:pr-33 xl:pl-14">
