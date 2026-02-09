@@ -25,9 +25,14 @@ const Search = () => {
             <CrossIcon />
           </div>
         )}
-        <button className="hidden h-full cursor-pointer items-center justify-center px-3 md:flex">
+        <Button
+          variant="ghost"
+          color="subtle"
+          className="hidden h-full px-3 md:flex"
+          aria-label="Voice search"
+        >
           <MicrophoneIcon />
-        </button>
+        </Button>
       </div>
       <div className="hidden h-full items-center md:flex">
         <Button

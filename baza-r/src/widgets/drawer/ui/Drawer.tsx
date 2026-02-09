@@ -49,7 +49,9 @@ const Drawer = () => {
             <div className="flex flex-col gap-0.5">
               <div className="flex gap-3">
                 <Button
-                  className="text-inverse hover:text-accent text-xl"
+                  variant="link"
+                  color="inverse"
+                  textSize="xl"
                   onClick={() => {
                     closeDrawer();
                     openAuth();
@@ -59,7 +61,9 @@ const Drawer = () => {
                 </Button>
                 <div className="border-inverse h-5.5 border-r"></div>
                 <Button
-                  className="text-inverse hover:text-accent text-xl"
+                  variant="link"
+                  color="inverse"
+                  textSize="xl"
                   onClick={() => {
                     closeDrawer();
                     openAuth("register");
@@ -77,7 +81,8 @@ const Drawer = () => {
           </div>
         </div>
         <Button
-          className="border-premium w-full border-5 text-start"
+          fullWidth
+          className="border-premium border-5 text-start"
           color="premium"
         >
           <div className="hover:bg-premium-hover flex h-full w-full items-center justify-between rounded-lg pt-1 pr-8 pb-2 pl-7">
@@ -102,8 +107,7 @@ const Drawer = () => {
           ].map(({ icon: Icon, label }) => (
             <CustomLink
               key={label}
-              to={"https://www.youtube.com/watch?v=dQw4w9WgXcQ"}
-              target="_blank"
+              to={""}
               variant="menu"
               className="flex flex-1 gap-4 py-3"
             >

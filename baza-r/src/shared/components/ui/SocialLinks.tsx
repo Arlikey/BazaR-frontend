@@ -1,5 +1,6 @@
 import type { ComponentType } from "react";
 import IconWrapper from "./IconWrapper";
+import CustomLink from "./CustomLink";
 
 type Icon = ComponentType;
 
@@ -18,11 +19,17 @@ export default function SocialLinks({ items, size = 24, className }: Props) {
       className={["flex gap-5", className ?? ""].join(" ")}
     >
       {items.map(({ label, href, icon: Icon }) => (
-        <a key={label} href={href} aria-label={label} target="_blank">
+        <CustomLink
+          key={label}
+          href={href}
+          aria-label={label}
+          target="_blank"
+          variant="icon"
+        >
           <IconWrapper size={size}>
             <Icon />
           </IconWrapper>
-        </a>
+        </CustomLink>
       ))}
     </nav>
   );

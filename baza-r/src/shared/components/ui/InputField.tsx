@@ -1,14 +1,16 @@
 import type { InputHTMLAttributes, ReactNode } from "react";
 import { tv, type VariantProps } from "tailwind-variants";
+import IconWrapper from "./IconWrapper";
+import ErrorIcon from "../icons/ui/ErrorIcon";
 
 const inputField = tv({
   slots: {
-    wrapper: "bg-surface bw-thin flex items-center border-outline/50",
+    wrapper: "bg-surface bw-thin flex items-center border-outline/50 relative",
     input:
-      "text-foreground placeholder:text-neutral-200 h-full flex-1 text-sm font-medium rounded-[inherit] outline-none bg-transparent ",
+      "text-foreground-muted autofill:bg-accent placeholder:text-foreground-muted h-full flex-1 text-sm font-medium rounded-[inherit] outline-none bg-transparent ",
     iconLeft: "ml-4 mr-2 flex items-center",
-    iconRight: "ml-2 mr-4 flex items-center",
-    error: "mt-1 text-xs text-error",
+    iconRight: "ml-2 mr-3 flex items-center",
+    error: "mt-1 pl-4 text-[11px] font-medium text-error",
   },
   variants: {
     size: {
@@ -23,6 +25,7 @@ const inputField = tv({
     state: {
       default: {},
       error: { wrapper: "border-error" },
+      success: { wrapper: "border-accent" },
       disabled: { wrapper: "opacity-60" },
     },
   },
@@ -40,6 +43,7 @@ type Props = {
   inputClassName?: string;
   errorClassName?: string;
   error?: string | boolean;
+  success?: boolean;
   leftIcon?: ReactNode;
   rightIcon?: ReactNode;
   ariaLabel?: string;
@@ -54,6 +58,7 @@ export default function InputField({
   inputClassName,
   errorClassName,
   error,
+  success,
   leftIcon,
   rightIcon,
   ariaLabel,
@@ -63,7 +68,13 @@ export default function InputField({
   placeholder,
   ...rest
 }: Props) {
-  const state = disabled ? "disabled" : error ? "error" : "default";
+  const state = disabled
+    ? "disabled"
+    : error
+      ? "error"
+      : success
+        ? "success"
+        : "default";
   const s = inputField({ size, state });
 
   const errorId = typeof error === "string" && id ? `${id}-error` : undefined;
@@ -73,6 +84,9 @@ export default function InputField({
     rightIcon ? "pr-0" : "pr-4",
   );
 
+  const rightCount = Number(Boolean(rightIcon)) + Number(Boolean(error));
+  const pr = rightCount === 0 ? "pr-4" : rightCount === 1 ? "pr-10" : "pr-20";
+
   return (
     <div>
       <div className={s.wrapper({ className: containerClassName })}>
@@ -80,7 +94,7 @@ export default function InputField({
 
         <input
           id={id}
-          className={join(s.input(), inputPadding, inputClassName)}
+          className={join(s.input(), inputPadding, inputClassName, pr)}
           aria-invalid={Boolean(error) || undefined}
           aria-describedby={errorId}
           aria-label={ariaLabel ?? placeholder ?? "Input"}
@@ -89,7 +103,16 @@ export default function InputField({
           {...rest}
         />
 
-        {rightIcon ? <span className={s.iconRight()}>{rightIcon}</span> : null}
+        <div className="pointer-events-none absolute right-0 flex items-center justify-center">
+          {rightIcon ? (
+            <span className={s.iconRight()}>{rightIcon}</span>
+          ) : null}
+          {error && (
+            <IconWrapper className="text-error pr-4">
+              <ErrorIcon />
+            </IconWrapper>
+          )}
+        </div>
       </div>
 
       {typeof error === "string" ? (

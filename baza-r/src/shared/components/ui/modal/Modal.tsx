@@ -16,7 +16,7 @@ const modal = tv({
       },
       center: {
         content:
-          "left-1/2 top-1/2 data-[state=open]:animate-[popIn_.21s_ease-out] data-[state=closed]:animate-[popOut_.21s_ease-in] -translate-x-1/2 -translate-y-1/2",
+          "left-1/2 top-1/2 data-[state=open]:animate-[popIn_.21s_ease-out] data-[state=closed]:animate-[popOut_.21s_ease-in] -translate-x-1/2 -translate-y-1/2 translate-z-0 will-change:transform",
       },
     },
     rounded: {

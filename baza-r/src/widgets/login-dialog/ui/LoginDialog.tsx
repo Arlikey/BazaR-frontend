@@ -1,19 +1,38 @@
 // file: src/widgets/login-dialog/ui/LoginDialog.tsx
-import type { ReactNode } from "react";
+import { useState, type ReactNode } from "react";
 import CustomLink from "../../../shared/components/ui/CustomLink";
 import Button from "../../../shared/components/ui/Button";
 import IconWrapper from "../../../shared/components/ui/IconWrapper";
 import InputField from "../../../shared/components/ui/InputField";
 import FacebookIcon from "../../../shared/components/icons/login/FacebookIcon";
 import GoogleIcon from "../../../shared/components/icons/login/GoogleIcon";
+import {
+  loginSchema,
+  type LoginFormValues,
+} from "../../../features/auth/model/schemas/loginSchema";
+import { useForm, useWatch } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { EyeIcon } from "../../../shared/components/icons/ui/EyeIcon";
+import { EyeOffIcon } from "../../../shared/components/icons/ui/EyeOffIcon";
 
-export const SocialButton = ({ label, icon }: { label: string; icon: ReactNode }) => (
-  <div className="bw-thin bg-surface flex h-12 items-center justify-center rounded-[30px] border-neutral-300/50">
-    <CustomLink to={""} variant="default" color="blue" aria-label={label}>
-      <IconWrapper>{icon}</IconWrapper>
-      <span>{label}</span>
-    </CustomLink>
-  </div>
+export const SocialButton = ({
+  label,
+  icon,
+}: {
+  label: string;
+  icon: ReactNode;
+}) => (
+  <CustomLink
+    href=""
+    target="_blank"
+    variant="default"
+    color="blue"
+    aria-label={label}
+    className="bw-thin bg-surface flex h-12 items-center justify-center rounded-[30px] border-neutral-300/50"
+  >
+    <IconWrapper>{icon}</IconWrapper>
+    <span>{label}</span>
+  </CustomLink>
 );
 
 export const Divider = () => (
@@ -28,7 +47,7 @@ export const Divider = () => (
 );
 
 export const SocialLogin = () => (
-  <div className="flex w-[205px] flex-col items-center justify-center gap-5">
+  <div className="flex w-51.25 flex-col items-center justify-center gap-5">
     <span className="text-muted text-base">Увійти як користувач</span>
     <div className="flex w-full flex-col gap-5">
       <SocialButton label="Facebook" icon={<FacebookIcon />} />
@@ -42,26 +61,64 @@ type Props = {
 };
 
 export default function LoginDialog({ onRegisterClick }: Props) {
+  const [visible, setIsVisible] = useState(false);
+
+  const {
+    register,
+    handleSubmit,
+    control,
+    formState: { errors, isValid, isSubmitting, dirtyFields },
+  } = useForm<LoginFormValues>({
+    resolver: zodResolver(loginSchema),
+    mode: "onChange",
+  });
+
+  const password = useWatch({ control, name: "password" }) ?? "";
+
   return (
-    <div className="w-[670px] p-7.5" aria-labelledby="login-title">
+    <div className="w-167.5 p-7.5" aria-labelledby="login-title">
       <h2 id="login-title" className="text-2xl">
         Вхід
       </h2>
 
       <div className="flex gap-5">
-        <form className="flex flex-1 flex-col" aria-label="Login form">
+        <form
+          className="flex flex-1 flex-col"
+          aria-label="Login form"
+          onSubmit={handleSubmit((data) => console.log(data))}
+        >
           <div className="mt-5 flex flex-col gap-5">
             <InputField
               id="login-identifier"
               type="text"
-              autoComplete="username"
+              autoComplete="email"
               placeholder="Ел. пошта або телефон"
+              error={errors.identifier?.message}
+              success={dirtyFields.identifier && !errors.identifier}
+              {...register("identifier")}
             />
             <InputField
               id="login-password"
-              type="password"
+              type={visible ? "text" : "password"}
+              error={!!errors.password}
+              success={dirtyFields.password && !errors.password}
               autoComplete="current-password"
+              inputClassName={visible || password === "" ? "" : "font-mono"}
               placeholder="Пароль"
+              {...register("password")}
+              rightIcon={
+                <Button
+                  variant="solid"
+                  color="default"
+                  className="pointer-events-auto"
+                  type="button"
+                  onClick={() => setIsVisible(!visible)}
+                >
+                  <IconWrapper>
+                    {visible ? <EyeIcon /> : <EyeOffIcon />}
+                  </IconWrapper>
+                </Button>
+              }
             />
           </div>
 
@@ -81,23 +138,30 @@ export default function LoginDialog({ onRegisterClick }: Props) {
             <Button
               color="secondary"
               type="submit"
-              className="text-inverse mt-9 h-12 w-full rounded-[30px] text-base"
+              fullWidth
+              className="text-inverse mt-9 h-12 rounded-[30px] text-base"
+              disabled={!isValid || isSubmitting}
             >
               <span>Увійти</span>
             </Button>
 
-            <button
+            <Button
               type="button"
+              variant="link"
+              color="link"
+              textSize="md"
+              className="mt-8"
               onClick={onRegisterClick}
-              className="mt-8 text-base font-medium text-link"
             >
               Зареєструватися
-            </button>
+            </Button>
           </div>
         </form>
 
-        <Divider />
-        <SocialLogin />
+        <div className="flex gap-5 pb-5">
+          <Divider />
+          <SocialLogin />
+        </div>
       </div>
     </div>
   );

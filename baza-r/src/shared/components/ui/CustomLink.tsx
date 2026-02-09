@@ -1,4 +1,4 @@
-import type { ReactNode } from "react";
+import type { AnchorHTMLAttributes, ReactNode } from "react";
 import { Link, NavLink, type LinkProps, type NavLinkProps } from "react-router";
 import { tv, type VariantProps } from "tailwind-variants";
 
@@ -9,6 +9,7 @@ const customLink = tv({
       default: "",
       underline: "text-foreground hover:underline hover:text-accent",
       menu: "rounded-sm px-3 py-2 text-foreground hover:bg-accent/15 hover:text-accent hover:underline",
+      icon: "rounded-md text-muted hover:text-accent",
     },
     color: {
       blue: "text-link hover:text-link-hover",
@@ -16,6 +17,11 @@ const customLink = tv({
     intent: {
       default: "",
       subtle: "text-foreground hover:text-accent",
+    },
+    textSize: {
+      sm: "text-sm",
+      md: "text-base",
+      lg: "text-lg",
     },
   },
   defaultVariants: {
@@ -26,13 +32,26 @@ const customLink = tv({
 
 type CustomLinkVariants = VariantProps<typeof customLink>;
 
-type Props = {
+type BaseProps = {
   children: ReactNode;
   className?: string;
   activeClassName?: string;
-} & CustomLinkVariants &
-  Omit<LinkProps, "className" | "children"> &
-  Partial<Omit<NavLinkProps, "className" | "children">>;
+} & CustomLinkVariants;
+
+type RouterLinkProps = BaseProps &
+  Omit<LinkProps, "className" | "children" | "to"> &
+  Partial<Omit<NavLinkProps, "className" | "children" | "to">> & {
+    to: LinkProps["to"];
+    href?: never;
+  };
+
+type ExternalLinkProps = BaseProps &
+  Omit<AnchorHTMLAttributes<HTMLAnchorElement>, "className" | "children"> & {
+    href: string;
+    to?: never;
+  };
+
+type Props = RouterLinkProps | ExternalLinkProps;
 
 export default function CustomLink({
   children,
@@ -40,10 +59,22 @@ export default function CustomLink({
   variant,
   color,
   intent,
+  textSize,
   activeClassName,
   ...rest
 }: Props) {
-  const classes = customLink({ variant, color, intent, className });
+  const classes = customLink({ variant, color, intent, textSize, className });
+
+  if ("href" in rest) {
+    const rel =
+      rest.target === "_blank" && !rest.rel ? "noopener noreferrer" : rest.rel;
+
+    return (
+      <a {...rest} className={classes} rel={rel}>
+        {children}
+      </a>
+    );
+  }
 
   if (activeClassName) {
     return (

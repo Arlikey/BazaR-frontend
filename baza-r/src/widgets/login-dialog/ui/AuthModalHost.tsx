@@ -11,11 +11,7 @@ export default function AuthModalHost() {
 
   return (
     <Modal.Root open={open} onOpenChange={(o) => !o && closeAuth()}>
-      <Modal.Content
-        side="center"
-        rounded="md"
-        contentClassName="bg-neutral-50"
-      >
+      <Modal.Content side="center" rounded="md">
         <AuthDialog mode={mode} onModeChange={setAuthMode} />
       </Modal.Content>
     </Modal.Root>

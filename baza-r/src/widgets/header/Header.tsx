@@ -1,4 +1,3 @@
-import { Link } from "react-router";
 import Button from "../../shared/components/ui/Button";
 import Search from "../../features/Search/Search";
 import {
@@ -8,10 +7,8 @@ import {
   LogoIcon,
   UserIcon,
 } from "../../shared/components/icons/ui";
-import { Modal } from "../../shared/components/ui/modal/Modal";
-import Drawer from "../drawer/ui/Drawer";
-import LoginDialog from "../login-dialog/ui/LoginDialog";
 import { useUiStore } from "../../shared/model/ui.store";
+import CustomLink from "../../shared/components/ui/CustomLink";
 
 export default function Header() {
   const openAuth = useUiStore((s) => s.openAuth);
@@ -32,9 +29,9 @@ export default function Header() {
         </div>
 
         <div className="ml-20 hidden xl:flex 2xl:ml-24">
-          <Link to={"/"}>
+          <CustomLink to={"/"} variant="default">
             <LogoIcon />
-          </Link>
+          </CustomLink>
         </div>
 
         <div className="hidden md:flex">

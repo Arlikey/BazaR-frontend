@@ -20,8 +20,7 @@ export function Sidebar() {
 
       <CardSection className="flex items-center gap-2 px-6 py-2">
         <CustomLink
-          to={"https://www.youtube.com/watch?v=dQw4w9WgXcQ"}
-          target="_blank"
+          to={""}
           variant="menu"
           className="flex flex-1"
         >
@@ -87,4 +86,3 @@ export function Sidebar() {
     </aside>
   );
 }
-
