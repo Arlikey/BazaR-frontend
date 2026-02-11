@@ -11,21 +11,22 @@ type CardVariant = "compact" | "rich";
 
 const card = tv({
   slots: {
-    root: "relative grid w-full h-full overflow-hidden rounded-xl bg-surface bw-thin border-solid border-neutral-300 grid-rows-[auto_1fr_auto_auto]",
-    top: "relative pt-5 px-0",
+    root: "relative grid py-5 w-full h-full overflow-clip rounded-xl bg-surface bw-thin border-solid border-neutral-300 grid-rows-[auto_1fr_auto_auto]",
+    top: "relative px-0",
     media:
-      "relative flex items-center justify-center overflow-hidden rounded-lg bg-surface px-8 aspect-[16/9]",
-    img: "h-full w-full object-contain",
+      "flex items-center justify-center overflow-visible w-[175px] h-[150px] mx-auto",
+    img: "max-h-full max-w-full object-contain",
     topLeft: "absolute left-4 top-4 z-10 flex flex-col gap-2",
-    topRight: "absolute right-1 top-3 z-10 flex flex-col gap-2",
-    body: "mt-6 px-5",
-    title: "text-sm font-normal line-clamp-2",
+    topRight: "absolute right-1 -top-2 z-10 flex flex-col gap-2",
+    body: "mt-7.5 px-5",
+    title: "text-sm font-normal line-clamp-3 leading-3.5",
     meta: "",
-    prices: "mt-2",
-    oldPrice: "text-sm text-neutral-300 line-through",
-    currentPrice: "text-base font-normal mt-2",
+    prices: "mt-2 grid gap-1",
+    oldPrice:
+      "text-sm text-neutral-300 line-through min-h-[1.25rem] leading-none",
+    currentPrice: "text-base font-normal leading-none",
     currency: "text-[11px]",
-    footer: "flex items-end justify-between gap-3 px-5 pb-5",
+    footer: "flex items-end justify-between gap-3 px-5",
   },
   variants: {
     variant: {
@@ -170,12 +171,14 @@ function Prices({ className, currency = "₴" }: PricesProps) {
 
   return (
     <div className={styles.prices({ className })}>
-      {hasOld && (
-        <div className={styles.oldPrice()}>
-          {formatPrice(product.oldPrice!)}{" "}
-          <span className={styles.currency()}>{currency}</span>
-        </div>
-      )}
+      <div className={styles.oldPrice()}>
+        {hasOld && (
+          <>
+            {formatPrice(product.oldPrice!)}{" "}
+            <span className={styles.currency()}>{currency}</span>
+          </>
+        )}
+      </div>
       <div
         className={`${styles.currentPrice()} ${isPromo ? "text-promotion" : ""}`}
       >

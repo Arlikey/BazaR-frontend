@@ -2,6 +2,7 @@ import type { Product } from "../../entities/product/model/Product";
 import { ProductCard } from "../../entities/product/ui/ProductCard";
 import FavouriteIcon from "../../shared/components/icons/ui/FavouriteIcon";
 import Button from "../../shared/components/ui/Button";
+import IconWrapper from "../../shared/components/ui/IconWrapper";
 
 type CompactProps = {
   product: Product;
@@ -20,12 +21,14 @@ export function ProductCardCompact({
         <ProductCard.Media />
         <ProductCard.TopRight>
           <Button
-            className="hover:bg-subtle/15 overflow-hidden bg-surface text-subtle"
+            className="hover:bg-subtle/15 bg-surface text-subtle h-10 w-10"
             shape="icon"
             aria-label="Add to favourites"
             onClick={() => onFavouriteClick?.(product)}
           >
-            <FavouriteIcon size="25" />
+            <IconWrapper>
+              <FavouriteIcon />
+            </IconWrapper>
           </Button>
         </ProductCard.TopRight>
       </ProductCard.Top>

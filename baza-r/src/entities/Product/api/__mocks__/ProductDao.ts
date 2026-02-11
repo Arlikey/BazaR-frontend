@@ -3,7 +3,7 @@ import type { Product } from "../../model/Product";
 import type { ProductDto } from "../ProductDto";
 
 
-const mock: ProductDto[] = [
+const trendingMock: ProductDto[] = [
   {
     id: 1,
     category_id: 1,
@@ -49,20 +49,64 @@ const mock: ProductDto[] = [
     current_price: 43999,
     is_active: true,
   },
+];
+
+const recommendedMock: ProductDto[] = [
   {
-    id: 5,
-    category_id: 5,
-    name: "Планшет Samsung Galaxy Tab S8 Ultra 5G 12/256 GB Graphite",
-    image_url: "",
+    id: 6,
+    category_id: 1,
+    name: "Фен ROWENTA CV9820 Ultimate Experience",
+    image_url: "/images/products/ROWENTA-CV9820-Ultimate-Experience.png",
+    old_price: 9499,
+    current_price: 6999,
+    is_active: true,
+  },
+  {
+    id: 7,
+    category_id: 2,
+    name: "Фен Philips серії 3000 BHD350/10",
+    image_url: "/images/products/Philips-3000-BHD35010.png",
     old_price: null,
-    current_price: 43999,
+    current_price: 799,
+    is_active: true,
+  },
+  {
+    id: 8,
+    category_id: 3,
+    name: "Фен PHILIPS DryCare BHD274/00 ACmotor",
+    image_url: "/images/products/PHILIPS-DryCare-BHD27400-ACmotor.png",
+    old_price: 1594,
+    current_price: 1494,
+    is_active: true,
+  },
+  {
+    id: 9,
+    category_id: 4,
+    name: "Фен PHILIPS 5000 series BHD530/00",
+    image_url: "/images/products/PHILIPS-5000-series-BHD53000.png",
+    old_price: null,
+    current_price: 1799,
+    is_active: true,
+  },
+  {
+    id: 10,
+    category_id: 5,
+    name: "Фен Philips 5000 series BHD504/00",
+    image_url: "/images/products/Philips-5000-series-BHD50400.png",
+    old_price: null,
+    current_price: 1099,
     is_active: true,
   },
 ];
 
 export default class ProductDao {
-  static async getProducts(): Promise<Product[]> {
+  static async getTrendingProducts(): Promise<Product[]> {
     await new Promise((r) => setTimeout(r, 700));
-    return mock.map(mapProduct);
+    return trendingMock.map(mapProduct);
+  }
+
+  static async getRecommendedProducts(): Promise<Product[]> {
+    await new Promise((r) => setTimeout(r, 700));
+    return recommendedMock.map(mapProduct);
   }
 }

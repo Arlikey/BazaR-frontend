@@ -13,6 +13,7 @@ const customLink = tv({
     },
     color: {
       blue: "text-link hover:text-link-hover",
+      secondary: "bg-accent hover:bg-accent-hover",
     },
     intent: {
       default: "",

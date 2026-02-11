@@ -1,30 +1,21 @@
-import { ProductCardCompact } from "../../product-card/ProductCardCompact";
-import type { Product } from "../../../entities/product/model/Product";
-
 type Props = {
-  products: Product[];
+  children: React.ReactNode;
   className?: string;
-  columns?: number;
+  columns?: 2 | 3 | 4 | 5 | 6;
 };
 
-export default function ProductsGrid({
-  products,
-  className,
-  columns = 5,
-}: Props) {
-  if (products.length === 0) return null;
+const colsClass: Record<number, string> = {
+  2: "grid-cols-2",
+  3: "grid-cols-3",
+  4: "grid-cols-4",
+  5: "grid-cols-5",
+  6: "grid-cols-6",
+};
 
+export function ProductsGrid({ children, columns = 5, className }: Props) {
   return (
-    <section className={className}>
-      <ul className={`grid grid-cols-5 gap-2.5`}>
-        {products.map((product) => {
-          return (
-            <li key={product.id}>
-              <ProductCardCompact product={product} />
-            </li>
-          );
-        })}
-      </ul>
-    </section>
+    <ul className={`grid gap-2.5 ${colsClass[columns]} ${className ?? ""}`}>
+      {children}
+    </ul>
   );
 }
