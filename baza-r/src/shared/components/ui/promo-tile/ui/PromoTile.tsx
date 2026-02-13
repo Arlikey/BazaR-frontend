@@ -18,7 +18,7 @@ export function PromoTile({ title, subtitle, href, image, className }: Props) {
             <div className="text-xl font-medium">
               Добірка подарунків у розділі
             </div>
-            <div className="text-xl font-medium line-clamp-2">{subtitle}</div>
+            <div className="line-clamp-2 text-xl font-medium">{subtitle}</div>
           </div>
           <div className="flex flex-col items-center justify-between gap-7.5">
             <div className="font-[Days_One] text-[40px] leading-[150%]">
@@ -27,8 +27,8 @@ export function PromoTile({ title, subtitle, href, image, className }: Props) {
 
             <CustomLink
               to={href}
-              variant="default"
-              className="text-foreground text-md inline-flex h-9 items-center rounded-4xl bg-white px-10 leading-none font-medium"
+              variant="primary"
+              className="text-md h-9 px-10 font-medium"
             >
               Перейти
             </CustomLink>

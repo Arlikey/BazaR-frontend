@@ -5,7 +5,7 @@ import {
   VisaLogo,
 } from "../../shared/components/icons/payments";
 import QuestionIcon from "../../shared/components/icons/ui/QuestionIcon";
-import Button from "../../shared/components/ui/Button";
+import {Button} from "../../shared/components/ui/Button";
 import CardSection from "../../shared/components/ui/CardSection";
 import CustomLink from "../../shared/components/ui/CustomLink";
 import SocialLinks from "../../shared/components/ui/SocialLinks";

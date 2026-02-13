@@ -1,4 +1,3 @@
-import Button from "../../shared/components/ui/Button";
 import Search from "../../features/Search/Search";
 import {
   BurgerIcon,
@@ -9,6 +8,8 @@ import {
 } from "../../shared/components/icons/ui";
 import { useUiStore } from "../../shared/model/ui.store";
 import CustomLink from "../../shared/components/ui/CustomLink";
+import { Button } from "../../shared/components/ui/Button";
+import IconWrapper from "../../shared/components/ui/IconWrapper";
 
 export default function Header() {
   const openAuth = useUiStore((s) => s.openAuth);
@@ -19,12 +20,15 @@ export default function Header() {
       <div className="mx-auto flex h-full max-w-480 items-center">
         <div className="hidden sm:flex">
           <Button
-            shape="icon"
+            size="icon"
+            rounded="sm"
             aria-label="Open menu"
             className="text-inverse"
             onClick={() => openDrawer()}
           >
-            <BurgerIcon />
+            <IconWrapper>
+              <BurgerIcon />
+            </IconWrapper>
           </Button>
         </div>
 
@@ -49,27 +53,41 @@ export default function Header() {
           <Search />
         </div>
         <div className="hidden 2xl:flex">
-          <Button shape="icon" className="ml-20 w-21 flex-col gap-1 2xl:ml-24">
+          <Button
+            size="icon"
+            rounded="sm"
+            className="ml-20 w-21 flex-col gap-1 2xl:ml-24"
+          >
             <span className="text-inverse text-xs font-normal capitalize">
               спробуйте
             </span>
-            <span className="bg-premium rounded-[10px] px-2.5 py-1 text-xs font-medium uppercase">
+            <span className="bg-premium rounded-[10px] px-2.5 py-1 text-xs font-medium text-black uppercase">
               premium
             </span>
           </Button>
         </div>
         <div className="text-inverse ml-20 flex items-center gap-2 2xl:ml-24">
           <Button
-            shape="icon"
+            size="icon"
+            rounded="sm"
             className="hidden md:flex"
             aria-label="User"
             onClick={() => openAuth()}
           >
-            <UserIcon />
+            <IconWrapper>
+              <UserIcon />
+            </IconWrapper>
           </Button>
 
-          <Button shape="icon" className="relative" aria-label="Cart">
-            <CartIcon />
+          <Button
+            size="icon"
+            rounded="sm"
+            className="relative"
+            aria-label="Cart"
+          >
+            <IconWrapper>
+              <CartIcon />
+            </IconWrapper>
             <div className="bg-accent text-foreground absolute top-0.75 right-0.75 flex h-4.5 w-4.5 items-center justify-center rounded-full">
               <span className="text-sm font-medium">2</span>
             </div>

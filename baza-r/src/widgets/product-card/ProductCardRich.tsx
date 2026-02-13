@@ -1,7 +1,7 @@
 import type { ReactNode } from "react";
 import type { Product } from "../../entities/product/model/Product";
 import { ProductCard } from "../../entities/product/ui/ProductCard";
-import Button from "../../shared/components/ui/Button";
+import { Button } from "../../shared/components/ui/Button";
 import FavouriteIcon from "../../shared/components/icons/ui/FavouriteIcon";
 
 type RichProps = {
@@ -32,12 +32,12 @@ export function ProductCardRich({
         {badge && <ProductCard.TopLeft>{badge}</ProductCard.TopLeft>}
         <ProductCard.TopRight>
           <Button
-            className="hover:bg-subtle/15 overflow-hidden bg-surface"
-            shape="icon"
+            className="hover:bg-subtle/15 bg-surface overflow-hidden"
+             
             aria-label="Add to favourites"
             onClick={() => onFavouriteClick?.(product)}
           >
-            <FavouriteIcon size="25" />
+            <FavouriteIcon />
           </Button>
           {compare}
         </ProductCard.TopRight>

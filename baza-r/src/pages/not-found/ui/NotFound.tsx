@@ -1,6 +1,4 @@
-import { Link } from "react-router";
 import NotFoundIcon from "../../../shared/components/icons/ui/NotFoundIcon";
-import Button from "../../../shared/components/ui/Button";
 import CustomLink from "../../../shared/components/ui/CustomLink";
 import IconWrapper from "../../../shared/components/ui/IconWrapper";
 

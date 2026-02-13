@@ -30,7 +30,7 @@ export function PromoProducts() {
   }, []);
 
   return (
-    <Section title="Акційні пропозиції">
+    <Section aria-label="Акційні пропозиції" title="Акційні пропозиції">
       {isLoading && (
         <div className="grid grid-cols-5 gap-4">
           {Array.from({ length: 5 }).map((_, i) => (

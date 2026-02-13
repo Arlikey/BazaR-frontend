@@ -3,7 +3,7 @@ import * as Accordion from "@radix-ui/react-accordion";
 import CardSection from "../../../shared/components/ui/CardSection";
 import SocialLinks from "../../../shared/components/ui/SocialLinks";
 import { footerGroups, socialMediaLinks } from "../../../shared/config/links";
-import Button from "../../../shared/components/ui/Button";
+import { Button } from "../../../shared/components/ui/Button";
 import PlayStoreIcon from "../../../shared/components/icons/apps/PlayStoreIcon";
 import AppleStoreIcon from "../../../shared/components/icons/apps/AppleStoreIcon";
 import CustomLink from "../../../shared/components/ui/CustomLink";
@@ -36,7 +36,7 @@ const Drawer = () => {
       <div>
         <div className="bg-brand flex h-50 flex-col justify-between px-6 pt-7 pb-9">
           <Modal.Close className="self-end">
-            <Button shape="icon" className="h-9 w-9">
+            <Button rounded="sm" className="h-9 w-9">
               <IconWrapper size={16} className="text-inverse">
                 <CrossIcon />
               </IconWrapper>
@@ -47,7 +47,7 @@ const Drawer = () => {
               <UserIcon />
             </IconWrapper>
             <div className="flex flex-col gap-0.5">
-              <div className="flex gap-3">
+              <div className="flex items-center gap-3">
                 <Button
                   variant="link"
                   color="inverse"
@@ -97,7 +97,7 @@ const Drawer = () => {
         </Button>
       </div>
 
-      <div className="flex flex-col gap-2.5 px-6 pb-36">
+      <div className="flex flex-col gap-2.5 px-6 pb-8">
         <CardSection className="flex flex-col px-5 py-3">
           {[
             { icon: AltCatalogIcon, label: "Каталог товарів" },

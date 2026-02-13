@@ -1,7 +1,7 @@
 // file: src/widgets/login-dialog/ui/LoginDialog.tsx
 import { useState, type ReactNode } from "react";
 import CustomLink from "../../../shared/components/ui/CustomLink";
-import Button from "../../../shared/components/ui/Button";
+import {Button} from "../../../shared/components/ui/Button";
 import IconWrapper from "../../../shared/components/ui/IconWrapper";
 import InputField from "../../../shared/components/ui/InputField";
 import FacebookIcon from "../../../shared/components/icons/login/FacebookIcon";

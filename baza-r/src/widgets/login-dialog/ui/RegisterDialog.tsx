@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { Divider, SocialLogin } from "./LoginDialog";
-import Button from "../../../shared/components/ui/Button";
 import CustomLink from "../../../shared/components/ui/CustomLink";
 import InputField from "../../../shared/components/ui/InputField";
 import { useForm, useWatch } from "react-hook-form";
@@ -12,6 +11,7 @@ import {
 import IconWrapper from "../../../shared/components/ui/IconWrapper";
 import { EyeOffIcon } from "../../../shared/components/icons/ui/EyeOffIcon";
 import { EyeIcon } from "../../../shared/components/icons/ui/EyeIcon";
+import { Button } from "../../../shared/components/ui/Button";
 
 type Props = {
   onLoginClick?: () => void;

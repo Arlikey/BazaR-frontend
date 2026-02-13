@@ -7,6 +7,8 @@ const customLink = tv({
   variants: {
     variant: {
       default: "",
+      primary:
+        "text-foreground bg-white rounded-4xl hover:text-accent hover:border-accent",
       underline: "text-foreground hover:underline hover:text-accent",
       menu: "rounded-sm px-3 py-2 text-foreground hover:bg-accent/15 hover:text-accent hover:underline",
       icon: "rounded-md text-muted hover:text-accent",
@@ -19,6 +21,10 @@ const customLink = tv({
       default: "",
       subtle: "text-foreground hover:text-accent",
     },
+    border: {
+      none: "",
+      thin: "bw-thin border-neutral-300",
+    },
     textSize: {
       sm: "text-sm",
       md: "text-base",
@@ -28,6 +34,7 @@ const customLink = tv({
   defaultVariants: {
     variant: "underline",
     intent: "default",
+    border: "none",
   },
 });
 
@@ -59,12 +66,20 @@ export default function CustomLink({
   className,
   variant,
   color,
+  border,
   intent,
   textSize,
   activeClassName,
   ...rest
 }: Props) {
-  const classes = customLink({ variant, color, intent, textSize, className });
+  const classes = customLink({
+    variant,
+    color,
+    border,
+    intent,
+    textSize,
+    className,
+  });
 
   if ("href" in rest) {
     const rel =

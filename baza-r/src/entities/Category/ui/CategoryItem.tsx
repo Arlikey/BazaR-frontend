@@ -15,8 +15,8 @@ const categoryItem = tv({
 
   variants: {
     size: {
-      sm: { root: "px-2 py-1.5", text: "text-[11px]", icon: "h-5 w-5" },
-      md: { root: "px-3 py-2", text: "text-sm", icon: "h-6.25 w-6.25" },
+      sm: { root: "px-2 py-1", text: "text-[11px]", icon: "h-5 w-5" },
+      md: { root: "px-3 py-1", text: "text-sm", icon: "h-6.25 w-6.25" },
     },
     intent: {
       hoverable: {
