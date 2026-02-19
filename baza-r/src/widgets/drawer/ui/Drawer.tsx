@@ -26,13 +26,21 @@ import { uiText } from "../../../shared/config/ui-text";
 const Drawer = () => {
   const openAuth = useUiStore((s) => s.openAuth);
   const closeDrawer = useUiStore((s) => s.closeDrawer);
+  const openMegamenu = useUiStore((s) => s.openMegamenu);
 
   const help = footerGroups[0];
   const company = footerGroups[1];
   const services = footerGroups[2];
   const partners = footerGroups[3];
   const drawerMenuItems = [
-    { icon: AltCatalogIcon, label: uiText.drawer.menuItems[0].label },
+    {
+      icon: AltCatalogIcon,
+      label: uiText.drawer.menuItems[0].label,
+      onClick: () => {
+        closeDrawer();
+        window.setTimeout(() => openMegamenu(), 200);
+      },
+    },
     { icon: AltCartIcon, label: uiText.drawer.menuItems[1].label },
     { icon: AltQuestionIcon, label: uiText.drawer.menuItems[2].label },
     { icon: TelephoneIcon, label: uiText.drawer.menuItems[3].label },
@@ -94,8 +102,12 @@ const Drawer = () => {
         >
           <div className="hover:bg-premium-hover flex h-full w-full items-center justify-between rounded-lg pt-1 pr-8 pb-2 pl-7">
             <div className="font-medium">
-              <h3 className="text-xl uppercase">{uiText.drawer.premiumLabel}</h3>
-              <span className="text-sm">{uiText.drawer.premiumDescription}</span>
+              <h3 className="text-xl uppercase">
+                {uiText.drawer.premiumLabel}
+              </h3>
+              <span className="text-sm">
+                {uiText.drawer.premiumDescription}
+              </span>
             </div>
             <IconWrapper>
               <ArrowRightIcon />
@@ -106,12 +118,13 @@ const Drawer = () => {
 
       <div className="flex flex-col gap-2.5 px-6 pb-8">
         <CardSection className="flex flex-col px-5 py-3">
-          {drawerMenuItems.map(({ icon: Icon, label }) => (
+          {drawerMenuItems.map(({ icon: Icon, label, onClick }) => (
             <CustomLink
               key={label}
               to={""}
               variant="menu"
               className="flex flex-1 gap-4 py-3"
+              onClick={onClick}
             >
               <IconWrapper className="flex h-5 w-5 items-center justify-center">
                 <Icon />
@@ -139,7 +152,9 @@ const Drawer = () => {
         </Accordion.Root>
 
         <CardSection className="flex flex-col gap-4 px-7 py-6">
-          <span className="text-md font-medium">{uiText.drawer.installApps}</span>
+          <span className="text-md font-medium">
+            {uiText.drawer.installApps}
+          </span>
           <div className="flex gap-12">
             <Button
               size="md"

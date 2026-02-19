@@ -12,6 +12,11 @@ type UiState = {
   openDrawer: () => void;
   closeDrawer: () => void;
   setDrawerOpen: (open: boolean) => void;
+
+  megamenu: { open: boolean };
+  openMegamenu: () => void;
+  closeMegamenu: () => void;
+  setMegamenuOpen: (open: boolean) => void;
 };
 
 export const useUiStore = create<UiState>((set) => ({
@@ -24,4 +29,9 @@ export const useUiStore = create<UiState>((set) => ({
   openDrawer: () => set(() => ({ drawer: { open: true } })),
   closeDrawer: () => set(() => ({ drawer: { open: false } })),
   setDrawerOpen: (open) => set(() => ({ drawer: { open } })),
+
+  megamenu: { open: false },
+  openMegamenu: () => set(() => ({ megamenu: { open: true } })),
+  closeMegamenu: () => set(() => ({ megamenu: { open: false } })),
+  setMegamenuOpen: (open) => set(() => ({ megamenu: { open } })),
 }));

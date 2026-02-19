@@ -15,9 +15,10 @@ import { uiText } from "../../shared/config/ui-text";
 export default function Header() {
   const openAuth = useUiStore((s) => s.openAuth);
   const openDrawer = useUiStore((s) => s.openDrawer);
+  const openMegamenu = useUiStore((s) => s.openMegamenu);
 
   return (
-    <header className="bg-brand sticky top-0 z-50 h-16 w-full px-4 md:px-6 lg:h-18 xl:px-8 2xl:px-14">
+    <header data-app-header className="bg-brand sticky top-0 z-50 h-16 w-full px-4 md:px-6 lg:h-18 xl:px-8 2xl:px-14 pointer-events-auto">
       <div className="mx-auto flex h-full max-w-480 items-center">
         <div className="hidden sm:flex">
           <Button
@@ -44,6 +45,7 @@ export default function Header() {
             color="secondary"
             size="md"
             className="ml-20 hidden gap-3 rounded-[42px] px-6 lg:flex 2xl:ml-24"
+            onClick={() => openMegamenu()}
           >
             <CategoryItemSkeletonIcon />
             <span className="capitalize">{uiText.header.catalog}</span>

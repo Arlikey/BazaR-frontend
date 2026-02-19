@@ -12,11 +12,16 @@ const modal = tv({
     side: {
       left: {
         content:
-          "left-0 h-dvh w-[425px] data-[state=open]:animate-[slideInLeft_.6s_cubic-bezier(0.22,1,0.36,1)] data-[state=closed]:animate-[slideOutLeft_.4s_cubic-bezier(0.32,0,0.67,0)] shadow-(--shadow-sidebar)",
+          "left-0 h-dvh w-[425px] data-[state=open]:animate-[slideInLeft_.6s_cubic-bezier(0.22,1,0.36,1)] data-[state=closed]:animate-[slideOutLeft_.4s_cubic-bezier(.23,.86,.81,1.01)] shadow-(--shadow-sidebar)",
       },
       center: {
         content:
           "left-1/2 top-1/2 data-[state=open]:animate-[popIn_.21s_ease-out] data-[state=closed]:animate-[popOut_.21s_ease-in] -translate-x-1/2 -translate-y-1/2 translate-z-0 will-change:transform",
+      },
+      top: {
+        overlay: "top-[var(--top-offset)] z-40",
+        content:
+          "left-1/2 -translate-x-1/2 z-40 data-[state=open]:animate-[megaIn_.26s_cubic-bezier(0.16,1,0.3,1)] data-[state=closed]:animate-[megaOut_.18s_cubic-bezier(0.4,0,1,1)] top-[var(--top-offset)]",
       },
     },
     rounded: {

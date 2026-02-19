@@ -11,7 +11,7 @@ export function Layout() {
       <div className="mx-auto flex min-h-screen flex-col">
         <section
           aria-label={uiText.layout.promotionBannerAriaLabel}
-          className="bg-accent flex h-8 items-center justify-center"
+          className="bg-accent z-50 flex h-8 items-center justify-center"
         >
           <span className="text-sm font-medium uppercase lg:text-lg">
             {uiText.layout.promotionBannerMessage}
