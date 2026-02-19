@@ -10,6 +10,7 @@ import { useUiStore } from "../../shared/model/ui.store";
 import CustomLink from "../../shared/components/ui/CustomLink";
 import { Button } from "../../shared/components/ui/Button";
 import IconWrapper from "../../shared/components/ui/IconWrapper";
+import { uiText } from "../../shared/config/ui-text";
 
 export default function Header() {
   const openAuth = useUiStore((s) => s.openAuth);
@@ -22,7 +23,7 @@ export default function Header() {
           <Button
             size="icon"
             rounded="sm"
-            aria-label="Open menu"
+            aria-label={uiText.header.openMenuAriaLabel}
             className="text-inverse"
             onClick={() => openDrawer()}
           >
@@ -45,7 +46,7 @@ export default function Header() {
             className="ml-20 hidden gap-3 rounded-[42px] px-6 lg:flex 2xl:ml-24"
           >
             <CategoryItemSkeletonIcon />
-            <span className="capitalize">каталог</span>
+            <span className="capitalize">{uiText.header.catalog}</span>
           </Button>
         </div>
 
@@ -59,10 +60,10 @@ export default function Header() {
             className="ml-20 w-21 flex-col gap-1 2xl:ml-24"
           >
             <span className="text-inverse text-xs font-normal capitalize">
-              спробуйте
+              {uiText.header.premiumTryLabel}
             </span>
             <span className="bg-premium rounded-[10px] px-2.5 py-1 text-xs font-medium text-black uppercase">
-              premium
+              {uiText.header.premiumLabel}
             </span>
           </Button>
         </div>
@@ -71,7 +72,7 @@ export default function Header() {
             size="icon"
             rounded="sm"
             className="hidden md:flex"
-            aria-label="User"
+            aria-label={uiText.header.userAriaLabel}
             onClick={() => openAuth()}
           >
             <IconWrapper>
@@ -83,14 +84,11 @@ export default function Header() {
             size="icon"
             rounded="sm"
             className="relative"
-            aria-label="Cart"
+            aria-label={uiText.header.cartAriaLabel}
           >
             <IconWrapper>
               <CartIcon />
             </IconWrapper>
-            <div className="bg-accent text-foreground absolute top-0.75 right-0.75 flex h-4.5 w-4.5 items-center justify-center rounded-full">
-              <span className="text-sm font-medium">2</span>
-            </div>
           </Button>
         </div>
       </div>

@@ -21,6 +21,7 @@ import { Modal } from "../../../shared/components/ui/modal/Modal";
 import ArrowRightIcon from "../../../shared/components/icons/ui/ArrowRightIcon";
 import AltQuestionIcon from "../../../shared/components/icons/ui/AltQuestionIcon";
 import { useUiStore } from "../../../shared/model/ui.store";
+import { uiText } from "../../../shared/config/ui-text";
 
 const Drawer = () => {
   const openAuth = useUiStore((s) => s.openAuth);
@@ -30,6 +31,12 @@ const Drawer = () => {
   const company = footerGroups[1];
   const services = footerGroups[2];
   const partners = footerGroups[3];
+  const drawerMenuItems = [
+    { icon: AltCatalogIcon, label: uiText.drawer.menuItems[0].label },
+    { icon: AltCartIcon, label: uiText.drawer.menuItems[1].label },
+    { icon: AltQuestionIcon, label: uiText.drawer.menuItems[2].label },
+    { icon: TelephoneIcon, label: uiText.drawer.menuItems[3].label },
+  ];
 
   return (
     <div className="flex flex-col gap-4">
@@ -57,7 +64,7 @@ const Drawer = () => {
                     openAuth();
                   }}
                 >
-                  <span>Вхід</span>
+                  <span>{uiText.drawer.login}</span>
                 </Button>
                 <div className="border-inverse h-5.5 border-r"></div>
                 <Button
@@ -69,12 +76,12 @@ const Drawer = () => {
                     openAuth("register");
                   }}
                 >
-                  <span>Реєстрація</span>
+                  <span>{uiText.drawer.register}</span>
                 </Button>
               </div>
               <div>
                 <span className="text-muted text-base">
-                  Авторизуйтесь для отримання розширених можливостей
+                  {uiText.drawer.authDescription}
                 </span>
               </div>
             </div>
@@ -87,8 +94,8 @@ const Drawer = () => {
         >
           <div className="hover:bg-premium-hover flex h-full w-full items-center justify-between rounded-lg pt-1 pr-8 pb-2 pl-7">
             <div className="font-medium">
-              <h3 className="text-xl uppercase">premium</h3>
-              <span className="text-sm">Безкоштовна доставка весь рік</span>
+              <h3 className="text-xl uppercase">{uiText.drawer.premiumLabel}</h3>
+              <span className="text-sm">{uiText.drawer.premiumDescription}</span>
             </div>
             <IconWrapper>
               <ArrowRightIcon />
@@ -99,12 +106,7 @@ const Drawer = () => {
 
       <div className="flex flex-col gap-2.5 px-6 pb-8">
         <CardSection className="flex flex-col px-5 py-3">
-          {[
-            { icon: AltCatalogIcon, label: "Каталог товарів" },
-            { icon: AltCartIcon, label: "Кошик" },
-            { icon: AltQuestionIcon, label: "Довідковий центр" },
-            { icon: TelephoneIcon, label: "+38 044 222 11 00" },
-          ].map(({ icon: Icon, label }) => (
+          {drawerMenuItems.map(({ icon: Icon, label }) => (
             <CustomLink
               key={label}
               to={""}
@@ -137,7 +139,7 @@ const Drawer = () => {
         </Accordion.Root>
 
         <CardSection className="flex flex-col gap-4 px-7 py-6">
-          <span className="text-md font-medium">Встановлюйте наші додатки</span>
+          <span className="text-md font-medium">{uiText.drawer.installApps}</span>
           <div className="flex gap-12">
             <Button
               size="md"
@@ -157,7 +159,7 @@ const Drawer = () => {
         </CardSection>
 
         <CardSection className="flex flex-col gap-4 px-7 py-4">
-          <span className="text-md font-medium">Ми в соціальних мережах</span>
+          <span className="text-md font-medium">{uiText.drawer.social}</span>
           <SocialLinks items={socialMediaLinks} />
         </CardSection>
       </div>

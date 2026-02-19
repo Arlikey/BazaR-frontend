@@ -4,6 +4,7 @@ import {
   VisaLogo,
 } from "../../shared/components/icons/payments";
 import { footerGroups, socialMediaLinks } from "../../shared/config/links";
+import { uiText } from "../../shared/config/ui-text";
 import SocialLinks from "../../shared/components/ui/SocialLinks";
 import CustomLink from "../../shared/components/ui/CustomLink";
 import { LinkGroup } from "../link-groups/LinkGroup";
@@ -13,7 +14,7 @@ const Footer = () => {
     <footer className="bw-t-thin hidden w-full border-neutral-300 md:flex">
       <div className="mt-9 w-full">
         <div className="text-md mx-auto flex max-w-480 flex-col justify-between gap-8 px-8 pb-12 lg:flex-row xl:gap-50 xl:pr-33 xl:pl-14">
-          <section aria-label="Contacts" className="flex flex-col gap-4">
+          <section aria-label={uiText.footer.contactsAriaLabel} className="flex flex-col gap-4">
             <CustomLink
               to={""}
               variant="default"
@@ -22,7 +23,7 @@ const Footer = () => {
             >
               <ClockIcon />
 
-              <span className="">Графік роботи Call-центру</span>
+              <span className="">{uiText.footer.callCenterSchedule}</span>
             </CustomLink>
             <SocialLinks items={socialMediaLinks} />
           </section>
@@ -39,8 +40,7 @@ const Footer = () => {
             <VisaLogo />
           </div>
           <span className="text-sm font-normal text-neutral-300">
-            © Інтернет-магазин «Розетка™»2001–2022 ТМ використовується на
-            підставі ліцензії правовласника RozetkaLTD
+            {uiText.footer.copyright}
           </span>
         </div>
       </div>

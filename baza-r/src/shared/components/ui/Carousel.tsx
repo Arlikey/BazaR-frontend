@@ -5,10 +5,10 @@ import useEmblaCarousel, {
   type UseEmblaCarouselType,
 } from "embla-carousel-react";
 import { cn } from "tailwind-variants";
-import { ArrowRightIcon } from "../icons/ui";
 import IconWrapper from "./IconWrapper";
 import { Button } from "./Button";
 import CarouselIcon from "../icons/ui/CarouselIcon";
+import { uiText } from "../../config/ui-text";
 
 type CarouselApi = UseEmblaCarouselType[1];
 type UseCarouselParameters = Parameters<typeof useEmblaCarousel>;
@@ -201,7 +201,7 @@ function CarouselPrevious({
       <IconWrapper className="text-ink">
         <CarouselIcon />
       </IconWrapper>
-      <span className="sr-only">Previous slide</span>
+      <span className="sr-only">{uiText.carousel.previousSlide}</span>
     </Button>
   );
 }
@@ -235,7 +235,7 @@ function CarouselNext({
       <IconWrapper className="rotate-180 text-ink">
         <CarouselIcon />
       </IconWrapper>
-      <span className="sr-only">Next slide</span>
+      <span className="sr-only">{uiText.carousel.nextSlide}</span>
     </Button>
   );
 }

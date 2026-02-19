@@ -2,6 +2,7 @@ import Header from "../../widgets/header/Header";
 import Footer from "../../widgets/footer/Footer";
 import { Outlet } from "react-router";
 import { ModalProvider } from "../_providers/ModalProvider";
+import { uiText } from "../../shared/config/ui-text";
 
 export function Layout() {
   return (
@@ -9,11 +10,11 @@ export function Layout() {
       <ModalProvider />
       <div className="mx-auto flex min-h-screen flex-col">
         <section
-          aria-label="Promotion banner"
+          aria-label={uiText.layout.promotionBannerAriaLabel}
           className="bg-accent flex h-8 items-center justify-center"
         >
           <span className="text-sm font-medium uppercase lg:text-lg">
-            тотальний розпродаж до -50%
+            {uiText.layout.promotionBannerMessage}
           </span>
         </section>
         <div className="min-h-screen">

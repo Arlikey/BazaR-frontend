@@ -9,7 +9,8 @@ export function mapProduct(dto: ProductDto): Product {
     name: dto.name,
     imageUrl: dto.image_url ?? null,
     oldPrice: dto.old_price ?? null,
-    currentPrice: dto.current_price,
+    currentPrice: dto.current_price ?? null,
     isActive: dto.is_active,
+    isAwaited: dto.is_awaited ?? null,
   };
 }

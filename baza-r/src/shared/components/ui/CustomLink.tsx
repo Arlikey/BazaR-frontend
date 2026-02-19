@@ -10,7 +10,7 @@ const customLink = tv({
       primary:
         "text-foreground bg-white rounded-4xl hover:text-accent hover:border-accent",
       underline: "text-foreground hover:underline hover:text-accent",
-      menu: "rounded-sm px-3 py-2 text-foreground hover:bg-accent/15 hover:text-accent hover:underline",
+      menu: "rounded-sm px-3 py-1 text-foreground hover:bg-accent/15 hover:text-accent hover:underline",
       icon: "rounded-md text-muted hover:text-accent",
     },
     color: {

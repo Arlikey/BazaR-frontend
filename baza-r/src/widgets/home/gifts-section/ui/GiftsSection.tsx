@@ -1,22 +1,25 @@
 import { Section } from "../../../../shared/components/ui/product-section/ui/Section";
 import { PromoTile } from "../../../../shared/components/ui/promo-tile/ui/PromoTile";
+import { uiText } from "../../../../shared/config/ui-text";
 
 export function GiftsSection() {
+  const [forHer, forHim] = uiText.home.giftsTiles;
+
   return (
-    <Section title="Кращі подарунки">
+    <Section title={uiText.home.giftsTitle}>
       <div className="grid grid-cols-2 gap-3">
         <PromoTile
-          title="Для неї"
-          subtitle={"Товари для краси, здоров'я і догляду за тілом"}
-          href="/gifts/for-her"
+          title={forHer.title}
+          subtitle={forHer.subtitle}
+          href={forHer.href}
           className="bg-[#F3A4A4]"
           image={<img src="/images/action-banners/love-present-blue.png" />}
         />
 
         <PromoTile
-          title="Для нього"
-          subtitle={"Побутова техніка"}
-          href="/gifts/for-him"
+          title={forHim.title}
+          subtitle={forHim.subtitle}
+          href={forHim.href}
           className="bg-[#86CBE9]"
           image={<img src="/images/action-banners/love-present-pink.png" />}
         />

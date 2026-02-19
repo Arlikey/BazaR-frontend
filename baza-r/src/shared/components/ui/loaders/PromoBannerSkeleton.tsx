@@ -1,4 +1,3 @@
-import { cn } from "tailwind-variants";
 import Skeleton from "./Skeleton";
 
 export default function PromoBannerSkeleton() {

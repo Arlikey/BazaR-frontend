@@ -14,6 +14,7 @@ import { useForm, useWatch } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { EyeIcon } from "../../../shared/components/icons/ui/EyeIcon";
 import { EyeOffIcon } from "../../../shared/components/icons/ui/EyeOffIcon";
+import { uiText } from "../../../shared/config/ui-text";
 
 export const SocialButton = ({
   label,
@@ -41,17 +42,17 @@ export const Divider = () => (
     aria-hidden="true"
   >
     <span className="h-full w-px bg-neutral-200" />
-    <span className="text-sm leading-none">або</span>
+    <span className="text-sm leading-none">{uiText.auth.divider}</span>
     <span className="h-full w-px bg-neutral-200" />
   </div>
 );
 
 export const SocialLogin = () => (
   <div className="flex w-51.25 flex-col items-center justify-center gap-5">
-    <span className="text-muted text-base">Увійти як користувач</span>
+    <span className="text-muted text-base">{uiText.auth.socialLoginTitle}</span>
     <div className="flex w-full flex-col gap-5">
-      <SocialButton label="Facebook" icon={<FacebookIcon />} />
-      <SocialButton label="Google" icon={<GoogleIcon />} />
+      <SocialButton label={uiText.auth.socialFacebook} icon={<FacebookIcon />} />
+      <SocialButton label={uiText.auth.socialGoogle} icon={<GoogleIcon />} />
     </div>
   </div>
 );
@@ -78,13 +79,13 @@ export default function LoginDialog({ onRegisterClick }: Props) {
   return (
     <div className="w-167.5 p-7.5" aria-labelledby="login-title">
       <h2 id="login-title" className="text-2xl">
-        Вхід
+        {uiText.auth.loginTitle}
       </h2>
 
       <div className="flex gap-5">
         <form
           className="flex flex-1 flex-col"
-          aria-label="Login form"
+          aria-label={uiText.auth.loginFormAriaLabel}
           onSubmit={handleSubmit((data) => console.log(data))}
         >
           <div className="mt-5 flex flex-col gap-5">
@@ -92,7 +93,7 @@ export default function LoginDialog({ onRegisterClick }: Props) {
               id="login-identifier"
               type="text"
               autoComplete="email"
-              placeholder="Ел. пошта або телефон"
+              placeholder={uiText.auth.loginIdentifierPlaceholder}
               error={errors.identifier?.message}
               success={dirtyFields.identifier && !errors.identifier}
               {...register("identifier")}
@@ -104,7 +105,7 @@ export default function LoginDialog({ onRegisterClick }: Props) {
               success={dirtyFields.password && !errors.password}
               autoComplete="current-password"
               inputClassName={visible || password === "" ? "" : "font-mono"}
-              placeholder="Пароль"
+              placeholder={uiText.auth.loginPasswordPlaceholder}
               {...register("password")}
               rightIcon={
                 <Button
@@ -126,11 +127,11 @@ export default function LoginDialog({ onRegisterClick }: Props) {
             <div className="flex items-center gap-2">
               <input id="rememberMe" type="checkbox" />
               <label htmlFor="rememberMe" className="text-muted">
-                Запам’ятати мене
+                {uiText.auth.rememberMe}
               </label>
             </div>
             <CustomLink to={""} variant="default" color="blue">
-              Нагадати пароль
+              {uiText.auth.forgotPassword}
             </CustomLink>
           </div>
 
@@ -142,7 +143,7 @@ export default function LoginDialog({ onRegisterClick }: Props) {
               className="text-inverse mt-9 h-12 rounded-[30px] text-base"
               disabled={!isValid || isSubmitting}
             >
-              <span>Увійти</span>
+              <span>{uiText.auth.loginSubmit}</span>
             </Button>
 
             <Button
@@ -153,7 +154,7 @@ export default function LoginDialog({ onRegisterClick }: Props) {
               className="mt-8"
               onClick={onRegisterClick}
             >
-              Зареєструватися
+              {uiText.auth.openRegister}
             </Button>
           </div>
         </form>

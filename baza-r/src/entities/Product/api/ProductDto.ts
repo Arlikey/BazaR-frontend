@@ -6,7 +6,8 @@ export type ProductDto = {
   image_url: string | null;
 
   old_price: number | null;
-  current_price: number;
+  current_price: number | null;
 
   is_active: boolean;
+  is_awaited?: boolean | null;
 };

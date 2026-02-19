@@ -6,6 +6,7 @@ import { tryCatch } from "../../../../shared/lib/try-catch";
 import { ProductCardCompact } from "../../../product-card/ProductCardCompact";
 import { ProductsGrid } from "../../../product-grid/ui/ProductGrid";
 import type { Product } from "../../../../entities/product/model/Product";
+import { uiText } from "../../../../shared/config/ui-text";
 
 export function TrendingProducts() {
   const [data, setData] = useState<Product[]>([]);
@@ -24,20 +25,23 @@ export function TrendingProducts() {
   }, []);
 
   return (
-    <Section title="Зараз шукають">
+    <Section
+      aria-label={uiText.home.trendingProductsTitle}
+      title={uiText.home.trendingProductsTitle}
+    >
       {error ? (
-        <div className="text-error text-sm">Не вдалося завантажити</div>
+        <div className="text-error text-sm">{uiText.home.loadingError}</div>
       ) : (
         <ProductsGrid columns={5}>
           {isLoading
             ? Array.from({ length: 5 }).map((_, i) => (
                 <li key={i}>
-                  <ProductCardSkeleton className="h-[300px]"/>
+                  <ProductCardSkeleton className="h-[300px]" />
                 </li>
               ))
             : data.map((p) => (
                 <li key={p.id}>
-                  <ProductCardCompact product={p} className=""/>
+                  <ProductCardCompact product={p} className="" />
                 </li>
               ))}
         </ProductsGrid>

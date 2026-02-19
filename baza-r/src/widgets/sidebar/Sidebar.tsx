@@ -10,6 +10,7 @@ import CardSection from "../../shared/components/ui/CardSection";
 import CustomLink from "../../shared/components/ui/CustomLink";
 import SocialLinks from "../../shared/components/ui/SocialLinks";
 import { footerGroups, socialMediaLinks } from "../../shared/config/links";
+import { uiText } from "../../shared/config/ui-text";
 import CatalogMenu from "../catalog/ui/CatalogMenu";
 import { LinkGroup } from "../link-groups/LinkGroup";
 
@@ -18,7 +19,7 @@ export function Sidebar() {
     <aside className="flex w-81.25 flex-col gap-4">
       <CatalogMenu />
 
-      <CardSection className="flex items-center gap-2 px-6 py-2">
+      <CardSection className="flex items-center gap-2 px-6 py-1">
         <CustomLink
           to={""}
           variant="menu"
@@ -27,26 +28,26 @@ export function Sidebar() {
           <span className="flex h-6.25 w-6.25 items-center justify-center">
             <QuestionIcon />
           </span>
-          <span className="text-sm">Довідковий центр</span>
+          <span className="text-sm">{uiText.sidebar.helpCenter}</span>
         </CustomLink>
       </CardSection>
 
       <CardSection className="flex flex-col items-center justify-center px-6 py-9 text-center">
-        <h3 className="text-xl">Ласкаво просимо!</h3>
+        <h3 className="text-xl">{uiText.sidebar.welcomeTitle}</h3>
         <p className="text-md mt-2 w-60">
-          Увійдіть, щоб отримувати рекомендації, персональні бонуси та знижки.
+          {uiText.sidebar.welcomeDescription}
         </p>
         <Button
           color="secondary"
           size="md"
           className="text-md mt-3 rounded-[40px] px-6 py-2 font-medium"
         >
-          Увійдіть до особистого кабінету
+          {uiText.sidebar.loginToCabinet}
         </Button>
       </CardSection>
 
       <CardSection className="flex flex-col gap-3 px-7 py-6">
-        <span className="text-muted text-md">Встановлюйте наші додатки</span>
+        <span className="text-muted text-md">{uiText.sidebar.installApps}</span>
         <div className="flex gap-6">
           <Button
             size="md"
@@ -66,7 +67,7 @@ export function Sidebar() {
       </CardSection>
 
       <CardSection className="flex flex-col gap-3 px-7 py-4">
-        <span className="text-muted text-md">Ми в соціальних мережах</span>
+        <span className="text-muted text-md">{uiText.sidebar.social}</span>
         <SocialLinks items={socialMediaLinks} />
       </CardSection>
 

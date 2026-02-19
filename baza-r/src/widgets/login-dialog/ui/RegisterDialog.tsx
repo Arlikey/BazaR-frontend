@@ -12,6 +12,7 @@ import IconWrapper from "../../../shared/components/ui/IconWrapper";
 import { EyeOffIcon } from "../../../shared/components/icons/ui/EyeOffIcon";
 import { EyeIcon } from "../../../shared/components/icons/ui/EyeIcon";
 import { Button } from "../../../shared/components/ui/Button";
+import { uiText } from "../../../shared/config/ui-text";
 
 type Props = {
   onLoginClick?: () => void;
@@ -43,11 +44,11 @@ export default function RegisterDialog({ onLoginClick }: Props) {
 
   return (
     <div className="w-167.5 p-7.5">
-      <h2 className="text-2xl">Реєстрація</h2>
+      <h2 className="text-2xl">{uiText.auth.registerTitle}</h2>
       <div className="flex gap-5">
         <form
           className="flex flex-1 flex-col"
-          aria-label="Login form"
+          aria-label={uiText.auth.loginFormAriaLabel}
           onSubmit={handleSubmit((data) => console.log(data))}
         >
           <div className="mt-5 flex flex-col gap-5">
@@ -57,7 +58,7 @@ export default function RegisterDialog({ onLoginClick }: Props) {
               error={errors.name?.message}
               success={dirtyFields.name && !errors.name}
               autoComplete="given-name"
-              placeholder="І’мя"
+              placeholder={uiText.auth.registerNamePlaceholder}
               {...register("name")}
             />
             <InputField
@@ -66,7 +67,7 @@ export default function RegisterDialog({ onLoginClick }: Props) {
               error={errors.lastname?.message}
               success={dirtyFields.lastname && !errors.lastname}
               autoComplete="family-name"
-              placeholder="Прізвище"
+              placeholder={uiText.auth.registerLastNamePlaceholder}
               {...register("lastname")}
             />
             <InputField
@@ -75,7 +76,7 @@ export default function RegisterDialog({ onLoginClick }: Props) {
               error={errors.phone?.message}
               success={dirtyFields.phone && !errors.phone}
               autoComplete="tel"
-              placeholder="Номер телефону"
+              placeholder={uiText.auth.registerPhonePlaceholder}
               {...register("phone")}
             />
             <InputField
@@ -84,7 +85,7 @@ export default function RegisterDialog({ onLoginClick }: Props) {
               error={errors.email?.message}
               success={dirtyFields.email && !errors.email}
               autoComplete="email"
-              placeholder="Ел.пошта"
+              placeholder={uiText.auth.registerEmailPlaceholder}
               {...register("email")}
             />
             <div>
@@ -95,7 +96,7 @@ export default function RegisterDialog({ onLoginClick }: Props) {
                 success={dirtyFields.password && !errors.password}
                 autoComplete="new-password"
                 inputClassName={visible || password === "" ? "" : "font-mono"}
-                placeholder="Придумайте пароль"
+                placeholder={uiText.auth.registerPasswordPlaceholder}
                 {...register("password")}
                 rightIcon={
                   <Button
@@ -112,17 +113,15 @@ export default function RegisterDialog({ onLoginClick }: Props) {
                 }
               />
               <span className="text-muted mt-2 inline-flex pr-2 pl-4 text-[11px]">
-                Пароль повинен складатися з не менш ніж 6 символів, містити
-                цифри та латинські літери, у тому числі великі, і не повинен
-                збігатися з ім'ям та ел. поштою
+                {uiText.auth.passwordHint}
               </span>
             </div>
           </div>
           <div className="mt-10 flex flex-col items-center">
             <span className="text-muted inline text-[11px]">
-              Реєструючись, ви погоджуєтеся з{" "}
+              {uiText.auth.registerAgreementPrefix}{" "}
               <CustomLink to={""} variant="default" color="blue">
-                угодою користувача
+                {uiText.auth.registerAgreementLink}
               </CustomLink>
             </span>
             <Button
@@ -132,7 +131,7 @@ export default function RegisterDialog({ onLoginClick }: Props) {
               className="text-inverse mt-3 h-12 rounded-[30px] text-base"
               disabled={!isValid || isSubmitting}
             >
-              <span>Зареєструватись</span>
+              <span>{uiText.auth.registerSubmit}</span>
             </Button>
             <Button
               type="button"
@@ -142,7 +141,7 @@ export default function RegisterDialog({ onLoginClick }: Props) {
               className="mt-5"
               onClick={onLoginClick}
             >
-              Я вже зареєстрований
+              {uiText.auth.openLogin}
             </Button>
           </div>
         </form>

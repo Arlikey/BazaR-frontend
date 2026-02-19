@@ -2,7 +2,6 @@ import { mapProduct } from "../../model/map";
 import type { Product } from "../../model/Product";
 import type { ProductDto } from "../ProductDto";
 
-
 const trendingMock: ProductDto[] = [
   {
     id: 1,
@@ -99,6 +98,59 @@ const recommendedMock: ProductDto[] = [
   },
 ];
 
+const awaitedProducts: ProductDto[] = [
+  {
+    id: 11,
+    category_id: 1,
+    name: 'Ноутбук Apple MacBook Pro 16" M1 Max 1TB 2021 (MK1A3UA/A) Space Gray',
+    image_url: "/images/products/Apple-MacBook-Pro-16.png",
+    old_price: 136999,
+    current_price: 122999,
+    is_active: true,
+    is_awaited: true,
+  },
+  {
+    id: 12,
+    category_id: 2,
+    name: "Бездротовий геймпад PlayStation 5 Dualsense Purple для PS5/PS 5 Digital Edition",
+    image_url: "/images/products/PlayStation-5-Dualsense-Purple.png",
+    old_price: null,
+    current_price: 2999,
+    is_active: true,
+    is_awaited: true,
+  },
+  {
+    id: 14,
+    category_id: 4,
+    name: "Samsung The Freestyle (SP-LSP3BLAXUA)",
+    image_url: "/images/products/Samsung-The-Freestyle.png",
+    old_price: null,
+    current_price: 26999,
+    is_active: true,
+    is_awaited: true,
+  },
+  {
+    id: 13,
+    category_id: 3,
+    name: "Планшет Apple iPad mini 2021 Wi-Fi 256 GB Space Gray (MK7T3RK/A)",
+    image_url: "/images/products/Apple-iPad-mini-2021.png",
+    old_price: 25999,
+    current_price: 23999,
+    is_active: true,
+    is_awaited: true,
+  },
+  {
+    id: 15,
+    category_id: 5,
+    name: "Мобільний телефон Xiaomi Redmi Note 11 Pro+ 8/256GB Mysterious Black",
+    image_url: "/images/products/Xiaomi-Redmi-Note-11.png",
+    old_price: null,
+    current_price: null,
+    is_active: true,
+    is_awaited: true,
+  },
+];
+
 export default class ProductDao {
   static async getTrendingProducts(): Promise<Product[]> {
     await new Promise((r) => setTimeout(r, 700));
@@ -108,5 +160,10 @@ export default class ProductDao {
   static async getRecommendedProducts(): Promise<Product[]> {
     await new Promise((r) => setTimeout(r, 700));
     return recommendedMock.map(mapProduct);
+  }
+
+  static async getAwaitedProducts(): Promise<Product[]> {
+    await new Promise((r) => setTimeout(r, 700));
+    return awaitedProducts.map(mapProduct);
   }
 }

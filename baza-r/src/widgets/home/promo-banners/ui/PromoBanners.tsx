@@ -8,13 +8,13 @@ import {
   CarouselItem,
   CarouselNext,
   CarouselPrevious,
-  type CarouselApi,
 } from "../../../../shared/components/ui/Carousel";
 import PromotionDao from "../../../../entities/promotion/api/__mocks__/PromotionDao";
 import type { Promotion } from "../../../../entities/promotion/model/Promotion";
 import Autoplay from "embla-carousel-autoplay";
 import { Link } from "react-router";
 import PromoBannerSkeleton from "../../../../shared/components/ui/loaders/PromoBannerSkeleton";
+import { uiText } from "../../../../shared/config/ui-text";
 
 export function PromoBanners() {
   const [data, setData] = useState<Promotion[]>([]);
@@ -38,7 +38,7 @@ export function PromoBanners() {
   );
 
   return (
-    <section aria-label="Промо-банери">
+    <section aria-label={uiText.home.promoBannersAriaLabel}>
       <div className="flex flex-col items-end gap-5">
         <Carousel
           className="w-full px-3"
@@ -75,7 +75,7 @@ export function PromoBanners() {
           border="thin"
           className="group h-11 gap-1 px-15 text-sm"
         >
-          Всі акції
+          {uiText.home.allPromotions}
           <span className="group-hover:text-accent text-neutral-500 transition">
             {total}
           </span>

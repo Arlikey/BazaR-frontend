@@ -7,28 +7,58 @@ import {
 } from "react";
 import type { Product } from "../model/Product";
 
-type CardVariant = "compact" | "rich";
-
 const card = tv({
   slots: {
-    root: "relative grid py-5 w-full h-full overflow-clip rounded-xl bg-surface bw-thin border-solid border-neutral-300 grid-rows-[auto_1fr_auto_auto]",
+    root: "py-5 relative grid min-w-0 w-full h-full overflow-hidden rounded-xl bg-surface bw-thin border-solid border-neutral-300 grid-rows-[auto_1fr_auto_auto]",
     top: "relative px-0",
     media:
-      "flex items-center justify-center overflow-visible w-[175px] h-[150px] mx-auto",
+      "flex items-center justify-center overflow-visible h-[150px] mx-auto",
     img: "max-h-full max-w-full object-contain",
     topLeft: "absolute left-4 top-4 z-10 flex flex-col gap-2",
-    topRight: "absolute right-1 -top-2 z-10 flex flex-col gap-2",
-    body: "mt-7.5 px-5",
-    title: "text-sm font-normal line-clamp-3 leading-3.5",
-    meta: "",
-    prices: "mt-2 grid gap-1",
+    RootRight: "absolute right-1 top-3 z-10 flex flex-col gap-2",
+    body: "mt-6 px-5 min-w-0",
+    title:
+      "w-full min-w-0 text-sm font-normal line-clamp-2 [overflow-wrap:anywhere]",
+    meta: "text-sm min-w-0 [overflow-wrap:anywhere]",
+    prices: "grid gap-1 min-w-0",
     oldPrice:
-      "text-sm text-neutral-300 line-through min-h-[1.25rem] leading-none",
-    currentPrice: "text-base font-normal leading-none",
+      "min-w-0 truncate text-sm text-neutral-300 line-through leading-none",
+    currentPrice: "min-w-0 truncate text-base font-normal leading-none",
     currency: "text-[11px]",
-    footer: "flex items-end justify-between gap-3 px-5",
+    footer: "flex flex-col px-5 min-w-0",
   },
   variants: {
+    size: {
+      sm: {
+        media: "h-[150px]",
+        title: "text-sm",
+        oldPrice: "text-sm",
+        currentPrice: "text-base",
+        currency: "text-[11px]",
+        prices: "gap-1 mt-2",
+      },
+      md: {
+        root: "py-2",
+        media: "h-[160px]",
+        body: "mt-2",
+        RootRight: "right-4 top-4",
+        title: "text-base min-h-[40px]",
+        oldPrice: "text-md",
+        currentPrice: "text-xl",
+        currency: "text-md",
+        prices: "gap-1",
+      },
+      lg: {
+        media: "h-[350px]",
+        title: "text-xl",
+        oldPrice: "text-xl",
+        RootRight: "right-4 top-4",
+        currentPrice: "text-4xl",
+        currency: "text-xl",
+        prices: "gap-3",
+        footer: "gap-2",
+      },
+    },
     variant: {
       compact: {},
       rich: {
@@ -41,12 +71,20 @@ const card = tv({
       },
     },
   },
-  defaultVariants: { variant: "compact" },
+  defaultVariants: { size: "sm", variant: "compact" },
 });
+
+type ProductCardVariants = VariantProps<typeof card>;
+
+type ProductCardRootProps = {
+  product: Product;
+  formatPrice?: (v: number) => string;
+  children: ReactNode;
+} & ProductCardVariants &
+  Omit<HTMLAttributes<HTMLElement>, "children">;
 
 type ProductCardContextValue = {
   product: Product;
-  variant: CardVariant;
   styles: ReturnType<typeof card>;
   formatPrice: (value: number) => string;
 };
@@ -68,28 +106,19 @@ function formatPriceUAH(value: number): string {
   return new Intl.NumberFormat("uk-UA").format(value);
 }
 
-export type ProductCardRootProps = {
-  product: Product;
-  variant?: CardVariant;
-  formatPrice?: (value: number) => string;
-  children: ReactNode;
-} & Omit<HTMLAttributes<HTMLElement>, "children"> &
-  VariantProps<typeof card>;
-
 function Root({
   product,
+  size,
   variant = "compact",
   formatPrice = formatPriceUAH,
   className,
   children,
   ...rest
 }: ProductCardRootProps) {
-  const styles = card({ variant });
+  const styles = card({ variant, size });
 
   return (
-    <ProductCardContext.Provider
-      value={{ product, variant, styles, formatPrice }}
-    >
+    <ProductCardContext.Provider value={{ product, styles, formatPrice }}>
       <article className={styles.root({ className })} {...rest}>
         <div className="contents">{children}</div>
       </article>
@@ -139,9 +168,9 @@ function TopLeft({ children, className }: SlotProps) {
   return <div className={styles.topLeft({ className })}>{children}</div>;
 }
 
-function TopRight({ children, className }: SlotProps) {
+function RootRight({ children, className }: SlotProps) {
   const { styles } = useProductCard();
-  return <div className={styles.topRight({ className })}>{children}</div>;
+  return <div className={styles.RootRight({ className })}>{children}</div>;
 }
 
 function Body({ children, className }: SlotProps) {
@@ -166,13 +195,17 @@ type PricesProps = {
 
 function Prices({ className, currency = "₴" }: PricesProps) {
   const { product, styles, formatPrice } = useProductCard();
-  const hasOld = product.oldPrice !== null;
-  const isPromo = hasOld && product.oldPrice! > product.currentPrice;
+  const old = product.oldPrice;
+  const current = product.currentPrice;
+
+  const hasOld = old != null;
+  const hasCurrent = current != null;
+  const isPromo = hasOld && hasCurrent && old > current;
 
   return (
     <div className={styles.prices({ className })}>
       <div className={styles.oldPrice()}>
-        {hasOld && (
+        {hasOld && isPromo && (
           <>
             {formatPrice(product.oldPrice!)}{" "}
             <span className={styles.currency()}>{currency}</span>
@@ -182,8 +215,12 @@ function Prices({ className, currency = "₴" }: PricesProps) {
       <div
         className={`${styles.currentPrice()} ${isPromo ? "text-promotion" : ""}`}
       >
-        {formatPrice(product.currentPrice)}{" "}
-        <span className={styles.currency()}>{currency}</span>
+        {hasCurrent && (
+          <>
+            {formatPrice(product.currentPrice!)}{" "}
+            <span className={styles.currency()}>{currency}</span>
+          </>
+        )}
       </div>
     </div>
   );
@@ -199,7 +236,7 @@ export const ProductCard = {
   Top,
   Media,
   TopLeft,
-  TopRight,
+  RootRight,
   Body,
   Title,
   Meta,

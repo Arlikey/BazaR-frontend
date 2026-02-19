@@ -6,6 +6,7 @@ import { tryCatch } from "../../../../shared/lib/try-catch";
 import { ProductCardCompact } from "../../../product-card/ProductCardCompact";
 import { ProductsGrid } from "../../../product-grid/ui/ProductGrid";
 import type { Product } from "../../../../entities/product/model/Product";
+import { uiText } from "../../../../shared/config/ui-text";
 
 export function RecommendedProducts() {
   const [data, setData] = useState<Product[]>([]);
@@ -24,9 +25,12 @@ export function RecommendedProducts() {
   }, []);
 
   return (
-    <Section title="Рекомендації на основі ваших переглядів">
+    <Section
+      aria-label={uiText.home.recommendedProductsTitle}
+      title={uiText.home.recommendedProductsTitle}
+    >
       {error ? (
-        <div className="text-error text-sm">Не вдалося завантажити</div>
+        <div className="text-error text-sm">{uiText.home.loadingError}</div>
       ) : (
         <ProductsGrid columns={5}>
           {isLoading

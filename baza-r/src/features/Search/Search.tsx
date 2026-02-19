@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import {
   CrossIcon,
   MicrophoneIcon,
   SearchIcon,
 } from "../../shared/components/icons/ui";
 import { Button } from "../../shared/components/ui/Button";
+import { uiText } from "../../shared/config/ui-text";
 
 const Search = () => {
   const [searchQuery, setSearchQuery] = useState("");
@@ -18,7 +19,7 @@ const Search = () => {
         <input
           className="text-muted ml-3 h-full flex-1 pr-4 outline-0"
           type="text"
-          placeholder="Я шукаю..."
+          placeholder={uiText.search.placeholder}
         />
         {searchQuery && (
           <div className="mr-3">
@@ -29,7 +30,7 @@ const Search = () => {
           variant="ghost"
           color="subtle"
           className="hidden h-full px-3 md:flex"
-          aria-label="Voice search"
+          aria-label={uiText.search.voiceSearchAriaLabel}
         >
           <MicrophoneIcon />
         </Button>
@@ -39,7 +40,7 @@ const Search = () => {
           color="secondary"
           className="h-full rounded-r-[20px] px-4 font-normal"
         >
-          <span className="capitalize">знайти</span>
+          <span className="capitalize">{uiText.search.submitLabel}</span>
         </Button>
       </div>
     </div>

@@ -1,0 +1,112 @@
+export const uiText = {
+  layout: {
+    promotionBannerAriaLabel: "Promotion banner",
+    promotionBannerMessage: "тотальний розпродаж до -50%",
+  },
+  search: {
+    placeholder: "Я шукаю...",
+    voiceSearchAriaLabel: "Voice search",
+    submitLabel: "знайти",
+  },
+  notFound: {
+    title: "Ууупс! Сторінку не знайдено...",
+    backToHome: "Повернутись на головну",
+  },
+  carousel: {
+    previousSlide: "Previous slide",
+    nextSlide: "Next slide",
+  },
+  socialLinks: {
+    navAriaLabel: "Social Media",
+  },
+  header: {
+    openMenuAriaLabel: "Open menu",
+    catalog: "каталог",
+    premiumTryLabel: "спробуйте",
+    premiumLabel: "premium",
+    userAriaLabel: "User",
+    cartAriaLabel: "Cart",
+  },
+  footer: {
+    contactsAriaLabel: "Contacts",
+    callCenterSchedule: "Графік роботи Call-центру",
+    copyright:
+      "© Інтернет-магазин «Розетка™»2001–2022 ТМ використовується на підставі ліцензії правовласника RozetkaLTD",
+  },
+  drawer: {
+    login: "Вхід",
+    register: "Реєстрація",
+    authDescription: "Авторизуйтесь для отримання розширених можливостей",
+    premiumLabel: "premium",
+    premiumDescription: "Безкоштовна доставка весь рік",
+    menuItems: [
+      { label: "Каталог товарів" },
+      { label: "Кошик" },
+      { label: "Довідковий центр" },
+      { label: "+38 044 222 11 00" },
+    ],
+    installApps: "Встановлюйте наші додатки",
+    social: "Ми в соціальних мережах",
+  },
+  sidebar: {
+    helpCenter: "Довідковий центр",
+    welcomeTitle: "Ласкаво просимо!",
+    welcomeDescription:
+      "Увійдіть, щоб отримувати рекомендації, персональні бонуси та знижки.",
+    loginToCabinet: "Увійдіть до особистого кабінету",
+    installApps: "Встановлюйте наші додатки",
+    social: "Ми в соціальних мережах",
+  },
+  home: {
+    promoBannersAriaLabel: "Промо-банери",
+    allPromotions: "Всі акції",
+    promoProductsTitle: "Акційні пропозиції",
+    recommendedProductsTitle: "Рекомендації на основі ваших переглядів",
+    awaitedProductsTitle: "Найбільш очікуванні товари",
+    trendingProductsTitle: "Зараз шукають",
+    loadingError: "Не вдалося завантажити",
+    giftsTitle: "Кращі подарунки",
+    giftsTiles: [
+      {
+        title: "Для неї",
+        subtitle: "Товари для краси, здоров'я і догляду за тілом",
+        href: "/gifts/for-her",
+      },
+      {
+        title: "Для нього",
+        subtitle: "Побутова техніка",
+        href: "/gifts/for-him",
+      },
+    ],
+  },
+  auth: {
+    divider: "або",
+    socialLoginTitle: "Увійти як користувач",
+    socialFacebook: "Facebook",
+    socialGoogle: "Google",
+    loginTitle: "Вхід",
+    loginFormAriaLabel: "Login form",
+    loginIdentifierPlaceholder: "Ел. пошта або телефон",
+    loginPasswordPlaceholder: "Пароль",
+    rememberMe: "Запам’ятати мене",
+    forgotPassword: "Нагадати пароль",
+    loginSubmit: "Увійти",
+    openRegister: "Зареєструватися",
+    registerTitle: "Реєстрація",
+    registerNamePlaceholder: "І’мя",
+    registerLastNamePlaceholder: "Прізвище",
+    registerPhonePlaceholder: "Номер телефону",
+    registerEmailPlaceholder: "Ел.пошта",
+    registerPasswordPlaceholder: "Придумайте пароль",
+    passwordHint:
+      "Пароль повинен складатися з не менш ніж 6 символів, містити цифри та латинські літери, у тому числі великі, і не повинен збігатися з ім'ям та ел. поштою",
+    registerAgreementPrefix: "Реєструючись, ви погоджуєтеся з",
+    registerAgreementLink: "угодою користувача",
+    registerSubmit: "Зареєструватись",
+    openLogin: "Я вже зареєстрований",
+  },
+  productCard: {
+    favouriteAriaLabel: "Add to favourites",
+    awaited: "Очікується",
+  },
+} as const;
