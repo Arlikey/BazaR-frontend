@@ -3,37 +3,41 @@ import { useLayoutEffect } from "react";
 type Options = {
   selector?: string;
   cssVarName?: string;
+  measure?: "bottom" | "height";
 };
 
-export function useHeaderOffset({
+export function useElementOffset({
   selector = "[data-app-header]",
   cssVarName = "--top-offset",
+  measure = "bottom",
 }: Options = {}) {
   useLayoutEffect(() => {
     let disposed = false;
     let raf = 0;
 
-    const setup = () => {
-      const header = document.querySelector<HTMLElement>(selector);
-      if (!header) return false;
+    const setup = (): (() => void) | false => {
+      const element = document.querySelector<HTMLElement>(selector);
+      if (!element) return false;
 
       const setOffset = () => {
-        const rect = header.getBoundingClientRect();
+        const rect = element.getBoundingClientRect();
+        const value =
+          measure === "height" ? rect.height : Math.max(0, rect.bottom);
         document.documentElement.style.setProperty(
           cssVarName,
-          `${Math.max(0, Math.round(rect.bottom))}px`,
+          `${Math.round(value)}px`,
         );
       };
+
+      setOffset();
 
       const onScrollOrResize = () => {
         cancelAnimationFrame(raf);
         raf = requestAnimationFrame(setOffset);
       };
 
-      setOffset();
-
       const ro = new ResizeObserver(onScrollOrResize);
-      ro.observe(header);
+      ro.observe(element);
 
       window.addEventListener("scroll", onScrollOrResize, { passive: true });
       window.addEventListener("resize", onScrollOrResize);
@@ -46,14 +50,15 @@ export function useHeaderOffset({
       };
     };
 
-    let cleanup: void | (() => void);
+    let cleanup: (() => void) | undefined;
+
     const tryInit = () => {
       if (disposed) return;
-      const ok = setup();
-      if (ok === false) {
+      const result = setup();
+      if (result === false) {
         raf = requestAnimationFrame(tryInit);
       } else {
-        cleanup = ok as unknown as () => void;
+        cleanup = result;
       }
     };
 

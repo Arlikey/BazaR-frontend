@@ -1,8 +1,6 @@
-// import RegisterDialog from "@/widgets/register-dialog/ui/RegisterDialog";
-
 import type { AuthMode } from "../../../shared/model/ui.store";
-import LoginDialog from "./LoginDialog";
-import RegisterDialog from "./RegisterDialog";
+import LoginDialog from "./dialogs/LoginDialog";
+import RegisterDialog from "./dialogs/RegisterDialog";
 
 type Props = {
   mode: AuthMode;

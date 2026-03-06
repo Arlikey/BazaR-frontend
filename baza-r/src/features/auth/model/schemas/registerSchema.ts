@@ -5,7 +5,7 @@ import {
   nameSchema,
   passwordSchema,
   uaPhoneSchema,
-} from "../../../../shared/lib/validation/userValidation";
+} from "../userValidation";
 
 export const registerSchema = z
   .object({

@@ -1,5 +1,4 @@
-
-const CarouselIcon = () => {
+const ChevronIcon = () => {
   return (
     <svg
       width="9"
@@ -16,4 +15,4 @@ const CarouselIcon = () => {
   );
 };
 
-export default CarouselIcon;
+export default ChevronIcon;

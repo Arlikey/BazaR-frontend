@@ -1,4 +1,6 @@
 @theme {
+  --breakpoint-1.5xl: 1366px;
+
   /* Typography scale from design */
   --text-xs: 0.625rem; /* 10px */
   --text-sm: 0.75rem; /* 12px */

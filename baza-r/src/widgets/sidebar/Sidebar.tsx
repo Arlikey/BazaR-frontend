@@ -6,7 +6,7 @@ import {
 } from "../../shared/components/icons/payments";
 import QuestionIcon from "../../shared/components/icons/ui/QuestionIcon";
 import { Button } from "../../shared/components/ui/Button";
-import CardSection from "../../shared/components/ui/CardSection";
+import Block from "../../shared/components/ui/Block";
 import CustomLink from "../../shared/components/ui/CustomLink";
 import SocialLinks from "../../shared/components/ui/SocialLinks";
 import { footerGroups, socialMediaLinks } from "../../shared/config/links";
@@ -24,16 +24,16 @@ export function Sidebar() {
     <aside className="flex w-81.25 flex-col gap-4">
       <CatalogMenu categories={roots} isLoading={isLoading} />
 
-      <CardSection className="flex items-center gap-2 px-6 py-1">
+      <Block className="flex items-center gap-2 px-6 py-1">
         <CustomLink to={""} variant="menu" className="flex flex-1">
           <span className="flex h-6.25 w-6.25 items-center justify-center">
             <QuestionIcon />
           </span>
           <span className="text-sm">{uiText.sidebar.helpCenter}</span>
         </CustomLink>
-      </CardSection>
+      </Block>
 
-      <CardSection className="flex flex-col items-center justify-center px-6 py-9 text-center">
+      <Block className="flex flex-col items-center justify-center px-6 py-9 text-center">
         <h3 className="text-xl">{uiText.sidebar.welcomeTitle}</h3>
         <p className="text-md mt-2 w-60">{uiText.sidebar.welcomeDescription}</p>
         <Button
@@ -44,9 +44,9 @@ export function Sidebar() {
         >
           {uiText.sidebar.loginToCabinet}
         </Button>
-      </CardSection>
+      </Block>
 
-      <CardSection className="flex flex-col gap-3 px-7 py-6">
+      <Block className="flex flex-col gap-3 px-7 py-6">
         <span className="text-muted text-md">{uiText.sidebar.installApps}</span>
         <div className="flex gap-6">
           <Button
@@ -64,14 +64,14 @@ export function Sidebar() {
             <AppleStoreIcon />
           </Button>
         </div>
-      </CardSection>
+      </Block>
 
-      <CardSection className="flex flex-col gap-3 px-7 py-4">
+      <Block className="flex flex-col gap-3 px-7 py-4">
         <span className="text-muted text-md">{uiText.sidebar.social}</span>
         <SocialLinks items={socialMediaLinks} />
-      </CardSection>
+      </Block>
 
-      <CardSection>
+      <Block>
         {footerGroups.map((group) => (
           <LinkGroup
             key={group.title}
@@ -83,7 +83,7 @@ export function Sidebar() {
           <MastercardLogo />
           <VisaLogo />
         </div>
-      </CardSection>
+      </Block>
     </aside>
   );
 }

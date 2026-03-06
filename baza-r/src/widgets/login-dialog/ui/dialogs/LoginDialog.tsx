@@ -1,61 +1,19 @@
-// file: src/widgets/login-dialog/ui/LoginDialog.tsx
 import { useState, type ReactNode } from "react";
-import CustomLink from "../../../shared/components/ui/CustomLink";
-import {Button} from "../../../shared/components/ui/Button";
-import IconWrapper from "../../../shared/components/ui/IconWrapper";
-import InputField from "../../../shared/components/ui/InputField";
-import FacebookIcon from "../../../shared/components/icons/login/FacebookIcon";
-import GoogleIcon from "../../../shared/components/icons/login/GoogleIcon";
+import CustomLink from "../../../../shared/components/ui/CustomLink";
+import { Button } from "../../../../shared/components/ui/Button";
+import IconWrapper from "../../../../shared/components/ui/IconWrapper";
+import InputField from "../../../../shared/components/ui/InputField";
 import {
   loginSchema,
   type LoginFormValues,
-} from "../../../features/auth/model/schemas/loginSchema";
+} from "../../../../features/auth/model/schemas/loginSchema";
 import { useForm, useWatch } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { EyeIcon } from "../../../shared/components/icons/ui/EyeIcon";
-import { EyeOffIcon } from "../../../shared/components/icons/ui/EyeOffIcon";
-import { uiText } from "../../../shared/config/ui-text";
-
-export const SocialButton = ({
-  label,
-  icon,
-}: {
-  label: string;
-  icon: ReactNode;
-}) => (
-  <CustomLink
-    href=""
-    target="_blank"
-    variant="default"
-    color="blue"
-    aria-label={label}
-    className="bw-thin bg-surface flex h-12 items-center justify-center rounded-[30px] border-neutral-300/50"
-  >
-    <IconWrapper>{icon}</IconWrapper>
-    <span>{label}</span>
-  </CustomLink>
-);
-
-export const Divider = () => (
-  <div
-    className="grid grid-rows-[1fr_auto_1fr] items-center justify-items-center gap-3 text-neutral-200"
-    aria-hidden="true"
-  >
-    <span className="h-full w-px bg-neutral-200" />
-    <span className="text-sm leading-none">{uiText.auth.divider}</span>
-    <span className="h-full w-px bg-neutral-200" />
-  </div>
-);
-
-export const SocialLogin = () => (
-  <div className="flex w-51.25 flex-col items-center justify-center gap-5">
-    <span className="text-muted text-base">{uiText.auth.socialLoginTitle}</span>
-    <div className="flex w-full flex-col gap-5">
-      <SocialButton label={uiText.auth.socialFacebook} icon={<FacebookIcon />} />
-      <SocialButton label={uiText.auth.socialGoogle} icon={<GoogleIcon />} />
-    </div>
-  </div>
-);
+import { EyeIcon } from "../../../../shared/components/icons/ui/EyeIcon";
+import { EyeOffIcon } from "../../../../shared/components/icons/ui/EyeOffIcon";
+import { uiText } from "../../../../shared/config/ui-text";
+import { Divider } from "../components/Divider";
+import { SocialLogin } from "../components/SocialLogin";
 
 type Props = {
   onRegisterClick?: () => void;
@@ -113,7 +71,11 @@ export default function LoginDialog({ onRegisterClick }: Props) {
                   color="default"
                   className="pointer-events-auto"
                   type="button"
-                  onClick={() => setIsVisible(!visible)}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    setIsVisible(!visible);
+                  }}
                 >
                   <IconWrapper>
                     {visible ? <EyeIcon /> : <EyeOffIcon />}

@@ -17,6 +17,11 @@ type UiState = {
   openMegamenu: () => void;
   closeMegamenu: () => void;
   setMegamenuOpen: (open: boolean) => void;
+
+  cart: { open: boolean };
+  openCart: () => void;
+  closeCart: () => void;
+  setCartOpen: (open: boolean) => void;
 };
 
 export const useUiStore = create<UiState>((set) => ({
@@ -34,4 +39,9 @@ export const useUiStore = create<UiState>((set) => ({
   openMegamenu: () => set(() => ({ megamenu: { open: true } })),
   closeMegamenu: () => set(() => ({ megamenu: { open: false } })),
   setMegamenuOpen: (open) => set(() => ({ megamenu: { open } })),
+
+  cart: { open: false },
+  openCart: () => set(() => ({ cart: { open: true } })),
+  closeCart: () => set(() => ({ cart: { open: false } })),
+  setCartOpen: (open) => set(() => ({ cart: { open } })),
 }));

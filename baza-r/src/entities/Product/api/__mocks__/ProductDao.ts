@@ -6,10 +6,10 @@ const trendingMock: ProductDto[] = [
   {
     id: 1,
     category_id: 1,
-    name: "Мобільний телефон Apple iPhone 13 Pro Max 256 GB Sierra Blue",
-    image_url: "/images/products/iphone-13-pro-max.png",
-    old_price: 47499,
-    current_price: 46499,
+    name: "Ноутбук Lenovo IdeaPad 1 15AMN7 (82VG00RHRA) Cloud Grey / 15.6\" IPS / AMD Ryzen 3 7320U / RAM 16 ГБ / SSD 512 ГБ",
+    image_url: "/images/products/original/551437411.png",
+    old_price: 21999,
+    current_price: 18999,
     is_active: true,
   },
   {

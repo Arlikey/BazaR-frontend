@@ -7,6 +7,14 @@
 @import "./fonts.css";
 
 @layer base {
+  :root {
+    --scroll-offset: calc(var(--top-offset) + var(--tabs-height));
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
   html,
   body,
   :root {

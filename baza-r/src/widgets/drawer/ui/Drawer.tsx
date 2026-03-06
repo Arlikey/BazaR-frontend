@@ -1,6 +1,6 @@
 import * as Accordion from "@radix-ui/react-accordion";
 
-import CardSection from "../../../shared/components/ui/CardSection";
+import Block from "../../../shared/components/ui/Block";
 import SocialLinks from "../../../shared/components/ui/SocialLinks";
 import { footerGroups, socialMediaLinks } from "../../../shared/config/links";
 import { Button } from "../../../shared/components/ui/Button";
@@ -17,8 +17,7 @@ import {
   TelephoneIcon,
   UserIcon,
 } from "../../../shared/components/icons/ui";
-import { Modal } from "../../../shared/components/ui/modal/Modal";
-import ArrowRightIcon from "../../../shared/components/icons/ui/ArrowRightIcon";
+import ArrowRightIcon from "../../../shared/components/icons/ui/ArrowIcon";
 import AltQuestionIcon from "../../../shared/components/icons/ui/AltQuestionIcon";
 import { useUiStore } from "../../../shared/model/ui.store";
 import { uiText } from "../../../shared/config/ui-text";
@@ -50,13 +49,15 @@ const Drawer = () => {
     <div className="flex flex-col gap-4">
       <div>
         <div className="bg-brand flex h-50 flex-col justify-between px-6 pt-7 pb-9">
-          <Modal.Close className="self-end">
-            <Button rounded="sm" className="h-9 w-9">
-              <IconWrapper size={16} className="text-inverse">
-                <CrossIcon />
-              </IconWrapper>
-            </Button>
-          </Modal.Close>
+          <Button
+            rounded="sm"
+            className="h-9 w-9 self-end"
+            onClick={() => closeDrawer()}
+          >
+            <IconWrapper size={16} className="text-inverse">
+              <CrossIcon />
+            </IconWrapper>
+          </Button>
           <div className="flex items-center gap-6 pl-2">
             <IconWrapper size={45} className="text-inverse">
               <UserIcon />
@@ -117,7 +118,7 @@ const Drawer = () => {
       </div>
 
       <div className="flex flex-col gap-2.5 px-6 pb-8">
-        <CardSection className="flex flex-col px-5 py-3">
+        <Block className="flex flex-col px-5 py-3">
           {drawerMenuItems.map(({ icon: Icon, label, onClick }) => (
             <CustomLink
               key={label}
@@ -132,26 +133,26 @@ const Drawer = () => {
               <span className="text-base">{label}</span>
             </CustomLink>
           ))}
-        </CardSection>
+        </Block>
 
-        <CardSection className="text-md flex flex-col gap-4 px-7 py-6">
+        <Block className="text-md flex flex-col gap-4 px-7 py-6">
           <LinkGroup group={company} />
-        </CardSection>
+        </Block>
 
-        <CardSection className="text-md flex flex-col gap-4 px-7 py-6">
+        <Block className="text-md flex flex-col gap-4 px-7 py-6">
           <LinkGroup group={help} />
-        </CardSection>
+        </Block>
         <Accordion.Root type="multiple" className="flex flex-col gap-2.5">
-          <CardSection className="text-md flex flex-col gap-4 px-7 py-6">
+          <Block className="text-md flex flex-col gap-4 px-7 py-6">
             <LinksGroupAccordionItem group={services} value="services" />
-          </CardSection>
+          </Block>
 
-          <CardSection className="text-md flex flex-col gap-4 px-7 py-6">
+          <Block className="text-md flex flex-col gap-4 px-7 py-6">
             <LinksGroupAccordionItem group={partners} value="partners" />
-          </CardSection>
+          </Block>
         </Accordion.Root>
 
-        <CardSection className="flex flex-col gap-4 px-7 py-6">
+        <Block className="flex flex-col gap-4 px-7 py-6">
           <span className="text-md font-medium">
             {uiText.drawer.installApps}
           </span>
@@ -171,12 +172,12 @@ const Drawer = () => {
               <AppleStoreIcon />
             </Button>
           </div>
-        </CardSection>
+        </Block>
 
-        <CardSection className="flex flex-col gap-4 px-7 py-4">
+        <Block className="flex flex-col gap-4 px-7 py-4">
           <span className="text-md font-medium">{uiText.drawer.social}</span>
           <SocialLinks items={socialMediaLinks} />
-        </CardSection>
+        </Block>
       </div>
     </div>
   );

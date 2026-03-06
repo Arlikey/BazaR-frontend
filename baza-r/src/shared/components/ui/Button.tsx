@@ -30,7 +30,7 @@ export const buttonVariants = tv({
     },
     size: {
       sm: "h-8 px-2 text-sm",
-      md: "h-10 text-base",
+      md: "h-10 text-lg",
       lg: "h-12 px-4 text-lg",
       icon: " w-11.25 h-11.25",
     },

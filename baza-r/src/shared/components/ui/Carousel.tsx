@@ -7,7 +7,7 @@ import useEmblaCarousel, {
 import { cn } from "tailwind-variants";
 import IconWrapper from "./IconWrapper";
 import { Button } from "./Button";
-import CarouselIcon from "../icons/ui/CarouselIcon";
+import CarouselIcon from "../icons/ui/ChevronIcon";
 import { uiText } from "../../config/ui-text";
 
 type CarouselApi = UseEmblaCarouselType[1];

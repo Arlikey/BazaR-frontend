@@ -3,7 +3,7 @@ import {
   emailSchema,
   passwordSchema,
   uaPhoneSchema,
-} from "../../../../shared/lib/validation/userValidation";
+} from "../userValidation";
 
 export const loginSchema = z.object({
   identifier: z

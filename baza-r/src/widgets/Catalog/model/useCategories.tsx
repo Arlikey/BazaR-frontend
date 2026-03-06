@@ -4,25 +4,20 @@ import CategoryDao from "../../../entities/category/api/__mocks__/CategoryDao";
 import type { Category } from "../../../entities/category/model/Category";
 import { buildCategoryTree } from "../../../entities/category/model/buildCategoryTree";
 import type { CategoryNode } from "../../../entities/category/model/tree";
+import { useQuery } from "@tanstack/react-query";
 
 export function useCatalogCategories() {
-  const [flat, setFlat] = useState<Category[]>([]);
-  const [error, setError] = useState<Error | null>(null);
-  const [isLoading, setIsLoading] = useState(false);
+  const {
+    data: flat = [],
+    error,
+    isLoading,
+  } = useQuery({
+    queryKey: ["categories"],
+    queryFn: () => CategoryDao.getCategories(),
+    staleTime: 5 * 60 * 1000,
+  });
 
-  useEffect(() => {
-    const load = async () => {
-      setIsLoading(true);
-      const [data, err] = await tryCatch(CategoryDao.getCategories());
-      if (err) setError(err);
-      else if (data) setFlat(data);
-      setIsLoading(false);
-    };
-    load();
-  }, []);
+  const tree = useMemo(() => buildCategoryTree(flat), [flat]);
 
-  const tree: CategoryNode[] = useMemo(() => buildCategoryTree(flat), [flat]);
-  const roots: CategoryNode[] = tree;
-
-  return { flat, roots, tree, error, isLoading };
+  return { flat, tree, roots: tree, error, isLoading };
 }

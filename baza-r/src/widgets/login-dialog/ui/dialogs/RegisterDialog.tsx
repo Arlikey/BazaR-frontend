@@ -1,18 +1,19 @@
-import { useEffect, useState } from "react";
-import { Divider, SocialLogin } from "./LoginDialog";
-import CustomLink from "../../../shared/components/ui/CustomLink";
-import InputField from "../../../shared/components/ui/InputField";
+import { useState } from "react";
+import CustomLink from "../../../../shared/components/ui/CustomLink";
+import InputField from "../../../../shared/components/ui/InputField";
 import { useForm, useWatch } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import {
   registerSchema,
   type RegisterFormValues,
-} from "../../../features/auth/model/schemas/registerSchema";
-import IconWrapper from "../../../shared/components/ui/IconWrapper";
-import { EyeOffIcon } from "../../../shared/components/icons/ui/EyeOffIcon";
-import { EyeIcon } from "../../../shared/components/icons/ui/EyeIcon";
-import { Button } from "../../../shared/components/ui/Button";
-import { uiText } from "../../../shared/config/ui-text";
+} from "../../../../features/auth/model/schemas/registerSchema";
+import IconWrapper from "../../../../shared/components/ui/IconWrapper";
+import { EyeOffIcon } from "../../../../shared/components/icons/ui/EyeOffIcon";
+import { EyeIcon } from "../../../../shared/components/icons/ui/EyeIcon";
+import { Button } from "../../../../shared/components/ui/Button";
+import { uiText } from "../../../../shared/config/ui-text";
+import { Divider } from "../components/Divider";
+import { SocialLogin } from "../components/SocialLogin";
 
 type Props = {
   onLoginClick?: () => void;
@@ -25,22 +26,13 @@ export default function RegisterDialog({ onLoginClick }: Props) {
     register,
     handleSubmit,
     control,
-    trigger,
-    formState: { errors, isValid, isSubmitting, touchedFields, dirtyFields },
+    formState: { errors, isValid, isSubmitting, dirtyFields },
   } = useForm<RegisterFormValues>({
     resolver: zodResolver(registerSchema),
     mode: "onChange",
   });
 
-  const name = useWatch({ control, name: "name" });
-  const email = useWatch({ control, name: "email" });
   const password = useWatch({ control, name: "password" }) ?? "";
-  const touchedPassword = touchedFields.password;
-
-  useEffect(() => {
-    if (!password || !touchedPassword) return;
-    void trigger("password");
-  }, [name, email, password, touchedPassword, trigger]);
 
   return (
     <div className="w-167.5 p-7.5">
@@ -104,7 +96,11 @@ export default function RegisterDialog({ onLoginClick }: Props) {
                     color="default"
                     className="pointer-events-auto"
                     type="button"
-                    onClick={() => setIsVisible(!visible)}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      e.stopPropagation();
+                      setIsVisible(!visible);
+                    }}
                   >
                     <IconWrapper>
                       {visible ? <EyeIcon /> : <EyeOffIcon />}

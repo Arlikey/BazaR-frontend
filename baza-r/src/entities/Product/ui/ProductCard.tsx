@@ -9,7 +9,7 @@ import type { Product } from "../model/Product";
 
 const card = tv({
   slots: {
-    root: "py-5 relative grid min-w-0 w-full h-full overflow-hidden rounded-xl bg-surface bw-thin border-solid border-neutral-300 grid-rows-[auto_1fr_auto_auto]",
+    root: "hover:scale-103 hover:z-10 transition-transform py-5 relative grid min-w-0 w-full h-full overflow-hidden rounded-xl bg-surface bw-thin border-solid border-neutral-300 grid-rows-[auto_1fr_auto_auto]",
     top: "relative px-0",
     media:
       "flex items-center justify-center overflow-visible h-[150px] mx-auto",

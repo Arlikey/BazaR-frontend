@@ -4,10 +4,10 @@ import Megamenu from "./MegaMenu";
 
 export default function MegaMenuModalHost() {
   const open = useUiStore((s) => s.megamenu.open);
-  const closeMegamenu = useUiStore((s) => s.closeMegamenu);
+  const setMegamenuOpen = useUiStore((s) => s.setMegamenuOpen);
 
   return (
-    <Modal.Root open={open} onOpenChange={(o) => !o && closeMegamenu()}>
+    <Modal.Root open={open} onOpenChange={setMegamenuOpen}>
       <Modal.Content
         side="top"
         rounded="md"

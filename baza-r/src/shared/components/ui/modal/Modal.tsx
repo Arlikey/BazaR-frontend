@@ -19,9 +19,9 @@ const modal = tv({
           "left-1/2 top-1/2 data-[state=open]:animate-[popIn_.21s_ease-out] data-[state=closed]:animate-[popOut_.21s_ease-in] -translate-x-1/2 -translate-y-1/2 translate-z-0 will-change:transform",
       },
       top: {
-        overlay: "top-[var(--top-offset)] z-40",
+        overlay: "top-(--top-offset) z-40",
         content:
-          "left-1/2 -translate-x-1/2 z-40 data-[state=open]:animate-[megaIn_.26s_cubic-bezier(0.16,1,0.3,1)] data-[state=closed]:animate-[megaOut_.18s_cubic-bezier(0.4,0,1,1)] top-[var(--top-offset)]",
+          "left-1/2 -translate-x-1/2 z-40 bg-transparent data-[state=open]:animate-[megaIn_.26s_cubic-bezier(0.16,1,0.3,1)] data-[state=closed]:animate-[megaOut_.18s_cubic-bezier(0.4,0,1,1)] top-[var(--top-offset)]",
       },
     },
     rounded: {

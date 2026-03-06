@@ -1,7 +1,6 @@
 import { Modal } from "../../../shared/components/ui/modal/Modal";
 import { useUiStore } from "../../../shared/model/ui.store";
 import AuthDialog from "./AuthDialog";
-import LoginDialog from "./LoginDialog";
 
 export default function AuthModalHost() {
   const open = useUiStore((s) => s.auth.open);
