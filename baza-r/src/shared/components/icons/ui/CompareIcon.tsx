@@ -1,4 +1,4 @@
-const CompareIcon = () => {
+export const CompareIcon = () => {
   return (
     <svg
       width="30"
@@ -58,5 +58,3 @@ const CompareIcon = () => {
     </svg>
   );
 };
-
-export default CompareIcon;

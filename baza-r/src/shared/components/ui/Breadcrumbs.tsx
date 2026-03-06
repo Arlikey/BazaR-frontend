@@ -1,7 +1,7 @@
+import { CaretIcon } from "../icons/ui/CaretIcon";
+import { HomeIcon } from "../icons/ui/HomeIcon";
 import CustomLink from "./CustomLink";
 import IconWrapper from "./IconWrapper";
-import CaretIcon from "../icons/ui/CaretIcon";
-import HomeIcon from "../icons/ui/HomeIcon";
 import { Fragment } from "react/jsx-runtime";
 
 export type BreadcrumbItem = {

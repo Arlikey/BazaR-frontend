@@ -1,7 +1,7 @@
-import * as React from "react";
+import { useId } from "react";
 
-export default function TelegramIcon() {
-  const uid = React.useId();
+export const TelegramIcon = () => {
+  const uid = useId();
   const clipId = `tg-clip-${uid}`;
   const gradId = `tg-grad-${uid}`;
 
@@ -51,4 +51,4 @@ export default function TelegramIcon() {
       </defs>
     </svg>
   );
-}
+};

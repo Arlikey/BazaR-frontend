@@ -1,6 +1,4 @@
-import React from "react";
-
-const EmptyCartIcon = () => {
+export const EmptyCartIcon = () => {
   return (
     <svg
       width="262"
@@ -255,5 +253,3 @@ const EmptyCartIcon = () => {
     </svg>
   );
 };
-
-export default EmptyCartIcon;

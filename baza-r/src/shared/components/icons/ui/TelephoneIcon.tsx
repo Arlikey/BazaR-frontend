@@ -1,4 +1,4 @@
-const TelephoneIcon = () => {
+export const TelephoneIcon = () => {
   return (
     <svg
       width="21"
@@ -16,5 +16,3 @@ const TelephoneIcon = () => {
     </svg>
   );
 };
-
-export default TelephoneIcon;

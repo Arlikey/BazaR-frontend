@@ -1,9 +1,8 @@
 import { useState } from "react";
 import Block from "../../../shared/components/ui/Block";
-import { Button } from "../../../shared/components/ui/Button";
 import { useCartStore } from "../model/cart.store";
 import type { CartItem } from "../model/cart.config";
-import TrashIcon from "../../../shared/components/icons/ui/TrashIcon";
+import { TrashIcon } from "../../../shared/components/icons/ui/TrashIcon";
 
 type Props = {
   item: CartItem;
@@ -15,7 +14,6 @@ export function CartItem({ item }: Props) {
 
   return (
     <Block rounded="lg" className="flex items-center gap-5 px-10 py-4">
-      {/* Фото */}
       <div className="h-20 w-20 shrink-0">
         <img
           src={item.image}
@@ -24,7 +22,6 @@ export function CartItem({ item }: Props) {
         />
       </div>
 
-      {/* Название */}
       <div className="flex flex-1 flex-col gap-1">
         <span className="text-base">{item.name}</span>
         {item.services && item.services.length > 0 && (
@@ -51,7 +48,6 @@ export function CartItem({ item }: Props) {
         )}
       </div>
 
-      {/* Количество */}
       <div className="flex items-center gap-3">
         <button
           onClick={() =>
@@ -70,7 +66,6 @@ export function CartItem({ item }: Props) {
         </button>
       </div>
 
-      {/* Цена */}
       <div className="flex flex-col items-end">
         {item.oldPrice && (
           <span className="text-muted text-base">
@@ -88,7 +83,6 @@ export function CartItem({ item }: Props) {
         </span>
       </div>
 
-      {/* Удалить */}
       <button
         onClick={() => removeItem(item.id)}
         className="text-muted transition-colors hover:text-red-500"

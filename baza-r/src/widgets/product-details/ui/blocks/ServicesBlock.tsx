@@ -1,9 +1,10 @@
-import CheckIcon from "../../../shared/components/icons/ui/CheckIcon";
-import InfoIcon from "../../../shared/components/icons/ui/InfoIcon";
-import Block from "../../../shared/components/ui/Block";
-import IconWrapper from "../../../shared/components/ui/IconWrapper";
-import { SERVICES } from "../model/services.config";
-import { useServicesState } from "../model/useServicesState";
+
+import { CheckIcon } from "../../../../shared/components/icons/ui/CheckIcon";
+import { InfoIcon } from "../../../../shared/components/icons/ui/InfoIcon";
+import Block from "../../../../shared/components/ui/Block";
+import IconWrapper from "../../../../shared/components/ui/IconWrapper";
+import { SERVICES } from "../../model/services.config";
+import { useServicesState } from "../../model/useServicesState";
 
 export function ServicesBlock() {
   const {

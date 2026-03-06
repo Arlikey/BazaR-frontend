@@ -1,6 +1,4 @@
-import React from "react";
-
-const MastercardLogo = () => {
+export const MastercardLogo = () => {
   return (
     <svg
       width="66"
@@ -20,5 +18,3 @@ const MastercardLogo = () => {
     </svg>
   );
 };
-
-export default MastercardLogo;

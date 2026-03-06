@@ -3,9 +3,9 @@ import { CartEmpty } from "./CartEmpty";
 import { CartItem } from "./CartItem";
 import { CartFooter } from "./CartFooter";
 import IconWrapper from "../../../shared/components/ui/IconWrapper";
-import { CrossIcon } from "../../../shared/components/icons/ui";
 import { Button } from "../../../shared/components/ui/Button";
 import { useUiStore } from "../../../shared/model/ui.store";
+import { CrossIcon } from "../../../shared/components/icons/ui/CrossIcon";
 
 export function Cart() {
   const items = useCartStore((s) => s.items);

@@ -1,6 +1,4 @@
-import React from "react";
-
-const ViberIcon = () => {
+export const ViberIcon = () => {
   return (
     <svg
       width="33"
@@ -18,5 +16,3 @@ const ViberIcon = () => {
     </svg>
   );
 };
-
-export default ViberIcon;

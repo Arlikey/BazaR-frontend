@@ -1,4 +1,4 @@
-const FacebookIcon = () => {
+export const FacebookIcon = () => {
   return (
     <svg
       width="32"
@@ -14,5 +14,3 @@ const FacebookIcon = () => {
     </svg>
   );
 };
-
-export default FacebookIcon;

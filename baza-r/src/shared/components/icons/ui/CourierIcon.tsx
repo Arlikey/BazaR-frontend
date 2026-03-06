@@ -1,6 +1,4 @@
-import React from "react";
-
-const CourierIcon = () => {
+export const CourierIcon = () => {
   return (
     <svg
       width="18"
@@ -30,5 +28,3 @@ const CourierIcon = () => {
     </svg>
   );
 };
-
-export default CourierIcon;

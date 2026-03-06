@@ -1,6 +1,4 @@
-import React from "react";
-
-const ErrorIcon = () => {
+export const ErrorIcon = () => {
   return (
     <svg
       width="19"
@@ -24,5 +22,3 @@ const ErrorIcon = () => {
     </svg>
   );
 };
-
-export default ErrorIcon;

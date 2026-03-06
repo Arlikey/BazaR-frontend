@@ -7,8 +7,8 @@ import useEmblaCarousel, {
 import { cn } from "tailwind-variants";
 import IconWrapper from "./IconWrapper";
 import { Button } from "./Button";
-import CarouselIcon from "../icons/ui/ChevronIcon";
 import { uiText } from "../../config/ui-text";
+import { ChevronIcon } from "../icons/ui/ChevronIcon";
 
 type CarouselApi = UseEmblaCarouselType[1];
 type UseCarouselParameters = Parameters<typeof useEmblaCarousel>;
@@ -199,7 +199,7 @@ function CarouselPrevious({
       {...props}
     >
       <IconWrapper className="text-ink">
-        <CarouselIcon />
+        <ChevronIcon />
       </IconWrapper>
       <span className="sr-only">{uiText.carousel.previousSlide}</span>
     </Button>
@@ -232,8 +232,8 @@ function CarouselNext({
       onClick={scrollNext}
       {...props}
     >
-      <IconWrapper className="rotate-180 text-ink">
-        <CarouselIcon />
+      <IconWrapper className="text-ink rotate-180">
+        <ChevronIcon />
       </IconWrapper>
       <span className="sr-only">{uiText.carousel.nextSlide}</span>
     </Button>

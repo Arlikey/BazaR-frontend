@@ -1,10 +1,3 @@
-import AppleStoreIcon from "../../shared/components/icons/apps/AppleStoreIcon";
-import PlayStoreIcon from "../../shared/components/icons/apps/PlayStoreIcon";
-import {
-  MastercardLogo,
-  VisaLogo,
-} from "../../shared/components/icons/payments";
-import QuestionIcon from "../../shared/components/icons/ui/QuestionIcon";
 import { Button } from "../../shared/components/ui/Button";
 import Block from "../../shared/components/ui/Block";
 import CustomLink from "../../shared/components/ui/CustomLink";
@@ -15,6 +8,11 @@ import { useUiStore } from "../../shared/model/ui.store";
 import { useCatalogCategories } from "../catalog/model/useCategories";
 import CatalogMenu from "../catalog/ui/CatalogMenu";
 import { LinkGroup } from "../link-groups/LinkGroup";
+import { QuestionIcon } from "../../shared/components/icons/ui/QuestionIcon";
+import { PlayStoreIcon } from "../../shared/components/icons/apps/PlayStoreIcon";
+import { AppleStoreIcon } from "../../shared/components/icons/apps/AppleStoreIcon";
+import { MastercardLogo } from "../../shared/components/icons/payments/MastercardLogo";
+import { VisaLogo } from "../../shared/components/icons/payments/VisaLogo";
 
 export function Sidebar() {
   const openAuth = useUiStore((s) => s.openAuth);

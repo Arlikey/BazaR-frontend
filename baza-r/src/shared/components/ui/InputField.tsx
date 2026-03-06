@@ -1,7 +1,7 @@
 import type { InputHTMLAttributes, ReactNode } from "react";
 import { tv, type VariantProps } from "tailwind-variants";
 import IconWrapper from "./IconWrapper";
-import ErrorIcon from "../icons/ui/ErrorIcon";
+import { ErrorIcon } from "../icons/ui/ErrorIcon";
 
 const inputField = tv({
   slots: {

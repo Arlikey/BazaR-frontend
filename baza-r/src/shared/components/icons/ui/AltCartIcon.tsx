@@ -1,4 +1,4 @@
-const AltCartIcon = () => {
+export const AltCartIcon = () => {
   return (
     <svg
       width="24"
@@ -14,5 +14,3 @@ const AltCartIcon = () => {
     </svg>
   );
 };
-
-export default AltCartIcon;

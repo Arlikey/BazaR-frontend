@@ -1,6 +1,6 @@
 import type { ReactNode } from "react";
-import Block from "../../../shared/components/ui/Block";
-import CustomLink from "../../../shared/components/ui/CustomLink";
+import Block from "../../../../shared/components/ui/Block";
+import CustomLink from "../../../../shared/components/ui/CustomLink";
 
 type DeliveryOption = {
   id: string;

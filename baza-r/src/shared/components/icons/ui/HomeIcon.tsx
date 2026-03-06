@@ -1,6 +1,4 @@
-import React from "react";
-
-const HomeIcon = () => {
+export const HomeIcon = () => {
   return (
     <svg
       width="14"
@@ -18,5 +16,3 @@ const HomeIcon = () => {
     </svg>
   );
 };
-
-export default HomeIcon;

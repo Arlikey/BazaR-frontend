@@ -1,14 +1,14 @@
-import { FavouriteAltIcon } from "../../../shared/components/icons/ui";
-import CompareIcon from "../../../shared/components/icons/ui/CompareIcon";
-import InfoIcon from "../../../shared/components/icons/ui/InfoIcon";
-import Block from "../../../shared/components/ui/Block";
-import { Button } from "../../../shared/components/ui/Button";
-import CustomLink from "../../../shared/components/ui/CustomLink";
-import IconWrapper from "../../../shared/components/ui/IconWrapper";
+import { CompareIcon } from "../../../../shared/components/icons/ui/CompareIcon";
+import { FavouriteAltIcon } from "../../../../shared/components/icons/ui/FavouriteIcon";
+import { InfoIcon } from "../../../../shared/components/icons/ui/InfoIcon";
+import Block from "../../../../shared/components/ui/Block";
+import { Button } from "../../../../shared/components/ui/Button";
+import CustomLink from "../../../../shared/components/ui/CustomLink";
+import IconWrapper from "../../../../shared/components/ui/IconWrapper";
 import type {
   PurchaseBlockProps,
   StockStatus,
-} from "../model/purchase-block.config";
+} from "../../model/purchase-block.config";
 
 const STOCK_LABELS: Record<
   StockStatus,
@@ -67,7 +67,6 @@ export function PurchaseBlock({
       )}
 
       <div className="1.5xl:flex-row flex flex-col justify-between gap-4">
-        {/* Строка 1: цена + иконки */}
         <div className="flex items-center justify-between gap-3">
           <div className="mr-10 flex flex-col">
             {oldPrice && (
@@ -86,7 +85,6 @@ export function PurchaseBlock({
             )}
           </div>
 
-          {/* Иконки — всегда справа от цены на узком, прячутся на широком */}
           <div className="1.5xl:hidden flex gap-7.5">
             <IconWrapper
               className={`h-7.5 cursor-pointer transition-colors ${isFavourite ? "text-accent" : "text-subtle"}`}
@@ -101,7 +99,6 @@ export function PurchaseBlock({
           </div>
         </div>
 
-        {/* Строка 2 на узком / продолжение строки 1 на широком */}
         {isAvailable && (
           <div className="1.5xl:flex-row 1.5xl:items-center flex flex-col gap-4">
             <Button
@@ -127,7 +124,6 @@ export function PurchaseBlock({
               </Button>
             )}
 
-            {/* Иконки — только на широком, после кнопок */}
             <div className="1.5xl:flex ml-10 hidden gap-7.5">
               <IconWrapper
                 className={`h-7.5 cursor-pointer transition-colors ${isFavourite ? "text-accent" : "text-subtle"}`}
@@ -145,14 +141,14 @@ export function PurchaseBlock({
       </div>
 
       {(bonusAmount || paymentBadges?.length) && (
-        <div className="flex items-center gap-4 text-accent">
+        <div className="text-accent flex items-center gap-4">
           {bonusAmount && (
             <div className="flex items-center gap-2">
               <span className="text-sm font-medium">
                 + {bonusAmount.toLocaleString("uk-UA")} бонусних ₴ на рахунок у
                 разі купівлі
               </span>
-              <button className="transition-colors hover:text-accent-hover">
+              <button className="hover:text-accent-hover transition-colors">
                 <InfoIcon />
               </button>
             </div>

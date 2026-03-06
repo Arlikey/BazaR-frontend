@@ -1,6 +1,4 @@
-import React from "react";
-
-const QuestionIcon = () => {
+export const QuestionIcon = () => {
   return (
     <svg
       width="20"
@@ -16,5 +14,3 @@ const QuestionIcon = () => {
     </svg>
   );
 };
-
-export default QuestionIcon;

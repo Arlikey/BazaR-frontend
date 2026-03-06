@@ -1,6 +1,4 @@
-import React from "react";
-
-const VisaLogo = () => {
+export const VisaLogo = () => {
   return (
     <svg
       width="56"
@@ -48,5 +46,3 @@ const VisaLogo = () => {
     </svg>
   );
 };
-
-export default VisaLogo;

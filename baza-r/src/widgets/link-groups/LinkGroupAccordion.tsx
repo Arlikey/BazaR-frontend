@@ -1,8 +1,8 @@
 import * as Accordion from "@radix-ui/react-accordion";
 import type { LinkType } from "../../shared/config/types";
 import { LinkGroup } from "./LinkGroup";
-import ArrowDownIcon from "../../shared/components/icons/ui/CaretIcon";
 import IconWrapper from "../../shared/components/ui/IconWrapper";
+import { CaretIcon } from "../../shared/components/icons/ui/CaretIcon";
 
 type AccordionItemProps = {
   group: LinkType;
@@ -24,7 +24,7 @@ export function LinksGroupAccordionItem({
             aria-hidden="true"
             className="transition-transform duration-300 ease-out group-data-[state=open]:rotate-180"
           >
-            <ArrowDownIcon />
+            <CaretIcon />
           </IconWrapper>
         </Accordion.Trigger>
       </Accordion.Header>

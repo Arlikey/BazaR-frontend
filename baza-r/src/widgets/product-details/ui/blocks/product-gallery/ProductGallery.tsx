@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { GalleryThumbnails } from "./GalleryThumbnails";
 import { GalleryMainImage } from "./GalleryMainImage";
-import { GallerySkeleton } from "../../../../shared/components/ui/loaders/GallerySkeleten";
+import { GallerySkeleton } from "../../../../../shared/components/ui/loaders/GallerySkeleten";
 
 type Props = {
   images?: string[];
@@ -11,7 +11,6 @@ type Props = {
 
 export function ProductGallery({ images, alt = "", isLoading }: Props) {
   const [activeIndex, setActiveIndex] = useState(0);
-  const [lightboxOpen, setLightboxOpen] = useState(false);
 
   if (isLoading || !images?.length) return <GallerySkeleton />;
 
@@ -22,11 +21,7 @@ export function ProductGallery({ images, alt = "", isLoading }: Props) {
         activeIndex={activeIndex}
         onSelect={setActiveIndex}
       />
-      <GalleryMainImage
-        src={images[activeIndex]}
-        alt={alt}
-        onClick={() => setLightboxOpen(true)}
-      />
+      <GalleryMainImage src={images[activeIndex]} alt={alt} />
     </div>
   );
 }

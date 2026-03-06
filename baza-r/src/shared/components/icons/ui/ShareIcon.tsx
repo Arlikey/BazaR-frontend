@@ -1,6 +1,4 @@
-import React from "react";
-
-const ShareIcon = () => {
+export const ShareIcon = () => {
   return (
     <svg
       width="18"
@@ -16,5 +14,3 @@ const ShareIcon = () => {
     </svg>
   );
 };
-
-export default ShareIcon;

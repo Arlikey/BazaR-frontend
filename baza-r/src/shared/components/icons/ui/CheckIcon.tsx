@@ -1,6 +1,4 @@
-import React from "react";
-
-const CheckIcon = () => {
+export const CheckIcon = () => {
   return (
     <svg
       width="11"
@@ -18,5 +16,3 @@ const CheckIcon = () => {
     </svg>
   );
 };
-
-export default CheckIcon;

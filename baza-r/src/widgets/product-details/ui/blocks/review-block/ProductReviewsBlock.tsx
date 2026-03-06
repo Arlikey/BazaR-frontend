@@ -1,6 +1,5 @@
-import { Button } from "../../../../shared/components/ui/Button";
-import CustomLink from "../../../../shared/components/ui/CustomLink";
-import type { Review } from "../../model/review.config";
+import CustomLink from "../../../../../shared/components/ui/CustomLink";
+import type { Review } from "../../../model/review.config";
 import { ReviewCard } from "./ReviewCard";
 
 type Props = {

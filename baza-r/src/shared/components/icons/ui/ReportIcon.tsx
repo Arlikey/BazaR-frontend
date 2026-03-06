@@ -1,6 +1,4 @@
-import React from "react";
-
-const ReportIcon = () => {
+export const ReportIcon = () => {
   return (
     <svg
       width="21"
@@ -18,5 +16,3 @@ const ReportIcon = () => {
     </svg>
   );
 };
-
-export default ReportIcon;

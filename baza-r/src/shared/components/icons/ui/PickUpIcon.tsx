@@ -1,6 +1,4 @@
-import React from "react";
-
-const PickUpIcon = () => {
+export const PickUpIcon = () => {
   return (
     <svg
       width="19"
@@ -30,5 +28,3 @@ const PickUpIcon = () => {
     </svg>
   );
 };
-
-export default PickUpIcon;

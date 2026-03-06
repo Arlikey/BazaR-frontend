@@ -1,19 +1,24 @@
 import Search from "../../features/Search/Search";
-import {
-  BurgerIcon,
-  CartIcon,
-  CatalogIcon,
-  CrossIcon,
-  LogoIcon,
-  UserIcon,
-} from "../../shared/components/icons/ui";
 import { useUiStore } from "../../shared/model/ui.store";
 import CustomLink from "../../shared/components/ui/CustomLink";
 import { Button } from "../../shared/components/ui/Button";
 import IconWrapper from "../../shared/components/ui/IconWrapper";
 import { uiText } from "../../shared/config/ui-text";
+import { BurgerIcon } from "../../shared/components/icons/ui/BurgerIcon";
+import { LogoIcon } from "../../shared/components/icons/ui/LogoIcon";
+import { CrossIcon } from "../../shared/components/icons/ui/CrossIcon";
+import { CatalogIcon } from "../../shared/components/icons/ui/CatalogIcon";
+import { UserIcon } from "../../shared/components/icons/ui/UserIcon";
+import { CartIcon } from "../../shared/components/icons/ui/CartIcon";
+import { useMe } from "../../entities/user/queries";
+import { ArrowEnterIcon } from "../../shared/components/icons/ui/ArrowEnterIcon";
+import { useLogout } from "../../features/auth/model/authMutations";
+import { ListIcon } from "../../shared/components/icons/ui/ListIcon";
 
 export default function Header() {
+  const { data: user } = useMe();
+  const logout = useLogout();
+
   const openAuth = useUiStore((s) => s.openAuth);
   const openDrawer = useUiStore((s) => s.openDrawer);
   const openCart = useUiStore((s) => s.openCart);
@@ -95,12 +100,25 @@ export default function Header() {
             rounded="sm"
             className="hidden md:flex"
             aria-label={uiText.header.userAriaLabel}
-            onClick={() => openAuth()}
+            onClick={() => (user ? null : openAuth())}
           >
-            <IconWrapper>
-              <UserIcon />
-            </IconWrapper>
+            {user ? (
+              <IconWrapper>
+                <ListIcon />
+              </IconWrapper>
+            ) : (
+              <IconWrapper>
+                <UserIcon />
+              </IconWrapper>
+            )}
           </Button>
+          {user && (
+            <Button onClick={() => logout.mutate()}>
+              <IconWrapper>
+                <ArrowEnterIcon />
+              </IconWrapper>
+            </Button>
+          )}
 
           <Button
             size="icon"

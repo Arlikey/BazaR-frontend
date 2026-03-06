@@ -1,4 +1,4 @@
-const CaretIcon = () => {
+export const CaretIcon = () => {
   return (
     <svg
       width="15"
@@ -14,5 +14,3 @@ const CaretIcon = () => {
     </svg>
   );
 };
-
-export default CaretIcon;

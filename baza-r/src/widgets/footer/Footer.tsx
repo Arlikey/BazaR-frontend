@@ -1,20 +1,21 @@
-import { ClockIcon } from "../../shared/components/icons/ui";
-import {
-  MastercardLogo,
-  VisaLogo,
-} from "../../shared/components/icons/payments";
 import { footerGroups, socialMediaLinks } from "../../shared/config/links";
 import { uiText } from "../../shared/config/ui-text";
 import SocialLinks from "../../shared/components/ui/SocialLinks";
 import CustomLink from "../../shared/components/ui/CustomLink";
 import { LinkGroup } from "../link-groups/LinkGroup";
+import { ClockIcon } from "../../shared/components/icons/ui/ClockIcon";
+import { MastercardLogo } from "../../shared/components/icons/payments/MastercardLogo";
+import { VisaLogo } from "../../shared/components/icons/payments/VisaLogo";
 
 const Footer = () => {
   return (
     <footer className="bw-t-thin hidden w-full border-neutral-300 md:flex">
       <div className="mt-9 w-full">
         <div className="text-md mx-auto flex max-w-480 flex-col justify-between gap-8 px-8 pb-12 lg:flex-row xl:gap-50 xl:pr-33 xl:pl-14">
-          <section aria-label={uiText.footer.contactsAriaLabel} className="flex flex-col gap-4">
+          <section
+            aria-label={uiText.footer.contactsAriaLabel}
+            className="flex flex-col gap-4"
+          >
             <CustomLink
               to={""}
               variant="default"
@@ -27,7 +28,7 @@ const Footer = () => {
             </CustomLink>
             <SocialLinks items={socialMediaLinks} />
           </section>
-          <div className="flex flex-1 gap-4 justify-between">
+          <div className="flex flex-1 justify-between gap-4">
             {footerGroups.map((group) => (
               <LinkGroup key={group.title} group={group} />
             ))}

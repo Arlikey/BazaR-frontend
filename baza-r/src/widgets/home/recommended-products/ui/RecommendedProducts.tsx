@@ -36,7 +36,7 @@ export function RecommendedProducts() {
           {isLoading
             ? Array.from({ length: 5 }).map((_, i) => (
                 <li key={i}>
-                  <ProductCardSkeleton className="h-[300px]" />
+                  <ProductCardSkeleton className="h-75" />
                 </li>
               ))
             : data.map((p) => (

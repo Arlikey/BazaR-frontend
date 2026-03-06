@@ -1,6 +1,4 @@
-import React from "react";
-
-const InfoIcon = () => {
+export const InfoIcon = () => {
   return (
     <svg
       width="15"
@@ -20,5 +18,3 @@ const InfoIcon = () => {
     </svg>
   );
 };
-
-export default InfoIcon;

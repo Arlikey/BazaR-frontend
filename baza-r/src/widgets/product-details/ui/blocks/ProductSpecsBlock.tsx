@@ -1,6 +1,6 @@
 import { useState, type ReactNode } from "react";
-import Block from "../../../shared/components/ui/Block";
-import { Button } from "../../../shared/components/ui/Button";
+import Block from "../../../../shared/components/ui/Block";
+import { Button } from "../../../../shared/components/ui/Button";
 
 type SpecItem = {
   label: string;

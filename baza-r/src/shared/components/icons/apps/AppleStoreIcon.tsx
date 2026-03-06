@@ -1,6 +1,4 @@
-import React from "react";
-
-const AppleStoreIcon = () => {
+export const AppleStoreIcon = () => {
   return (
     <svg
       width="73"
@@ -56,5 +54,3 @@ const AppleStoreIcon = () => {
     </svg>
   );
 };
-
-export default AppleStoreIcon;

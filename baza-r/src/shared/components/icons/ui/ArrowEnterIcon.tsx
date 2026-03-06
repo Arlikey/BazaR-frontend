@@ -1,6 +1,4 @@
-import React from "react";
-
-const ArrowEnterIcon = () => {
+export const ArrowEnterIcon = () => {
   return (
     <svg
       width="16"
@@ -16,5 +14,3 @@ const ArrowEnterIcon = () => {
     </svg>
   );
 };
-
-export default ArrowEnterIcon;

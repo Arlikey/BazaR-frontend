@@ -1,4 +1,4 @@
-const CatalogIcon = () => {
+export const CatalogIcon = () => {
   return (
     <svg
       width="19"
@@ -26,5 +26,3 @@ const CatalogIcon = () => {
     </svg>
   );
 };
-
-export default CatalogIcon;

@@ -1,4 +1,4 @@
-const AltQuestionIcon = () => {
+export const AltQuestionIcon = () => {
   return (
     <svg
       width="21"
@@ -18,5 +18,3 @@ const AltQuestionIcon = () => {
     </svg>
   );
 };
-
-export default AltQuestionIcon;

@@ -1,4 +1,4 @@
-const ChevronIcon = () => {
+export const ChevronIcon = () => {
   return (
     <svg
       width="9"
@@ -14,5 +14,3 @@ const ChevronIcon = () => {
     </svg>
   );
 };
-
-export default ChevronIcon;

@@ -1,6 +1,4 @@
 import { useEffect, useState } from "react";
-import { ProductCard } from "../../../../entities/product/ui/ProductCard";
-import { usePromoProducts } from "../../../../features/products/model/queries";
 import ProductCardSkeleton from "../../../../shared/components/ui/loaders/ProductCardSkeleton";
 import { Section } from "../../../../shared/components/ui/product-section/ui/Section";
 import { ProductCardCompact } from "../../../product-card/ProductCardCompact";

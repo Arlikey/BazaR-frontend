@@ -1,11 +1,10 @@
 import { useState } from "react";
-import {
-  CrossIcon,
-  MicrophoneIcon,
-  SearchIcon,
-} from "../../shared/components/icons/ui";
+
 import { Button } from "../../shared/components/ui/Button";
 import { uiText } from "../../shared/config/ui-text";
+import { SearchIcon } from "../../shared/components/icons/ui/SearchIcon";
+import { CrossIcon } from "../../shared/components/icons/ui/CrossIcon";
+import { MicrophoneIcon } from "../../shared/components/icons/ui/MicrophoneIcon";
 
 const Search = () => {
   const [searchQuery, setSearchQuery] = useState("");

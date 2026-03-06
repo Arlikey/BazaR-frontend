@@ -1,6 +1,4 @@
-import React from "react";
-
-const PaymentIcon = () => {
+export const PaymentIcon = () => {
   return (
     <svg
       width="22"
@@ -20,5 +18,3 @@ const PaymentIcon = () => {
     </svg>
   );
 };
-
-export default PaymentIcon;

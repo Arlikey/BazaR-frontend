@@ -1,5 +1,4 @@
-
-const MicrophoneIcon = () => {
+export const MicrophoneIcon = () => {
   return (
     <svg
       width="12"
@@ -19,5 +18,3 @@ const MicrophoneIcon = () => {
     </svg>
   );
 };
-
-export default MicrophoneIcon;

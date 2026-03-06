@@ -1,4 +1,4 @@
-const ArrowIcon = () => {
+export const ArrowIcon = () => {
   return (
     <svg
       width="16"
@@ -16,5 +16,3 @@ const ArrowIcon = () => {
     </svg>
   );
 };
-
-export default ArrowIcon;

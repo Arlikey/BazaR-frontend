@@ -1,17 +1,1 @@
-export { default as BurgerIcon } from "./BurgerIcon";
-export { default as CartIcon } from "./CartIcon";
-export { default as CategoryItemSkeletonIcon } from "./CatalogIcon";
-export { default as ClockIcon } from "./ClockIcon";
-export { default as CrossIcon } from "./CrossIcon";
-export { default as LogoIcon } from "./LogoIcon";
-export { default as MicrophoneIcon } from "./MicrophoneIcon";
-export { default as SearchIcon } from "./SearchIcon";
-export { default as UserIcon } from "./UserIcon";
-export { default as ALtQuestionIcon } from "./AltQuestionIcon";
-export { default as AltCartIcon } from "./AltCartIcon";
-export { default as AltCatalogIcon } from "./AltCatalogIcon";
-export { default as CatalogIcon } from "./CatalogIcon";
-export { FavouriteIcon, FavouriteAltIcon } from "./FavouriteIcon";
-export { default as ArrowDownIcon } from "./CaretIcon";
-export { default as ArrowRightIcon } from "./ArrowIcon";
-export { default as TelephoneIcon } from "./TelephoneIcon";
+export * from "./";

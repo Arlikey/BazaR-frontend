@@ -1,6 +1,4 @@
-import React from "react";
-
-const ScrollbarIcon = () => {
+export const ScrollbarIcon = () => {
   return (
     <svg
       width="10"
@@ -16,5 +14,3 @@ const ScrollbarIcon = () => {
     </svg>
   );
 };
-
-export default ScrollbarIcon;

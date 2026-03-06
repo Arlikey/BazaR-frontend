@@ -2,8 +2,8 @@ import type { ReactNode } from "react";
 import type { Product } from "../../entities/product/model/Product";
 import { ProductCard } from "../../entities/product/ui/ProductCard";
 import { Button } from "../../shared/components/ui/Button";
-import FavouriteIcon from "../../shared/components/icons/ui/FavouriteIcon";
 import { uiText } from "../../shared/config/ui-text";
+import { FavouriteIcon } from "../../shared/components/icons/ui/FavouriteIcon";
 
 type RichProps = {
   product: Product;
@@ -34,7 +34,6 @@ export function ProductCardRich({
         <ProductCard.RootRight>
           <Button
             className="hover:bg-subtle/15 bg-surface overflow-hidden"
-             
             aria-label={uiText.productCard.favouriteAriaLabel}
             onClick={() => onFavouriteClick?.(product)}
           >

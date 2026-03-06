@@ -1,12 +1,12 @@
 import { useState } from "react";
-import type { Review } from "../../model/review.config";
-import Block from "../../../../shared/components/ui/Block";
-import LikeIcon from "../../../../shared/components/icons/ui/LikeIcon";
-import { Button } from "../../../../shared/components/ui/Button";
-import IconWrapper from "../../../../shared/components/ui/IconWrapper";
-import ReportIcon from "../../../../shared/components/icons/ui/ReportIcon";
-import ShareIcon from "../../../../shared/components/icons/ui/ShareIcon";
-import ArrowEnterIcon from "../../../../shared/components/icons/ui/ArrowEnterIcon";
+import type { Review } from "../../../model/review.config";
+import Block from "../../../../../shared/components/ui/Block";
+import { Button } from "../../../../../shared/components/ui/Button";
+import IconWrapper from "../../../../../shared/components/ui/IconWrapper";
+import { ShareIcon } from "../../../../../shared/components/icons/ui/ShareIcon";
+import { ReportIcon } from "../../../../../shared/components/icons/ui/ReportIcon";
+import { ArrowEnterIcon } from "../../../../../shared/components/icons/ui/ArrowEnterIcon";
+import { LikeIcon } from "../../../../../shared/components/icons/ui/LikeIcon";
 
 type Props = {
   review: Review;
@@ -37,7 +37,6 @@ export function ReviewCard({ review }: Props) {
 
   return (
     <Block rounded="xl" className="flex flex-col overflow-hidden">
-      {/* Шапка с border-b */}
       <div className="bw-b-thin flex items-center justify-between gap-4 border-neutral-100 px-10 py-5">
         <div className="flex flex-col gap-1">
           <div className="flex items-center gap-2">
@@ -66,9 +65,7 @@ export function ReviewCard({ review }: Props) {
         </div>
       </div>
 
-      {/* Тело карточки */}
       <div className="flex flex-col gap-5 px-10 py-5">
-        {/* Бейдж продавца если isSeller */}
         {review.sellerName && (
           <div className="text-muted flex items-center gap-2 text-sm">
             <span>Продавець:</span>
@@ -140,7 +137,6 @@ export function ReviewCard({ review }: Props) {
         </div>
       </div>
 
-      {/* Ответы */}
       {review.replies && review.replies.length > 0 && repliesOpen && (
         <div className="flex flex-col gap-3 border-t border-neutral-100 px-10 pb-6">
           {review.replies.map((reply) => (

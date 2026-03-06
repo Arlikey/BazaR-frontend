@@ -1,6 +1,4 @@
-import React from "react";
-
-const NotFoundIcon = () => {
+export const NotFoundIcon = () => {
   return (
     <svg
       width="429"
@@ -88,5 +86,3 @@ const NotFoundIcon = () => {
     </svg>
   );
 };
-
-export default NotFoundIcon;

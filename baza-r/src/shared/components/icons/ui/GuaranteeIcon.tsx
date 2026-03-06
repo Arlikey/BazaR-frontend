@@ -1,6 +1,4 @@
-import React from "react";
-
-const GuaranteeIcon = () => {
+export const GuaranteeIcon = () => {
   return (
     <svg
       width="19"
@@ -20,5 +18,3 @@ const GuaranteeIcon = () => {
     </svg>
   );
 };
-
-export default GuaranteeIcon;

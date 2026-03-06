@@ -1,6 +1,4 @@
-import React from "react";
-
-const PlayStoreIcon = () => {
+export const PlayStoreIcon = () => {
   return (
     <svg
       width="68"
@@ -80,5 +78,3 @@ const PlayStoreIcon = () => {
     </svg>
   );
 };
-
-export default PlayStoreIcon;

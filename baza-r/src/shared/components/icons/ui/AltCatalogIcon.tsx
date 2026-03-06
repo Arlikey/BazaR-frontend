@@ -1,4 +1,4 @@
-const AltCatalogIcon = () => {
+export const AltCatalogIcon = () => {
   return (
     <svg
       width="22"
@@ -26,5 +26,3 @@ const AltCatalogIcon = () => {
     </svg>
   );
 };
-
-export default AltCatalogIcon;

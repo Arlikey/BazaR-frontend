@@ -1,12 +1,10 @@
+import { FacebookIcon } from "../components/icons/social-media/FacebookIcon";
+import { InstagramIcon } from "../components/icons/social-media/InstagramIcon";
+import { TelegramIcon } from "../components/icons/social-media/TelegramIcon";
+import { TwitterIcon } from "../components/icons/social-media/TwitterIcon";
+import { ViberIcon } from "../components/icons/social-media/ViberIcon";
+import { YoutubeIcon } from "../components/icons/social-media/YoutubeIcon";
 import type { LinkType } from "./types";
-import {
-  FacebookIcon,
-  InstagramIcon,
-  TelegramIcon,
-  TwitterIcon,
-  ViberIcon,
-  YoutubeIcon,
-} from "../components/icons/social-media";
 
 export const footerGroups: LinkType[] = [
   {

@@ -1,22 +1,22 @@
-import { ServicesBlock } from "./ServicesBlock";
+import { ServicesBlock } from "./blocks/ServicesBlock";
 import {
   Breadcrumbs,
   type BreadcrumbItem,
 } from "../../../shared/components/ui/Breadcrumbs";
-import { ProductTabs } from "./ProductTabs";
-import { PurchaseBlock } from "./PurchaseBlock";
-import { ProductGallery } from "./product-gallery/ProductGallery";
-import { DeliveryBlock } from "./DeliveryBlock";
-import PickUpIcon from "../../../shared/components/icons/ui/PickUpIcon";
-import CourierIcon from "../../../shared/components/icons/ui/CourierIcon";
-import { PaymentGuaranteeBlock } from "./PaymentGuaranteeBlock";
-import PaymentIcon from "../../../shared/components/icons/ui/PaymentIcon";
-import GuaranteeIcon from "../../../shared/components/icons/ui/GuaranteeIcon";
-import { ProductSpecsBlock } from "./ProductSpecsBlock";
-import { ProductDescriptionBlock } from "./ProductDescriptionBlock";
-import { ProductReviewsBlock } from "./review-block/ProductReviewsBlock";
+import { ProductTabs } from "./blocks/ProductTabs";
+import { PurchaseBlock } from "./blocks/PurchaseBlock";
+import { ProductGallery } from "./blocks/product-gallery/ProductGallery";
+import { DeliveryBlock } from "./blocks/DeliveryBlock";
+import { PaymentGuaranteeBlock } from "./blocks/PaymentGuaranteeBlock";
+import { ProductSpecsBlock } from "./blocks/ProductSpecsBlock";
+import { ProductDescriptionBlock } from "./blocks/ProductDescriptionBlock";
+import { ProductReviewsBlock } from "./blocks/review-block/ProductReviewsBlock";
 import { useElementOffset } from "../../../shared/hooks/useElementOffset";
 import { Button } from "../../../shared/components/ui/Button";
+import { PickUpIcon } from "../../../shared/components/icons/ui/PickUpIcon";
+import { CourierIcon } from "../../../shared/components/icons/ui/CourierIcon";
+import { PaymentIcon } from "../../../shared/components/icons/ui/PaymentIcon";
+import { GuaranteeIcon } from "../../../shared/components/icons/ui/GuaranteeIcon";
 
 export default function ProductDetails() {
   useElementOffset();

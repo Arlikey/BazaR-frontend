@@ -1,4 +1,4 @@
-import { useState, type ReactNode } from "react";
+import { useState } from "react";
 import CustomLink from "../../../../shared/components/ui/CustomLink";
 import { Button } from "../../../../shared/components/ui/Button";
 import IconWrapper from "../../../../shared/components/ui/IconWrapper";
@@ -14,6 +14,8 @@ import { EyeOffIcon } from "../../../../shared/components/icons/ui/EyeOffIcon";
 import { uiText } from "../../../../shared/config/ui-text";
 import { Divider } from "../components/Divider";
 import { SocialLogin } from "../components/SocialLogin";
+import { useLogin } from "../../../../features/auth/model/authMutations";
+import { useUiStore } from "../../../../shared/model/ui.store";
 
 type Props = {
   onRegisterClick?: () => void;
@@ -21,6 +23,8 @@ type Props = {
 
 export default function LoginDialog({ onRegisterClick }: Props) {
   const [visible, setIsVisible] = useState(false);
+  const closeAuth = useUiStore((s) => s.closeAuth);
+  const login = useLogin();
 
   const {
     register,
@@ -44,7 +48,15 @@ export default function LoginDialog({ onRegisterClick }: Props) {
         <form
           className="flex flex-1 flex-col"
           aria-label={uiText.auth.loginFormAriaLabel}
-          onSubmit={handleSubmit((data) => console.log(data))}
+          onSubmit={handleSubmit((data) =>
+            login.mutate(
+              { identifier: data.identifier, password: data.password },
+              {
+                onSuccess: () => closeAuth(),
+                onError: (err) => console.log(err), // пока просто лог
+              },
+            ),
+          )}
         >
           <div className="mt-5 flex flex-col gap-5">
             <InputField

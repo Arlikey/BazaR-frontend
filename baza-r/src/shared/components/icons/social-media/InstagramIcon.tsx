@@ -1,7 +1,7 @@
-import * as React from "react";
+import { useId } from "react";
 
-export default function InstagramIcon() {
-  const uid = React.useId();
+export const InstagramIcon = () => {
+  const uid = useId();
   const g0 = `ig-g0-${uid}`;
   const g1 = `ig-g1-${uid}`;
   const g2 = `ig-g2-${uid}`;
@@ -72,4 +72,4 @@ export default function InstagramIcon() {
       </defs>
     </svg>
   );
-}
+};
