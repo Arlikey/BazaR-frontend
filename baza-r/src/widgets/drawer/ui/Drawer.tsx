@@ -21,8 +21,12 @@ import { UserIcon } from "../../../shared/components/icons/ui/UserIcon";
 import { ArrowIcon } from "../../../shared/components/icons/ui/ArrowIcon";
 import { PlayStoreIcon } from "../../../shared/components/icons/apps/PlayStoreIcon";
 import { AppleStoreIcon } from "../../../shared/components/icons/apps/AppleStoreIcon";
+import { useMe } from "../../../entities/user/queries";
+import { AccountUserCard } from "../../../pages/account/ui/AccountUserCard";
 
 const Drawer = () => {
+  const { data: user } = useMe();
+
   const openAuth = useUiStore((s) => s.openAuth);
   const closeDrawer = useUiStore((s) => s.closeDrawer);
   const openMegamenu = useUiStore((s) => s.openMegamenu);
@@ -58,43 +62,49 @@ const Drawer = () => {
               <CrossIcon />
             </IconWrapper>
           </Button>
-          <div className="flex items-center gap-6 pl-2">
-            <IconWrapper size={45} className="text-inverse">
-              <UserIcon />
-            </IconWrapper>
-            <div className="flex flex-col gap-0.5">
-              <div className="flex items-center gap-3">
-                <Button
-                  variant="link"
-                  color="inverse"
-                  textSize="xl"
-                  onClick={() => {
-                    closeDrawer();
-                    openAuth();
-                  }}
-                >
-                  <span>{uiText.drawer.login}</span>
-                </Button>
-                <div className="border-inverse h-5.5 border-r"></div>
-                <Button
-                  variant="link"
-                  color="inverse"
-                  textSize="xl"
-                  onClick={() => {
-                    closeDrawer();
-                    openAuth("register");
-                  }}
-                >
-                  <span>{uiText.drawer.register}</span>
-                </Button>
-              </div>
-              <div>
-                <span className="text-muted text-base">
-                  {uiText.drawer.authDescription}
-                </span>
+          {user ? (
+            <CustomLink to={"/account/profile"} variant="default">
+              <AccountUserCard size="lg" inverted/>
+            </CustomLink>
+          ) : (
+            <div className="flex items-center gap-6 pl-2">
+              <IconWrapper size={45} className="text-inverse">
+                <UserIcon />
+              </IconWrapper>
+              <div className="flex flex-col gap-0.5">
+                <div className="flex items-center gap-3">
+                  <Button
+                    variant="link"
+                    color="inverse"
+                    textSize="xl"
+                    onClick={() => {
+                      closeDrawer();
+                      openAuth();
+                    }}
+                  >
+                    <span>{uiText.drawer.login}</span>
+                  </Button>
+                  <div className="border-inverse h-5.5 border-r"></div>
+                  <Button
+                    variant="link"
+                    color="inverse"
+                    textSize="xl"
+                    onClick={() => {
+                      closeDrawer();
+                      openAuth("register");
+                    }}
+                  >
+                    <span>{uiText.drawer.register}</span>
+                  </Button>
+                </div>
+                <div>
+                  <span className="text-muted text-base">
+                    {uiText.drawer.authDescription}
+                  </span>
+                </div>
               </div>
             </div>
-          </div>
+          )}
         </div>
         <Button
           fullWidth

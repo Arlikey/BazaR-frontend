@@ -35,7 +35,7 @@ export function Layout() {
         <div className="min-h-screen">
           <Header />
 
-          <main className="mx-auto flex min-h-75 max-w-480 gap-10 px-4 py-7.5 md:px-8 lg:px-13.75">
+          <main className="mx-auto flex min-h-75 max-w-480 gap-10 px-4 py-8 md:px-8 lg:px-13.75">
             <Outlet />
           </main>
           <Footer />

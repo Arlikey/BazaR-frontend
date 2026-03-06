@@ -8,5 +8,6 @@ export function useMe() {
     queryKey: meQueryKey,
     queryFn: userApi.me,
     retry: false,
+    staleTime: 5 * 60_000,
   });
 }

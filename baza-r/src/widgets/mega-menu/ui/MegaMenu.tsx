@@ -4,7 +4,7 @@ import CustomLink from "../../../shared/components/ui/CustomLink";
 import IconWrapper from "../../../shared/components/ui/IconWrapper";
 import CatalogMenu from "../../catalog/ui/CatalogMenu";
 import { useCatalogCategories } from "../../catalog/model/useCategories";
-import { ChevronIcon } from "../../../shared/components/icons/ui/ChevronIcon";
+import { CaretIcon } from "../../../shared/components/icons/ui/CaretIcon";
 
 const Megamenu = () => {
   const { roots, isLoading } = useCatalogCategories();
@@ -23,7 +23,7 @@ const Megamenu = () => {
           onCategoryHover={(c) => setActiveId(c.id)}
           trailing={
             <IconWrapper className="-rotate-90">
-              <ChevronIcon />
+              <CaretIcon />
             </IconWrapper>
           }
         />

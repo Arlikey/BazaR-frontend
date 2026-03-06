@@ -11,13 +11,12 @@ import { CatalogIcon } from "../../shared/components/icons/ui/CatalogIcon";
 import { UserIcon } from "../../shared/components/icons/ui/UserIcon";
 import { CartIcon } from "../../shared/components/icons/ui/CartIcon";
 import { useMe } from "../../entities/user/queries";
-import { ArrowEnterIcon } from "../../shared/components/icons/ui/ArrowEnterIcon";
-import { useLogout } from "../../features/auth/model/authMutations";
 import { ListIcon } from "../../shared/components/icons/ui/ListIcon";
+import { useNavigate } from "react-router";
 
 export default function Header() {
   const { data: user } = useMe();
-  const logout = useLogout();
+  const navigate = useNavigate();
 
   const openAuth = useUiStore((s) => s.openAuth);
   const openDrawer = useUiStore((s) => s.openDrawer);
@@ -100,7 +99,7 @@ export default function Header() {
             rounded="sm"
             className="hidden md:flex"
             aria-label={uiText.header.userAriaLabel}
-            onClick={() => (user ? null : openAuth())}
+            onClick={() => (user ? navigate("/account") : openAuth())}
           >
             {user ? (
               <IconWrapper>
@@ -112,14 +111,6 @@ export default function Header() {
               </IconWrapper>
             )}
           </Button>
-          {user && (
-            <Button onClick={() => logout.mutate()}>
-              <IconWrapper>
-                <ArrowEnterIcon />
-              </IconWrapper>
-            </Button>
-          )}
-
           <Button
             size="icon"
             rounded="sm"

@@ -2,7 +2,7 @@ import type { ReactNode } from "react";
 import { tv, type VariantProps } from "tailwind-variants";
 
 export const blockVariants = tv({
-  base: "bg-surface bw-thin rounded-xl border-neutral-100",
+  base: "bg-surface bw-thin border-neutral-100",
   variants: {
     rounded: {
       xs: "rounded-[10px]",
@@ -12,6 +12,9 @@ export const blockVariants = tv({
       xl: "rounded-[25px]",
     },
   },
+  defaultVariants: {
+    rounded: "sm"
+  }
 });
 
 export type BlockProps = VariantProps<typeof blockVariants> & {
