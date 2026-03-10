@@ -32,8 +32,8 @@ const userCard = tv({
     inverted: {
       true: {
         name: "text-white group-hover:text-accent transition",
-        email: "text-white/60",
-        icon: "text-white/80",
+        email: "text-neutral-200",
+        icon: "text-white",
       },
     },
   },

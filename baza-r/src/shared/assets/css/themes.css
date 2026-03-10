@@ -18,9 +18,6 @@
   /*    Shadows    */
   --shadow-sidebar: 6px 5px 20px rgba(0, 0, 0, 25%);
 
-  /*    Variable to set all line heights to 100%    */
-  --tw-leading: 120%;
-
   /*    Brand    */
   --color-brand: #0b1245; /* dark blue   */
   --color-accent: #98be2a; /* light green */

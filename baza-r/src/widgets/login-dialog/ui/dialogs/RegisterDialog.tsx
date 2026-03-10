@@ -14,6 +14,9 @@ import { Button } from "../../../../shared/components/ui/Button";
 import { uiText } from "../../../../shared/config/ui-text";
 import { Divider } from "../components/Divider";
 import { SocialLogin } from "../components/SocialLogin";
+import { useRegister } from "../../../../features/auth/model/auth.mutations";
+import { useUiStore } from "../../../../shared/model/ui.store";
+import { getApiErrorMessage } from "../../../../shared/lib/getApiErrorMessage";
 
 type Props = {
   onLoginClick?: () => void;
@@ -21,11 +24,14 @@ type Props = {
 
 export default function RegisterDialog({ onLoginClick }: Props) {
   const [visible, setIsVisible] = useState(false);
+  const registerUser = useRegister();
+  const closeAuth = useUiStore((s) => s.closeAuth);
 
   const {
     register,
     handleSubmit,
     control,
+    setError,
     formState: { errors, isValid, isSubmitting, dirtyFields },
   } = useForm<RegisterFormValues>({
     resolver: zodResolver(registerSchema),
@@ -41,7 +47,22 @@ export default function RegisterDialog({ onLoginClick }: Props) {
         <form
           className="flex flex-1 flex-col"
           aria-label={uiText.auth.loginFormAriaLabel}
-          onSubmit={handleSubmit((data) => console.log(data))}
+          onSubmit={handleSubmit((data) =>
+            registerUser.mutate(
+              {
+                email: data.email,
+                password: data.password,
+                firstName: data.name,
+                lastName: data.lastname,
+                phone: data.phone,
+              },
+              {
+                onSuccess: () => closeAuth(),
+                onError: (err) =>
+                  setError("email", { message: getApiErrorMessage(err) }),
+              },
+            ),
+          )}
         >
           <div className="mt-5 flex flex-col gap-5">
             <InputField
@@ -93,7 +114,6 @@ export default function RegisterDialog({ onLoginClick }: Props) {
                 rightIcon={
                   <Button
                     variant="solid"
-                    color="default"
                     className="pointer-events-auto"
                     type="button"
                     onClick={(e) => {
@@ -108,7 +128,7 @@ export default function RegisterDialog({ onLoginClick }: Props) {
                   </Button>
                 }
               />
-              <span className="text-muted mt-2 inline-flex pr-2 pl-4 text-[11px]">
+              <span className="text-muted mt-2 inline-flex pr-2 pl-4 text-[11px] leading-4">
                 {uiText.auth.passwordHint}
               </span>
             </div>

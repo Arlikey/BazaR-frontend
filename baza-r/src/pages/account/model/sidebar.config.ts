@@ -17,7 +17,7 @@ export type SidebarNavItem = {
   badge?: number;
 };
 
-export const ACCOUNT_NAV: SidebarNavItem[] = [
+export const sidebarNav: SidebarNavItem[] = [
   { label: "Мої замовлення", to: "/account/orders", icon: ListAltIcon },
   { label: "Список бажань", to: "/account/wishlist", icon: FavouriteAlt2Icon },
   { label: "Переглянуті товари", to: "/account/viewed", icon: EyeAltIcon },

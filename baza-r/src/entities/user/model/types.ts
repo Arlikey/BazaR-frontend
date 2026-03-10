@@ -1,11 +1,13 @@
 export type User = {
-  id: number;
+  id: string;
+  email: string;
   firstName: string;
   lastName: string;
-  middleName?: string | null;
-  email: string;
   phone: string;
-  birthDate?: string | null;
-  gender?: "male" | "female" | null;
-  language: "uk" | "en";
+  status: "Active" | "Inactive";
+  roles: string[];
+  avatarUrl: string | null;
+  createdAt: string;
+  updatedAt: string;
+  lastLoginAt: string | null;
 };

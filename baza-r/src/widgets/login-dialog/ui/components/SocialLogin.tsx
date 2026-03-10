@@ -27,7 +27,9 @@ export const SocialButton = ({
 
 export const SocialLogin = () => (
   <div className="flex w-51.25 flex-col items-center justify-center gap-5">
-    <span className="text-muted text-base">{uiText.auth.socialLoginTitle}</span>
+    <span className="text-muted text-base leading-none">
+      {uiText.auth.socialLoginTitle}
+    </span>
     <div className="flex w-full flex-col gap-5">
       <SocialButton
         label={uiText.auth.socialFacebook}

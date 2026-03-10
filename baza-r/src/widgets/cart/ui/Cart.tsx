@@ -13,12 +13,12 @@ export function Cart() {
   const closeDrawer = useUiStore((s) => s.closeCart);
 
   return (
-    <div className="flex max-h-[90vh] flex-col gap-5 px-20 py-10">
+    <div className="flex max-h-[90vh] flex-col gap-5 px-20 py-10 translate-z-0">
       <div className="flex justify-between">
         <h3 className="text-2xl">Кошик</h3>
         <Button
-          color="default"
           className="hover:text-accent-hover"
+          color="default"
           onClick={() => closeDrawer()}
         >
           <IconWrapper>

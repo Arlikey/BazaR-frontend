@@ -9,9 +9,9 @@ export function AccountLayout() {
   if (!user) return <Navigate to="/" replace />;
 
   return (
-    <div className="flex gap-11">
+    <div className="flex flex-1 gap-11 pb-40">
       <AccountSidebar />
-      <main className="min-w-0 flex-1 h-300">
+      <main className="min-w-0 flex-1 ">
         <Outlet />
       </main>
     </div>

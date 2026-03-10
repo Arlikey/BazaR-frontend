@@ -64,7 +64,7 @@ const Drawer = () => {
           </Button>
           {user ? (
             <CustomLink to={"/account/profile"} variant="default">
-              <AccountUserCard size="lg" inverted/>
+              <AccountUserCard size="lg" inverted />
             </CustomLink>
           ) : (
             <div className="flex items-center gap-6 pl-2">
@@ -153,11 +153,11 @@ const Drawer = () => {
           <LinkGroup group={help} />
         </Block>
         <Accordion.Root type="multiple" className="flex flex-col gap-2.5">
-          <Block className="text-md flex flex-col gap-4 px-7 py-6">
+          <Block className="text-md flex flex-col">
             <LinksGroupAccordionItem group={services} value="services" />
           </Block>
 
-          <Block className="text-md flex flex-col gap-4 px-7 py-6">
+          <Block className="text-md flex flex-col">
             <LinksGroupAccordionItem group={partners} value="partners" />
           </Block>
         </Accordion.Root>

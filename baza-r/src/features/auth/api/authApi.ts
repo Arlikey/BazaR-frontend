@@ -1,7 +1,8 @@
-import type { User } from "../../../entities/user/model/types";
 import { api } from "../../../shared/api/client";
+import type { AuthTokens } from "../model/auth.types";
+import { tokenStorage } from "../model/token.storage";
 
-export type LoginPayload = { identifier: string; password: string };
+export type LoginPayload = { email: string; password: string };
 export type RegisterPayload = {
   firstName: string;
   lastName: string;
@@ -12,8 +13,26 @@ export type RegisterPayload = {
 
 export const authApi = {
   login: (p: LoginPayload) =>
-    api<User>("/auth/login", { method: "POST", body: JSON.stringify(p) }),
+    api<AuthTokens>("/api/auth/login", {
+      method: "POST",
+      body: JSON.stringify(p),
+    }),
   register: (p: RegisterPayload) =>
-    api<User>("/auth/register", { method: "POST", body: JSON.stringify(p) }),
-  logout: () => api<void>("/auth/logout", { method: "POST" }),
+    api<AuthTokens>("/api/auth/register", {
+      method: "POST",
+      body: JSON.stringify(p),
+    }),
+  logout: () =>
+    api("/api/auth/logout", {
+      method: "POST",
+      body: JSON.stringify({
+        userId: tokenStorage.getUserId(),
+        refreshToken: tokenStorage.getRefresh(),
+      }),
+    }),
+  refresh: (refreshToken: string) =>
+    api<AuthTokens>("/api/auth/refresh", {
+      method: "POST",
+      body: JSON.stringify({ refreshToken }),
+    }),
 };

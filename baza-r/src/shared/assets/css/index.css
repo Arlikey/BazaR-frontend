@@ -19,12 +19,18 @@
   body,
   :root {
     background-color: var(--color-neutral-50);
-    line-height: 1.2;
   }
 
   button:not(:disabled),
   [role="button"]:not(:disabled) {
     cursor: pointer;
+  }
+
+  .modal-content button,
+  .modal-content a,
+  .modal-content span,
+  .modal-content input::placeholder {
+    transform: translateZ(0);
   }
 
   input:-webkit-autofill,

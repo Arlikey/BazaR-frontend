@@ -6,7 +6,7 @@ const modal = tv({
     overlay:
       "fixed inset-0 z-50 bg-black/30 data-[state=open]:animate-[show_.15s_ease-in] data-[state=closed]:animate-[hide_.15s_ease-in] motion-reduce:data-[state=open]:animate-none",
     content:
-      "fixed top-0 z-50  bg-neutral-50 outline-none motion-reduce:data-[state=open]:animate-none",
+      "fixed top-0 z-50  bg-neutral-50 outline-none motion-reduce:data-[state=open]:animate-none modal-content",
   },
   variants: {
     side: {
@@ -16,7 +16,7 @@ const modal = tv({
       },
       center: {
         content:
-          "left-1/2 top-1/2 data-[state=open]:animate-[popIn_.21s_ease-out] data-[state=closed]:animate-[popOut_.21s_ease-in] -translate-x-1/2 -translate-y-1/2 translate-z-0 will-change:transform",
+          "left-1/2 top-1/2 data-[state=open]:animate-[popIn_.21s_ease-out] data-[state=closed]:animate-[popOut_.21s_ease-in] -translate-x-1/2 -translate-y-1/2  will-change:transform",
       },
       top: {
         overlay: "top-(--top-offset) z-40",

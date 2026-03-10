@@ -1,8 +1,6 @@
-import * as Accordion from "@radix-ui/react-accordion";
 import type { LinkType } from "../../shared/config/types";
 import { LinkGroup } from "./LinkGroup";
-import IconWrapper from "../../shared/components/ui/IconWrapper";
-import { CaretIcon } from "../../shared/components/icons/ui/CaretIcon";
+import { AccordionItem } from "../../shared/components/ui/AccordionItem";
 
 type AccordionItemProps = {
   group: LinkType;
@@ -16,28 +14,10 @@ export function LinksGroupAccordionItem({
   className,
 }: AccordionItemProps) {
   return (
-    <Accordion.Item value={value} className={className}>
-      <Accordion.Header>
-        <Accordion.Trigger className="group hover:text-accent text-md relative flex w-full cursor-pointer items-center justify-between py-0 font-medium transition outline-none after:absolute after:-inset-2">
-          {group.title}
-          <IconWrapper
-            aria-hidden="true"
-            className="transition-transform duration-300 ease-out group-data-[state=open]:rotate-180"
-          >
-            <CaretIcon />
-          </IconWrapper>
-        </Accordion.Trigger>
-      </Accordion.Header>
-
-      <Accordion.Content className="overflow-hidden data-[state=closed]:animate-[slideUp_0.3s_ease-out] data-[state=open]:animate-[slideDown_0.3s_ease-out]">
-        <div className="mt-2">
-          <LinkGroup
-            group={{ ...group, title: "" }}
-            titleClassName="hidden"
-            listClassName="[&>li]:mb-2"
-          />
-        </div>
-      </Accordion.Content>
-    </Accordion.Item>
+    <AccordionItem value={value} title={group.title} className={className}>
+      <div className="mt-2">
+        <LinkGroup group={{ ...group, title: "" }} />
+      </div>
+    </AccordionItem>
   );
 }

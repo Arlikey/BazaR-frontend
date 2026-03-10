@@ -99,7 +99,7 @@ export default function Header() {
             rounded="sm"
             className="hidden md:flex"
             aria-label={uiText.header.userAriaLabel}
-            onClick={() => (user ? navigate("/account") : openAuth())}
+            onClick={() => (user ? navigate("/account/profile") : openAuth())}
           >
             {user ? (
               <IconWrapper>

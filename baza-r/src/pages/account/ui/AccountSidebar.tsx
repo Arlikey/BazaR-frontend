@@ -1,7 +1,7 @@
 import { NavLink } from "react-router";
 import Block from "../../../shared/components/ui/Block";
 import { AccountUserCard } from "./AccountUserCard";
-import { ACCOUNT_NAV } from "../model/account-sidebar.config";
+import { sidebarNav, type SidebarNavItem } from "../model/sidebar.config";
 
 export function AccountSidebar() {
   return (
@@ -25,13 +25,11 @@ export function AccountSidebar() {
         </div>
 
         <div className="flex flex-col gap-1 px-6 pt-4">
-          {ACCOUNT_NAV.map((item) => {
-            const Icon = item.icon;
-
+          {sidebarNav.map(({ icon: Icon, label, to }) => {
             return (
               <NavLink
-                key={item.to}
-                to={item.to}
+                key={to}
+                to={to}
                 className={({ isActive }) =>
                   [
                     "flex items-center gap-6 rounded-xl px-5 py-2.5 text-base transition-colors",
@@ -42,7 +40,7 @@ export function AccountSidebar() {
                 }
               >
                 <Icon />
-                <span className="flex-1">{item.label}</span>
+                <span className="flex-1">{label}</span>
               </NavLink>
             );
           })}

@@ -14,8 +14,9 @@ import { EyeOffIcon } from "../../../../shared/components/icons/ui/EyeOffIcon";
 import { uiText } from "../../../../shared/config/ui-text";
 import { Divider } from "../components/Divider";
 import { SocialLogin } from "../components/SocialLogin";
-import { useLogin } from "../../../../features/auth/model/authMutations";
+import { useLogin } from "../../../../features/auth/model/auth.mutations";
 import { useUiStore } from "../../../../shared/model/ui.store";
+import { getApiErrorMessage } from "../../../../shared/lib/getApiErrorMessage";
 
 type Props = {
   onRegisterClick?: () => void;
@@ -30,6 +31,7 @@ export default function LoginDialog({ onRegisterClick }: Props) {
     register,
     handleSubmit,
     control,
+    setError,
     formState: { errors, isValid, isSubmitting, dirtyFields },
   } = useForm<LoginFormValues>({
     resolver: zodResolver(loginSchema),
@@ -50,23 +52,24 @@ export default function LoginDialog({ onRegisterClick }: Props) {
           aria-label={uiText.auth.loginFormAriaLabel}
           onSubmit={handleSubmit((data) =>
             login.mutate(
-              { identifier: data.identifier, password: data.password },
+              { email: data.email, password: data.password },
               {
                 onSuccess: () => closeAuth(),
-                onError: (err) => console.log(err), // пока просто лог
+                onError: () =>
+                  setError("root", { message: "Невірна пошта або пароль" }),
               },
             ),
           )}
         >
           <div className="mt-5 flex flex-col gap-5">
             <InputField
-              id="login-identifier"
-              type="text"
+              id="login-email"
+              type="email"
               autoComplete="email"
               placeholder={uiText.auth.loginIdentifierPlaceholder}
-              error={errors.identifier?.message}
-              success={dirtyFields.identifier && !errors.identifier}
-              {...register("identifier")}
+              error={errors.email?.message}
+              success={dirtyFields.email && !errors.email}
+              {...register("email")}
             />
             <InputField
               id="login-password"
@@ -80,7 +83,6 @@ export default function LoginDialog({ onRegisterClick }: Props) {
               rightIcon={
                 <Button
                   variant="solid"
-                  color="default"
                   className="pointer-events-auto"
                   type="button"
                   onClick={(e) => {
@@ -119,6 +121,12 @@ export default function LoginDialog({ onRegisterClick }: Props) {
             >
               <span>{uiText.auth.loginSubmit}</span>
             </Button>
+
+            {errors.root && (
+              <span className="text-error mt-2 text-sm font-medium">
+                {errors.root.message}
+              </span>
+            )}
 
             <Button
               type="button"

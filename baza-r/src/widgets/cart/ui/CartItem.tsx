@@ -23,16 +23,7 @@ export function CartItem({ item }: Props) {
       </div>
 
       <div className="flex flex-1 flex-col gap-1">
-        <span className="text-base">{item.name}</span>
-        {item.services && item.services.length > 0 && (
-          <button
-            onClick={() => setServicesOpen((p) => !p)}
-            className="text-accent flex w-fit items-center gap-1 text-sm"
-          >
-            <span>{servicesOpen ? "▲" : "▼"}</span>
-            <span>Додаткові послуги ({item.services.length})</span>
-          </button>
-        )}
+        <span className="text-base leading-none">{item.name}</span>
         {servicesOpen && item.services && (
           <div className="mt-1 flex flex-col gap-1">
             {item.services.map((s) => (
@@ -76,7 +67,7 @@ export function CartItem({ item }: Props) {
           </span>
         )}
         <span
-          className={`text-[20px] font-medium tabular-nums ${item.oldPrice ? "text-promotion" : ""}`}
+          className={`text-xl font-medium tabular-nums ${item.oldPrice ? "text-promotion" : ""}`}
         >
           {(item.price * item.quantity).toLocaleString("uk-UA")}{" "}
           <span className="text-md">₴</span>

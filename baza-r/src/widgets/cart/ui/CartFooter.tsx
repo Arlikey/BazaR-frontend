@@ -18,7 +18,7 @@ export function CartFooter() {
         rounded="pill"
         color="subtle"
         size="lg"
-        className="border-accent text-accent hover:bg-accent h-11 px-8 text-base hover:text-white"
+        className="border-accent text-accent hover:bg-accent h-11 px-8 text-base hover:text-white leading-none"
         onClick={() => closeCart()}
       >
         Продовжити покупки

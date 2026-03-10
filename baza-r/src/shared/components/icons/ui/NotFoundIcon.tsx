@@ -10,15 +10,15 @@ export const NotFoundIcon = () => {
       <path
         d="M369.228 3.43506H59.7051C54.358 3.43506 50.0234 7.76725 50.0234 13.1113V191.374C50.0234 196.718 54.358 201.05 59.7051 201.05H369.228C374.575 201.05 378.91 196.718 378.91 191.374V13.1113C378.91 7.76725 374.575 3.43506 369.228 3.43506Z"
         stroke="#D9E0E5"
-        stroke-width="6.87"
-        stroke-miterlimit="10"
+        strokeWidth="6.87"
+        strokeMiterlimit="10"
       />
       <path
         d="M371.218 7.65442H57.6964C55.355 7.65442 53.457 9.55025 53.457 11.8889V193.42C53.457 195.759 55.355 197.654 57.6964 197.654H371.218C373.559 197.654 375.457 195.759 375.457 193.42V11.8889C375.457 9.55025 373.559 7.65442 371.218 7.65442Z"
         fill="white"
         stroke="#AEBEC4"
-        stroke-width="1.72"
-        stroke-miterlimit="10"
+        strokeWidth="1.72"
+        strokeMiterlimit="10"
       />
       <g filter="url(#filter0_d_0_1)">
         <path
@@ -54,9 +54,9 @@ export const NotFoundIcon = () => {
           width="428.918"
           height="49.3524"
           filterUnits="userSpaceOnUse"
-          color-interpolation-filters="sRGB"
+          colorInterpolationFilters="sRGB"
         >
-          <feFlood flood-opacity="0" result="BackgroundImageFix" />
+          <feFlood floodOpacity="0" result="BackgroundImageFix" />
           <feColorMatrix
             in="SourceAlpha"
             type="matrix"

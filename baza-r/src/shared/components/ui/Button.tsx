@@ -5,7 +5,7 @@ import { cn, tv, type VariantProps } from "tailwind-variants";
 export const buttonVariants = tv({
   base: [
     "inline-flex items-center justify-center whitespace-nowrap select-none",
-    "font-medium transition",
+    "font-medium transition leading-none",
     "disabled:pointer-events-none disabled:opacity-50",
     "outline-none focus-visible:ring-2 focus-visible:ring-accent/40 focus-visible:ring-offset-2 focus-visible:ring-offset-neutral-50",
     "aria-invalid:border-error aria-invalid:ring-2 aria-invalid:ring-error/25",
@@ -13,12 +13,13 @@ export const buttonVariants = tv({
   ].join(" "),
   variants: {
     variant: {
-      solid: "border border-transparent",
+      solid: "",
       ghost: "bg-transparent hover:bg-accent/10",
       outline: "bg-transparent border border-current",
       link: "bg-transparent p-0 h-auto underline-offset-3",
     },
     color: {
+      default: "bg-transparent",
       primary: "bg-brand text-inverse hover:bg-brand-hover",
       secondary: "bg-accent text-foreground hover:bg-accent-hover",
       premium: "bg-premium text-foreground hover:bg-premium-hover",
@@ -26,17 +27,15 @@ export const buttonVariants = tv({
       link: "text-link hover:text-link-hover",
       subtle: "text-foreground bg-white hover:text-accent hover:border-accent",
       inverse: "text-inverse hover:text-accent",
-      default: "text-foreground",
     },
     size: {
-      sm: "h-8 px-2 text-sm",
-      md: "h-10 text-lg",
-      lg: "h-12 px-4 text-lg",
+      sm: "h-8 px-2",
+      md: "h-10",
+      lg: "h-12 px-4",
       icon: " w-11.25 h-11.25",
     },
     border: {
-      none: "",
-      thin: "bw-thin border-neutral-300",
+      thin: "bw-thin border-neutral-100",
     },
     textSize: {
       sm: "text-sm",
@@ -58,16 +57,6 @@ export const buttonVariants = tv({
       variant: "link",
       color: "primary",
       class: "bg-transparent text-link hover:text-link-hover",
-    },
-    {
-      variant: "link",
-      color: "secondary",
-      class: "bg-transparent text-link hover:text-link-hover",
-    },
-    {
-      variant: "link",
-      color: "secondary",
-      class: "hover:none",
     },
   ],
   defaultVariants: {
@@ -109,6 +98,7 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         data-size={size}
         data-rounded={rounded}
         data-border={border}
+        type={type}
         className={cn(
           buttonVariants({
             variant,

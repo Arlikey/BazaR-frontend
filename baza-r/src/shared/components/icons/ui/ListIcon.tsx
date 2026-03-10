@@ -14,49 +14,49 @@ export const ListIcon = () => {
         height="21.7"
         rx="2.63571"
         stroke="currentColor"
-        stroke-width="1.3"
+        strokeWidth="1.3"
       />
       <path
         d="M8.21436 6.57141H18.8929"
         stroke="currentColor"
-        stroke-width="1.64286"
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeWidth="1.64286"
+        strokeLinecap="round"
+        strokeLinejoin="round"
       />
       <path
         d="M8.21436 11.5H18.8929"
         stroke="currentColor"
-        stroke-width="1.64286"
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeWidth="1.64286"
+        strokeLinecap="round"
+        strokeLinejoin="round"
       />
       <path
         d="M8.21436 16.4286H18.8929"
         stroke="currentColor"
-        stroke-width="1.64286"
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeWidth="1.64286"
+        strokeLinecap="round"
+        strokeLinejoin="round"
       />
       <path
         d="M4.10693 6.57141H4.11586"
         stroke="currentColor"
-        stroke-width="1.64286"
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeWidth="1.64286"
+        strokeLinecap="round"
+        strokeLinejoin="round"
       />
       <path
         d="M4.10693 11.5H4.11586"
         stroke="currentColor"
-        stroke-width="1.64286"
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeWidth="1.64286"
+        strokeLinecap="round"
+        strokeLinejoin="round"
       />
       <path
         d="M4.10693 16.4286H4.11586"
         stroke="currentColor"
-        stroke-width="1.64286"
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeWidth="1.64286"
+        strokeLinecap="round"
+        strokeLinejoin="round"
       />
     </svg>
   );
@@ -74,26 +74,26 @@ export const ListAltIcon = () => {
       <path
         d="M19.57 0.5H2.39C1.34618 0.5 0.5 1.34618 0.5 2.39V20.31C0.5 21.3538 1.34618 22.2 2.39 22.2H19.57C20.6138 22.2 21.46 21.3538 21.46 20.31V2.39C21.46 1.34618 20.6138 0.5 19.57 0.5Z"
         stroke="currentColor"
-        stroke-miterlimit="10"
-        stroke-linecap="round"
+        strokeMiterlimit="10"
+        strokeLinecap="round"
       />
       <path
         d="M6.30078 6.31H18.6708"
         stroke="currentColor"
-        stroke-miterlimit="10"
-        stroke-linecap="round"
+        strokeMiterlimit="10"
+        strokeLinecap="round"
       />
       <path
         d="M6.30078 11.22H18.6708"
         stroke="currentColor"
-        stroke-miterlimit="10"
-        stroke-linecap="round"
+        strokeMiterlimit="10"
+        strokeLinecap="round"
       />
       <path
         d="M6.30078 16.13H18.6708"
         stroke="currentColor"
-        stroke-miterlimit="10"
-        stroke-linecap="round"
+        strokeMiterlimit="10"
+        strokeLinecap="round"
       />
       <path
         d="M4.08125 7.10995C4.52308 7.10995 4.88125 6.75178 4.88125 6.30995C4.88125 5.86812 4.52308 5.50995 4.08125 5.50995C3.63942 5.50995 3.28125 5.86812 3.28125 6.30995C3.28125 6.75178 3.63942 7.10995 4.08125 7.10995Z"
