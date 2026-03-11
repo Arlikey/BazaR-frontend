@@ -8,7 +8,7 @@ import { CaretIcon } from "../../../shared/components/icons/ui/CaretIcon";
 
 const Megamenu = () => {
   const { roots, isLoading } = useCatalogCategories();
-  const [activeId, setActiveId] = useState<number | null>(null);
+  const [activeId, setActiveId] = useState<string | null>(null);
   const active = roots.find((x) => x.id === (activeId ?? roots[0]?.id)) ?? null;
 
   return (
@@ -34,7 +34,7 @@ const Megamenu = () => {
               {active.children.map((group) => (
                 <div key={group.id} className="mb-3 break-inside-avoid">
                   <CustomLink
-                    to={`/catalog/${active.slug}/${group.slug}`}
+                    to={`/catalog/${group.id}`}
                     variant="underline"
                     className="text-accent hover:text-accent-hover w-full min-w-0 text-lg font-medium whitespace-normal"
                   >
@@ -51,7 +51,7 @@ const Megamenu = () => {
                         asChild
                       >
                         <CustomLink
-                          to={`/catalog/${active.slug}/${group.slug}/${leaf.slug}`}
+                          to={`/catalog/${leaf.id}`}
                           variant="default"
                           className="min-w-0 whitespace-normal"
                         >

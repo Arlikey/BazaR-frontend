@@ -49,7 +49,7 @@ export default function CatalogMenu({
             <li key={category.id}>
               <CategoryItem
                 category={category}
-                to={`/catalog/${category.slug}`}
+                to={`/catalog/${category.id}`}
                 intent="hoverable"
                 className="rounded-sm"
                 trailing={trailing}

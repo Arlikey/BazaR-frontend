@@ -1,12 +1,6 @@
 export type Category = {
-  id: number;
-  slug: string;
+  id: string;
   name: string;
-
-  description?: string | null;
-  iconUrl?: string | null;
-
-  parentId: number | null;
+  parentId: string | null;
   sortOrder: number;
-  isActive: boolean;
 };

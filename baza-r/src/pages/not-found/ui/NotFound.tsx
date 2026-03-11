@@ -16,7 +16,7 @@ export const NotFound = () => {
         to={"/"}
         variant="default"
         color="secondary"
-        className="mt-24 h-12 rounded-[30px] px-10 text-base"
+        className="mt-24 h-12 rounded-[30px] px-10 text-base font-medium"
       >
         <span>{uiText.notFound.backToHome}</span>
       </CustomLink>

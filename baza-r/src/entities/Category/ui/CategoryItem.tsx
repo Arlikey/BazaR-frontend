@@ -3,6 +3,8 @@ import type { ReactNode } from "react";
 import { type To } from "react-router";
 import type { Category } from "../model/Category";
 import CustomLink from "../../../shared/components/ui/CustomLink";
+import { getCategoryIcon } from "../model/category.config";
+import IconWrapper from "../../../shared/components/ui/IconWrapper";
 
 const categoryItem = tv({
   slots: {
@@ -70,6 +72,7 @@ export function CategoryItem({
     intent,
     state: active ? "active" : "idle",
   });
+  const Icon = getCategoryIcon(category.name);
 
   return (
     <CustomLink
@@ -80,15 +83,10 @@ export function CategoryItem({
       onFocus={() => onFocusItem?.(category)}
     >
       <span className={styles.left()}>
-        {category.iconUrl && (
-          <img
-            src={category.iconUrl}
-            alt=""
-            aria-hidden="true"
-            loading="lazy"
-            decoding="async"
-            className={styles.icon()}
-          />
+        {Icon && (
+          <IconWrapper className={styles.icon()}>
+            <Icon />
+          </IconWrapper>
         )}
         <span className={styles.text()}>{category.name}</span>
       </span>

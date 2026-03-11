@@ -114,6 +114,7 @@ export default function RegisterDialog({ onLoginClick }: Props) {
                 rightIcon={
                   <Button
                     variant="solid"
+                    color="default"
                     className="pointer-events-auto"
                     type="button"
                     onClick={(e) => {

@@ -2,7 +2,7 @@ import type { Category } from "./Category";
 import type { CategoryNode } from "./tree";
 
 export function buildCategoryTree(categories: Category[]): CategoryNode[] {
-  const byId = new Map<number, CategoryNode>();
+  const byId = new Map<string, CategoryNode>();
 
   for (const c of categories) {
     byId.set(c.id, { ...c, children: [] });
