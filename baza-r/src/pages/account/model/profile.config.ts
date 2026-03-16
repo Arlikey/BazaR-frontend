@@ -8,15 +8,15 @@ import { ContactsIcon } from "../../../shared/components/icons/ui/ContactsIcon";
 import { DeliveryIcon } from "../../../shared/components/icons/ui/DeliveryIcon";
 import { LockIcon } from "../../../shared/components/icons/ui/LockIcon";
 import { PawIcon } from "../../../shared/components/icons/ui/PawIcon";
-import RecipientsSection from "../ui/pages/profile/sections/RecipientsSection";
-import ContactsSection from "../ui/pages/profile/sections/ContactsSection";
-import DeliverySection from "../ui/pages/profile/sections/DeliverySection";
-import LoginSection from "../ui/pages/profile/sections/LoginSection";
-import PetsSection from "../ui/pages/profile/sections/PetsSection";
-import AdditionalSection from "../ui/pages/profile/sections/AdditionalSection";
+import RecipientsSection from "../ui/pages/customer/profile/sections/RecipientsSection";
+import ContactsSection from "../ui/pages/customer/profile/sections/ContactsSection";
+import DeliverySection from "../ui/pages/customer/profile/sections/DeliverySection";
+import LoginSection from "../ui/pages/customer/profile/sections/LoginSection";
+import PetsSection from "../ui/pages/customer/profile/sections/PetsSection";
+import AdditionalSection from "../ui/pages/customer/profile/sections/AdditionalSection";
 import { FacebookAltIcon } from "../../../shared/components/icons/login/FacebookIcon";
 import { GoogleIcon } from "../../../shared/components/icons/login/GoogleIcon";
-import { PersonalSection } from "../ui/pages/profile/sections/PersonalSection";
+import { PersonalSection } from "../ui/pages/customer/profile/sections/PersonalSection";
 
 export type ProfileSection = {
   value: string;

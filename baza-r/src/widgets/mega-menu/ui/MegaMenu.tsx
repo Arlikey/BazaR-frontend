@@ -12,11 +12,11 @@ const Megamenu = () => {
   const active = roots.find((x) => x.id === (activeId ?? roots[0]?.id)) ?? null;
 
   return (
-    <div className="flex min-w-420">
-      <nav className="flex max-h-180 gap-5 rounded-[15px] bg-neutral-50 p-7.5">
+    <div className="flex">
+      <nav className="flex max-h-180 w-full gap-5 rounded-[15px] bg-neutral-50 p-7.5">
         <CatalogMenu
           variant="mega"
-          className="max-h-161.25 flex-1 overflow-y-auto"
+          className="max-h-161.25 w-75 shrink-0"
           categories={roots}
           isLoading={isLoading}
           activeCategoryId={activeId ?? undefined}
@@ -28,11 +28,11 @@ const Megamenu = () => {
           }
         />
 
-        {active && active.children.length > 0 && (
-          <section className="bw-thin flex max-h-161.25 flex-1 flex-col rounded-[15px] border-neutral-100 bg-white px-8 py-5">
-            <div className="h-full flex-1 columns-4 gap-x-20 overflow-y-auto [column-fill:auto]">
+        <section className="bw-thin flex max-h-161.25 flex-1 flex-col rounded-[15px] border-neutral-100 bg-white px-8 py-5">
+          {active && active.children.length > 0 ? (
+            <div className="flex max-h-161.25 flex-col flex-wrap content-start gap-x-10 2xl:gap-x-20 gap-y-3 overflow-y-auto">
               {active.children.map((group) => (
-                <div key={group.id} className="mb-3 break-inside-avoid">
+                <div key={group.id} className="break-inside-avoid">
                   <CustomLink
                     to={`/catalog/${group.id}`}
                     variant="underline"
@@ -40,7 +40,6 @@ const Megamenu = () => {
                   >
                     {group.name}
                   </CustomLink>
-
                   <div className="flex w-full min-w-0 flex-col items-start gap-1">
                     {group.children.map((leaf) => (
                       <Button
@@ -63,8 +62,10 @@ const Megamenu = () => {
                 </div>
               ))}
             </div>
-          </section>
-        )}
+          ) : (
+            <p className="m-auto text-sm text-gray-400">Підкатегорій немає</p>
+          )}
+        </section>
       </nav>
     </div>
   );

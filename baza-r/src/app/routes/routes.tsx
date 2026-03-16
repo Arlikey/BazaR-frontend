@@ -5,17 +5,18 @@ import { NotFound } from "../../pages/not-found/ui/NotFound";
 import { BlankLayout } from "../layout/BlankLayout";
 import ProductPage from "../../pages/product/ui/ProductPage";
 import { AccountLayout } from "../../pages/account/ui/AccountLayout";
-import { ProfilePage } from "../../pages/account/ui/pages/profile/ProfilePage";
-import OrdersPage from "../../pages/account/ui/pages/orders/OrdersPage";
-import WishlistPage from "../../pages/account/ui/pages/wishlist/WishlistPage";
-import ViewedPage from "../../pages/account/ui/pages/viewed/ViewedPage";
-import NewslettersPage from "../../pages/account/ui/pages/newsletters/NewslettersPage";
-import WalletPage from "../../pages/account/ui/pages/wallet/WalletPage";
-import BonusPage from "../../pages/account/ui/pages/bonus/BonusPage";
-import PremiumPage from "../../pages/account/ui/pages/premium/PremiumPage";
-import ReviewsPage from "../../pages/account/ui/pages/reviews/ReviewsPage";
-import MessagesPage from "../../pages/account/ui/pages/messages/MessagesPage";
-import PromotionsPage from "../../pages/account/ui/pages/promotions/PromotionsPage";
+import { ProfilePage } from "../../pages/account/ui/pages/customer/profile/ProfilePage";
+import OrdersPage from "../../pages/account/ui/pages/customer/orders/OrdersPage";
+import WishlistPage from "../../pages/account/ui/pages/customer/wishlist/WishlistPage";
+import ViewedPage from "../../pages/account/ui/pages/customer/viewed/ViewedPage";
+import NewslettersPage from "../../pages/account/ui/pages/customer/newsletters/NewslettersPage";
+import WalletPage from "../../pages/account/ui/pages/customer/wallet/WalletPage";
+import BonusPage from "../../pages/account/ui/pages/customer/bonus/BonusPage";
+import PremiumPage from "../../pages/account/ui/pages/customer/premium/PremiumPage";
+import ReviewsPage from "../../pages/account/ui/pages/customer/reviews/ReviewsPage";
+import MessagesPage from "../../pages/account/ui/pages/customer/messages/MessagesPage";
+import PromotionsPage from "../../pages/account/ui/pages/customer/promotions/PromotionsPage";
+import SellerProductsPage from "../../pages/account/ui/pages/seller/SellerProductsPage";
 
 export const routes: RouteObject[] = [
   {
@@ -39,6 +40,7 @@ export const routes: RouteObject[] = [
           { path: "reviews", element: <ReviewsPage /> },
           { path: "messages", element: <MessagesPage /> },
           { path: "promotions", element: <PromotionsPage /> },
+          { path: "seller/products", element: <SellerProductsPage /> },
         ],
       },
     ],

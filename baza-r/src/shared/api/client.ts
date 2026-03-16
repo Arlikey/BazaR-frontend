@@ -1,4 +1,6 @@
+import { meQueryKey } from "../../entities/user/queries";
 import { tokenStorage } from "../../features/auth/model/token.storage";
+import { queryClient } from "../lib/queryClient";
 import { useAuthStore } from "../model/auth.store";
 
 const BASE_URL = "http://localhost:8080";
@@ -20,15 +22,18 @@ async function tryRefresh(): Promise<boolean> {
     if (!response.ok) {
       tokenStorage.clear();
       useAuthStore.getState().setAuthenticated(false);
+      queryClient.removeQueries({ queryKey: meQueryKey });
       return false;
     }
 
     const tokens = await response.json();
     tokenStorage.set(tokens);
+    useAuthStore.getState().setAuthenticated(true);
     return true;
   } catch {
     tokenStorage.clear();
     useAuthStore.getState().setAuthenticated(false);
+    queryClient.removeQueries({ queryKey: meQueryKey });
     return false;
   }
 }

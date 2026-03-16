@@ -1,7 +1,7 @@
 import type { ComponentType } from "react";
-import { Button } from "../../../../../shared/components/ui/Button";
-import Block from "../../../../../shared/components/ui/Block";
-import IconWrapper from "../../../../../shared/components/ui/IconWrapper";
+import { Button } from "../../../../../../shared/components/ui/Button";
+import Block from "../../../../../../shared/components/ui/Block";
+import IconWrapper from "../../../../../../shared/components/ui/IconWrapper";
 
 type Props = {
   icon: ComponentType;

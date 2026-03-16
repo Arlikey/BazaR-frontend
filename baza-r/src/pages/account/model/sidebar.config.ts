@@ -9,6 +9,8 @@ import { PremiumIcon } from "../../../shared/components/icons/ui/PremiumIcon";
 import { DialogueIcon } from "../../../shared/components/icons/ui/DialogueIcon";
 import { MailIcon } from "../../../shared/components/icons/ui/MailIcon";
 import { PromotionIcon } from "../../../shared/components/icons/ui/PromotionIcon";
+import { ShopStarIcon } from "../../../shared/components/icons/ui/ShopStarIcon";
+import { PackageIcon } from "../../../shared/components/icons/ui/PackageIcon";
 
 export type SidebarNavItem = {
   label: string;
@@ -28,4 +30,8 @@ export const sidebarNav: SidebarNavItem[] = [
   { label: "Мої відгуки", to: "/account/reviews", icon: DialogueIcon },
   { label: "Моє листування", to: "/account/messages", icon: MailIcon },
   { label: "Участь в акціях", to: "/account/promotions", icon: PromotionIcon },
+];
+
+export const sellerNav: SidebarNavItem[] = [
+  { label: "Товари", to: "/account/seller/products", icon: PackageIcon },
 ];

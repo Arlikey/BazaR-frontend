@@ -1,7 +1,7 @@
 import { useMe } from "../../../entities/user/queries";
 import { UserAltIcon } from "../../../shared/components/icons/ui/UserIcon";
 import IconWrapper from "../../../shared/components/ui/IconWrapper";
-import { cn, tv, type VariantProps } from "tailwind-variants";
+import { tv, type VariantProps } from "tailwind-variants";
 
 const userCard = tv({
   slots: {
@@ -27,7 +27,7 @@ const userCard = tv({
         icon: "w-12",
         name: "text-xl",
         email: "text-base",
-      }
+      },
     },
     inverted: {
       true: {

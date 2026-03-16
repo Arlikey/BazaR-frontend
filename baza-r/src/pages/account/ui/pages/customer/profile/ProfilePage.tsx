@@ -1,9 +1,9 @@
 import * as Accordion from "@radix-ui/react-accordion";
-import { useLogout } from "../../../../../features/auth/model/auth.mutations";
-import { Button } from "../../../../../shared/components/ui/Button";
+import { useLogout } from "../../../../../../features/auth/model/auth.mutations";
+import { Button } from "../../../../../../shared/components/ui/Button";
 import { ProfileAccordionItem } from "./ProfileAccordionItem";
-import Block from "../../../../../shared/components/ui/Block";
-import { profileSections, socialLinks } from "../../../model/profile.config";
+import Block from "../../../../../../shared/components/ui/Block";
+import { profileSections, socialLinks } from "../../../../model/profile.config";
 import { SocialLinkButton } from "./SocialLinkButton";
 
 export function ProfilePage() {

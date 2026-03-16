@@ -32,12 +32,12 @@ export const categoryIcons: Record<string, ComponentType> = {
   "Одяг, взуття та прикраси": ClothesIcon,
   "Краса і здоров'я": BeautyIcon,
   "Дитячі товари": PuzzleIcon,
-  Зоотовари: PawsIcon,
+  "Зоотовари": PawsIcon,
   "Канцтовари та книги": BooksIcon,
   "Алкогольні напої та продукти": ChampagneIcon,
   "Товари для бізнесу та послуги": CodeIcon,
   "Тури та відпочинок": RelaxIcon,
-  Акції: OfferIcon,
+  "Акції": OfferIcon,
   "Тотальний розпродаж": SaleIcon,
 };
 
