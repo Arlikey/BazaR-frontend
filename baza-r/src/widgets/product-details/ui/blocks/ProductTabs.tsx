@@ -1,7 +1,7 @@
 import type { HTMLAttributes } from "react";
 import CustomLink from "../../../../shared/components/ui/CustomLink";
-import { PRODUCT_TABS } from "../../model/product-tabs.config";
-import { useProductTabs } from "../../model/useProductTabs";
+import { useProductTabs } from "../../hooks/useProductTabs";
+import { PRODUCT_TABS } from "../../config/product-tabs.config";
 
 type Props = HTMLAttributes<HTMLDivElement> & {};
 

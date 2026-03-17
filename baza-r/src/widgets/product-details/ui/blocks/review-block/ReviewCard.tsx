@@ -1,5 +1,4 @@
 import { useState } from "react";
-import type { Review } from "../../../model/review.config";
 import Block from "../../../../../shared/components/ui/Block";
 import { Button } from "../../../../../shared/components/ui/Button";
 import IconWrapper from "../../../../../shared/components/ui/IconWrapper";
@@ -7,6 +6,7 @@ import { ShareIcon } from "../../../../../shared/components/icons/ui/ShareIcon";
 import { ReportIcon } from "../../../../../shared/components/icons/ui/ReportIcon";
 import { ArrowEnterIcon } from "../../../../../shared/components/icons/ui/ArrowEnterIcon";
 import { LikeIcon } from "../../../../../shared/components/icons/ui/LikeIcon";
+import type { Review } from "../../../config/review.config";
 
 type Props = {
   review: Review;

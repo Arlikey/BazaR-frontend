@@ -36,7 +36,7 @@ export const useAuthStore = create<{
     }
 
     try {
-      const tokens = await authApi.refresh(refreshToken);
+      const tokens = await authApi.refresh();
       tokenStorage.set(tokens);
       set({
         isAuthenticated: true,

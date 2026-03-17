@@ -14,7 +14,7 @@ export function GalleryMainImage({ src, alt, onClick }: Props) {
       onClick={onClick}
     >
       <img
-        src={`/images/products/original/${src}.png`}
+        src={src}
         alt={alt}
         className="h-full w-full object-contain p-6"
       />

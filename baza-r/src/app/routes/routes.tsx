@@ -17,6 +17,8 @@ import ReviewsPage from "../../pages/account/ui/pages/customer/reviews/ReviewsPa
 import MessagesPage from "../../pages/account/ui/pages/customer/messages/MessagesPage";
 import PromotionsPage from "../../pages/account/ui/pages/customer/promotions/PromotionsPage";
 import SellerProductsPage from "../../pages/account/ui/pages/seller/SellerProductsPage";
+import { CreateProductForm } from "../../features/seller/ui/CreateProductForm";
+import CreateOfferPage from "../../features/seller/ui/CreateOfferPage";
 
 export const routes: RouteObject[] = [
   {
@@ -41,6 +43,8 @@ export const routes: RouteObject[] = [
           { path: "messages", element: <MessagesPage /> },
           { path: "promotions", element: <PromotionsPage /> },
           { path: "seller/products", element: <SellerProductsPage /> },
+          { path: "seller/products/create", element: <CreateProductForm /> },
+          { path: "seller/offers/create", element: <CreateOfferPage /> },
         ],
       },
     ],

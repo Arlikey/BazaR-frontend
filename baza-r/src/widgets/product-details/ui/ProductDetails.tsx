@@ -17,14 +17,31 @@ import { PickUpIcon } from "../../../shared/components/icons/ui/PickUpIcon";
 import { CourierIcon } from "../../../shared/components/icons/ui/CourierIcon";
 import { PaymentIcon } from "../../../shared/components/icons/ui/PaymentIcon";
 import { GuaranteeIcon } from "../../../shared/components/icons/ui/GuaranteeIcon";
+import {
+  useProduct,
+  useProductAttributes,
+  useProductOffer,
+} from "../../../features/products/queries";
+import { getAttributeValue } from "../../../features/products/model/getAttributeValue";
 
-export default function ProductDetails() {
+type Props = {
+  productId: string;
+};
+
+export default function ProductDetails({ productId }: Props) {
+  const { data: product, isLoading } = useProduct(productId);
+  const { data: attributesView } = useProductAttributes(productId);
+  const { data: offer } = useProductOffer(productId);
+
   useElementOffset();
   useElementOffset({
     selector: "[data-app-tabs]",
     cssVarName: "--tabs-height",
     measure: "height",
   });
+
+  if (isLoading) return null;
+  if (!product) return null;
 
   const breadcrumbs: BreadcrumbItem[] = [
     { label: "Комп'ютери та ноутбуки", to: "/computers" },
@@ -36,45 +53,40 @@ export default function ProductDetails() {
     <>
       <div id="all" className="scroll-mt-(--scroll-offset)" />
       <Breadcrumbs items={breadcrumbs} />
-      <h2 className="mb-2 text-3xl">
-        Ноутбук Lenovo V15-ADA (82C700DPRA) Iron Grey
-      </h2>
-      <span className="text-muted text-base">Код: 245161939</span>
+      <h2 className="mb-2 text-3xl">{product.name}</h2>
+      <span className="text-muted text-base">
+        Код: <span>{product.vendorCode}</span>
+      </span>
       <ProductTabs data-app-tabs />
       <section className="mt-10 flex gap-5">
         <div className="flex w-1/2 flex-col gap-5">
           <ProductGallery
-            images={[
-              "551437411",
-              "472002266",
-              "472002265",
-              "472002264",
-              "472002263",
-            ]}
-            alt="Ноутбук Lenovo V15-ADA"
-            isLoading={false}
+            images={product.images
+              .sort((a, b) => a.sortOrder - b.sortOrder)
+              .map((img) => `http://localhost:8080${img.url}`)}
+            alt={product.name}
+            isLoading={isLoading}
           />
           <ProductSpecsBlock
-            specs={[
-              {
-                label: "Процесор",
-                value: "4-ядерний AMD Ryzen 3 7320U (2.4 - 4.1 ГГц)",
-              },
-              { label: "Покоління процесора AMD", value: "Zen 2" },
-              { label: "Чипсет", value: "AMD SoC Platform" },
-              { label: "Виробник відеокарти", value: "AMD" },
-              { label: "Тип відеокарти", value: "Інтегрована" },
-              { label: "Інтегрована відеокарта", value: "Radeon 610M" },
-              { label: "Обсяг SSD", value: "512 ГБ" },
-              { label: "Тип накопичувача", value: "SSD" },
-            ]}
+            specs={(attributesView?.attributes ?? []).map((attr) => ({
+              label: attr.name,
+              value: getAttributeValue(attr),
+            }))}
           />
         </div>
         <div className="flex flex-1 flex-col gap-5">
           <PurchaseBlock
-            price={26999}
-            oldPrice={31999}
-            stockStatus="available"
+            price={offer?.priceAmount ?? 0}
+            oldPrice={offer?.oldPriceAmount ?? undefined}
+            stockStatus={
+              !offer
+                ? "unavailable"
+                : offer.stock === 0
+                  ? "unavailable"
+                  : offer.stock < 5
+                    ? "ending"
+                    : "available"
+            }
             onBuy={() => {}}
             onFavourite={() => {}}
             onCompare={() => {}}

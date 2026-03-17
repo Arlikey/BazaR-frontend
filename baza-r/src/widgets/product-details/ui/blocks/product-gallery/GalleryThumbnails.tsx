@@ -18,7 +18,7 @@ export function GalleryThumbnails({ images, activeIndex, onSelect }: Props) {
             }`}
           >
             <img
-              src={`/images/products/thumbs/${src}_thumb.png`}
+              src={src}
               alt=""
               className="h-full w-full object-contain p-2"
             />

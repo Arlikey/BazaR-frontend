@@ -10,13 +10,15 @@ let refreshQueue: Array<(success: boolean) => void> = [];
 
 async function tryRefresh(): Promise<boolean> {
   const refreshToken = tokenStorage.getRefresh();
-  if (!refreshToken) return false;
+  const userId = tokenStorage.getUserId();
+
+  if (!refreshToken || !userId) return false;
 
   try {
     const response = await fetch(BASE_URL + "/api/auth/refresh", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ refreshToken }),
+      body: JSON.stringify({ userId, refreshToken }),
     });
 
     if (!response.ok) {
@@ -42,10 +44,12 @@ export async function api<T = void>(
   url: string,
   options?: RequestInit,
 ): Promise<T> {
+  const isFormData = options?.body instanceof FormData;
+
   const response = await fetch(BASE_URL + url, {
     ...options,
     headers: {
-      "Content-Type": "application/json",
+      ...(isFormData ? {} : { "Content-Type": "application/json" }),
       ...(tokenStorage.getAccess()
         ? { Authorization: `Bearer ${tokenStorage.getAccess()}` }
         : {}),
@@ -64,14 +68,17 @@ export async function api<T = void>(
     }
 
     isRefreshing = true;
-    const success = await tryRefresh();
-    isRefreshing = false;
 
-    refreshQueue.forEach((resolve) => resolve(success));
-    refreshQueue = [];
+    let success = false;
+    try {
+      success = await tryRefresh();
+    } finally {
+      isRefreshing = false;
+      refreshQueue.forEach((resolve) => resolve(success));
+      refreshQueue = [];
+    }
 
     if (success) return api<T>(url, options);
-
     throw Object.assign(new Error("Unauthorized"), { status: 401 });
   }
 

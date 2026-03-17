@@ -1,5 +1,5 @@
 import { useState } from "react";
-import type { ServiceOption } from "./services.config";
+import type { ServiceOption } from "../config/services.config";
 
 export function useServicesState(services: ServiceOption[]) {
   const [checkedServices, setCheckedServices] = useState<

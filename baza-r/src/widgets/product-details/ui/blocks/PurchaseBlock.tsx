@@ -8,8 +8,7 @@ import IconWrapper from "../../../../shared/components/ui/IconWrapper";
 import type {
   PurchaseBlockProps,
   StockStatus,
-} from "../../model/purchase-block.config";
-
+} from "../../config/purchase-block.config";
 const STOCK_LABELS: Record<
   StockStatus,
   { label: string; className: string } | null

@@ -30,9 +30,12 @@ export const authApi = {
         refreshToken: tokenStorage.getRefresh(),
       }),
     }),
-  refresh: (refreshToken: string) =>
+  refresh: () =>
     api<AuthTokens>("/api/auth/refresh", {
       method: "POST",
-      body: JSON.stringify({ refreshToken }),
+      body: JSON.stringify({
+        userId: tokenStorage.getUserId(),
+        refreshToken: tokenStorage.getRefresh(),
+      }),
     }),
 };

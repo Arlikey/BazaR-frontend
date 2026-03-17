@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { PRODUCT_TABS } from "./product-tabs.config";
+import { PRODUCT_TABS } from "../config/product-tabs.config";
 
 export function useProductTabs() {
   const [activeHref, setActiveHref] = useState(PRODUCT_TABS[0].href);
