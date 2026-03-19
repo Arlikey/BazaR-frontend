@@ -24,3 +24,11 @@ export function useProductOffer(productId: string | undefined) {
     enabled: !!productId,
   });
 }
+
+export function useProductsByCategory(categoryId: string | undefined) {
+  return useQuery({
+    queryKey: ["products-category", categoryId],
+    queryFn: () => productApi.getByCategory(categoryId!),
+    enabled: !!categoryId,
+  });
+}

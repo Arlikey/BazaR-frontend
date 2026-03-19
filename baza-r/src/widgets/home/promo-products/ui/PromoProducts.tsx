@@ -2,8 +2,8 @@ import { useEffect, useState } from "react";
 import ProductCardSkeleton from "../../../../shared/components/ui/loaders/ProductCardSkeleton";
 import { Section } from "../../../../shared/components/ui/product-section/ui/Section";
 import { ProductCardCompact } from "../../../product-card/ProductCardCompact";
-import type { Product } from "../../../../entities/product/model/Product";
-import ProductDao from "../../../../entities/product/api/__mocks__/ProductDao";
+import type { Product } from "../../../../entities/product_old/model/Product";
+import ProductDao from "../../../../entities/product_old/api/__mocks__/ProductDao";
 import { tryCatch } from "../../../../shared/lib/try-catch";
 import { uiText } from "../../../../shared/config/ui-text";
 

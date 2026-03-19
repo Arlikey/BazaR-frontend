@@ -1,51 +1,51 @@
-import { useEffect, useState } from "react";
-import ProductDao from "../../../../entities/product/api/__mocks__/ProductDao";
-import ProductCardSkeleton from "../../../../shared/components/ui/loaders/ProductCardSkeleton";
-import { Section } from "../../../../shared/components/ui/product-section/ui/Section";
-import { tryCatch } from "../../../../shared/lib/try-catch";
-import { ProductCardCompact } from "../../../product-card/ProductCardCompact";
-import { ProductsGrid } from "../../../product-grid/ui/ProductGrid";
-import type { Product } from "../../../../entities/product/model/Product";
-import { uiText } from "../../../../shared/config/ui-text";
+// import { useEffect, useState } from "react";
+// import ProductDao from "../../../../entities/product_old/api/__mocks__/ProductDao";
+// import ProductCardSkeleton from "../../../../shared/components/ui/loaders/ProductCardSkeleton";
+// import { Section } from "../../../../shared/components/ui/product-section/ui/Section";
+// import { tryCatch } from "../../../../shared/lib/try-catch";
+// import { ProductCardCompact } from "../../../product-card/ProductCardCompact";
+// import { ProductsGrid } from "../../../product-grid/ui/ProductGrid";
+// import type { Product } from "../../../../entities/product_old/model/Product";
+// import { uiText } from "../../../../shared/config/ui-text";
 
-export function TrendingProducts() {
-  const [data, setData] = useState<Product[]>([]);
-  const [error, setError] = useState<Error | null>(null);
-  const [isLoading, setIsLoading] = useState(false);
+// export function TrendingProducts() {
+//   const [data, setData] = useState<Product[]>([]);
+//   const [error, setError] = useState<Error | null>(null);
+//   const [isLoading, setIsLoading] = useState(false);
 
-  useEffect(() => {
-    const load = async () => {
-      setIsLoading(true);
-      const [items, err] = await tryCatch(ProductDao.getTrendingProducts());
-      if (err) setError(err);
-      else setData(items ?? []);
-      setIsLoading(false);
-    };
-    load();
-  }, []);
+//   useEffect(() => {
+//     const load = async () => {
+//       setIsLoading(true);
+//       const [items, err] = await tryCatch(ProductDao.getTrendingProducts());
+//       if (err) setError(err);
+//       else setData(items ?? []);
+//       setIsLoading(false);
+//     };
+//     load();
+//   }, []);
 
-  return (
-    <Section
-      aria-label={uiText.home.trendingProductsTitle}
-      title={uiText.home.trendingProductsTitle}
-    >
-      {error ? (
-        <div className="text-error text-sm">{uiText.home.loadingError}</div>
-      ) : (
-        <ProductsGrid columns={5}>
-          {isLoading
-            ? Array.from({ length: 5 }).map((_, i) => (
-                <li key={i}>
-                  <ProductCardSkeleton className="h-75" />
-                </li>
-              ))
-            : data.map((p) => (
-                <li key={p.id}>
-                  <ProductCardCompact product={p} className="" />
-                </li>
-              ))}
-        </ProductsGrid>
-      )}
-    </Section>
-  );
-}
+//   return (
+//     <Section
+//       aria-label={uiText.home.trendingProductsTitle}
+//       title={uiText.home.trendingProductsTitle}
+//     >
+//       {error ? (
+//         <div className="text-error text-sm">{uiText.home.loadingError}</div>
+//       ) : (
+//         <ProductsGrid>
+//           {isLoading
+//             ? Array.from({ length: 5 }).map((_, i) => (
+//                 <li key={i}>
+//                   <ProductCardSkeleton className="h-75" />
+//                 </li>
+//               ))
+//             : data.map((p) => (
+//                 <li key={p.id} className="shrink-0 w-70">
+//                   <ProductCardCompact product={p} className="" />
+//                 </li>
+//               ))}
+//         </ProductsGrid>
+//       )}
+//     </Section>
+//   );
+// }

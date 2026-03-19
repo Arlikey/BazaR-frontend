@@ -6,6 +6,7 @@ import { uiText } from "../../shared/config/ui-text";
 
 import { useEffect } from "react";
 import { useLocation } from "react-router";
+import PromoBanner from "../../widgets/header/PromoBanner";
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -23,19 +24,12 @@ export function Layout() {
       <ModalProvider />
       <ScrollToTop />
 
-      <div className="mx-auto flex min-h-screen flex-col">
-        <section
-          aria-label={uiText.layout.promotionBannerAriaLabel}
-          className="bg-accent z-50 flex h-8 items-center justify-center"
-        >
-          <span className="text-sm font-medium uppercase lg:text-lg">
-            {uiText.layout.promotionBannerMessage}
-          </span>
-        </section>
-        <div className="min-h-screen">
+      <div className="mx-auto flex flex-col">
+        <div className="grid min-h-screen grid-rows-[auto_auto_1fr_auto]">
+          <PromoBanner />
           <Header />
 
-          <main className="mx-auto flex min-h-75 max-w-480 gap-10 px-4 py-8 md:px-8 lg:px-13.75">
+          <main className="flex min-h-75 max-w-480 gap-10 px-4 py-8 md:px-8 lg:px-13.75">
             <Outlet />
           </main>
           <Footer />

@@ -19,6 +19,7 @@ import PromotionsPage from "../../pages/account/ui/pages/customer/promotions/Pro
 import SellerProductsPage from "../../pages/account/ui/pages/seller/SellerProductsPage";
 import { CreateProductForm } from "../../features/seller/ui/CreateProductForm";
 import CreateOfferPage from "../../features/seller/ui/CreateOfferPage";
+import CategoryPage from "../../pages/category/ui/CategoryPage";
 
 export const routes: RouteObject[] = [
   {
@@ -26,6 +27,7 @@ export const routes: RouteObject[] = [
     children: [
       { path: "/", element: <HomePage /> },
       { path: "/product/:productId", element: <ProductPage /> },
+      { path: "/catalog/:categoryId", element: <CategoryPage /> },
       {
         path: "/account",
         element: <AccountLayout />,

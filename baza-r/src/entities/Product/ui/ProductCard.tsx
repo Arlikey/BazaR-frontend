@@ -9,23 +9,24 @@ import type { Product } from "../model/Product";
 
 const card = tv({
   slots: {
-    root: "hover:scale-103 hover:z-10 transition-transform py-5 relative grid min-w-0 w-full h-full overflow-hidden rounded-xl bg-surface bw-thin border-solid border-neutral-100 grid-rows-[auto_1fr_auto_auto]",
+    root: "hover:shadow-[0_0_19px_3px_rgba(0,0,0,0.12)] hover:-translate-y-1 hover:z-10 transition-all py-5 relative grid min-w-0 w-full h-full rounded-xl bg-surface bw-thin border-solid border-neutral-100 grid-rows-[auto_1fr_auto_auto]",
     top: "relative px-0",
     media:
       "flex items-center justify-center overflow-visible h-[150px] mx-auto",
     img: "max-h-full max-w-full object-contain",
-    topLeft: "absolute left-4 top-4 z-10 flex flex-col gap-2",
+    topLeft: "absolute left-4 top-3 z-10 flex flex-col gap-2",
     RootRight: "absolute right-1 top-3 z-10 flex flex-col gap-2",
     body: "mt-6 px-5 min-w-0",
     title:
       "w-full min-w-0 text-sm font-normal line-clamp-2 [overflow-wrap:anywhere]",
     meta: "text-sm min-w-0 [overflow-wrap:anywhere]",
-    prices: "grid gap-1 min-w-0",
+    prices: "grid gap-2 min-w-0",
     oldPrice:
-      "min-w-0 truncate text-sm text-neutral-300 line-through leading-none",
+      "min-w-0 truncate text-sm text-neutral-300 leading-none",
     currentPrice: "min-w-0 truncate text-base font-normal leading-none",
     currency: "text-[11px]",
-    footer: "flex flex-col px-5 min-w-0",
+    currencyOldPrice: "text-xs",
+    footer: "flex flex-col pl-5 pr-2 min-w-0",
   },
   variants: {
     size: {
@@ -35,7 +36,7 @@ const card = tv({
         oldPrice: "text-sm",
         currentPrice: "text-base",
         currency: "text-[11px]",
-        prices: "gap-1 mt-2",
+        prices: "gap-1",
       },
       md: {
         root: "py-2",
@@ -62,12 +63,24 @@ const card = tv({
     variant: {
       compact: {},
       rich: {
-        top: "",
-        body: "",
-        prices: "",
-        footer: "",
-        title: "",
-        currentPrice: "",
+        root: "hover:shadow-[0_0_19px_3px_rgba(0,0,0,0.12)] hover:-translate-y-1 hover:scale-102 hover:z-10 gap-2 transition-all relative grid min-w-0 w-full h-full rounded-xl bg-surface bw-thin border-solid border-neutral-100 grid-rows-[auto_1fr_auto_auto]",
+        top: "relative px-0",
+        media:
+          "flex items-center justify-center overflow-visible my-15 h-[150px] mx-auto",
+        img: "max-h-full max-w-full object-contain",
+        topLeft: "absolute left-5 top-0 z-10 flex flex-col gap-2",
+        RootRight: "absolute right-1 -top-2 z-10 flex flex-col gap-1",
+        body: "mt-2 px-5 min-w-0",
+        title:
+          "w-full min-w-0 text-base font-normal line-clamp-2 [overflow-wrap:anywhere]",
+        meta: "text-sm min-w-0 [overflow-wrap:anywhere] mt-1",
+        prices: "grid gap-2 min-w-0",
+        oldPrice:
+          "min-w-0 truncate text-base text-neutral-300 leading-none",
+        currentPrice: "min-w-0 truncate text-2xl font-normal leading-none",
+        currency: "text-xl",
+        currencyOldPrice: "text-xs",
+        footer: "flex flex-col min-w-0 gap-3",
       },
     },
   },
@@ -207,8 +220,8 @@ function Prices({ className, currency = "₴" }: PricesProps) {
       <div className={styles.oldPrice()}>
         {hasOld && isPromo && (
           <>
-            {formatPrice(product.oldPrice!)}{" "}
-            <span className={styles.currency()}>{currency}</span>
+            <span className="line-through">{formatPrice(product.oldPrice!)} </span>
+            <span className={styles.currencyOldPrice()}>{currency}</span>
           </>
         )}
       </div>

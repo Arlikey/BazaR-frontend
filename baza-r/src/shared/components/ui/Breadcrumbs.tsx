@@ -15,22 +15,29 @@ type BreadcrumbsProps = {
 
 export function Breadcrumbs({ items }: BreadcrumbsProps) {
   return (
-    <nav className="mb-9 flex items-center gap-1">
+    <nav className="flex items-center gap-1">
       <CustomLink to="/">
         <IconWrapper>
           <HomeIcon />
         </IconWrapper>
       </CustomLink>
-      {items.map((item) => (
-        <Fragment key={item.to}>
-          <IconWrapper className="-rotate-90">
-            <CaretIcon />
-          </IconWrapper>
-          <CustomLink to={item.to} className="text-sm">
-            {item.label}
-          </CustomLink>
-        </Fragment>
-      ))}
+      {items.map((item, index) => {
+        const isLast = index === items.length - 1;
+        return (
+          <Fragment key={item.to}>
+            <IconWrapper className="-rotate-90">
+              <CaretIcon />
+            </IconWrapper>
+            {isLast ? (
+              <span className="text-sm text-neutral-400">{item.label}</span>
+            ) : (
+              <CustomLink to={item.to} className="text-sm">
+                {item.label}
+              </CustomLink>
+            )}
+          </Fragment>
+        );
+      })}
     </nav>
   );
 }

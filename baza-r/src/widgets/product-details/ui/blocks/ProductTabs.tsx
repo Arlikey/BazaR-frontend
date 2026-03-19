@@ -11,7 +11,7 @@ export function ProductTabs({ ...props }: Props) {
   return (
     <div
       {...props}
-      className="sticky top-(--top-offset) z-10 flex justify-center gap-x-11 bg-neutral-50 pt-8 text-base lg:justify-start"
+      className="sticky top-(--top-offset) z-10 flex justify-center gap-x-11 bg-neutral-50 pt-6 text-base lg:justify-start"
     >
       {PRODUCT_TABS.map((tab) => (
         <CustomLink

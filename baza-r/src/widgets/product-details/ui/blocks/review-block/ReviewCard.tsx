@@ -7,27 +7,21 @@ import { ReportIcon } from "../../../../../shared/components/icons/ui/ReportIcon
 import { ArrowEnterIcon } from "../../../../../shared/components/icons/ui/ArrowEnterIcon";
 import { LikeIcon } from "../../../../../shared/components/icons/ui/LikeIcon";
 import type { Review } from "../../../config/review.config";
+import { StarIcon } from "../../../../../shared/components/icons/ui/StarIcon";
 
 type Props = {
   review: Review;
 };
 
-function StarRating({ rating }: { rating: number }) {
+export function StarRating({ rating }: { rating: number }) {
   return (
     <div className="flex gap-0.5">
-      {Array.from({ length: 5 }).map((_, i) => (
-        <svg
-          key={i}
-          width="16"
-          height="16"
-          viewBox="0 0 16 16"
-          fill={i < rating ? "currentColor" : "none"}
-          stroke="currentColor"
-          className={i < rating ? "text-yellow-400" : "text-neutral-300"}
-        >
-          <path d="M8 1l1.854 3.756L14 5.528l-3 2.922.708 4.131L8 10.5l-3.708 2.081L5 8.45 2 5.528l4.146-.772L8 1z" />
-        </svg>
-      ))}
+      {Array.from({ length: 5 }).map((_, i) => {
+        const fill = Math.min(1, Math.max(0, rating - i));
+        return (
+          <StarIcon key={i} id={`star-${i}`} fill={fill} />
+        );
+      })}
     </div>
   );
 }

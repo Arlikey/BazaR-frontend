@@ -1,9 +1,9 @@
 import { Sidebar } from "../../../widgets/sidebar/Sidebar";
-import { TrendingProducts } from "../../../widgets/home/trending-products/ui/TrendingProducts";
-import { RecommendedProducts } from "../../../widgets/home/recommended-products/ui/RecommendedProducts";
+// import { TrendingProducts } from "../../../widgets/home/trending-products/ui/TrendingProducts";
+// import { RecommendedProducts } from "../../../widgets/home/recommended-products/ui/RecommendedProducts";
+// import { AwaitedProducts } from "../../../widgets/home/awaited-products/ui/AwaitedProducts";
 import { GiftsSection } from "../../../widgets/home/gifts-section/ui/GiftsSection";
 import { PromoBanners } from "../../../widgets/home/promo-banners/ui/PromoBanners";
-import { AwaitedProducts } from "../../../widgets/home/awaited-products/ui/AwaitedProducts";
 
 export const HomePage = () => {
   return (
@@ -11,12 +11,12 @@ export const HomePage = () => {
       <div className="sticky bottom-4 hidden self-end lg:block">
         <Sidebar />
       </div>
-      <div className="flex flex-1 flex-col gap-11 [&>*:nth-child(2)]:-mt-11 mb-3.5">
+      <div className="mb-3.5 flex flex-1 flex-col gap-11">
         <PromoBanners />
-        <TrendingProducts />
+        {/* <TrendingProducts /> */}
         <GiftsSection />
-        <RecommendedProducts />
-        <AwaitedProducts />
+        {/* <RecommendedProducts /> */}
+        {/* <AwaitedProducts /> */}
       </div>
     </>
   );

@@ -25,7 +25,7 @@ export const buttonVariants = tv({
       premium: "bg-premium text-foreground hover:bg-premium-hover",
       black: "bg-ink text-inverse hover:bg-ink-hover",
       link: "text-link hover:text-link-hover",
-      subtle: "text-foreground bg-white hover:text-accent hover:border-accent",
+      subtle: "hover:bg-subtle/15 bg-surface text-subtle",
       inverse: "text-inverse hover:text-accent",
     },
     size: {
