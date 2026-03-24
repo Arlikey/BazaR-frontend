@@ -91,7 +91,7 @@ export default function ProductDetails({ productId }: Props) {
                     : "available"
             }
             onBuy={() => {}}
-            onFavourite={() => {}}
+            onFavorite={() => {}}
             onCompare={() => {}}
           />
           <ServicesBlock />

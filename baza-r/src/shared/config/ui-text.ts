@@ -106,7 +106,7 @@ export const uiText = {
     openLogin: "Я вже зареєстрований",
   },
   productCard: {
-    favouriteAriaLabel: "Add to favourites",
+    favoriteAriaLabel: "Add to favorites",
     awaited: "Очікується",
   },
 } as const;

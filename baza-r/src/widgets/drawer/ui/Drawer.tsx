@@ -30,6 +30,7 @@ const Drawer = () => {
   const openAuth = useUiStore((s) => s.openAuth);
   const closeDrawer = useUiStore((s) => s.closeDrawer);
   const openMegamenu = useUiStore((s) => s.openMegamenu);
+  const openCart = useUiStore((s) => s.openCart);
 
   const help = footerGroups[0];
   const company = footerGroups[1];
@@ -44,7 +45,14 @@ const Drawer = () => {
         window.setTimeout(() => openMegamenu(), 200);
       },
     },
-    { icon: AltCartIcon, label: uiText.drawer.menuItems[1].label },
+    {
+      icon: AltCartIcon,
+      label: uiText.drawer.menuItems[1].label,
+      onClick: () => {
+        closeDrawer();
+        openCart();
+      },
+    },
     { icon: AltQuestionIcon, label: uiText.drawer.menuItems[2].label },
     { icon: TelephoneIcon, label: uiText.drawer.menuItems[3].label },
   ];

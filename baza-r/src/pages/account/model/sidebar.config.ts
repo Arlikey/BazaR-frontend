@@ -1,6 +1,5 @@
 import type { ComponentType } from "react";
 import { ListAltIcon } from "../../../shared/components/icons/ui/ListIcon";
-import { FavouriteAlt2Icon } from "../../../shared/components/icons/ui/FavouriteIcon";
 import { EyeAltIcon } from "../../../shared/components/icons/ui/EyeIcon";
 import { BellIcon } from "../../../shared/components/icons/ui/BellIcon";
 import { WalletIcon } from "../../../shared/components/icons/ui/WalletIcon";
@@ -10,6 +9,7 @@ import { DialogueIcon } from "../../../shared/components/icons/ui/DialogueIcon";
 import { MailIcon } from "../../../shared/components/icons/ui/MailIcon";
 import { PromotionIcon } from "../../../shared/components/icons/ui/PromotionIcon";
 import { PackageIcon } from "../../../shared/components/icons/ui/PackageIcon";
+import { FavoriteAlt2Icon } from "../../../shared/components/icons/ui/FavouriteIcon";
 
 export type SidebarNavItem = {
   label: string;
@@ -20,7 +20,7 @@ export type SidebarNavItem = {
 
 export const sidebarNav: SidebarNavItem[] = [
   { label: "Мої замовлення", to: "/account/orders", icon: ListAltIcon },
-  { label: "Список бажань", to: "/account/wishlist", icon: FavouriteAlt2Icon },
+  { label: "Список бажань", to: "/account/wishlist", icon: FavoriteAlt2Icon },
   { label: "Переглянуті товари", to: "/account/viewed", icon: EyeAltIcon },
   { label: "Розсилки", to: "/account/newsletters", icon: BellIcon },
   { label: "Мій гаманець", to: "/account/wallet", icon: WalletIcon },

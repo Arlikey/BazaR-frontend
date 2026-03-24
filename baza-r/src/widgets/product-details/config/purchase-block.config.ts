@@ -30,8 +30,8 @@ export type PurchaseBlockProps = {
   creditAvailable?: boolean;
 
   onBuy: () => void;
-  onFavourite: () => void;
+  onFavorite: () => void;
   onCompare: () => void;
-  isFavourite?: boolean;
+  isFavorite?: boolean;
   isCompared?: boolean;
 };

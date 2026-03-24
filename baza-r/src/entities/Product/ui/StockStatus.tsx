@@ -1,10 +1,24 @@
-type Props = { inStock: boolean | null | undefined };
+import { getStockStatus, STOCK_LABELS } from "../model/productUtils";
+
+type Props = { inStock: boolean | number | null | undefined };
 
 export function StockStatus({ inStock }: Props) {
-  if (inStock === null || inStock === undefined) return null;
-  return inStock ? (
-    <span className="text-accent text-sm font-medium">Є в наявності</span>
-  ) : (
-    <span className="text-sm text-neutral-400">Немає в наявності</span>
+  const status = getStockStatus(inStock);
+  if (status === "unavailable")
+    return (
+      <span className="text-sm font-medium text-black">
+        {STOCK_LABELS.unavailable}
+      </span>
+    );
+  if (status === "ending")
+    return (
+      <span className="text-promotion text-sm font-medium">
+        {STOCK_LABELS.ending}
+      </span>
+    );
+  return (
+    <span className="text-accent text-sm font-medium">
+      {STOCK_LABELS.available}
+    </span>
   );
 }

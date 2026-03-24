@@ -1,4 +1,4 @@
-export const FavouriteIcon = () => {
+export const FavoriteIcon = () => {
   return (
     <svg
       width="25"
@@ -15,7 +15,7 @@ export const FavouriteIcon = () => {
   );
 };
 
-export const FavouriteAltIcon = () => {
+export const FavoriteAltIcon = () => {
   return (
     <svg
       width="30"
@@ -32,7 +32,7 @@ export const FavouriteAltIcon = () => {
   );
 };
 
-export const FavouriteAlt2Icon = () => {
+export const FavoriteAlt2Icon = () => {
   return (
     <svg
       width="24"
@@ -57,7 +57,12 @@ export const FavouriteAlt2Icon = () => {
   );
 };
 
-export const FavouriteAlt3Icon = () => {
+type Props = {
+  filled?: boolean;
+  className?: string;
+};
+
+export const FavoriteAlt3Icon = ({ filled = false, className }: Props) => {
   return (
     <svg
       width="22"
@@ -67,8 +72,11 @@ export const FavouriteAlt3Icon = () => {
       xmlns="http://www.w3.org/2000/svg"
     >
       <path
-        d="M10.9019 3.74491L9.92479 2.74056C7.63128 0.383 3.42582 1.19656 1.90771 4.16055C1.19499 5.55465 1.03419 7.56744 2.33562 10.1362C3.58935 12.6096 6.19766 15.5723 10.9019 18.7993C15.6061 15.5723 18.2131 12.6096 19.4682 10.1362C20.7696 7.56607 20.6101 5.55465 19.8961 4.16055C18.378 1.19656 14.1725 0.381637 11.879 2.7392L10.9019 3.74491ZM10.9019 20.4414C-9.99321 6.63395 4.46833 -4.1427 10.662 1.55769C10.7438 1.63264 10.8242 1.71032 10.9019 1.79072C10.9788 1.71039 11.0588 1.63311 11.1417 1.55906C17.3341 -4.14543 31.797 6.63259 10.9019 20.4414Z"
-        fill="currentColor"
+        d="M10.9019 3.74491L9.92479 2.74056C7.63128 0.383 3.42582 1.19656 1.90771 4.16055C1.19499 5.55465 1.03419 7.56744 2.33562 10.1362C3.58935 12.6096 6.19766 15.5723 10.9019 18.7993C15.6061 15.5723 18.2131 12.6096 19.4682 10.1362C20.7696 7.56607 20.6101 5.55465 19.8961 4.16055C18.3779 1.19656 14.1725 0.381637 11.879 2.7392L10.9019 3.74491Z"
+        fill={filled ? "currentColor" : "none"}
+        stroke="currentColor"
+        strokeWidth="1.5"
+        strokeLinejoin="round"
       />
     </svg>
   );

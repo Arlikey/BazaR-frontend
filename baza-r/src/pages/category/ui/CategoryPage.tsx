@@ -51,8 +51,8 @@ const CategoryPage = () => {
         </div>
       ) : (
         <div className="flex gap-2.5">
-          <Block>
-            <aside className="h-60 w-[285px]"></aside>
+          <Block className="flex w-[285px] items-center justify-center text-neutral-500">
+            Filters Placeholder
           </Block>
           {productsLoading && (
             <div className="grid grid-cols-5 gap-3">

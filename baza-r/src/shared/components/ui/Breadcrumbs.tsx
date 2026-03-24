@@ -15,7 +15,7 @@ type BreadcrumbsProps = {
 
 export function Breadcrumbs({ items }: BreadcrumbsProps) {
   return (
-    <nav className="flex items-center gap-1">
+    <nav className="flex items-center gap-1 pt-8">
       <CustomLink to="/">
         <IconWrapper>
           <HomeIcon />

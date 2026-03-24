@@ -1,7 +1,6 @@
 import { Link } from "react-router";
 import { ProductCard } from "../../entities/product/ui/ProductCard";
 import type { Product } from "../../entities/product/model/Product";
-import { FavouriteButton } from "../../entities/product/ui/FavouriteButton";
 import { CompareButton } from "../../entities/product/ui/CompareButton";
 import { CartButton } from "../../entities/product/ui/CartButton";
 import { StockStatus } from "../../entities/product/ui/StockStatus";
@@ -10,6 +9,11 @@ import { StarRating } from "../product-details/ui/blocks/review-block/ReviewCard
 import IconWrapper from "../../shared/components/ui/IconWrapper";
 import { DialogueIcon } from "../../shared/components/icons/ui/DialogueIcon";
 import CustomLink from "../../shared/components/ui/CustomLink";
+import {
+  calcDiscount,
+  getStockStatus,
+} from "../../entities/product/model/productUtils";
+import { FavoriteButton } from "../../entities/product/ui/FavouriteButton";
 
 type Props = { product: Product };
 
@@ -20,28 +24,30 @@ export function ProductCardRich({ product }: Props) {
     product.oldPrice > product.currentPrice;
 
   const discount = isPromo
-    ? Math.round((1 - product.currentPrice! / product.oldPrice!) * 100)
+    ? calcDiscount(product.currentPrice!, product.oldPrice!)
     : null;
 
+  const inStock = getStockStatus(product.inStock);
+
   return (
-    <ProductCard.Root product={product} variant="rich">
+    <ProductCard.Root
+      product={product}
+      variant="rich"
+      disabled={inStock === "unavailable"}
+    >
       <ProductCard.Top>
         <Link to={`/product/${product.id}`}>
           <ProductCard.Media />
         </Link>
 
-        {discount ? (
+        {discount != null && discount >= 1 && (
           <ProductCard.TopLeft>
             <ProductBadge variant="discount" value={discount} />
-          </ProductCard.TopLeft>
-        ) : (
-          <ProductCard.TopLeft>
-            <ProductBadge variant="exclusive" />
           </ProductCard.TopLeft>
         )}
 
         <ProductCard.RootRight>
-          <FavouriteButton productId={product.id} />
+          <FavoriteButton productId={product.id} />
           <CompareButton productId={product.id} />
         </ProductCard.RootRight>
       </ProductCard.Top>
@@ -67,7 +73,9 @@ export function ProductCardRich({ product }: Props) {
       <ProductCard.Footer>
         <div className="flex items-end justify-between gap-2">
           <ProductCard.Prices />
-          {product.inStock && <CartButton productId={product.id} />}
+          {inStock !== "unavailable" && product.offerId && (
+            <CartButton offerId={product.offerId} />
+          )}
         </div>
         <StockStatus inStock={product.inStock} />
       </ProductCard.Footer>

@@ -3,6 +3,10 @@ import { sellerProductApi } from "../../../../../features/seller/api/sellerProdu
 import { Link } from "react-router";
 import { useSellerMe } from "../../../../../features/seller/api/queries";
 
+function formatPrice(amount: number) {
+  return new Intl.NumberFormat("uk-UA").format(amount);
+}
+
 export default function SellerProductsPage() {
   const { data: seller } = useSellerMe();
 
@@ -24,34 +28,94 @@ export default function SellerProductsPage() {
         </Link>
       </div>
 
-      {isLoading && <p className="text-neutral-400">Завантаження...</p>}
+      {isLoading && (
+        <div className="flex flex-col gap-3">
+          {Array.from({ length: 5 }).map((_, i) => (
+            <div
+              key={i}
+              className="h-24 animate-pulse rounded-xl bg-neutral-100"
+            />
+          ))}
+        </div>
+      )}
 
       {!isLoading && products.length === 0 && (
-        <p className="text-neutral-400">Товарів ще немає</p>
+        <div className="flex flex-col items-center gap-3 py-20 text-neutral-400">
+          <span className="text-5xl">📦</span>
+          <p>Товарів ще немає</p>
+          <Link
+            to="/account/seller/products/create"
+            className="text-accent hover:underline"
+          >
+            Створити перший товар
+          </Link>
+        </div>
       )}
 
       <div className="flex flex-col gap-3">
         {products.map((p) => (
-          <div key={p.id} className="flex items-center gap-4 rounded-xl border border-neutral-100 bg-white p-4">
+          <div
+            key={p.id}
+            className="flex items-center gap-4 rounded-xl border border-neutral-100 bg-white p-4"
+          >
             {p.mainImageUrl ? (
               <img
                 src={`http://localhost:8080${p.mainImageUrl}`}
-                className="h-16 w-16 rounded-lg object-cover"
+                className="h-20 w-20 shrink-0 rounded-xl object-contain"
               />
             ) : (
-              <div className="h-16 w-16 rounded-lg bg-neutral-100" />
+              <div className="flex h-20 w-20 shrink-0 items-center justify-center rounded-xl bg-neutral-100 text-xs text-neutral-300">
+                Немає фото
+              </div>
             )}
-            <div className="flex flex-1 flex-col gap-1">
-              <span className="text-base font-medium">{p.name}</span>
-              {p.vendorCode && <span className="text-sm text-neutral-400">Артикул: {p.vendorCode}</span>}
-              <span className="text-sm text-neutral-400">{p.status}</span>
+
+            <div className="flex min-w-0 flex-1 flex-col gap-1">
+              <span className="line-clamp-2 text-base font-medium">
+                {p.name}
+              </span>
+              <span className="text-sm text-neutral-400">{p.slug}</span>
             </div>
-            <Link
-              to={`/account/seller/offers/create?productId=${p.id}`}
-              className="rounded-xl border border-neutral-200 px-4 py-2 text-sm transition-colors hover:bg-neutral-50"
-            >
-              Створити оффер
-            </Link>
+
+            <div className="flex min-w-[140px] shrink-0 flex-col items-end gap-1">
+              {p.offer ? (
+                <>
+                  {p.offer.oldPriceAmount &&
+                    p.offer.oldPriceAmount > p.offer.priceAmount && (
+                      <span className="text-sm text-neutral-400 line-through">
+                        {formatPrice(p.offer.oldPriceAmount)} ₴
+                      </span>
+                    )}
+                  <span className="text-lg font-medium">
+                    {formatPrice(p.offer.priceAmount)} ₴
+                  </span>
+                  <span
+                    className={`text-xs font-medium ${p.offer.inStock ? "text-accent" : "text-neutral-400"}`}
+                  >
+                    {p.offer.inStock ? "Є в наявності" : "Немає в наявності"}
+                  </span>
+                </>
+              ) : (
+                <span className="text-sm text-neutral-400">Немає офферу</span>
+              )}
+            </div>
+
+            <div className="flex shrink-0 flex-col gap-2">
+              {p.offer ? (
+                <Link
+                  to={`/account/seller/offers/edit?productId=${p.id}`}
+                  className="rounded-xl border border-neutral-200 px-4 py-2 text-center text-sm transition-colors hover:bg-neutral-50"
+                >
+                  Редагувати оффер
+                </Link>
+              ) : (
+                <Link
+                  to={`/account/seller/offers/create?productId=${p.id}`}
+                  className="bg-accent rounded-xl px-4 py-2 text-center text-sm font-medium text-white"
+                >
+                  Створити оффер
+                </Link>
+              )}
+            </div>
           </div>
         ))}
       </div>

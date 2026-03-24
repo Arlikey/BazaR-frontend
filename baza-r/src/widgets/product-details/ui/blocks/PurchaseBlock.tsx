@@ -1,5 +1,5 @@
 import { CompareIcon } from "../../../../shared/components/icons/ui/CompareIcon";
-import { FavouriteAltIcon } from "../../../../shared/components/icons/ui/FavouriteIcon";
+import { FavoriteAltIcon } from "../../../../shared/components/icons/ui/FavouriteIcon";
 import { InfoIcon } from "../../../../shared/components/icons/ui/InfoIcon";
 import Block from "../../../../shared/components/ui/Block";
 import { Button } from "../../../../shared/components/ui/Button";
@@ -28,9 +28,9 @@ export function PurchaseBlock({
   paymentBadges,
   creditAvailable,
   onBuy,
-  onFavourite,
+  onFavorite,
   onCompare,
-  isFavourite,
+  isFavorite,
   isCompared,
 }: PurchaseBlockProps) {
   const stockLabel = STOCK_LABELS[stockStatus];
@@ -86,9 +86,9 @@ export function PurchaseBlock({
 
           <div className="1.5xl:hidden flex gap-7.5">
             <IconWrapper
-              className={`h-7.5 cursor-pointer transition-colors ${isFavourite ? "text-accent" : "text-subtle"}`}
+              className={`h-7.5 cursor-pointer transition-colors ${isFavorite ? "text-accent" : "text-subtle"}`}
             >
-              <FavouriteAltIcon />
+              <FavoriteAltIcon />
             </IconWrapper>
             <IconWrapper
               className={`h-7.5 cursor-pointer transition-colors ${isCompared ? "text-accent" : "text-subtle"}`}
@@ -125,9 +125,9 @@ export function PurchaseBlock({
 
             <div className="1.5xl:flex ml-10 hidden gap-7.5">
               <IconWrapper
-                className={`h-7.5 cursor-pointer transition-colors ${isFavourite ? "text-accent" : "text-subtle"}`}
+                className={`h-7.5 cursor-pointer transition-colors ${isFavorite ? "text-accent" : "text-subtle"}`}
               >
-                <FavouriteAltIcon />
+                <FavoriteAltIcon />
               </IconWrapper>
               <IconWrapper
                 className={`h-7.5 cursor-pointer transition-colors ${isCompared ? "text-accent" : "text-subtle"}`}

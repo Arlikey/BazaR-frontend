@@ -13,7 +13,7 @@ export function AccountSidebar() {
     <aside className="flex w-full max-w-90 shrink-0 flex-col gap-3">
       <Block
         rounded="xl"
-        className="sticky top-[calc(var(--top-offset)+2rem)] flex flex-col gap-1 pb-45"
+        className="sticky top-[calc(var(--top-offset)+2rem)] flex flex-col gap-1 pb-4"
       >
         <div className="bw-b-thin border-neutral-100 px-6 py-4">
           <NavLink to="/account/profile">

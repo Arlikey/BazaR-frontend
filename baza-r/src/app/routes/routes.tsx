@@ -20,6 +20,7 @@ import SellerProductsPage from "../../pages/account/ui/pages/seller/SellerProduc
 import { CreateProductForm } from "../../features/seller/ui/CreateProductForm";
 import CreateOfferPage from "../../features/seller/ui/CreateOfferPage";
 import CategoryPage from "../../pages/category/ui/CategoryPage";
+import EditOfferPage from "../../features/seller/ui/EditOfferPage";
 
 export const routes: RouteObject[] = [
   {
@@ -47,6 +48,7 @@ export const routes: RouteObject[] = [
           { path: "seller/products", element: <SellerProductsPage /> },
           { path: "seller/products/create", element: <CreateProductForm /> },
           { path: "seller/offers/create", element: <CreateOfferPage /> },
+          { path: "seller/offers/edit", element: <EditOfferPage /> },
         ],
       },
     ],

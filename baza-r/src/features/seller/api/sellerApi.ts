@@ -7,13 +7,20 @@ export type SellerMe = {
   status: number;
 };
 
+export type SellerProductOffer = {
+  productId: string;
+  priceAmount: number;
+  priceCurrency: string;
+  oldPriceAmount: number | null;
+  inStock: boolean;
+};
+
 export type SellerProduct = {
   id: string;
   name: string;
   slug: string;
-  status: string;
   mainImageUrl: string | null;
-  vendorCode: string | null;
+  offer: SellerProductOffer | null;
 };
 
 export const sellerApi = {

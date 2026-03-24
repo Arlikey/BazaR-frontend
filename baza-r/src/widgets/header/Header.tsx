@@ -13,9 +13,19 @@ import { CartIcon } from "../../shared/components/icons/ui/CartIcon";
 import { useMe } from "../../entities/user/queries";
 import { ListIcon } from "../../shared/components/icons/ui/ListIcon";
 import { useNavigate } from "react-router";
+import { useCart } from "../../entities/cart/queries";
+import { Badge } from "../../shared/components/ui/Badge";
+import { CompareIcon } from "../../shared/components/icons/ui/CompareIcon";
+import { useFavorites } from "../../entities/favourite/queries";
+import { FavoriteIcon } from "../../shared/components/icons/ui/FavouriteIcon";
 
 export default function Header() {
   const { data: user } = useMe();
+  const { data: favorites = [] } = useFavorites();
+  const { data: cart } = useCart();
+
+  const favCount = favorites.length;
+  const cartCount = cart?.totalQuantity ?? 0;
   const navigate = useNavigate();
 
   const openAuth = useUiStore((s) => s.openAuth);
@@ -93,7 +103,7 @@ export default function Header() {
             </span>
           </Button>
         </div>
-        <div className="text-inverse ml-20 flex items-center gap-2 2xl:ml-24">
+        <div className="text-inverse flex w-50 justify-end gap-1">
           <Button
             size="icon"
             rounded="sm"
@@ -111,16 +121,29 @@ export default function Header() {
               </IconWrapper>
             )}
           </Button>
+          {favCount > 0 && (
+            <Button
+              size="icon"
+              rounded="sm"
+              className="relative hidden md:flex"
+              onClick={() => navigate("/account/wishlist")}
+            >
+              <IconWrapper>
+                <FavoriteIcon />
+              </IconWrapper>
+              <Badge count={favCount} variant="subtle" />
+            </Button>
+          )}
           <Button
             size="icon"
             rounded="sm"
             className="relative"
-            aria-label={uiText.header.cartAriaLabel}
             onClick={() => openCart()}
           >
             <IconWrapper>
               <CartIcon />
             </IconWrapper>
+            <Badge count={cartCount} />
           </Button>
         </div>
       </div>

@@ -39,9 +39,9 @@ export function PromoBanners() {
 
   return (
     <section aria-label={uiText.home.promoBannersAriaLabel}>
-      <div className="flex flex-col items-end gap-5">
+      <div className="flex flex-col items-end gap-5 lg:py-8 -mx-8 lg:mx-0">
         <Carousel
-          className="w-full px-3"
+          className="w-full lg:px-3"
           opts={{ loop: true }}
           plugins={[plugin.current]}
           onPointerEnter={() => plugin.current.stop()}
@@ -66,8 +66,10 @@ export function PromoBanners() {
               ))
             )}
           </CarouselContent>
-          <CarouselPrevious />
-          <CarouselNext />
+          <div className="hidden lg:flex">
+            <CarouselPrevious />
+            <CarouselNext />
+          </div>
         </Carousel>
         <CustomLink
           to={""}

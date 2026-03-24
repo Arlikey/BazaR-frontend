@@ -21,7 +21,7 @@ export function PromoTile({ title, subtitle, href, image, className }: Props) {
             <div className="line-clamp-2 text-xl font-medium">{subtitle}</div>
           </div>
           <div className="flex flex-col items-center justify-between gap-7.5">
-            <div className="font-[Days_One] text-[40px] leading-[150%]">
+            <div className="font-[Days_One] text-3xl 2xl:text-[40px] leading-[150%]">
               {title}
             </div>
 
@@ -35,7 +35,7 @@ export function PromoTile({ title, subtitle, href, image, className }: Props) {
           </div>
         </div>
 
-        <div className="shrink-0">{image}</div>
+        <div className="min-w-30">{image}</div>
       </div>
     </div>
   );

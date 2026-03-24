@@ -7,15 +7,16 @@ export type ProductListItem = {
   description: string | null;
   mainImageUrl: string | null;
   offer: {
-    productId: string;
+    id: string;
     priceAmount: number;
     priceCurrency: string;
     oldPriceAmount: number | null;
-    inStock: boolean;
+    stockQuantity: number;
+    isFavorite: boolean;
   } | null;
 };
 
-export function toProduct(item: ProductListItem, categoryId: string): Product {
+export function toProduct(item: ProductListItem, categoryId?: string): Product {
   return {
     id: item.id,
     categoryId,
@@ -26,8 +27,9 @@ export function toProduct(item: ProductListItem, categoryId: string): Product {
     currentPrice: item.offer?.priceAmount ?? null,
     oldPrice: item.offer?.oldPriceAmount ?? null,
     isActive: true,
-    inStock: item.offer?.inStock ?? null,
+    inStock: item.offer?.stockQuantity ?? null,
     rating: null,
     reviewCount: null,
+    offerId: item.offer?.id ?? null,
   };
 }
