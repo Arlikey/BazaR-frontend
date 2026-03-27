@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import ProductCardSkeleton from "../../../../shared/components/ui/loaders/ProductCardSkeleton";
 import { Section } from "../../../../shared/components/ui/product-section/ui/Section";
-import { tryCatch } from "../../../../shared/lib/try-catch";
 import { ProductCardCompact } from "../../../product-card/ProductCardCompact";
 import { ProductsGrid } from "../../../product-grid/ui/ProductGrid";
 import { uiText } from "../../../../shared/config/ui-text";
@@ -25,7 +24,7 @@ export function TrendingProducts() {
               </li>
             ))
           : products.map((p) => (
-              <li key={p.id} className="shrink-0 flex-1">
+              <li key={p.id} className="flex-1 shrink-0">
                 <ProductCardCompact product={toProduct(p)} />
               </li>
             ))}

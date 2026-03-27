@@ -23,7 +23,7 @@ const customLink = tv({
     },
     border: {
       none: "",
-      thin: "bw-thin border-neutral-300",
+      thin: "bw-thin border-neutral-100",
     },
     textSize: {
       sm: "text-sm",

@@ -5,7 +5,7 @@ import { ErrorIcon } from "../icons/ui/ErrorIcon";
 
 const inputField = tv({
   slots: {
-    wrapper: "bg-surface bw-thin flex items-center border-outline/50 relative",
+    wrapper: "bg-surface bw-thin flex items-center border-neutral-100 relative",
     input:
       "text-foreground-muted autofill:bg-accent placeholder:text-foreground-muted h-full flex-1 text-sm font-medium rounded-[inherit] outline-none bg-transparent ",
     iconLeft: "ml-4 mr-2 flex items-center",
@@ -39,6 +39,7 @@ const inputField = tv({
 type InputFieldVariants = VariantProps<typeof inputField>;
 
 type Props = {
+  className?: string;
   containerClassName?: string;
   inputClassName?: string;
   errorClassName?: string;
@@ -54,6 +55,7 @@ const join = (...classes: Array<string | false | null | undefined>) =>
   classes.filter(Boolean).join(" ");
 
 export default function InputField({
+  className,
   containerClassName,
   inputClassName,
   errorClassName,
@@ -88,7 +90,7 @@ export default function InputField({
   const pr = rightCount === 0 ? "pr-4" : rightCount === 1 ? "pr-10" : "pr-20";
 
   return (
-    <div>
+    <div className={className}>
       <div className={s.wrapper({ className: containerClassName })}>
         {leftIcon ? <span className={s.iconLeft()}>{leftIcon}</span> : null}
 

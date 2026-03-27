@@ -12,6 +12,8 @@ export function FavoriteButton({ productId }: Props) {
 
   return (
     <Button
+      aria-label={isFav ? "Видалити з улюбленного" : "Додати до улюбленного"}
+      aria-pressed={isFav}
       color="subtle"
       className="h-10 w-10 bg-transparent"
       rounded="md"

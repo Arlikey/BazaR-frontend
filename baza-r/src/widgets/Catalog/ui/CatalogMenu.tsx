@@ -38,7 +38,7 @@ export default function CatalogMenu({
     <nav className={catalogMenu({ variant, className })}>
       <ul>
         {isLoading &&
-          [...Array(10)].map((_, i) => (
+          [...Array(19)].map((_, i) => (
             <li key={i}>
               <CategoryItemSkeleton />
             </li>

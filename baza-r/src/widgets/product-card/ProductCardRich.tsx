@@ -13,7 +13,7 @@ import {
   calcDiscount,
   getStockStatus,
 } from "../../entities/product/model/productUtils";
-import { FavoriteButton } from "../../entities/product/ui/FavouriteButton";
+import { FavoriteButton } from "../../entities/product/ui/FavoriteButton";
 
 type Props = { product: Product };
 

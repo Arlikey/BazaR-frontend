@@ -1,46 +1,85 @@
-import { useState } from "react";
-
+import { useRef, useEffect } from "react";
+import { useSearch } from "./model/useSearch";
+import SearchInput from "./ui/SearchInput";
+import SearchDropdown from "./ui/SearchDropdown";
 import { Button } from "../../shared/components/ui/Button";
 import { uiText } from "../../shared/config/ui-text";
-import { SearchIcon } from "../../shared/components/icons/ui/SearchIcon";
-import { CrossIcon } from "../../shared/components/icons/ui/CrossIcon";
-import { MicrophoneIcon } from "../../shared/components/icons/ui/MicrophoneIcon";
 
 const Search = () => {
-  const [searchQuery, setSearchQuery] = useState("");
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  const {
+    query,
+    setQuery,
+    focused,
+    setFocused,
+    history,
+    products,
+    categories,
+    handleSelect,
+    handleFocus,
+    handleSubmit,
+    handleClearHistory,
+  } = useSearch();
+
+  useEffect(() => {
+    function handleClickOutside(e: MouseEvent) {
+      if (!containerRef.current) return;
+
+      if (!containerRef.current.contains(e.target as Node)) {
+        setFocused(false);
+      }
+    }
+
+    document.addEventListener("mousedown", handleClickOutside);
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [setFocused]);
+
+  const showDropdown =
+    focused && (query.trim().length > 0 || history.length > 0);
 
   return (
-    <div className="bg-surface flex h-10 flex-1 items-center justify-between rounded-[20px]">
-      <div className="flex h-full flex-1 items-center">
-        <div className="text-muted ml-5">
-          <SearchIcon />
+    <div ref={containerRef} className="flex flex-1">
+      <div className="bg-surface flex h-10 flex-1 items-center justify-between rounded-[20px]">
+        <div className="relative flex h-full flex-1 items-center">
+          <SearchInput
+            query={query}
+            setQuery={setQuery}
+            onFocus={handleFocus}
+            onSubmit={handleSubmit}
+          />
+
+          {showDropdown && (
+            <SearchDropdown
+              query={query}
+              history={history}
+              products={products}
+              categories={categories}
+              onSelect={handleSelect}
+              onClearHistory={handleClearHistory}
+              onSubmit={handleSubmit}
+            />
+          )}
         </div>
-        <input
-          className="text-muted ml-3 h-full flex-1 pr-4 outline-0"
-          type="text"
-          placeholder={uiText.search.placeholder}
-        />
-        {searchQuery && (
-          <div className="mr-3">
-            <CrossIcon />
-          </div>
+
+        <div className="hidden h-full items-center md:flex">
+          <Button
+            color="secondary"
+            className="h-full rounded-r-[20px] px-4 font-normal"
+            onClick={handleSubmit}
+          >
+            <span className="capitalize">{uiText.search.submitLabel}</span>
+          </Button>
+        </div>
+        {showDropdown && (
+          <div
+            className="fixed inset-0 mt-(--top-offset) bg-black/40"
+            onMouseDown={() => setFocused(false)}
+          />
         )}
-        <Button
-          variant="ghost"
-          color="subtle"
-          className="hidden h-full px-3 md:flex"
-          aria-label={uiText.search.voiceSearchAriaLabel}
-        >
-          <MicrophoneIcon />
-        </Button>
-      </div>
-      <div className="hidden h-full items-center md:flex">
-        <Button
-          color="secondary"
-          className="h-full rounded-r-[20px] px-4 font-normal"
-        >
-          <span className="capitalize">{uiText.search.submitLabel}</span>
-        </Button>
       </div>
     </div>
   );

@@ -9,7 +9,7 @@ import { VisaLogo } from "../../shared/components/icons/payments/VisaLogo";
 
 const Footer = () => {
   return (
-    <footer className="bw-t-thin hidden w-full border-neutral-300 md:flex">
+    <footer className="bw-t-thin hidden w-full border-neutral-100 md:flex">
       <div className="mt-9 w-full">
         <div className="text-md mx-auto flex max-w-480 flex-col justify-between gap-8 px-8 pb-12 lg:flex-row xl:gap-50 xl:pr-33 xl:pl-14">
           <section
@@ -34,7 +34,7 @@ const Footer = () => {
             ))}
           </div>
         </div>
-        <div className="bw-t-thin border-neutral-200"></div>
+        <div className="bw-t-thin border-neutral-100"></div>
         <div className="mx-auto flex max-w-480 items-center justify-between gap-6 px-8 py-9 xl:pr-33 xl:pl-14">
           <div className="flex gap-6 lg:gap-18">
             <MastercardLogo />

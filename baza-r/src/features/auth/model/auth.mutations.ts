@@ -38,7 +38,7 @@ export function useLogout() {
     mutationFn: authApi.logout,
     onSuccess: () => {
       tokenStorage.clear();
-      qc.removeQueries({ queryKey: meQueryKey });
+      qc.clear();
       useAuthStore.getState().setAuthenticated(false);
       navigate("/");
     },

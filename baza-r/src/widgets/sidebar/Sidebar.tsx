@@ -13,12 +13,12 @@ import { PlayStoreIcon } from "../../shared/components/icons/apps/PlayStoreIcon"
 import { AppleStoreIcon } from "../../shared/components/icons/apps/AppleStoreIcon";
 import { MastercardLogo } from "../../shared/components/icons/payments/MastercardLogo";
 import { VisaLogo } from "../../shared/components/icons/payments/VisaLogo";
-import { useMe } from "../../entities/user/queries";
 import { AccountUserCard } from "../../pages/account/ui/AccountUserCard";
+import { useAuthStore } from "../../shared/model/auth.store";
 
 export function Sidebar() {
   const openAuth = useUiStore((s) => s.openAuth);
-  const { data: user } = useMe();
+  const isAuthenticated = useAuthStore((s) => s.isAuthenticated);
   const { roots, isLoading } = useCatalogCategories();
 
   return (
@@ -34,7 +34,7 @@ export function Sidebar() {
         </CustomLink>
       </Block>
 
-      {user ? (
+      {isAuthenticated ? (
         <Block className="flex">
           <CustomLink
             to={"/account/profile"}

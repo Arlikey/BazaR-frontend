@@ -5,7 +5,7 @@ import { tv, type VariantProps } from "tailwind-variants";
 
 const userCard = tv({
   slots: {
-    root: "flex items-center gap-3 group ",
+    root: "flex items-center gap-3 group transition",
     icon: "",
     name: "truncate font-medium text-accent",
     email: "truncate text-muted",
@@ -31,7 +31,7 @@ const userCard = tv({
     },
     inverted: {
       true: {
-        name: "text-white group-hover:text-accent transition",
+        name: "text-white group-hover:text-accent ",
         email: "text-neutral-200",
         icon: "text-white",
       },

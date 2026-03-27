@@ -21,6 +21,9 @@ import { CreateProductForm } from "../../features/seller/ui/CreateProductForm";
 import CreateOfferPage from "../../features/seller/ui/CreateOfferPage";
 import CategoryPage from "../../pages/category/ui/CategoryPage";
 import EditOfferPage from "../../features/seller/ui/EditOfferPage";
+import { AuthGuard } from "./guards/AuthGuard";
+import { SellerGuard } from "./guards/SellerGuard";
+import OrderPage from "../../pages/order/OrderPage";
 
 export const routes: RouteObject[] = [
   {
@@ -30,31 +33,56 @@ export const routes: RouteObject[] = [
       { path: "/product/:productId", element: <ProductPage /> },
       { path: "/catalog/:categoryId", element: <CategoryPage /> },
       {
-        path: "/account",
-        element: <AccountLayout />,
+        element: <AuthGuard />,
         children: [
-          { index: true, element: <Navigate to="/account/profile" replace /> },
-          { path: "profile", element: <ProfilePage /> },
-          { path: "orders", element: <OrdersPage /> },
-          { path: "wishlist", element: <WishlistPage /> },
-          { path: "viewed", element: <ViewedPage /> },
-          { path: "newsletters", element: <NewslettersPage /> },
-          { path: "wallet", element: <WalletPage /> },
-          { path: "bonus", element: <BonusPage /> },
-          { path: "premium", element: <PremiumPage /> },
-          { path: "reviews", element: <ReviewsPage /> },
-          { path: "messages", element: <MessagesPage /> },
-          { path: "promotions", element: <PromotionsPage /> },
-          { path: "seller/products", element: <SellerProductsPage /> },
-          { path: "seller/products/create", element: <CreateProductForm /> },
-          { path: "seller/offers/create", element: <CreateOfferPage /> },
-          { path: "seller/offers/edit", element: <EditOfferPage /> },
+          {
+            path: "/account",
+            element: <AccountLayout />,
+            children: [
+              {
+                index: true,
+                element: <Navigate to="/account" replace />,
+              },
+              { path: "profile", element: <ProfilePage /> },
+              { path: "orders", element: <OrdersPage /> },
+              { path: "wishlist", element: <WishlistPage /> },
+              { path: "viewed", element: <ViewedPage /> },
+              { path: "newsletters", element: <NewslettersPage /> },
+              { path: "wallet", element: <WalletPage /> },
+              { path: "bonus", element: <BonusPage /> },
+              { path: "premium", element: <PremiumPage /> },
+              { path: "reviews", element: <ReviewsPage /> },
+              { path: "messages", element: <MessagesPage /> },
+              { path: "promotions", element: <PromotionsPage /> },
+
+              {
+                element: <SellerGuard />,
+                children: [
+                  {
+                    path: "seller",
+                    children: [
+                      { path: "products", element: <SellerProductsPage /> },
+                      {
+                        path: "products/create",
+                        element: <CreateProductForm />,
+                      },
+                      { path: "offers/create", element: <CreateOfferPage /> },
+                      { path: "offers/edit", element: <EditOfferPage /> },
+                    ],
+                  },
+                ],
+              },
+            ],
+          },
         ],
       },
     ],
   },
   {
     element: <BlankLayout />,
-    children: [{ path: "/*", element: <NotFound /> }],
+    children: [
+      { path: "/*", element: <NotFound /> },
+      { path: "/order", element: <OrderPage /> },
+    ],
   },
 ];

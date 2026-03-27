@@ -13,7 +13,7 @@ export function GiftsSection() {
           subtitle={forHer.subtitle}
           href={forHer.href}
           className="bg-[#F3A4A4]"
-          image={<img src="/images/action-banners/love-present-blue.png" />}
+          image={<img src="/images/action-banners/love-present-blue.webp" alt="Подарунок для неї"/>}
         />
 
         <PromoTile
@@ -21,7 +21,7 @@ export function GiftsSection() {
           subtitle={forHim.subtitle}
           href={forHim.href}
           className="bg-[#86CBE9]"
-          image={<img src="/images/action-banners/love-present-pink.png" />}
+          image={<img src="/images/action-banners/love-present-pink.webp" alt="Подарунок для нього"/>}
         />
       </div>
     </Section>

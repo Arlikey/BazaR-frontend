@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 
-import { tryCatch } from "../../../../shared/lib/try-catch";
 import CustomLink from "../../../../shared/components/ui/CustomLink";
 import {
   Carousel,
@@ -19,15 +18,15 @@ import { uiText } from "../../../../shared/config/ui-text";
 export function PromoBanners() {
   const [data, setData] = useState<Promotion[]>([]);
   const [error, setError] = useState<Error | null>(null);
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
   const total = data.length;
 
   useEffect(() => {
     const load = async () => {
       setIsLoading(true);
-      const [items, err] = await tryCatch(PromotionDao.getPromotions());
-      if (err) setError(err);
-      else setData(items ?? []);
+      const items = await PromotionDao.getPromotions();
+
+      setData(items);
       setIsLoading(false);
     };
     load();
@@ -39,7 +38,7 @@ export function PromoBanners() {
 
   return (
     <section aria-label={uiText.home.promoBannersAriaLabel}>
-      <div className="flex flex-col items-end gap-5 lg:py-8 -mx-8 lg:mx-0">
+      <div className="-mx-8 flex flex-col items-end gap-5 lg:mx-0 lg:py-8">
         <Carousel
           className="w-full lg:px-3"
           opts={{ loop: true }}
@@ -47,19 +46,20 @@ export function PromoBanners() {
           onPointerEnter={() => plugin.current.stop()}
           onPointerLeave={() => plugin.current.play()}
         >
-          <CarouselContent className="max-h-400">
+          <CarouselContent className="max-h-100">
             {isLoading ? (
-              <CarouselItem className="pl-0">
+              <CarouselItem className="aspect-21/9 max-h-68 pl-0 xl:max-h-100">
                 <PromoBannerSkeleton />
               </CarouselItem>
             ) : (
-              data.map((prom) => (
-                <CarouselItem key={prom.id} className="pl-0">
-                  <Link to={prom.url} className="block h-full">
+              data.map((prom, i) => (
+                <CarouselItem key={prom.id} className="pl-0 xl:aspect-21/9">
+                  <Link to={"#"} className="block h-full">
                     <img
                       src={prom.imageUrl}
                       alt={prom.name}
                       className="h-full w-full object-contain"
+                      loading={i == 0 ? "eager" : "lazy"}
                     />
                   </Link>
                 </CarouselItem>

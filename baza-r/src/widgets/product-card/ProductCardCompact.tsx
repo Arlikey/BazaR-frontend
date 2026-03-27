@@ -6,7 +6,7 @@ import CustomLink from "../../shared/components/ui/CustomLink";
 import type { Product } from "../../entities/product/model/Product";
 import { ProductCard } from "../../entities/product/ui/ProductCard";
 import { FavoriteIcon } from "../../shared/components/icons/ui/FavouriteIcon";
-import { FavoriteButton } from "../../entities/product/ui/FavouriteButton";
+import { FavoriteButton } from "../../entities/product/ui/FavoriteButton";
 
 type CompactProps = {
   product: Product;

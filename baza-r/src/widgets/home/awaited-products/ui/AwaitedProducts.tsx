@@ -2,11 +2,11 @@ import { useEffect, useState } from "react";
 import ProductCardSkeleton from "../../../../shared/components/ui/loaders/ProductCardSkeleton";
 import { Section } from "../../../../shared/components/ui/product-section/ui/Section";
 import { ProductCardCompact } from "../../../product-card/ProductCardCompact";
-import { tryCatch } from "../../../../shared/lib/try-catch";
 import { uiText } from "../../../../shared/config/ui-text";
 import { Button } from "../../../../shared/components/ui/Button";
 import { useProductsByCategory } from "../../../../entities/product/queries";
 import { toProduct } from "../../../../entities/product/model/ProductListItem";
+import CustomLink from "../../../../shared/components/ui/CustomLink";
 
 export function AwaitedProducts() {
   const { data: products = [], isLoading: productsLoading } =
@@ -16,6 +16,7 @@ export function AwaitedProducts() {
     <Section
       aria-label={uiText.home.awaitedProductsTitle}
       title={uiText.home.awaitedProductsTitle}
+      className="items-center gap-8"
     >
       {productsLoading && (
         <div className="grid grid-cols-5 gap-4">
@@ -38,13 +39,14 @@ export function AwaitedProducts() {
           )}
         </div>
       )}
-      <Button
+      <CustomLink
+        to={""}
+        variant="primary"
         border="thin"
-        color="subtle"
-        className="mt-11 self-center rounded-4xl px-15 py-3.5"
+        className="group h-11 gap-1 px-15 text-sm justify-center"
       >
         <span className="text-sm font-medium">Показати ще</span>
-      </Button>
+      </CustomLink>
     </Section>
   );
 }

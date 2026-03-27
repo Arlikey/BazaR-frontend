@@ -6,13 +6,12 @@ type CardVariant = "compact" | "rich";
 
 const productCardSkeleton = tv({
   slots: {
-    root: "relative grid h-full w-full overflow-hidden rounded-xl bg-surface bw-thin border-solid border-neutral-300 grid-rows-[auto_1fr_auto_auto]",
+    root: "relative grid h-full w-full overflow-hidden rounded-xl bg-surface bw-thin border-solid border-neutral-100 grid-rows-[auto_1fr_auto]",
     top: "relative pt-5",
     mediaWrap:
       "relative flex items-center justify-center overflow-hidden rounded-lg bg-surface px-8 aspect-[16/9]",
-    body: "mt-6 pl-7 pr-1",
-    footer: "flex items-end justify-between gap-3 pl-7 pr-1 pb-5",
-    priceStack: "flex flex-col gap-2",
+    body: "mt-6 mb-8 px-5 pr-1",
+    footer: "flex items-end justify-between px-5 pr-1 pb-6",
   },
   variants: {
     variant: {
@@ -46,17 +45,14 @@ export default function ProductCardSkeleton({
       </header>
 
       <div className={s.body()}>
-        <div className="flex flex-col space-y-2">
+        <div className="flex flex-col space-y-1.5">
           <Skeleton className="h-3 w-9/10" />
           <Skeleton className="h-3 w-4/10" />
         </div>
       </div>
 
       <div className={s.footer()}>
-        <div className={s.priceStack()}>
-          <Skeleton className="h-3 w-20 opacity-70" />
-          <Skeleton className="h-3.5 w-25" />
-        </div>
+        <Skeleton className="h-3.5 w-3/10" />
       </div>
     </article>
   );

@@ -7,6 +7,8 @@ import { useEffect } from "react";
 import { useLocation } from "react-router";
 import PromoBanner from "../../widgets/header/PromoBanner";
 import { Toaster } from "sonner";
+import { useElementOffset } from "../../shared/hooks/useElementOffset";
+import { FooterBanner } from "../../widgets/footer/FooterBanner";
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -19,6 +21,8 @@ function ScrollToTop() {
 }
 
 export function Layout() {
+  useElementOffset();
+
   return (
     <>
       <ModalProvider />
@@ -38,9 +42,10 @@ export function Layout() {
           <PromoBanner />
           <Header />
 
-          <main className="flex min-h-75 max-w-480 gap-10 px-4 pb-8 md:px-8 lg:px-13.75">
+          <main className="mx-auto flex w-full max-w-480 gap-10 px-4 pb-8 md:px-8 lg:px-13.75">
             <Outlet />
           </main>
+          <FooterBanner />
           <Footer />
         </div>
       </div>

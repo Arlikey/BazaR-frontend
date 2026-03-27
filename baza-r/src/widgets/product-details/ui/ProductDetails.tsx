@@ -11,7 +11,6 @@ import { PaymentGuaranteeBlock } from "./blocks/PaymentGuaranteeBlock";
 import { ProductSpecsBlock } from "./blocks/ProductSpecsBlock";
 import { ProductDescriptionBlock } from "./blocks/ProductDescriptionBlock";
 import { ProductReviewsBlock } from "./blocks/review-block/ProductReviewsBlock";
-import { useElementOffset } from "../../../shared/hooks/useElementOffset";
 import { Button } from "../../../shared/components/ui/Button";
 import { PickUpIcon } from "../../../shared/components/icons/ui/PickUpIcon";
 import { CourierIcon } from "../../../shared/components/icons/ui/CourierIcon";
@@ -25,6 +24,7 @@ import {
 import { getAttributeValue } from "../../../entities/product/model/getAttributeValue";
 import { buildCategoryBreadcrumbs } from "../../../entities/category/model/buildBreadcrumbs";
 import { useCatalogCategories } from "../../catalog/model/useCategories";
+import { useElementOffset } from "../../../shared/hooks/useElementOffset";
 
 type Props = {
   productId: string;
@@ -37,7 +37,6 @@ export default function ProductDetails({ productId }: Props) {
   const { flat } = useCatalogCategories();
   const breadcrumbs = buildCategoryBreadcrumbs(product?.categoryId, flat);
 
-  useElementOffset();
   useElementOffset({
     selector: "[data-app-tabs]",
     cssVarName: "--tabs-height",
@@ -52,7 +51,7 @@ export default function ProductDetails({ productId }: Props) {
       <div id="all" className="scroll-mt-(--scroll-offset)" />
       <Breadcrumbs items={breadcrumbs} />
 
-      <div className="flex flex-col gap-2 mt-9">
+      <div className="mt-9 flex flex-col gap-2">
         <h2 className="text-3xl">{product.name}</h2>
         <span className="text-muted text-base">
           Код: <span>{product.vendorCode}</span>
