@@ -27,9 +27,9 @@ function Toast({ title, description, button, id }: ToastProps) {
   return (
     <div className="flex w-full items-center justify-between rounded-xl bg-white px-4 py-3 font-[Montserrat] shadow-lg ring-1 ring-black/5">
       <div className="flex flex-col gap-0.5">
-        <p className="text-sm font-medium text-neutral-900">{title}</p>
+        <div className="text-sm font-medium text-neutral-900">{title}</div>
         {description && (
-          <p className="text-sm text-neutral-500">{description}</p>
+          <div className="text-sm text-neutral-500">{description}</div>
         )}
       </div>
       {button && (

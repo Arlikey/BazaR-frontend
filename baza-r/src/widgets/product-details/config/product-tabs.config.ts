@@ -1,14 +1,14 @@
 export type ProductTab = {
   label: string;
-  href: string;
+  id: string;
 };
 
 export const PRODUCT_TABS: ProductTab[] = [
-  { label: "Усе про товар", href: "#all" },
-  { label: "Характеристики", href: "#specs" },
-  { label: "Відгуки", href: "#reviews" },
-  { label: "Питання", href: "#questions" },
-  { label: "Відео", href: "#video" },
-  { label: "Фото", href: "#photos" },
-  { label: "Купують разом", href: "#together" },
+  { label: "Усе про товар", id: "all" },
+  { label: "Характеристики", id: "specs" },
+  { label: "Відгуки", id: "reviews" },
+  { label: "Питання", id: "questions" },
+  { label: "Відео", id: "video" },
+  { label: "Фото", id: "photos" },
+  { label: "Купують разом", id: "together" },
 ];

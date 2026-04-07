@@ -1,3 +1,4 @@
+import { FavoriteButton } from "../../../../entities/product/ui/FavoriteButton";
 import { CompareIcon } from "../../../../shared/components/icons/ui/CompareIcon";
 import { FavoriteAltIcon } from "../../../../shared/components/icons/ui/FavouriteIcon";
 import { InfoIcon } from "../../../../shared/components/icons/ui/InfoIcon";
@@ -19,6 +20,7 @@ const STOCK_LABELS: Record<
 };
 
 export function PurchaseBlock({
+  productId,
   price,
   oldPrice,
   stockStatus,
@@ -28,8 +30,6 @@ export function PurchaseBlock({
   paymentBadges,
   creditAvailable,
   onBuy,
-  onFavorite,
-  onCompare,
   isFavorite,
   isCompared,
 }: PurchaseBlockProps) {
@@ -124,11 +124,12 @@ export function PurchaseBlock({
             )}
 
             <div className="1.5xl:flex ml-10 hidden gap-7.5">
-              <IconWrapper
+              {/* <IconWrapper
                 className={`h-7.5 cursor-pointer transition-colors ${isFavorite ? "text-accent" : "text-subtle"}`}
               >
                 <FavoriteAltIcon />
-              </IconWrapper>
+              </IconWrapper> */}
+              <FavoriteButton variant="page" productId={productId} />
               <IconWrapper
                 className={`h-7.5 cursor-pointer transition-colors ${isCompared ? "text-accent" : "text-subtle"}`}
               >

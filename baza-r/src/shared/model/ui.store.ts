@@ -22,6 +22,11 @@ type UiState = {
   openCart: () => void;
   closeCart: () => void;
   setCartOpen: (open: boolean) => void;
+
+  createReview: { open: boolean; productId: string | undefined };
+  openCreateReview: (productId: string) => void;
+  closeCreateReview: () => void;
+  setCreateReviewOpen: (open: boolean) => void;
 };
 
 export const useUiStore = create<UiState>((set) => ({
@@ -44,4 +49,19 @@ export const useUiStore = create<UiState>((set) => ({
   openCart: () => set(() => ({ cart: { open: true } })),
   closeCart: () => set(() => ({ cart: { open: false } })),
   setCartOpen: (open) => set(() => ({ cart: { open } })),
+
+  createReview: {
+    open: false,
+    productId: undefined,
+  },
+  openCreateReview: (productId) =>
+    set({
+      createReview: { open: true, productId },
+    }),
+
+  closeCreateReview: () =>
+    set({
+      createReview: { open: false, productId: undefined },
+    }),
+  setCreateReviewOpen: (open) => set(() => ({ createReview: { open, productId: undefined } })),
 }));

@@ -1,9 +1,8 @@
 import { meQueryKey } from "../../entities/user/queries";
 import { tokenStorage } from "../../features/auth/model/token.storage";
+import { API_URL } from "../config/env";
 import { queryClient } from "../lib/queryClient";
 import { useAuthStore } from "../model/auth.store";
-
-const BASE_URL = "http://localhost:8080";
 
 let isRefreshing = false;
 let refreshQueue: Array<(success: boolean) => void> = [];
@@ -15,7 +14,7 @@ async function tryRefresh(): Promise<boolean> {
   if (!refreshToken || !userId) return false;
 
   try {
-    const response = await fetch(BASE_URL + "/api/auth/refresh", {
+    const response = await fetch(API_URL + "/api/auth/refresh", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ userId, refreshToken }),
@@ -46,7 +45,7 @@ export async function api<T = void>(
 ): Promise<T> {
   const isFormData = options?.body instanceof FormData;
 
-  const response = await fetch(BASE_URL + url, {
+  const response = await fetch(API_URL + url, {
     ...options,
     headers: {
       ...(isFormData ? {} : { "Content-Type": "application/json" }),

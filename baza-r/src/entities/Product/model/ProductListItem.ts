@@ -1,3 +1,4 @@
+import { API_URL } from "../../../shared/config/env";
 import type { Product } from "./Product";
 
 export type ProductListItem = {
@@ -22,7 +23,7 @@ export function toProduct(item: ProductListItem, categoryId?: string): Product {
     categoryId,
     name: item.name,
     imageUrl: item.mainImageUrl
-      ? `http://localhost:8080${item.mainImageUrl}`
+      ? `${API_URL}${item.mainImageUrl}`
       : null,
     currentPrice: item.offer?.priceAmount ?? null,
     oldPrice: item.offer?.oldPriceAmount ?? null,

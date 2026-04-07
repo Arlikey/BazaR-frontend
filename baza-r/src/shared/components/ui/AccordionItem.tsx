@@ -1,4 +1,3 @@
-// shared/components/ui/AccordionItem.tsx
 import { Accordion } from "radix-ui";
 import type { ReactNode } from "react";
 import { tv, type VariantProps } from "tailwind-variants";

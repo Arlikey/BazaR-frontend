@@ -1,9 +1,5 @@
-import React from 'react'
-
 const RecipientsSection = () => {
-  return (
-    <div>RecipientsSection</div>
-  )
-}
+  return <div>RecipientsSection</div>;
+};
 
-export default RecipientsSection
+export default RecipientsSection;

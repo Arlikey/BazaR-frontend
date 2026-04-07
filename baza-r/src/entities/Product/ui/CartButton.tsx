@@ -20,11 +20,13 @@ export function CartButton({ offerId }: Props) {
   return (
     <Button
       color="subtle"
-      className="relative h-10 w-10"
-      rounded="md"
+      size="icon"
+      className="relative"
       disabled={isPending}
+      rounded="md"
       onClick={(e) => {
         e.preventDefault();
+
         if (isInCart) {
           openCart();
           return;

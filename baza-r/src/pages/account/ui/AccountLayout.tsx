@@ -1,7 +1,5 @@
-import { Outlet, Navigate } from "react-router";
+import { Outlet } from "react-router";
 import { AccountSidebar } from "./AccountSidebar";
-import { useMe } from "../../../entities/user/queries";
-import { useAuthStore } from "../../../shared/model/auth.store";
 
 export function AccountLayout() {
   return (

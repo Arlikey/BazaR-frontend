@@ -1,5 +1,5 @@
+import type { Review } from "../../../../../entities/review/model/review";
 import CustomLink from "../../../../../shared/components/ui/CustomLink";
-import type { Review } from "../../../config/review.config";
 import { ReviewCard } from "./ReviewCard";
 
 type Props = {

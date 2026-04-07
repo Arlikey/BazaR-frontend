@@ -9,7 +9,7 @@ export const createOfferSchema = z.object({
   sellerSku: z.string().optional(),
   deliveryDays: z.number().int().min(1).optional(),
   minOrderQuantity: z.number().int().min(1).optional(),
-  activate: z.boolean().default(true),
+  activate: z.boolean(),
 });
 
 export type CreateOfferFormData = z.infer<typeof createOfferSchema>;

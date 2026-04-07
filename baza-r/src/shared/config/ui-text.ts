@@ -1,11 +1,11 @@
 export const uiText = {
   layout: {
-    promotionBannerAriaLabel: "Promotion banner",
+    promotionBannerAriaLabel: "Промо-банер",
     promotionBannerMessage: "тотальний розпродаж до -50%",
   },
   search: {
     placeholder: "Я шукаю...",
-    voiceSearchAriaLabel: "Voice search",
+    voiceSearchAriaLabel: "Голосовий пошук",
     submitLabel: "знайти",
   },
   notFound: {
@@ -13,22 +13,22 @@ export const uiText = {
     backToHome: "Повернутись на головну",
   },
   carousel: {
-    previousSlide: "Previous slide",
-    nextSlide: "Next slide",
+    previousSlide: "Попередній слайд",
+    nextSlide: "Наступний слайд",
   },
   socialLinks: {
-    navAriaLabel: "Social Media",
+    navAriaLabel: "Соціальні мережі",
   },
   header: {
-    openMenuAriaLabel: "Open menu",
+    openMenuAriaLabel: "Відкрити меню",
     catalog: "каталог",
     premiumTryLabel: "спробуйте",
-    premiumLabel: "premium",
-    userAriaLabel: "User",
-    cartAriaLabel: "Cart",
+    premiumLabel: "преміум",
+    userAriaLabel: "Користувач",
+    cartAriaLabel: "Кошик",
   },
   footer: {
-    contactsAriaLabel: "Contacts",
+    contactsAriaLabel: "Контактні дані",
     callCenterSchedule: "Графік роботи Call-центру",
     copyright:
       "© Інтернет-магазин «Розетка™»2001–2022 ТМ використовується на підставі ліцензії правовласника RozetkaLTD",
@@ -37,7 +37,7 @@ export const uiText = {
     login: "Вхід",
     register: "Реєстрація",
     authDescription: "Авторизуйтесь для отримання розширених можливостей",
-    premiumLabel: "premium",
+    premiumLabel: "преміум",
     premiumDescription: "Безкоштовна доставка весь рік",
     menuItems: [
       { label: "Каталог товарів" },
@@ -85,7 +85,7 @@ export const uiText = {
     socialFacebook: "Facebook",
     socialGoogle: "Google",
     loginTitle: "Вхід",
-    loginFormAriaLabel: "Login form",
+    loginFormAriaLabel: "Форма входу",
     loginIdentifierPlaceholder: "Ел. пошта або телефон",
     loginPasswordPlaceholder: "Пароль",
     rememberMe: "Запам’ятати мене",
@@ -106,7 +106,7 @@ export const uiText = {
     openLogin: "Я вже зареєстрований",
   },
   productCard: {
-    favoriteAriaLabel: "Add to favorites",
+    favoriteAriaLabel: "Додати до улюблених",
     awaited: "Очікується",
   },
 } as const;

@@ -16,15 +16,36 @@ export function useFavorites() {
 
 export function useToggleFavorite() {
   const qc = useQueryClient();
-  const { data: favorites = [] } = useFavorites();
+  const favorites = qc.getQueryData<{ id: string }[]>(favoritesQueryKey) ?? [];
 
   return useMutation({
     mutationFn: (productId: string) => {
-      const isFav = favorites.some((p) => p.id === productId);
+      const isFav = favorites.some((f) => f.id === productId);
       return isFav
         ? favoritesApi.remove(productId)
         : favoritesApi.add(productId);
     },
-    onSuccess: () => qc.invalidateQueries({ queryKey: favoritesQueryKey }),
+
+    onMutate: async (productId) => {
+      await qc.cancelQueries({ queryKey: favoritesQueryKey });
+      const previous = qc.getQueryData(favoritesQueryKey);
+
+      qc.setQueryData<{ id: string }[]>(favoritesQueryKey, (old = []) => {
+        const exists = old.some((f) => f.id === productId);
+        return exists
+          ? old.filter((f) => f.id !== productId)
+          : [...old, { id: productId }];
+      });
+
+      return { previous };
+    },
+
+    onError: (_err, _vars, ctx) => {
+      qc.setQueryData(favoritesQueryKey, ctx?.previous);
+    },
+
+    onSettled: () => {
+      qc.invalidateQueries({ queryKey: favoritesQueryKey });
+    },
   });
 }

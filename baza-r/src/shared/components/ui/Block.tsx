@@ -13,8 +13,8 @@ export const blockVariants = tv({
     },
   },
   defaultVariants: {
-    rounded: "sm"
-  }
+    rounded: "sm",
+  },
 });
 
 export type BlockProps = VariantProps<typeof blockVariants> & {
@@ -23,10 +23,18 @@ export type BlockProps = VariantProps<typeof blockVariants> & {
   children?: ReactNode;
 };
 
-export default function Block({ className, children, onClick, ...rest }: BlockProps) {
+export default function Block({
+  className,
+  children,
+  onClick,
+  ...rest
+}: BlockProps) {
   return (
-    <section className={[blockVariants(rest), className ?? ""].join(" ")} onClick={onClick}>
+    <div
+      className={[blockVariants(rest), className ?? ""].join(" ")}
+      onClick={onClick}
+    >
       {children}
-    </section>
+    </div>
   );
 }

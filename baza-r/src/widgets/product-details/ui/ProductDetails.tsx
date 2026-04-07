@@ -1,8 +1,5 @@
 import { ServicesBlock } from "./blocks/ServicesBlock";
-import {
-  Breadcrumbs,
-  type BreadcrumbItem,
-} from "../../../shared/components/ui/Breadcrumbs";
+import { Breadcrumbs } from "../../../shared/components/ui/Breadcrumbs";
 import { ProductTabs } from "./blocks/ProductTabs";
 import { PurchaseBlock } from "./blocks/PurchaseBlock";
 import { ProductGallery } from "./blocks/product-gallery/ProductGallery";
@@ -11,7 +8,6 @@ import { PaymentGuaranteeBlock } from "./blocks/PaymentGuaranteeBlock";
 import { ProductSpecsBlock } from "./blocks/ProductSpecsBlock";
 import { ProductDescriptionBlock } from "./blocks/ProductDescriptionBlock";
 import { ProductReviewsBlock } from "./blocks/review-block/ProductReviewsBlock";
-import { Button } from "../../../shared/components/ui/Button";
 import { PickUpIcon } from "../../../shared/components/icons/ui/PickUpIcon";
 import { CourierIcon } from "../../../shared/components/icons/ui/CourierIcon";
 import { PaymentIcon } from "../../../shared/components/icons/ui/PaymentIcon";
@@ -25,6 +21,9 @@ import { getAttributeValue } from "../../../entities/product/model/getAttributeV
 import { buildCategoryBreadcrumbs } from "../../../entities/category/model/buildBreadcrumbs";
 import { useCatalogCategories } from "../../catalog/model/useCategories";
 import { useElementOffset } from "../../../shared/hooks/useElementOffset";
+import { API_URL } from "../../../shared/config/env";
+import CreateReviewButton from "../../../features/review/ui/CreateReviewButton";
+import { useProductReviews } from "../../../entities/review/queries";
 
 type Props = {
   productId: string;
@@ -36,6 +35,7 @@ export default function ProductDetails({ productId }: Props) {
   const { data: offer } = useProductOffer(productId);
   const { flat } = useCatalogCategories();
   const breadcrumbs = buildCategoryBreadcrumbs(product?.categoryId, flat);
+  const { data: reviews } = useProductReviews(productId);
 
   useElementOffset({
     selector: "[data-app-tabs]",
@@ -65,7 +65,7 @@ export default function ProductDetails({ productId }: Props) {
           <ProductGallery
             images={product.images
               .sort((a, b) => a.sortOrder - b.sortOrder)
-              .map((img) => `http://localhost:8080${img.url}`)}
+              .map((img) => `${API_URL}${img.url}`)}
             alt={product.name}
             isLoading={isLoading}
           />
@@ -78,6 +78,7 @@ export default function ProductDetails({ productId }: Props) {
         </div>
         <div className="flex flex-1 flex-col gap-5">
           <PurchaseBlock
+            productId={productId}
             price={offer?.priceAmount ?? 0}
             oldPrice={offer?.oldPriceAmount ?? undefined}
             stockStatus={
@@ -144,16 +145,10 @@ export default function ProductDetails({ productId }: Props) {
         <h3 className="mb-4 self-end text-2xl">Опис</h3>
         <div className="mb-4 flex items-end justify-between">
           <h2 className="text-2xl">
-            Відгуки покупців <span className="text-muted">27</span>
+            Відгуки покупців{" "}
+            <span className="text-muted">{reviews?.totalCount || 0}</span>
           </h2>
-          <Button
-            color="secondary"
-            size="lg"
-            className="text-white"
-            rounded="pill"
-          >
-            Написати відгук
-          </Button>
+          <CreateReviewButton productId={product.id} />
         </div>
 
         <div className="flex-1">
@@ -166,53 +161,7 @@ export default function ProductDetails({ productId }: Props) {
           <ProductReviewsBlock
             productSlug="lenovo-v15-ada"
             totalCount={27}
-            reviews={[
-              {
-                id: "1",
-                author: "Олег Сидоров",
-                isSeller: false,
-                sellerName: "BAZA-R",
-                date: "09 січня 2022",
-                rating: 4,
-                text: "Коли навантажений 100%, можна працювати майже без лагів...",
-                pros: "Корпус, додаткове місце під SSD",
-                cons: "Слабкий екран, один слот пам'яті",
-                likes: 1,
-                dislikes: 0,
-                photos: [
-                  {
-                    id: "p1",
-                    src: "/images/products/thumbs/472002265_thumb.png",
-                  },
-                  {
-                    id: "p2",
-                    src: "/images/products/thumbs/472002266_thumb.png",
-                  },
-                ],
-                replies: [
-                  {
-                    id: "r1",
-                    author: "BAZA-R",
-                    isSeller: true,
-                    text: "Дякуємо за відгук!",
-                    date: "10 січня 2022",
-                  },
-                ],
-              },
-              {
-                id: "1",
-                author: "Андрій Мельничук",
-                isSeller: false,
-                sellerName: "BAZA-R",
-                date: "07 січня 2022",
-                rating: 2,
-                text: "Не потянув Baldur's Gate 3 на мінімалках, хоча мав би. Можливо, проблема в оптимізації гри, але ноутбук не виправдав моїх очікувань.",
-                pros: "Корпус, додаткове місце під SSD",
-                cons: "Слабкий, неяскравий екран, один слот пам'яті",
-                likes: 0,
-                dislikes: 2,
-              },
-            ]}
+            reviews={reviews?.items || []}
           />
         </div>
       </section>

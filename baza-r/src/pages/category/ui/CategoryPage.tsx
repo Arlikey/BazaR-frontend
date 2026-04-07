@@ -1,21 +1,16 @@
-import { useParams, Navigate, useNavigate } from "react-router";
+import { useParams, Navigate } from "react-router";
 import { useCatalogCategories } from "../../../widgets/catalog/model/useCategories";
-import { ProductCardCompact } from "../../../widgets/product-card/ProductCardCompact";
 import { toProduct } from "../../../entities/product/model/ProductListItem";
 import { ProductCardRich } from "../../../widgets/product-card/ProductCardRich";
-import IconWrapper from "../../../shared/components/ui/IconWrapper";
-import { CartIcon } from "../../../shared/components/icons/ui/CartIcon";
-import { Button } from "../../../shared/components/ui/Button";
 import Block from "../../../shared/components/ui/Block";
 import { useProductsByCategory } from "../../../entities/product/queries";
-import { StarIcon } from "../../../shared/components/icons/ui/StarIcon";
-import { StarRating } from "../../../widgets/product-details/ui/blocks/review-block/ReviewCard";
 import { buildCategoryBreadcrumbs } from "../../../entities/category/model/buildBreadcrumbs";
 import { Breadcrumbs } from "../../../shared/components/ui/Breadcrumbs";
+import { CategoryPromoBanners } from "../../../widgets/category/promo-banners/CategoryPromoBanners";
+import { SubcategoriesGrid } from "../../../widgets/category/category-grid/SubcategoriesGrid";
 
 const CategoryPage = () => {
   const { categoryId } = useParams();
-  const navigate = useNavigate();
   const { flat, isLoading: categoriesLoading } = useCatalogCategories();
 
   const category = flat.find((c) => c.id === categoryId);
@@ -31,54 +26,46 @@ const CategoryPage = () => {
   if (categoriesLoading) return null;
 
   return (
-    <div className="flex w-full flex-col gap-8">
+    <div className="flex w-full flex-col">
       <Breadcrumbs items={breadcrumbs} />
-      <h1 className="text-4xl font-medium">{category!.name}</h1>
+      <h1 className="mt-8 text-2xl md:text-4xl font-medium">{category!.name}</h1>
 
-      {hasChildren ? (
-        <div className="grid grid-cols-4 gap-3 sm:grid-cols-6">
-          {children
-            .sort((a, b) => a.sortOrder - b.sortOrder)
-            .map((c) => (
-              <button
-                key={c.id}
-                onClick={() => navigate(`/catalog/${c.id}`)}
-                className="hover:border-accent hover:text-accent flex flex-col items-center gap-2 rounded-xl border border-neutral-100 bg-white p-4 text-center text-xl font-medium transition-colors"
-              >
-                <span>{c.name}</span>
-              </button>
-            ))}
-        </div>
-      ) : (
-        <div className="flex gap-2.5">
-          <Block className="flex w-[285px] items-center justify-center text-neutral-500">
-            Filters Placeholder
-          </Block>
-          {productsLoading && (
-            <div className="grid grid-cols-5 gap-3">
-              {Array.from({ length: 10 }).map((_, i) => (
-                <div
-                  key={i}
-                  className="h-75 animate-pulse rounded-xl bg-neutral-100"
-                />
-              ))}
-            </div>
-          )}
-          {!productsLoading && products.length === 0 && (
-            <p className="text-neutral-400">Товарів не знайдено</p>
-          )}
-          {!productsLoading && products.length > 0 && (
-            <div className="grid w-full grid-cols-[repeat(auto-fill,minmax(285px,1fr))] gap-2.5">
-              {products.map((p) => (
-                <ProductCardRich
-                  key={p.id}
-                  product={toProduct(p, categoryId!)}
-                />
-              ))}
-            </div>
-          )}
-        </div>
-      )}
+      <div className="flex flex-col gap-11">
+        {hasChildren && <CategoryPromoBanners />}
+
+        {hasChildren ? (
+          <SubcategoriesGrid categoryId={categoryId!} />
+        ) : (
+          <div className="mt-10 flex gap-2.5">
+            <Block className="hidden w-71.25 items-center justify-center text-neutral-500 lg:flex">
+              Filters Placeholder
+            </Block>
+            {productsLoading && (
+              <div className="grid grid-cols-5 gap-3">
+                {Array.from({ length: 10 }).map((_, i) => (
+                  <div
+                    key={i}
+                    className="h-75 animate-pulse rounded-xl bg-neutral-100"
+                  />
+                ))}
+              </div>
+            )}
+            {!productsLoading && products.length === 0 && (
+              <p className="text-neutral-400">Товарів не знайдено</p>
+            )}
+            {!productsLoading && products.length > 0 && (
+              <div className="grid w-full grid-cols-2 md:grid-cols-[repeat(auto-fill,minmax(285px,1fr))] gap-1 lg:gap-2.5">
+                {products.map((p) => (
+                  <ProductCardRich
+                    key={p.id}
+                    product={toProduct(p, categoryId!)}
+                  />
+                ))}
+              </div>
+            )}
+          </div>
+        )}
+      </div>
     </div>
   );
 };

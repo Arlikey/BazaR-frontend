@@ -5,7 +5,6 @@ import { CompareButton } from "../../entities/product/ui/CompareButton";
 import { CartButton } from "../../entities/product/ui/CartButton";
 import { StockStatus } from "../../entities/product/ui/StockStatus";
 import { ProductBadge } from "../../entities/product/ui/ProductBadge";
-import { StarRating } from "../product-details/ui/blocks/review-block/ReviewCard";
 import IconWrapper from "../../shared/components/ui/IconWrapper";
 import { DialogueIcon } from "../../shared/components/icons/ui/DialogueIcon";
 import CustomLink from "../../shared/components/ui/CustomLink";
@@ -14,6 +13,7 @@ import {
   getStockStatus,
 } from "../../entities/product/model/productUtils";
 import { FavoriteButton } from "../../entities/product/ui/FavoriteButton";
+import { StarRating } from "../product-details/ui/blocks/review-block/StarRating";
 
 type Props = { product: Product };
 
@@ -48,7 +48,7 @@ export function ProductCardRich({ product }: Props) {
 
         <ProductCard.RootRight>
           <FavoriteButton productId={product.id} />
-          <CompareButton productId={product.id} />
+          <CompareButton />
         </ProductCard.RootRight>
       </ProductCard.Top>
 

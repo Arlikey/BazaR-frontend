@@ -4,10 +4,11 @@ import { CategoriesPage } from "./pages/CategoriesPage";
 import { LoginPage } from "./pages/LoginPage";
 import { getRole, tokenStorage } from "./api/token.storage";
 import { AttributesPage } from "./pages/AttributesPage";
-import { CategoryFormPage } from "./pages/CategoryFormPage";
+import { CategoryCreatePage } from "./pages/CategoryCreatePage";
 import { CategoryAttributesPage } from "./pages/CategoryAttributesPage";
 import { AttributeOptionsPage } from "./pages/AttributeOptionsPage";
 import { AttributeFormPage } from "./pages/AttributeFormPage";
+import { CategoryImagePage } from "./pages/CategoryImagePage";
 
 function RequireAuth({ children }: { children: React.ReactNode }) {
   if (!tokenStorage.getAccess()) return <Navigate to="/login" replace />;
@@ -29,8 +30,8 @@ export function App() {
       >
         <Route index element={<Navigate to="/categories" replace />} />
         <Route path="categories" element={<CategoriesPage />} />
-        <Route path="categories/new" element={<CategoryFormPage />} />
-        <Route path="categories/:id/edit" element={<CategoryFormPage />} />
+        <Route path="/categories/new" element={<CategoryCreatePage />} />
+        <Route path="/categories/:id/image" element={<CategoryImagePage />} />
         <Route
           path="categories/:id/attributes"
           element={<CategoryAttributesPage />}

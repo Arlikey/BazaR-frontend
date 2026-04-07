@@ -20,7 +20,7 @@ export default function SearchInput({
 }: Props) {
   return (
     <>
-      <div className="text-muted ml-5 flex items-center">
+      <div className="text-muted ml-5 hidden md:flex items-center">
         <SearchIcon />
       </div>
 
@@ -29,7 +29,7 @@ export default function SearchInput({
         onChange={(e) => setQuery(e.target.value)}
         onFocus={onFocus}
         onKeyDown={(e) => e.key === "Enter" && onSubmit()}
-        className="text-muted ml-3 h-full flex-1 pr-4 outline-0"
+        className="text-muted ml-3 h-full flex-1 pr-4 pl-3 md:pl-0 outline-0"
         type="text"
         placeholder={uiText.search.placeholder}
       />

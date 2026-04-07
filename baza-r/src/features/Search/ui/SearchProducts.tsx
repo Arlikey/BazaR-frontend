@@ -3,6 +3,7 @@ import { AltCatalogIcon } from "../../../shared/components/icons/ui/AltCatalogIc
 import CustomLink from "../../../shared/components/ui/CustomLink";
 import IconWrapper from "../../../shared/components/ui/IconWrapper";
 import type { ProductListItem } from "../../../entities/product/model/ProductListItem";
+import { API_URL } from "../../../shared/config/env";
 
 type Props = {
   query: string;
@@ -28,10 +29,10 @@ export function SearchProducts({
           <CustomLink
             key={s.id}
             to={`/product/${s.id}`}
-            className="hover:text-accent flex flex-1 items-center gap-3 py-2 text-left underline-offset-3 transition hover:underline"
+            className="hover:text-accent flex flex-1 items-center gap-4 py-2 text-left underline-offset-3 transition hover:underline"
           >
             <img
-              src={`http://localhost:8080${s.mainImageUrl!}`}
+              src={`${API_URL}${s.mainImageUrl!}`}
               className="w-12"
             />
             <span className="flex flex-col text-base">

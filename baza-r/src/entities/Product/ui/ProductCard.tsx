@@ -25,7 +25,7 @@ const card = tv({
     currentPrice: "min-w-0 truncate text-base font-normal leading-none",
     currency: "text-[11px]",
     currencyOldPrice: "text-xs",
-    footer: "flex flex-col pl-5 pr-2 min-w-0",
+    footer: "flex flex-col pl-2 sm:pl-5 pr-1 min-w-0",
   },
   variants: {
     size: {
@@ -65,11 +65,11 @@ const card = tv({
         root: "hover:scale-102 gap-2",
         top: "relative px-0",
         media:
-          "flex items-center justify-center h-[220px] mx-auto w-full px-6 my-12",
+          "flex items-center justify-center h-[220px] mx-auto w-full px-2 sm:px-6 my-4 sm:my-12",
         img: "max-h-full max-w-full object-contain",
         topLeft: "absolute left-5 top-0 z-10 flex flex-col gap-2",
         RootRight: "absolute right-1 -top-2 z-10 flex flex-col gap-1",
-        body: "mt-2 px-5 min-w-0",
+        body: "mt-2 px-2 sm:px-5 min-w-0",
         title:
           "w-full min-w-0 text-base font-normal h-[42px] line-clamp-2 [overflow-wrap:anywhere]",
         meta: "text-sm min-w-0 [overflow-wrap:anywhere] mt-1",
@@ -147,7 +147,7 @@ type SlotProps = { children?: ReactNode; className?: string };
 
 function Top({ children, className }: SlotProps) {
   const { styles } = useProductCard();
-  return <header className={styles.top({ className })}>{children}</header>;
+  return <div className={styles.top({ className })}>{children}</div>;
 }
 
 type MediaProps = {

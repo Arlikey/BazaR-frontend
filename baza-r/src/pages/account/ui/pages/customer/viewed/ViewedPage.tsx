@@ -1,9 +1,5 @@
-import React from 'react'
-
 const ViewedPage = () => {
-  return (
-    <div>ViewedPage</div>
-  )
-}
+  return <div>ViewedPage</div>;
+};
 
-export default ViewedPage
+export default ViewedPage;

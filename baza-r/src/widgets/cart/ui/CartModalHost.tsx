@@ -12,7 +12,7 @@ export default function CartModalHost() {
       <Modal.Content
         side="center"
         rounded="lg"
-        contentClassName="max-w-[1140px] w-[calc(100%-2rem)] scrollbar scrollbar-default overflow-y-auto"
+        contentClassName="max-w-[1140px] w-full md:w-[calc(100%-2rem)]"
       >
         <VisuallyHidden.Root>
           <Modal.Title>Кошик</Modal.Title>

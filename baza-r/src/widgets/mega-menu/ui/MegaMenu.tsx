@@ -6,6 +6,9 @@ import CatalogMenu from "../../catalog/ui/CatalogMenu";
 import { useCatalogCategories } from "../../catalog/model/useCategories";
 import { CaretIcon } from "../../../shared/components/icons/ui/CaretIcon";
 
+
+// TODO: refactor megamenu to popover instead of modal (low prior)
+
 const Megamenu = () => {
   const { roots, isLoading } = useCatalogCategories();
   const [activeId, setActiveId] = useState<string | null>(null);
@@ -28,11 +31,11 @@ const Megamenu = () => {
           }
         />
 
-        <section className="bw-thin flex max-h-161.25 flex-1 flex-col rounded-[15px] border-neutral-100 bg-white px-8 py-5">
+        <section className="bw-thin flex max-h-161.25 flex-1 flex-col rounded-[15px] border-neutral-100 bg-white px-10 py-5">
           {active && active.children.length > 0 ? (
-            <div className="flex max-h-161.25 flex-col flex-wrap content-start gap-x-10 2xl:gap-x-20 gap-y-3 overflow-y-auto">
+            <div className="flex max-h-161.25 flex-col flex-wrap content-start gap-x-10 gap-y-3 overflow-y-auto 2xl:gap-x-20">
               {active.children.map((group) => (
-                <div key={group.id} className="break-inside-avoid">
+                <div key={group.id} className="break-inside-avoid flex flex-col gap-1">
                   <CustomLink
                     to={`/catalog/${group.id}`}
                     variant="underline"
@@ -45,8 +48,8 @@ const Megamenu = () => {
                       <Button
                         key={leaf.id}
                         variant="link"
-                        color="subtle"
-                        className="min-w-0 text-base font-normal"
+                        color="default"
+                        className="hover:text-accent w-full min-w-0 justify-start text-base font-normal"
                         asChild
                       >
                         <CustomLink

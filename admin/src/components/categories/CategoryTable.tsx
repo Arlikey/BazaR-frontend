@@ -10,10 +10,9 @@ type Props = {
   isSearching: boolean;
   expandedIds: Set<string>;
   onToggle: (id: string) => void;
-  onDelete: (id: string) => void;
 };
 
-export function CategoryTable({ tree, categories, filtered, isSearching, expandedIds, onToggle, onDelete }: Props) {
+export function CategoryTable({ tree, categories, filtered, isSearching, expandedIds, onToggle }: Props) {
   const navigate = useNavigate();
 
   return (
@@ -47,7 +46,6 @@ export function CategoryTable({ tree, categories, filtered, isSearching, expande
                     <div className="flex gap-3 justify-end underline-offset-4">
                       <button onClick={() => navigate(`/categories/${cat.id}/attributes`)} className="text-blue-600 hover:underline text-sm font-medium">Атрибути</button>
                       <button onClick={() => navigate(`/categories/${cat.id}/edit`)} className="text-accent hover:underline text-sm font-medium">Редагувати</button>
-                      <button onClick={() => onDelete(cat.id)} className="text-red-500 hover:underline text-sm font-medium">Видалити</button>
                     </div>
                   </td>
                 </tr>
@@ -62,7 +60,6 @@ export function CategoryTable({ tree, categories, filtered, isSearching, expande
                 depth={0}
                 expandedIds={expandedIds}
                 onToggle={onToggle}
-                onDelete={onDelete}
               />
             ))
           )}

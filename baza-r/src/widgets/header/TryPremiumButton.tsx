@@ -7,7 +7,7 @@ export function TryPremiumButton() {
       <Button
         size="icon"
         rounded="sm"
-        className="ml-20 w-21 flex-col gap-1 2xl:ml-24"
+        className="mx-20 w-21 flex-col gap-1 2xl:ml-24"
       >
         <span className="text-inverse text-xs font-normal capitalize">
           {uiText.header.premiumTryLabel}

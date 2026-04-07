@@ -1,7 +1,7 @@
 import type { AttributeTemplateItem } from "../api/sellerProductApi";
 import { useFormContext, Controller } from "react-hook-form";
-import type { CreateProductFormData } from "../model/createProduct.schema";
 import { useEffect } from "react";
+import type { CreateProductFormValues } from "../model/createProduct.schema";
 
 type Props = {
   item: AttributeTemplateItem;
@@ -14,7 +14,7 @@ export function AttributeField({ item, index }: Props) {
     control,
     setValue,
     formState: { errors },
-  } = useFormContext<CreateProductFormData>();
+  } = useFormContext<CreateProductFormValues>();
 
   useEffect(() => {
     setValue(`attributes.${index}.attributeId`, item.attributeId);

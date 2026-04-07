@@ -17,22 +17,21 @@ export function CategoriesPage() {
     queryFn: categoryApi.getAll,
   });
 
-  const deleteMutation = useMutation({
-    mutationFn: categoryApi.delete,
-    onSuccess: () => qc.invalidateQueries({ queryKey: ["categories"] }),
-  });
-
   const tree = useMemo(() => buildCategoryTree(categories), [categories]);
 
   const filtered = useMemo(
-    () => categories.filter((cat) => cat.name.toLowerCase().includes(search.toLowerCase())),
+    () =>
+      categories.filter((cat) =>
+        cat.name.toLowerCase().includes(search.toLowerCase()),
+      ),
     [categories, search],
   );
 
   const allParentIds = useMemo(
-    () => categories
-      .filter((c) => categories.some((ch) => ch.parentCategoryId === c.id))
-      .map((c) => c.id),
+    () =>
+      categories
+        .filter((c) => categories.some((ch) => ch.parentCategoryId === c.id))
+        .map((c) => c.id),
     [categories],
   );
 
@@ -66,17 +65,25 @@ export function CategoriesPage() {
         />
         {!isSearching && (
           <div className="flex items-center gap-2">
-            <button onClick={() => setExpandedIds(new Set(allParentIds))} className="text-sm text-gray-500 hover:text-gray-700 hover:underline underline-offset-4">
+            <button
+              onClick={() => setExpandedIds(new Set(allParentIds))}
+              className="text-sm text-gray-500 hover:text-gray-700 hover:underline underline-offset-4"
+            >
               Розгорнути всі
             </button>
             <span className="text-gray-300">|</span>
-            <button onClick={() => setExpandedIds(new Set())} className="text-sm text-gray-500 hover:text-gray-700 hover:underline underline-offset-4">
+            <button
+              onClick={() => setExpandedIds(new Set())}
+              className="text-sm text-gray-500 hover:text-gray-700 hover:underline underline-offset-4"
+            >
               Згорнути всі
             </button>
           </div>
         )}
         {isSearching && (
-          <span className="text-sm text-gray-400">Знайдено: {filtered.length} з {categories.length}</span>
+          <span className="text-sm text-gray-400">
+            Знайдено: {filtered.length} з {categories.length}
+          </span>
         )}
       </div>
 
@@ -87,7 +94,6 @@ export function CategoriesPage() {
         isSearching={isSearching}
         expandedIds={expandedIds}
         onToggle={onToggle}
-        onDelete={(id) => deleteMutation.mutate(id)}
       />
     </div>
   );

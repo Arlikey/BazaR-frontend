@@ -1,9 +1,7 @@
-import { useEffect, useState } from "react";
 import ProductCardSkeleton from "../../../../shared/components/ui/loaders/ProductCardSkeleton";
 import { Section } from "../../../../shared/components/ui/product-section/ui/Section";
 import { ProductCardCompact } from "../../../product-card/ProductCardCompact";
 import { uiText } from "../../../../shared/config/ui-text";
-import { Button } from "../../../../shared/components/ui/Button";
 import { useProductsByCategory } from "../../../../entities/product/queries";
 import { toProduct } from "../../../../entities/product/model/ProductListItem";
 import CustomLink from "../../../../shared/components/ui/CustomLink";

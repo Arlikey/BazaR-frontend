@@ -6,10 +6,12 @@ export async function api<T = void>(
   url: string,
   options?: RequestInit,
 ): Promise<T> {
+  const isFormData = options?.body instanceof FormData;
+
   const response = await fetch(BASE_URL + url, {
     ...options,
     headers: {
-      "Content-Type": "application/json",
+      ...(isFormData ? {} : { "Content-Type": "application/json" }),
       ...(tokenStorage.getAccess()
         ? { Authorization: `Bearer ${tokenStorage.getAccess()}` }
         : {}),

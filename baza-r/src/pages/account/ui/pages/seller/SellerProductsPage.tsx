@@ -2,6 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import { sellerProductApi } from "../../../../../features/seller/api/sellerProductApi";
 import { Link } from "react-router";
 import { useSellerMe } from "../../../../../features/seller/api/queries";
+import { API_URL } from "../../../../../shared/config/env";
 
 function formatPrice(amount: number) {
   return new Intl.NumberFormat("uk-UA").format(amount);
@@ -60,7 +61,7 @@ export default function SellerProductsPage() {
           >
             {p.mainImageUrl ? (
               <img
-                src={`http://localhost:8080${p.mainImageUrl}`}
+                src={`${API_URL}${p.mainImageUrl}`}
                 className="h-20 w-20 shrink-0 rounded-xl object-contain"
               />
             ) : (

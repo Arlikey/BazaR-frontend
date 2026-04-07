@@ -1,9 +1,5 @@
-import React from 'react'
-
 const NewslettersPage = () => {
-  return (
-    <div>NewslettersPage</div>
-  )
-}
+  return <div>NewslettersPage</div>;
+};
 
-export default NewslettersPage
+export default NewslettersPage;

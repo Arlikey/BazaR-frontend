@@ -12,7 +12,7 @@ const modal = tv({
     side: {
       left: {
         content:
-          "left-0 h-dvh w-[425px] data-[state=open]:animate-[slideInLeft_.6s_cubic-bezier(0.22,1,0.36,1)] data-[state=closed]:animate-[slideOutLeft_.4s_cubic-bezier(.23,.86,.81,1.01)] shadow-(--shadow-sidebar)",
+          "left-0 h-full max-w-80 sm:max-w-100 w-full data-[state=open]:animate-[slideInLeft_.6s_cubic-bezier(0.22,1,0.36,1)] data-[state=closed]:animate-[slideOutLeft_.4s_cubic-bezier(.23,.86,.81,1.01)] shadow-(--shadow-sidebar)",
       },
       center: {
         content:
@@ -61,6 +61,7 @@ type ContentProps = {
   children: ReactNode;
   overlayClassName?: string;
   contentClassName?: string;
+  onPointerDownOutside?: (event: any) => void;
 } & VariantProps<typeof modal>;
 function Content({
   children,
@@ -68,12 +69,16 @@ function Content({
   rounded,
   overlayClassName,
   contentClassName,
+  onPointerDownOutside,
 }: ContentProps) {
   const s = modal({ side, rounded });
   return (
     <Dialog.Portal>
       <Dialog.Overlay className={s.overlay({ className: overlayClassName })} />
-      <Dialog.Content className={s.content({ className: contentClassName })}>
+      <Dialog.Content
+        className={s.content({ className: contentClassName })}
+        onPointerDownOutside={onPointerDownOutside}
+      >
         {children}
       </Dialog.Content>
     </Dialog.Portal>

@@ -1,6 +1,5 @@
 import type { Category } from "../../../entities/category/model/Category";
 import type { ProductListItem } from "../../../entities/product/model/ProductListItem";
-import { ArrowEnterIcon } from "../../../shared/components/icons/ui/ArrowEnterIcon";
 import { ArrowIcon } from "../../../shared/components/icons/ui/ArrowIcon";
 import CustomLink from "../../../shared/components/ui/CustomLink";
 import IconWrapper from "../../../shared/components/ui/IconWrapper";
@@ -23,7 +22,6 @@ export default function SearchDropdown({
   products,
   categories,
   onClearHistory,
-  onSubmit,
   onSelect,
 }: Props) {
   const trimmedQuery = query.trim();

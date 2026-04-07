@@ -3,4 +3,6 @@ export type CategoryDto = {
   name: string;
   parentCategoryId: string | null;
   sortOrder: number;
+  imageUrl: string | null;
+  tileSize: string | undefined;
 };

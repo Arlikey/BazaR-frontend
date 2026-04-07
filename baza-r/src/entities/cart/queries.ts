@@ -1,6 +1,7 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { cartApi } from "./api/cartApi";
 import { useAuthStore } from "../../shared/model/auth.store";
+import type { Cart } from "./model/cart";
 
 export const cartQueryKey = ["cart"] as const;
 
@@ -24,12 +25,41 @@ export function useAddToCart() {
       offerId: string;
       quantity?: number;
     }) => cartApi.addItem(offerId, quantity),
-    onSuccess: () => qc.invalidateQueries({ queryKey: cartQueryKey }),
+
+    onMutate: async ({ offerId, quantity }) => {
+      await qc.cancelQueries({ queryKey: cartQueryKey });
+      const previous = qc.getQueryData<Cart>(cartQueryKey);
+      qc.setQueryData<Cart>(cartQueryKey, (old) => {
+        if (!old) return old;
+        const existingItem = old.items.find((item) => item.offerId === offerId);
+        if (existingItem) {
+          return {
+            ...old,
+            items: old.items.map((item) =>
+              item.offerId === offerId
+                ? { ...item, quantity: item.quantity + (quantity ?? 1) }
+                : item,
+            ),
+          };
+        }
+        return old;
+      });
+      return { previous };
+    },
+
+    onError: (_err, _vars, ctx) => {
+      qc.setQueryData(cartQueryKey, ctx?.previous);
+    },
+
+    onSettled: () => {
+      qc.invalidateQueries({ queryKey: cartQueryKey });
+    },
   });
 }
 
 export function useUpdateCartItem() {
   const qc = useQueryClient();
+
   return useMutation({
     mutationFn: ({
       offerId,
@@ -38,14 +68,61 @@ export function useUpdateCartItem() {
       offerId: string;
       quantity: number;
     }) => cartApi.updateItem(offerId, quantity),
-    onSuccess: () => qc.invalidateQueries({ queryKey: cartQueryKey }),
+
+    onMutate: async ({ offerId, quantity }) => {
+      await qc.cancelQueries({ queryKey: cartQueryKey });
+
+      const previous = qc.getQueryData<Cart>(cartQueryKey);
+
+      qc.setQueryData<Cart>(cartQueryKey, (old) => {
+        if (!old) return old;
+
+        return {
+          ...old,
+          items: old.items.map((item) =>
+            item.offerId === offerId ? { ...item, quantity } : item,
+          ),
+        };
+      });
+
+      return { previous };
+    },
+
+    onError: (_err, _vars, ctx) => {
+      qc.setQueryData(cartQueryKey, ctx?.previous);
+    },
+
+    onSettled: () => {
+      qc.invalidateQueries({ queryKey: cartQueryKey });
+    },
   });
 }
 
 export function useRemoveCartItem() {
   const qc = useQueryClient();
+
   return useMutation({
     mutationFn: (offerId: string) => cartApi.removeItem(offerId),
-    onSuccess: () => qc.invalidateQueries({ queryKey: cartQueryKey }),
+    onMutate: async (offerId) => {
+      await qc.cancelQueries({ queryKey: cartQueryKey });
+      const previous = qc.getQueryData<Cart>(cartQueryKey);
+      qc.setQueryData<Cart>(cartQueryKey, (old) => {
+        if (!old) return old;
+        return {
+          ...old,
+          items: old.items.filter((item) => item.offerId !== offerId),
+        };
+      });
+
+      return { previous };
+    },
+
+    onError: (_err, _vars, ctx) => {
+      qc.setQueryData(cartQueryKey, ctx?.previous);
+    },
+
+    onSettled: () => {
+      qc.invalidateQueries({ queryKey: cartQueryKey });
+    },
   });
 }

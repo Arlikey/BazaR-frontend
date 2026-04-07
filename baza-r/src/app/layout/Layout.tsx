@@ -9,6 +9,7 @@ import PromoBanner from "../../widgets/header/PromoBanner";
 import { Toaster } from "sonner";
 import { useElementOffset } from "../../shared/hooks/useElementOffset";
 import { FooterBanner } from "../../widgets/footer/FooterBanner";
+import MobileBar from "./MobileBar";
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -32,7 +33,7 @@ export function Layout() {
         visibleToasts={2}
         toastOptions={{
           classNames: {
-            toast: "!w-[500px] !max-w-none !left-1/2 !-translate-x-1/2",
+            toast: "w-full",
           },
         }}
       />
@@ -42,12 +43,13 @@ export function Layout() {
           <PromoBanner />
           <Header />
 
-          <main className="mx-auto flex w-full max-w-480 gap-10 px-4 pb-8 md:px-8 lg:px-13.75">
+          <main className="mx-auto flex w-full max-w-480 min-w-0 gap-10 px-2 pb-8 md:px-8 xl:px-14">
             <Outlet />
           </main>
           <FooterBanner />
           <Footer />
         </div>
+        <MobileBar />
       </div>
     </>
   );

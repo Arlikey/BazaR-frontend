@@ -3,4 +3,5 @@ export type Category = {
   name: string;
   parentId: string | null;
   sortOrder: number;
+  imageUrl: string | null;
 };

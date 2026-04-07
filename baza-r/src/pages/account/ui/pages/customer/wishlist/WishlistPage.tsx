@@ -1,4 +1,3 @@
-import React from "react";
 import { useFavorites } from "../../../../../../entities/favourite/queries";
 import { ProductCardRich } from "../../../../../../widgets/product-card/ProductCardRich";
 import { toProduct } from "../../../../../../entities/product/model/ProductListItem";
@@ -9,7 +8,10 @@ export default function WishlistPage() {
   return (
     <div className="flex flex-col gap-4">
       <h1 className="text-3xl font-medium">
-        Список бажань <span className="text-neutral-300 text-2xl">{favorites?.length ? favorites.length : ""}</span>
+        Список бажань{" "}
+        <span className="text-2xl text-neutral-300">
+          {favorites?.length ? favorites.length : ""}
+        </span>
       </h1>
       {favorites?.length ? (
         <div className="grid w-full grid-cols-[repeat(auto-fill,minmax(285px,1fr))] gap-2.5">

@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import ProductCardSkeleton from "../../../../shared/components/ui/loaders/ProductCardSkeleton";
 import { Section } from "../../../../shared/components/ui/product-section/ui/Section";
 import { ProductCardCompact } from "../../../product-card/ProductCardCompact";
@@ -24,7 +23,10 @@ export function TrendingProducts() {
               </li>
             ))
           : products.map((p) => (
-              <li key={p.id} className="flex-1 shrink-0">
+              <li
+                key={p.id}
+                className="w-[calc(20%-8px)] min-w-50 shrink-0"
+              >
                 <ProductCardCompact product={toProduct(p)} />
               </li>
             ))}

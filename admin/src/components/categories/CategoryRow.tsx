@@ -10,7 +10,6 @@ type Props = {
   depth: number;
   expandedIds: Set<string>;
   onToggle: (id: string) => void;
-  onDelete: (id: string) => void;
 };
 
 export function CategoryRow({
@@ -19,7 +18,6 @@ export function CategoryRow({
   depth,
   expandedIds,
   onToggle,
-  onDelete,
 }: Props) {
   const navigate = useNavigate();
   const hasChildren = node.children.length > 0;
@@ -64,16 +62,10 @@ export function CategoryRow({
               Атрибути
             </button>
             <button
-              onClick={() => navigate(`/categories/${node.id}/edit`)}
+              onClick={() => navigate(`/categories/${node.id}/image`)}
               className="text-accent hover:underline text-sm font-medium"
             >
               Редагувати
-            </button>
-            <button
-              onClick={() => onDelete(node.id)}
-              className="text-red-500 hover:underline text-sm font-medium"
-            >
-              Видалити
             </button>
           </div>
         </td>
@@ -87,7 +79,6 @@ export function CategoryRow({
             depth={depth + 1}
             expandedIds={expandedIds}
             onToggle={onToggle}
-            onDelete={onDelete}
           />
         ))}
     </>

@@ -1,58 +1,57 @@
-import React, { useEffect, useState } from "react";
-
-import CustomLink from "../../../../shared/components/ui/CustomLink";
+import React from "react";
+import Autoplay from "embla-carousel-autoplay";
+import { Link } from "react-router";
 import {
   Carousel,
   CarouselContent,
   CarouselItem,
   CarouselNext,
   CarouselPrevious,
+  type CarouselApi,
 } from "../../../../shared/components/ui/Carousel";
-import PromotionDao from "../../../../entities/promotion/api/__mocks__/PromotionDao";
-import type { Promotion } from "../../../../entities/promotion/model/Promotion";
-import Autoplay from "embla-carousel-autoplay";
-import { Link } from "react-router";
 import PromoBannerSkeleton from "../../../../shared/components/ui/loaders/PromoBannerSkeleton";
+import type { Promotion } from "../../../../entities/promotion/model/Promotion";
 import { uiText } from "../../../../shared/config/ui-text";
 
-export function PromoBanners() {
-  const [data, setData] = useState<Promotion[]>([]);
-  const [error, setError] = useState<Error | null>(null);
-  const [isLoading, setIsLoading] = useState(true);
-  const total = data.length;
+type Props = {
+  promotions: Promotion[];
+  isLoading: boolean;
+  setApi?: (api: CarouselApi) => void;
+  footer?: React.ReactNode;
+  variant?: "home" | "category";
+};
 
-  useEffect(() => {
-    const load = async () => {
-      setIsLoading(true);
-      const items = await PromotionDao.getPromotions();
-
-      setData(items);
-      setIsLoading(false);
-    };
-    load();
-  }, []);
-
+export function PromoBannersCarousel({
+  promotions,
+  isLoading,
+  footer,
+  variant = "category",
+  setApi,
+}: Props) {
   const plugin = React.useRef(
     Autoplay({ delay: 5000, stopOnInteraction: true }),
   );
 
   return (
     <section aria-label={uiText.home.promoBannersAriaLabel}>
-      <div className="-mx-8 flex flex-col items-end gap-5 lg:mx-0 lg:py-8">
+      <div
+        className={`flex flex-col items-end lg:mx-0 ${variant === "home" ? "gap-5 lg:py-8" : "gap-1 py-4 lg:px-0"}`}
+      >
         <Carousel
+          setApi={setApi}
           className="w-full lg:px-3"
           opts={{ loop: true }}
           plugins={[plugin.current]}
           onPointerEnter={() => plugin.current.stop()}
           onPointerLeave={() => plugin.current.play()}
         >
-          <CarouselContent className="max-h-100">
+          <CarouselContent className="max-h-100 min-h-50">
             {isLoading ? (
               <CarouselItem className="aspect-21/9 max-h-68 pl-0 xl:max-h-100">
                 <PromoBannerSkeleton />
               </CarouselItem>
             ) : (
-              data.map((prom, i) => (
+              promotions.map((prom, i) => (
                 <CarouselItem key={prom.id} className="pl-0 xl:aspect-21/9">
                   <Link to={"#"} className="block h-full">
                     <img
@@ -71,17 +70,7 @@ export function PromoBanners() {
             <CarouselNext />
           </div>
         </Carousel>
-        <CustomLink
-          to={""}
-          variant="primary"
-          border="thin"
-          className="group h-11 gap-1 px-15 text-sm"
-        >
-          {uiText.home.allPromotions}
-          <span className="group-hover:text-accent text-neutral-500 transition">
-            {total}
-          </span>
-        </CustomLink>
+        {footer}
       </div>
     </section>
   );

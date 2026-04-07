@@ -28,7 +28,6 @@ const activePromotions: PromotionDto[] = [
 
 export default class PromotionDao {
   static async getPromotions(): Promise<Promotion[]> {
-    await new Promise((r) => setTimeout(r, 700));
     return activePromotions.map(mapPromotion);
   }
 }

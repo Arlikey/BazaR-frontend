@@ -16,7 +16,6 @@ import { Divider } from "../components/Divider";
 import { SocialLogin } from "../components/SocialLogin";
 import { useLogin } from "../../../../features/auth/model/auth.mutations";
 import { useUiStore } from "../../../../shared/model/ui.store";
-import { getApiErrorMessage } from "../../../../shared/lib/getApiErrorMessage";
 
 type Props = {
   onRegisterClick?: () => void;

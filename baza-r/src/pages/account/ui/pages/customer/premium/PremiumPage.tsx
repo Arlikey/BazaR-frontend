@@ -1,9 +1,5 @@
-import React from 'react'
-
 const PremiumPage = () => {
-  return (
-    <div>PremiumPage</div>
-  )
-}
+  return <div>PremiumPage</div>;
+};
 
-export default PremiumPage
+export default PremiumPage;

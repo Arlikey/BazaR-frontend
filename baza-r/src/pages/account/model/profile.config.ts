@@ -1,4 +1,4 @@
-import type { ComponentType, ReactNode } from "react";
+import type { ComponentType } from "react";
 import {
   UserAlt2Icon,
   UserAltIcon,
@@ -27,7 +27,7 @@ export type ProfileSection = {
 
 export const socialLinks = [
   { value: "facebook", icon: FacebookAltIcon, label: "Facebook" },
-  { value: "google",   icon: GoogleIcon,      label: "Google" },
+  { value: "google", icon: GoogleIcon, label: "Google" },
 ];
 
 export const profileSections: ProfileSection[] = [

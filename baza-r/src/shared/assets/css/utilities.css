@@ -13,3 +13,12 @@
 @utility bw-l-thin {
   border-left-width: var(--border-thin);
 }
+
+@layer utilities {
+  ::-webkit-scrollbar-thumb {
+    @apply cursor-pointer bg-neutral-100;
+  }
+  ::-webkit-scrollbar {
+    @apply h-1 w-1 bg-transparent;
+  }
+}

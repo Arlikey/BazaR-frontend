@@ -1,10 +1,13 @@
 import { useEffect } from "react";
-import { useForm, useWatch } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
 import { useMutation } from "@tanstack/react-query";
 import { useNavigate } from "react-router";
-import { createProductSchema, type CreateProductFormData } from "./createProduct.schema";
+import {
+  createProductSchema,
+  type CreateProductFormValues,
+} from "./createProduct.schema";
 import { sellerProductApi } from "../api/sellerProductApi";
+import { useForm, useWatch } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
 
 function slugify(str: string) {
   return str
@@ -17,7 +20,7 @@ function slugify(str: string) {
 export function useProductForm(images: File[]) {
   const navigate = useNavigate();
 
-  const methods = useForm<CreateProductFormData>({
+  const methods = useForm<CreateProductFormValues>({
     resolver: zodResolver(createProductSchema),
     defaultValues: { attributes: [], images: [] },
   });
@@ -31,7 +34,7 @@ export function useProductForm(images: File[]) {
   }, [nameValue, setValue]);
 
   const { mutateAsync, isPending, error } = useMutation({
-    mutationFn: async (data: CreateProductFormData) => {
+    mutationFn: async (data: CreateProductFormValues) => {
       const product = await sellerProductApi.create({
         name: data.name,
         categoryId: data.categoryId,
@@ -39,12 +42,13 @@ export function useProductForm(images: File[]) {
         vendorCode: data.vendorCode,
         barcode: data.barcode,
         slug: data.slug,
-        attributes: data.attributes.filter((a) =>
-          a.textValue !== undefined ||
-          a.numberValue !== undefined ||
-          a.boolValue !== undefined ||
-          a.optionId !== undefined ||
-          (a.optionIds && a.optionIds.length > 0),
+        attributes: data.attributes.filter(
+          (a) =>
+            a.textValue !== undefined ||
+            a.numberValue !== undefined ||
+            a.boolValue !== undefined ||
+            a.optionId !== undefined ||
+            (a.optionIds && a.optionIds.length > 0),
         ),
       });
       if (images.length > 0) {

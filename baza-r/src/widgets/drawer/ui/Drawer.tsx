@@ -138,18 +138,19 @@ const Drawer = () => {
       <div className="flex flex-col gap-2.5 px-6 pb-8">
         <Block className="flex flex-col px-5 py-3">
           {drawerMenuItems.map(({ icon: Icon, label, onClick }) => (
-            <CustomLink
+            <Button
+              variant="link"
+              color="default"
+              rounded="md"
               key={label}
-              to={""}
-              variant="menu"
-              className="flex flex-1 gap-4 py-3"
+              className="flex flex-1 gap-4 py-3 px-3 justify-start font-normal hover:text-accent hover:underline hover:bg-accent/15"
               onClick={onClick}
             >
               <IconWrapper className="flex h-5 w-5 items-center justify-center">
                 <Icon />
               </IconWrapper>
               <span className="text-base">{label}</span>
-            </CustomLink>
+            </Button>
           ))}
         </Block>
 

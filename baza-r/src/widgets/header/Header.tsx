@@ -22,7 +22,7 @@ export default function Header() {
       <div className="mx-auto flex h-full max-w-480 items-center">
         <HeaderLeft />
 
-        <div className="mx-6 flex flex-1 lg:ml-24">
+        <div className="mx-2 flex flex-1 lg:ml-24">
           <Search />
         </div>
 

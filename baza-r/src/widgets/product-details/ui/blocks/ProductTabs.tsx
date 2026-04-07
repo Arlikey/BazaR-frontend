@@ -6,7 +6,7 @@ import { PRODUCT_TABS } from "../../config/product-tabs.config";
 type Props = HTMLAttributes<HTMLDivElement> & {};
 
 export function ProductTabs({ ...props }: Props) {
-  const { activeHref } = useProductTabs();
+  const { activeId } = useProductTabs();
 
   return (
     <div
@@ -15,11 +15,11 @@ export function ProductTabs({ ...props }: Props) {
     >
       {PRODUCT_TABS.map((tab) => (
         <CustomLink
-          key={tab.href}
-          href={tab.href}
+          key={tab.id}
+          href={`#${tab.id}`}
           variant="default"
           className={`hover:text-accent pb-2 transition-colors ${
-            activeHref === tab.href ? "border-b border-current" : ""
+            activeId === tab.id ? "border-b border-current" : ""
           }`}
         >
           {tab.label}

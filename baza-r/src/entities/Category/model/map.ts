@@ -7,5 +7,6 @@ export function mapCategory(dto: CategoryDto): Category {
     name: dto.name,
     parentId: dto.parentCategoryId,
     sortOrder: dto.sortOrder,
+    imageUrl: dto.imageUrl,
   };
 }

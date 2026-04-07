@@ -5,9 +5,9 @@ import { ErrorIcon } from "../icons/ui/ErrorIcon";
 
 const inputField = tv({
   slots: {
-    wrapper: "bg-surface bw-thin flex items-center border-neutral-100 relative",
+    wrapper: "bg-surface flex items-center relative ",
     input:
-      "text-foreground-muted autofill:bg-accent placeholder:text-foreground-muted h-full flex-1 text-sm font-medium rounded-[inherit] outline-none bg-transparent ",
+      "text-foreground-muted autofill:bg-accent placeholder:text-foreground-muted h-full focus:ring-2 ring-accent bw-thin border-neutral-100 flex-1 text-sm font-medium rounded-[inherit] outline-none bg-transparent ",
     iconLeft: "ml-4 mr-2 flex items-center",
     iconRight: "ml-2 mr-3 flex items-center",
     error: "mt-1 pl-4 text-[11px] font-medium text-error",
@@ -24,8 +24,8 @@ const inputField = tv({
     },
     state: {
       default: {},
-      error: { wrapper: "border-error" },
-      success: { wrapper: "border-accent" },
+      error: { input: "border-error" },
+      success: { input: "border-accent" },
       disabled: { wrapper: "opacity-60" },
     },
   },
@@ -49,7 +49,10 @@ type Props = {
   rightIcon?: ReactNode;
   ariaLabel?: string;
 } & InputFieldVariants &
-  Omit<InputHTMLAttributes<HTMLInputElement>, "className" | "size">;
+  Omit<
+    InputHTMLAttributes<HTMLInputElement | HTMLTextAreaElement>,
+    "className" | "size"
+  >;
 
 const join = (...classes: Array<string | false | null | undefined>) =>
   classes.filter(Boolean).join(" ");
@@ -65,6 +68,7 @@ export default function InputField({
   rightIcon,
   ariaLabel,
   size,
+  rounded,
   disabled,
   id,
   placeholder,
@@ -77,7 +81,7 @@ export default function InputField({
       : success
         ? "success"
         : "default";
-  const s = inputField({ size, state });
+  const s = inputField({ size, state, rounded });
 
   const errorId = typeof error === "string" && id ? `${id}-error` : undefined;
 

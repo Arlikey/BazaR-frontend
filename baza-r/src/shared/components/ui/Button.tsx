@@ -5,7 +5,7 @@ import { cn, tv, type VariantProps } from "tailwind-variants";
 export const buttonVariants = tv({
   base: [
     "inline-flex items-center justify-center whitespace-nowrap select-none",
-    "font-medium transition leading-none",
+    "font-medium transition duration-150 ease-out leading-none",
     "disabled:pointer-events-none disabled:opacity-50",
     "outline-none focus-visible:ring-2 focus-visible:ring-accent/40 focus-visible:ring-offset-2 focus-visible:ring-offset-neutral-50",
     "aria-invalid:border-error aria-invalid:ring-2 aria-invalid:ring-error/25",
@@ -44,8 +44,8 @@ export const buttonVariants = tv({
       xl: "text-xl",
     },
     rounded: {
-      sm: "rounded-[5px]",
-      md: "rounded-[6px]",
+      sm: "rounded-[4px]",
+      md: "rounded-[10px]",
       pill: "rounded-full",
     },
     fullWidth: {
@@ -58,6 +58,10 @@ export const buttonVariants = tv({
       color: "primary",
       class: "bg-transparent text-link hover:text-link-hover",
     },
+    {
+      size: "icon",
+      class: "active:scale-90"
+    }
   ],
   defaultVariants: {
     variant: "solid",

@@ -8,7 +8,7 @@ export function DrawerButton() {
   const openDrawer = useUiStore((s) => s.openDrawer);
 
   return (
-    <div className="hidden sm:flex">
+    <div className="flex">
       <Button
         size="icon"
         rounded="sm"

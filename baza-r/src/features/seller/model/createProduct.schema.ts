@@ -16,9 +16,9 @@ export const createProductSchema = z.object({
       boolValue: z.boolean().optional(),
       optionId: z.string().optional(),
       optionIds: z.array(z.string()).optional(),
-    })
-  ).default([]),
-  images: z.array(z.instanceof(File)).default([]),
+    }),
+  ),
+  images: z.array(z.instanceof(File)),
 });
 
-export type CreateProductFormData = z.infer<typeof createProductSchema>;
+export type CreateProductFormValues = z.infer<typeof createProductSchema>;

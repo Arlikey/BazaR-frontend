@@ -12,27 +12,33 @@ export type CategoryDto = {
   name: string;
   parentCategoryId: string | null;
   sortOrder: number;
+  imageUrl?: string | null;
 };
 
 export const categoryApi = {
   getAll: () => api<CategoryDto[]>("/api/catalog/categories"),
+
   create: (data: {
     name: string;
     parentCategoryId: string | null;
     sortOrder: number;
   }) =>
-    api("/api/admin/catalog/categories", {
+    api<{ id: string }>("/api/admin/catalog/categories", {
       method: "POST",
       body: JSON.stringify(data),
     }),
-  update: (
-    id: string,
-    data: { name: string; parentCategoryId: string | null; sortOrder: number },
-  ) =>
-    api(`/api/admin/catalog/categories/${id}`, {
-      method: "PUT",
-      body: JSON.stringify(data),
+
+  uploadImage: (id: string, file: File) => {
+    const form = new FormData();
+    form.append("file", file);
+    return api(`/api/admin/catalog/categories/${id}/image`, {
+      method: "POST",
+      body: form,
+    });
+  },
+
+  deleteImage: (id: string) =>
+    api(`/api/admin/catalog/categories/${id}/image`, {
+      method: "DELETE",
     }),
-  delete: (id: string) =>
-    api(`/api/admin/catalog/categories/${id}`, { method: "DELETE" }),
 };
