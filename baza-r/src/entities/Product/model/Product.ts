@@ -12,3 +12,10 @@ export type Product = {
   reviewCount?: number | null;
   offerId?: string | null;
 };
+
+export type ProductFilterResponse = {
+  items: Product[];
+  totalCount: number;
+  page: number;
+  pageSize: number;
+};

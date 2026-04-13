@@ -7,7 +7,6 @@ import { DeliveryBlock } from "./blocks/DeliveryBlock";
 import { PaymentGuaranteeBlock } from "./blocks/PaymentGuaranteeBlock";
 import { ProductSpecsBlock } from "./blocks/ProductSpecsBlock";
 import { ProductDescriptionBlock } from "./blocks/ProductDescriptionBlock";
-import { ProductReviewsBlock } from "./blocks/review-block/ProductReviewsBlock";
 import { PickUpIcon } from "../../../shared/components/icons/ui/PickUpIcon";
 import { CourierIcon } from "../../../shared/components/icons/ui/CourierIcon";
 import { PaymentIcon } from "../../../shared/components/icons/ui/PaymentIcon";
@@ -22,8 +21,7 @@ import { buildCategoryBreadcrumbs } from "../../../entities/category/model/build
 import { useCatalogCategories } from "../../catalog/model/useCategories";
 import { useElementOffset } from "../../../shared/hooks/useElementOffset";
 import { API_URL } from "../../../shared/config/env";
-import CreateReviewButton from "../../../features/review/ui/CreateReviewButton";
-import { useProductReviews } from "../../../entities/review/queries";
+import { ReviewsSection } from "./blocks/reviews-section/ReviewsSection";
 
 type Props = {
   productId: string;
@@ -35,7 +33,6 @@ export default function ProductDetails({ productId }: Props) {
   const { data: offer } = useProductOffer(productId);
   const { flat } = useCatalogCategories();
   const breadcrumbs = buildCategoryBreadcrumbs(product?.categoryId, flat);
-  const { data: reviews } = useProductReviews(productId);
 
   useElementOffset({
     selector: "[data-app-tabs]",
@@ -43,7 +40,6 @@ export default function ProductDetails({ productId }: Props) {
     measure: "height",
   });
 
-  if (isLoading) return null;
   if (!product) return null;
 
   return (
@@ -138,41 +134,15 @@ export default function ProductDetails({ productId }: Props) {
       <section id="specs" className="h-100 scroll-mt-(--scroll-offset)">
         Specifications
       </section>
-      <section
-        id="reviews"
-        className="grid scroll-mt-(--scroll-offset) grid-cols-2 grid-rows-[auto_1fr] gap-x-10"
-      >
-        <h3 className="mb-4 self-end text-2xl">Опис</h3>
-        <div className="mb-4 flex items-end justify-between">
-          <h2 className="text-2xl">
-            Відгуки покупців{" "}
-            <span className="text-muted">{reviews?.totalCount || 0}</span>
-          </h2>
-          <CreateReviewButton productId={product.id} />
-        </div>
-
-        <div className="flex-1">
-          <ProductDescriptionBlock
-            html={`Ноутбук Lenovo V15-ADA (82C700DPRA) Iron Grey - це надійний та потужний пристрій, який ідеально підходить для роботи та розваг. Оснащений 4-ядерним процесором AMD Ryzen 3 7320U з тактовою частотою від 2.4 до 4.1 ГГц, цей ноутбук забезпечує швидку та ефективну роботу з будь-якими завданнями. Відеокарта Radeon 610M дозволяє насолоджуватися якісною графікою, а обсяг SSD в 512 ГБ забезпечує достатньо місця для зберігання файлів та програм. Ноутбук має стильний дизайн в кольорі Iron Grey, що додає йому елегантності та сучасності.`}
-            collapsedHeight={300}
-          />
-        </div>
-        <div className="flex-1">
-          <ProductReviewsBlock
-            productSlug="lenovo-v15-ada"
-            totalCount={27}
-            reviews={reviews?.items || []}
-          />
-        </div>
-      </section>
-      <section id="questions" className="h-100 scroll-mt-(--scroll-offset)">
-        Questions
-      </section>
+      <ReviewsSection productId={productId} productSlug={product.slug} />
       <section id="video" className="h-100 scroll-mt-(--scroll-offset)">
         Video
       </section>
       <section id="photos" className="h-100 scroll-mt-(--scroll-offset)">
-        Photos
+        <ProductDescriptionBlock
+          html={`Ноутбук Lenovo V15-ADA (82C700DPRA) Iron Grey - це надійний та потужний пристрій, який ідеально підходить для роботи та розваг. Оснащений 4-ядерним процесором AMD Ryzen 3 7320U з тактовою частотою від 2.4 до 4.1 ГГц, цей ноутбук забезпечує швидку та ефективну роботу з будь-якими завданнями. Відеокарта Radeon 610M дозволяє насолоджуватися якісною графікою, а обсяг SSD в 512 ГБ забезпечує достатньо місця для зберігання файлів та програм. Ноутбук має стильний дизайн в кольорі Iron Grey, що додає йому елегантності та сучасності.`}
+          collapsedHeight={300}
+        />
       </section>
       <section id="together" className="h-100 scroll-mt-(--scroll-offset)">
         Buy with

@@ -34,7 +34,7 @@ export function ProductCardCompact({
       </ProductCard.Top>
 
       <ProductCard.Body>
-        <CustomLink variant="primary" to={`/product/${product.id}`}>
+        <CustomLink variant="primary" to={`/product/${product.id}`} className="items-start w-full h-full">
           <ProductCard.Title />
         </CustomLink>
       </ProductCard.Body>

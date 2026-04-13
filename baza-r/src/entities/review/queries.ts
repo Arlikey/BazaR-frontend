@@ -1,6 +1,7 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { reviewApi } from "./api/reviewApi";
 import { toReview, type CreateReviewDto } from "./model/review";
+import { EMPTY_REVIEWS_SUMMARY } from "./model/emptyReviewsSummary";
 
 export function useAddReview() {
   return useMutation({
@@ -19,6 +20,17 @@ export function useProductReviews(productId: string) {
   });
 }
 
+export function useProductReviewsSummary(productId: string) {
+  return useQuery({
+    queryKey: ["reviews-summary", productId],
+    queryFn: async () => {
+      const data = await reviewApi.getReviewsSummary(productId);
+      return data ?? EMPTY_REVIEWS_SUMMARY;
+    },
+    initialData: EMPTY_REVIEWS_SUMMARY,
+  });
+}
+
 export function useVoteReviewHelpful() {
   const queryClient = useQueryClient();
   return useMutation({
@@ -29,9 +41,6 @@ export function useVoteReviewHelpful() {
       reviewId: string;
       isHelpful: boolean;
     }) => reviewApi.voteHelpful(reviewId, isHelpful),
-    onError: (err) => {
-        console.log(err);
-    },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["reviews"] });
     },

@@ -12,22 +12,6 @@ export type ReviewReply = {
   date: string;
 };
 
-// export type Review = {
-//   id: string;
-//   author: string;
-//   isSeller: boolean;
-//   sellerName: string;
-//   date: string;
-//   rating: number;
-//   body: string;
-//   advantages?: string;
-//   disadvantages?: string;
-//   photos?: ReviewPhoto[];
-//   likes: number;
-//   dislikes: number;
-//   replies?: ReviewReply[];
-// };
-
 export type CreateReviewDto = {
   productId: string;
   rating: number;
@@ -58,6 +42,17 @@ export type ReviewsResponse = {
   totalCount: number;
   page: number;
   pageSize: number;
+};
+
+export type ReviewsSummaryResponse = {
+  productId: string;
+  averageRating: number;
+  reviewsCount: number;
+  fiveStarsCount: number;
+  fourStarsCount: number;
+  threeStarsCount: number;
+  twoStarsCount: number;
+  oneStarCount: number;
 };
 
 export type Review = {

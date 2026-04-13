@@ -39,7 +39,7 @@ async function tryRefresh(): Promise<boolean> {
   }
 }
 
-export async function api<T = void>(
+export async function api<T = unknown>(
   url: string,
   options?: RequestInit,
 ): Promise<T> {
@@ -93,7 +93,7 @@ export async function api<T = void>(
     response.status === 204 ||
     response.headers.get("content-length") === "0"
   ) {
-    return undefined as T;
+    return null as T;
   }
 
   return response.json();

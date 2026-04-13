@@ -1,7 +1,7 @@
 import { tv, type VariantProps } from "tailwind-variants";
 
 const skeleton = tv({
-  base: "inline-flex relative overflow-hidden bg-neutral-200/70 rounded",
+  base: "inline-flex relative overflow-hidden bg-neutral-100/70 rounded",
   variants: {
     shimmer: {
       true: [

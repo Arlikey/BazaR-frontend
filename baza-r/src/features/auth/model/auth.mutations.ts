@@ -42,11 +42,10 @@ export function useLogout() {
       useAuthStore.getState().setAuthenticated(false);
       navigate("/");
     },
-    onError: (err) => {
+    onError: () => {
       tokenStorage.clear();
       qc.removeQueries({ queryKey: meQueryKey });
       useAuthStore.getState().setAuthenticated(false);
-      console.log("Logout error:", err);
       navigate("/");
     },
   });

@@ -13,7 +13,7 @@ import {
   getStockStatus,
 } from "../../entities/product/model/productUtils";
 import { FavoriteButton } from "../../entities/product/ui/FavoriteButton";
-import { StarRating } from "../product-details/ui/blocks/review-block/StarRating";
+import { StarRating } from "../product-details/ui/blocks/reviews-section/StarRating";
 
 type Props = { product: Product };
 
@@ -53,7 +53,7 @@ export function ProductCardRich({ product }: Props) {
       </ProductCard.Top>
 
       <ProductCard.Body>
-        <CustomLink variant="primary" to={`/product/${product.id}`}>
+        <CustomLink variant="primary" to={`/product/${product.id}`} className="w-full">
           <ProductCard.Title />
         </CustomLink>
         <ProductCard.Meta>

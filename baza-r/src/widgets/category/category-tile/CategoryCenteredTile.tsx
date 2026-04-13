@@ -4,11 +4,10 @@ import CustomLink from "../../../shared/components/ui/CustomLink";
 import { API_URL } from "../../../shared/config/env";
 
 export function CategoryCenteredTile({ category }: { category: Category }) {
-  console.log(category.imageUrl);
   return (
-    <div className="flex h-full flex-col items-center  gap-10 text-center">
+    <div className="flex h-full flex-col items-center gap-10 text-center">
       {category.imageUrl && (
-        <Link to={`/catalog/${category.id}`} className="max-h-30 h-full w-full">
+        <Link to={`/catalog/${category.id}`} className="h-full max-h-30 w-full">
           <img
             src={`${API_URL}${category.imageUrl}`}
             className="h-full w-full object-contain"

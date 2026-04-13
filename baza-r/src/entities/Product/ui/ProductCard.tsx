@@ -9,7 +9,7 @@ import type { Product } from "../model/Product";
 
 const card = tv({
   slots: {
-    root: "hover:shadow-[0_6px_8px_2px_rgba(0,0,0,0.12)] hover:-translate-y-1 hover:z-10 transition-all py-5 relative grid min-w-0 w-full h-full rounded-xl bg-surface bw-thin border-solid border-neutral-100 grid-rows-[auto_1fr_auto_auto]",
+    root: "hover:shadow-[0_6px_8px_2px_rgba(0,0,0,0.12)] hover:-translate-y-1 hover:z-10 transition-all py-5 relative grid min-w-0 w-full h-full rounded-xl bg-surface bw-thin border-solid border-neutral-100 grid-rows-[auto_1fr_auto]",
     top: "relative px-0",
     media:
       "flex items-center justify-center overflow-visible h-[150px] mx-auto",
@@ -73,7 +73,7 @@ const card = tv({
         title:
           "w-full min-w-0 text-base font-normal h-[42px] line-clamp-2 [overflow-wrap:anywhere]",
         meta: "text-sm min-w-0 [overflow-wrap:anywhere] mt-1",
-        prices: "grid gap-2 min-w-0",
+        prices: "grid gap-2 min-w-0 h-[54px]",
         oldPrice: "min-w-0 truncate text-base text-neutral-300 leading-none",
         currentPrice: "min-w-0 truncate text-2xl font-normal leading-none",
         currency: "text-xl",
