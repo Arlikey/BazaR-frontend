@@ -8,12 +8,11 @@ import { ProductBadge } from "../../entities/product/ui/ProductBadge";
 import IconWrapper from "../../shared/components/ui/IconWrapper";
 import { DialogueIcon } from "../../shared/components/icons/ui/DialogueIcon";
 import CustomLink from "../../shared/components/ui/CustomLink";
-import {
-  calcDiscount,
-  getStockStatus,
-} from "../../entities/product/model/productUtils";
+import { getStockStatus } from "../../entities/product/model/productUtils";
 import { FavoriteButton } from "../../entities/product/ui/FavoriteButton";
 import { StarRating } from "../product-details/ui/blocks/reviews-section/StarRating";
+import { calcDiscountPercent } from "../../shared/lib/price";
+import { pluralize, PLURALS } from "../../shared/lib/pluralize";
 
 type Props = { product: Product };
 
@@ -24,7 +23,7 @@ export function ProductCardRich({ product }: Props) {
     product.oldPrice > product.currentPrice;
 
   const discount = isPromo
-    ? calcDiscount(product.currentPrice!, product.oldPrice!)
+    ? calcDiscountPercent(product.currentPrice!, product.oldPrice!)
     : null;
 
   const inStock = getStockStatus(product.inStock);
@@ -53,12 +52,22 @@ export function ProductCardRich({ product }: Props) {
       </ProductCard.Top>
 
       <ProductCard.Body>
-        <CustomLink variant="primary" to={`/product/${product.id}`} className="w-full">
+        <CustomLink
+          variant="primary"
+          to={`/product/${product.id}`}
+          className="w-full"
+        >
           <ProductCard.Title />
         </CustomLink>
         <ProductCard.Meta>
           {product.reviewCount != null && product.reviewCount > 0 ? (
-            <StarRating rating={product.rating ?? 0} />
+            <div className="flex items-center gap-2">
+              <StarRating rating={product.rating ?? 0} />
+              <span>
+                {product.reviewCount}{" "}
+                {pluralize(product.reviewCount, PLURALS.review)}
+              </span>
+            </div>
           ) : (
             <CustomLink to={""} variant="primary" className="gap-1">
               <IconWrapper size={13}>

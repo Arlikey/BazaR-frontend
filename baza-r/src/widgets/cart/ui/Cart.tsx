@@ -1,6 +1,4 @@
-import {
-  useCart,
-} from "../../../entities/cart/queries";
+import { useCart } from "../../../entities/cart/queries";
 import { CrossIcon } from "../../../shared/components/icons/ui/CrossIcon";
 import { Button } from "../../../shared/components/ui/Button";
 import IconWrapper from "../../../shared/components/ui/IconWrapper";
@@ -16,7 +14,7 @@ export function Cart() {
   const isEmpty = !cart || cart.items.length === 0;
 
   return (
-    <div className="relative flex max-h-screen flex-col gap-5 py-5 md:py-10 md:max-h-[90vh]">
+    <div className="relative flex max-h-screen flex-col gap-5 py-5 md:max-h-[90vh] md:py-10">
       <div className="flex justify-between px-5 lg:px-20">
         <h3 className="text-2xl">Кошик</h3>
         <Button
@@ -44,7 +42,7 @@ export function Cart() {
       {!isLoading && isEmpty && <CartEmpty />}
 
       {!isLoading && !isEmpty && (
-        <div className="flex flex-col overflow-y-auto gap-5">
+        <div className="flex flex-col gap-5 overflow-y-auto">
           <div className="flex flex-col gap-2.5 px-5 lg:px-20">
             <div className="flex flex-col gap-3">
               {cart!.items.map((item) => (
@@ -52,8 +50,11 @@ export function Cart() {
               ))}
             </div>
           </div>
-          <div className="px-2 md:px-5 pb-2 lg:px-20 sticky bottom-0 bg-neutral-50">
-            <CartFooter totalAmount={cart!.totalAmount} />
+          <div className="sticky bottom-0 bg-neutral-50 px-2 pb-2 md:px-5 lg:px-20">
+            <CartFooter
+              totalAmount={cart!.totalAmount}
+              currency={cart.currency}
+            />
           </div>
         </div>
       )}

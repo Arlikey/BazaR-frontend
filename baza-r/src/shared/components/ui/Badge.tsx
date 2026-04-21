@@ -27,7 +27,7 @@ export function Badge({
     <span
       className={cn(
         variantStyles[variant],
-        "absolute top-0.5 right-0.5 flex h-4 min-w-4 items-center justify-center rounded-full px-1 text-xs font-medium tracking-tighter",
+        "absolute top-1 right-1 flex h-4 min-w-4 items-center justify-center rounded-full px-1 text-xs font-medium tracking-tighter",
         className,
       )}
     >

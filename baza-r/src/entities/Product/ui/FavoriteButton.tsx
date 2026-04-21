@@ -9,9 +9,17 @@ import IconWrapper from "../../../shared/components/ui/IconWrapper";
 import { toast } from "../../../shared/components/ui/Toast";
 import { useFavorites, useToggleFavorite } from "../../favourite/queries";
 
-type Props = { productId: string; variant?: "card" | "page" };
+type Props = {
+  productId: string;
+  variant?: "card" | "page";
+  className?: string;
+};
 
-export function FavoriteButton({ productId, variant = "card" }: Props) {
+export function FavoriteButton({
+  productId,
+  variant = "card",
+  className,
+}: Props) {
   const navigate = useNavigate();
 
   const { data: favorites = [] } = useFavorites();
@@ -43,7 +51,7 @@ export function FavoriteButton({ productId, variant = "card" }: Props) {
       aria-pressed={isFav}
       color="subtle"
       size="icon"
-      className="bg-white/65"
+      className={`bg-white/65 ${className}`}
       rounded="md"
       onClick={(e) => {
         e.preventDefault();

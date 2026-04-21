@@ -30,7 +30,7 @@ export function MobileBar() {
   ];
 
   return (
-    <div className="fixed bottom-0 left-0 z-16 flex w-full rounded-t-xl bg-white p-2 shadow-[0_-4px_6px_rgba(0,0,0,0.1)] md:hidden">
+    <div className="fixed bottom-0 left-0 z-20 flex w-full rounded-t-xl bg-white p-2 shadow-[0_-4px_6px_rgba(0,0,0,0.1)] md:hidden">
       {items.map((item) => {
         const Icon = item.icon;
 

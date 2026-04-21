@@ -19,7 +19,7 @@ export function ReviewCard({ review }: Props) {
 
   return (
     <Block rounded="xl" className="flex flex-col overflow-hidden">
-      <div className="bw-b-thin flex items-center justify-between gap-4 border-neutral-100 px-10 py-5">
+      <div className="bw-b-thin flex items-center justify-between gap-4 border-neutral-100 px-5 md:px-10 py-5">
         <div className="flex flex-col gap-1">
           <div className="flex items-center gap-2">
             <span className="text-lg">{review.author}</span>
@@ -47,7 +47,7 @@ export function ReviewCard({ review }: Props) {
         </div>
       </div>
 
-      <div className="flex flex-col gap-5 px-10 py-5">
+      <div className="flex flex-col gap-5 px-5 md:px-10 py-5">
         {/* {review.sellerName && (
           <div className="text-muted flex items-center gap-2 text-sm">
             <span>Продавець:</span>

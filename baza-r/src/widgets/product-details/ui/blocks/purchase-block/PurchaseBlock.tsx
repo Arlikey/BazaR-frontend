@@ -1,15 +1,17 @@
-import { FavoriteButton } from "../../../../entities/product/ui/FavoriteButton";
-import { CompareIcon } from "../../../../shared/components/icons/ui/CompareIcon";
-import { FavoriteAltIcon } from "../../../../shared/components/icons/ui/FavouriteIcon";
-import { InfoIcon } from "../../../../shared/components/icons/ui/InfoIcon";
-import Block from "../../../../shared/components/ui/Block";
-import { Button } from "../../../../shared/components/ui/Button";
-import CustomLink from "../../../../shared/components/ui/CustomLink";
-import IconWrapper from "../../../../shared/components/ui/IconWrapper";
+import { FavoriteButton } from "../../../../../entities/product/ui/FavoriteButton";
+import { CompareIcon } from "../../../../../shared/components/icons/ui/CompareIcon";
+import { FavoriteAltIcon } from "../../../../../shared/components/icons/ui/FavouriteIcon";
+import { InfoIcon } from "../../../../../shared/components/icons/ui/InfoIcon";
+import Block from "../../../../../shared/components/ui/Block";
+import { Button } from "../../../../../shared/components/ui/Button";
+import CustomLink from "../../../../../shared/components/ui/CustomLink";
+import IconWrapper from "../../../../../shared/components/ui/IconWrapper";
+import { isDiscount } from "../../../../../shared/lib/price";
 import type {
   PurchaseBlockProps,
   StockStatus,
-} from "../../config/purchase-block.config";
+} from "../../../config/purchase-block.config";
+import { CartButton } from "./CartButton";
 const STOCK_LABELS: Record<
   StockStatus,
   { label: string; className: string } | null
@@ -21,6 +23,7 @@ const STOCK_LABELS: Record<
 
 export function PurchaseBlock({
   productId,
+  offerId,
   price,
   oldPrice,
   stockStatus,
@@ -35,11 +38,12 @@ export function PurchaseBlock({
 }: PurchaseBlockProps) {
   const stockLabel = STOCK_LABELS[stockStatus];
   const isAvailable = stockStatus !== "unavailable";
+  const hasDiscount = isDiscount(oldPrice, price);
 
   return (
     <Block
       rounded="xl"
-      className="flex flex-col justify-center gap-4 px-8 py-5"
+      className="flex flex-col justify-center gap-4 px-4 md:px-8 py-5"
     >
       {colors && colors.length > 0 && (
         <div className="flex items-center gap-4">
@@ -68,14 +72,14 @@ export function PurchaseBlock({
       <div className="1.5xl:flex-row flex flex-col justify-between gap-4">
         <div className="flex items-center justify-between gap-3">
           <div className="mr-10 flex flex-col">
-            {oldPrice && (
+            {hasDiscount && oldPrice && (
               <span className="text-muted text-lg line-through">
                 {oldPrice.toLocaleString("uk-UA")} ₴
               </span>
             )}
-            <span className={`text-5xl ${oldPrice ? "text-promotion" : ""}`}>
+            <span className={`text-4xl md:text-5xl ${hasDiscount ? "text-promotion" : ""}`}>
               {price.toLocaleString("uk-UA")}
-              <span className="text-4xl">₴</span>
+              <span className="text-2xl md:text-4xl">₴</span>
             </span>
             {stockLabel && (
               <span className={`mt-1 text-sm ${stockLabel.className}`}>
@@ -85,11 +89,7 @@ export function PurchaseBlock({
           </div>
 
           <div className="1.5xl:hidden flex gap-7.5">
-            <IconWrapper
-              className={`h-7.5 cursor-pointer transition-colors ${isFavorite ? "text-accent" : "text-subtle"}`}
-            >
-              <FavoriteAltIcon />
-            </IconWrapper>
+            <FavoriteButton variant="page" productId={productId} />
             <IconWrapper
               className={`h-7.5 cursor-pointer transition-colors ${isCompared ? "text-accent" : "text-subtle"}`}
             >
@@ -100,7 +100,7 @@ export function PurchaseBlock({
 
         {isAvailable && (
           <div className="1.5xl:flex-row 1.5xl:items-center flex flex-col gap-4">
-            <Button
+            {/* <Button
               variant="solid"
               rounded="pill"
               color="secondary"
@@ -109,7 +109,8 @@ export function PurchaseBlock({
               onClick={onBuy}
             >
               Купити
-            </Button>
+            </Button> */}
+            <CartButton offerId={offerId} />
             {creditAvailable && (
               <Button
                 variant="solid"
@@ -124,11 +125,6 @@ export function PurchaseBlock({
             )}
 
             <div className="1.5xl:flex ml-10 hidden gap-7.5">
-              {/* <IconWrapper
-                className={`h-7.5 cursor-pointer transition-colors ${isFavorite ? "text-accent" : "text-subtle"}`}
-              >
-                <FavoriteAltIcon />
-              </IconWrapper> */}
               <FavoriteButton variant="page" productId={productId} />
               <IconWrapper
                 className={`h-7.5 cursor-pointer transition-colors ${isCompared ? "text-accent" : "text-subtle"}`}

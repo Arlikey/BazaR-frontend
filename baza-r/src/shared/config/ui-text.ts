@@ -63,6 +63,7 @@ export const uiText = {
     promoProductsTitle: "Акційні пропозиції",
     recommendedProductsTitle: "Рекомендації на основі ваших переглядів",
     awaitedProductsTitle: "Найбільш очікуванні товари",
+    recentlyViewedTitle: "Останні переглянуті товари",
     trendingProductsTitle: "Зараз шукають",
     loadingError: "Не вдалося завантажити",
     giftsTitle: "Кращі подарунки",

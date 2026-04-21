@@ -26,7 +26,7 @@ export function ProductSpecsBlock({ specs, badges }: ProductSpecsBlockProps) {
   const hasMore = specs.length > DEFAULT_VISIBLE;
 
   return (
-    <Block rounded="xl" className="flex gap-6 px-10 py-5">
+    <Block rounded="xl" className="flex gap-6 px-4 md:px-8 py-5 overflow-hidden">
       <div className="flex flex-1 flex-col gap-4">
         <h3 className="text-xl font-medium">Основні характеристики:</h3>
 

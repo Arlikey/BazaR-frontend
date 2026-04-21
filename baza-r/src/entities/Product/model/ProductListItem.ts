@@ -27,6 +27,7 @@ export function toProduct(item: ProductListItem, categoryId?: string): Product {
       : null,
     currentPrice: item.offer?.priceAmount ?? null,
     oldPrice: item.offer?.oldPriceAmount ?? null,
+    currency: item.offer?.priceCurrency ?? null,
     isActive: true,
     inStock: item.offer?.stockQuantity ?? null,
     rating: null,

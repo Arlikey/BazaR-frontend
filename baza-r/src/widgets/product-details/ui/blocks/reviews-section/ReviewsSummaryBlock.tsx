@@ -1,6 +1,7 @@
 import type { ReviewsSummaryResponse } from "../../../../../entities/review/model/review";
 import { StarIcon } from "../../../../../shared/components/icons/ui/StarIcon";
 import CreateReviewButton from "../../../../../features/review/ui/CreateReviewButton";
+import { pluralize, PLURALS } from "../../../../../shared/lib/pluralize";
 
 type Props = {
   reviewsSummary: ReviewsSummaryResponse;
@@ -23,8 +24,8 @@ export function ReviewsSummaryBlock({ reviewsSummary, productId }: Props) {
   };
 
   return (
-    <div className="w-1/3">
-      <div className="sticky top-(--scroll-offset) w-3/4 space-y-3">
+    <div className="w-full lg:w-1/3">
+      <div className="sticky top-(--scroll-offset) w-full lg:w-3/4 space-y-3">
         <h2 className="mb-6 text-2xl">Відгуки та питання</h2>
         {reviewsSummary.reviewsCount > 0 && (
           <>
@@ -40,7 +41,8 @@ export function ReviewsSummaryBlock({ reviewsSummary, productId }: Props) {
               <span className="text-muted text-base">
                 на основі{" "}
                 <span className="text-black">
-                  {reviewsSummary.reviewsCount} відгуків
+                  {reviewsSummary.reviewsCount}{" "}
+                  {pluralize(reviewsSummary.reviewsCount, PLURALS.review)}
                 </span>
               </span>
             </div>
@@ -64,7 +66,7 @@ export function ReviewsSummaryBlock({ reviewsSummary, productId }: Props) {
             </ul>
           </>
         )}
-        <div className="w-5/6">
+        <div className="w-full lg:w-5/6">
           <CreateReviewButton productId={productId} className="w-full">
             Написати відгук
           </CreateReviewButton>

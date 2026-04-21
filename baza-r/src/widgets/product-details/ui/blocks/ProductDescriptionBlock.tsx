@@ -24,7 +24,7 @@ export function ProductDescriptionBlock({
 
   return (
     <section className="flex flex-col gap-4">
-      <Block rounded="xl" className="flex flex-col gap-4 px-8 py-6">
+      <Block rounded="xl" className="flex flex-col gap-4 px-4 md:px-8 py-6">
         <div className="relative">
           <div
             ref={contentRef}

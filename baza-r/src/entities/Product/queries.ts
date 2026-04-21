@@ -49,3 +49,12 @@ export function useFilteredProducts(
     placeholderData: (prev) => prev,
   });
 }
+
+export function useRecentlyViewedProducts() {
+  return useQuery({
+    queryKey: ["recently-viewed-products"],
+    queryFn: () => productApi.getRecentlyViewed(),
+    enabled: true,
+    placeholderData: (prev) => prev,
+  });
+}

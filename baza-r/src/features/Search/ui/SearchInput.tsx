@@ -29,7 +29,7 @@ export default function SearchInput({
         onChange={(e) => setQuery(e.target.value)}
         onFocus={onFocus}
         onKeyDown={(e) => e.key === "Enter" && onSubmit()}
-        className="text-muted ml-3 h-full flex-1 pr-4 pl-3 md:pl-0 outline-0"
+        className="text-muted ml-3 h-full flex-1 w-full pr-4 pl-3 md:pl-0 outline-0"
         type="text"
         placeholder={uiText.search.placeholder}
       />

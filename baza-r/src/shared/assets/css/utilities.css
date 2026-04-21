@@ -21,4 +21,8 @@
   ::-webkit-scrollbar {
     @apply h-1 w-1 bg-transparent;
   }
+
+  .scrollbar-hidden::-webkit-scrollbar {
+    @apply h-0 w-0;
+  }
 }

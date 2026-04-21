@@ -48,6 +48,13 @@
       color-mix(in srgb, var(--color-accent-hover) 20%, transparent) inset;
     transition: background-color 9999s ease-out 0s;
   }
+
+  .product-slide {
+    width: calc(
+      100% / var(--countSlides) - var(--countSlidesOffset, 30%) /
+        var(--countSlides) / var(--countSlides)
+    );
+  }
 }
 
 @layer components {

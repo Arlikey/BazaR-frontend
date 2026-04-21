@@ -14,7 +14,7 @@ export function ServicesBlock() {
   } = useServicesState(SERVICES);
 
   return (
-    <Block rounded="xl" className="flex flex-col gap-3 px-8 py-5">
+    <Block rounded="xl" className="flex flex-col gap-3 px-4 md:px-8 py-5">
       {SERVICES.map((service) => {
         const isChecked = !!checkedServices[service.id];
 

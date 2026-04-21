@@ -17,7 +17,7 @@ export function ReviewsSection({ productId, productSlug }: Props) {
 
   return (
     <section id="reviews" className="scroll-mt-(--scroll-offset)">
-      <Block className="flex gap-5 p-6">
+      <Block className="flex gap-5 p-4 md:p-6 flex-col lg:flex-row">
         <ReviewsSummaryBlock reviewsSummary={summary} productId={productId} />
 
         <ProductReviewsBlock

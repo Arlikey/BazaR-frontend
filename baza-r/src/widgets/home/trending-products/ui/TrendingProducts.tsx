@@ -5,32 +5,18 @@ import { ProductsGrid } from "../../../product-grid/ui/ProductGrid";
 import { uiText } from "../../../../shared/config/ui-text";
 import { useProductsByCategory } from "../../../../entities/product/queries";
 import { toProduct } from "../../../../entities/product/model/ProductListItem";
+import { ProductSection } from "../../../product-section/ProductSection";
 
 export function TrendingProducts() {
-  const { data: products = [], isLoading: productsLoading } =
-    useProductsByCategory("7a8fa541-8603-464a-863e-7bd41420b241");
+  const { data: products = [], isLoading } = useProductsByCategory(
+    "7a8fa541-8603-464a-863e-7bd41420b241",
+  );
 
   return (
-    <Section
-      aria-label={uiText.home.trendingProductsTitle}
+    <ProductSection
       title={uiText.home.trendingProductsTitle}
-    >
-      <ProductsGrid>
-        {productsLoading
-          ? Array.from({ length: 5 }).map((_, i) => (
-              <li key={i}>
-                <ProductCardSkeleton className="h-75" />
-              </li>
-            ))
-          : products.map((p) => (
-              <li
-                key={p.id}
-                className="w-[calc(20%-8px)] min-w-50 shrink-0"
-              >
-                <ProductCardCompact product={toProduct(p)} />
-              </li>
-            ))}
-      </ProductsGrid>
-    </Section>
+      products={products.map(toProduct)}
+      isLoading={isLoading}
+    />
   );
 }

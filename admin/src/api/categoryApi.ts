@@ -20,6 +20,7 @@ export const categoryApi = {
 
   create: (data: {
     name: string;
+    slug: string;
     parentCategoryId: string | null;
     sortOrder: number;
   }) =>

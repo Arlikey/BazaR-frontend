@@ -8,7 +8,6 @@ import { AccountLayout } from "../../pages/account/ui/AccountLayout";
 import { ProfilePage } from "../../pages/account/ui/pages/customer/profile/ProfilePage";
 import OrdersPage from "../../pages/account/ui/pages/customer/orders/OrdersPage";
 import WishlistPage from "../../pages/account/ui/pages/customer/wishlist/WishlistPage";
-import ViewedPage from "../../pages/account/ui/pages/customer/viewed/ViewedPage";
 import NewslettersPage from "../../pages/account/ui/pages/customer/newsletters/NewslettersPage";
 import WalletPage from "../../pages/account/ui/pages/customer/wallet/WalletPage";
 import BonusPage from "../../pages/account/ui/pages/customer/bonus/BonusPage";
@@ -19,11 +18,13 @@ import PromotionsPage from "../../pages/account/ui/pages/customer/promotions/Pro
 import SellerProductsPage from "../../pages/account/ui/pages/seller/SellerProductsPage";
 import { CreateProductForm } from "../../features/seller/ui/CreateProductForm";
 import CreateOfferPage from "../../features/seller/ui/CreateOfferPage";
-import CategoryPage from "../../pages/category/ui/CategoryPage";
 import EditOfferPage from "../../features/seller/ui/EditOfferPage";
 import { AuthGuard } from "./guards/AuthGuard";
 import { SellerGuard } from "./guards/SellerGuard";
-import OrderPage from "../../pages/order/OrderPage";
+import OrderPage from "../../pages/checkout/CheckoutPage";
+import SearchPage from "../../pages/search/SearсhPage";
+import { ViewedPage } from "../../pages/account/ui/pages/customer/viewed/ViewedPage";
+import { CategoryPage } from "../../pages/category/ui/CategoryPage";
 
 export const routes: RouteObject[] = [
   {
@@ -32,6 +33,7 @@ export const routes: RouteObject[] = [
       { path: "/", element: <HomePage /> },
       { path: "/product/:productId", element: <ProductPage /> },
       { path: "/catalog/:categoryId", element: <CategoryPage /> },
+      { path: "/search", element: <SearchPage /> },
       {
         element: <AuthGuard />,
         children: [

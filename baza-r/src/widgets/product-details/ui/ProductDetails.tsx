@@ -1,7 +1,7 @@
 import { ServicesBlock } from "./blocks/ServicesBlock";
 import { Breadcrumbs } from "../../../shared/components/ui/Breadcrumbs";
 import { ProductTabs } from "./blocks/ProductTabs";
-import { PurchaseBlock } from "./blocks/PurchaseBlock";
+import { PurchaseBlock } from "./blocks/purchase-block/PurchaseBlock";
 import { ProductGallery } from "./blocks/product-gallery/ProductGallery";
 import { DeliveryBlock } from "./blocks/DeliveryBlock";
 import { PaymentGuaranteeBlock } from "./blocks/PaymentGuaranteeBlock";
@@ -22,6 +22,11 @@ import { useCatalogCategories } from "../../catalog/model/useCategories";
 import { useElementOffset } from "../../../shared/hooks/useElementOffset";
 import { API_URL } from "../../../shared/config/env";
 import { ReviewsSection } from "./blocks/reviews-section/ReviewsSection";
+import { useEffect, useRef } from "react";
+// import { addRecentProduct } from "../../../features/recently-viewed/recentlyViewedProducts";
+import { RecentlyViewedProducts } from "../../home/recently-viewed-products/ui/RecentlyViewedProducts";
+import { useIntersection } from "../../../shared/hooks/useIntersection";
+import { getStockStatus } from "../../../entities/product/model/productUtils";
 
 type Props = {
   productId: string;
@@ -33,12 +38,29 @@ export default function ProductDetails({ productId }: Props) {
   const { data: offer } = useProductOffer(productId);
   const { flat } = useCatalogCategories();
   const breadcrumbs = buildCategoryBreadcrumbs(product?.categoryId, flat);
+  const purchaseRef = useRef<HTMLDivElement>(null);
+  const specs = (attributesView?.attributes ?? [])
+    .map((attr) => ({
+      label: attr.name,
+      value: getAttributeValue(attr),
+    }))
+    .filter((spec) => spec.value && spec.value.trim() !== "");
+
+  const isPurchaseVisible = useIntersection(purchaseRef, {
+    threshold: 0.1,
+  });
 
   useElementOffset({
     selector: "[data-app-tabs]",
     cssVarName: "--tabs-height",
     measure: "height",
   });
+
+  // useEffect(() => {
+  //   if (productId) {
+  //     addRecentProduct(productId);
+  //   }
+  // }, [productId]);
 
   if (!product) return null;
 
@@ -48,105 +70,106 @@ export default function ProductDetails({ productId }: Props) {
       <Breadcrumbs items={breadcrumbs} />
 
       <div className="mt-9 flex flex-col gap-2">
-        <h2 className="text-3xl">{product.name}</h2>
+        <h2 className="text-xl md:text-3xl">{product.name}</h2>
         <span className="text-muted text-base">
           Код: <span>{product.vendorCode}</span>
         </span>
       </div>
 
-      <ProductTabs data-app-tabs />
+      <ProductTabs
+        data-app-tabs
+        showMiniPurchase={!isPurchaseVisible}
+        price={offer?.priceAmount}
+        oldPrice={offer?.oldPriceAmount}
+        offerId={offer?.offerId}
+        productId={productId}
+      />
 
-      <section className="mt-10 flex gap-5">
-        <div className="flex w-1/2 flex-col gap-5">
-          <ProductGallery
-            images={product.images
-              .sort((a, b) => a.sortOrder - b.sortOrder)
-              .map((img) => `${API_URL}${img.url}`)}
-            alt={product.name}
-            isLoading={isLoading}
-          />
-          <ProductSpecsBlock
-            specs={(attributesView?.attributes ?? []).map((attr) => ({
-              label: attr.name,
-              value: getAttributeValue(attr),
-            }))}
-          />
-        </div>
-        <div className="flex flex-1 flex-col gap-5">
-          <PurchaseBlock
-            productId={productId}
-            price={offer?.priceAmount ?? 0}
-            oldPrice={offer?.oldPriceAmount ?? undefined}
-            stockStatus={
-              !offer
-                ? "unavailable"
-                : offer.stock === 0
-                  ? "unavailable"
-                  : offer.stock < 5
-                    ? "ending"
-                    : "available"
-            }
-            onBuy={() => {}}
-            onFavorite={() => {}}
-            onCompare={() => {}}
-          />
-          <ServicesBlock />
-          <DeliveryBlock
-            city="Одеса"
-            options={[
-              {
-                id: "pickup",
-                icon: <PickUpIcon />,
-                label: "Самовивіз з відділень поштових операторів",
-                sublabel: "Показати на карті",
-                date: "Відправимо 8 січня",
-                price: "за тарифами перевізника",
-              },
-              {
-                id: "courier",
-                icon: <CourierIcon />,
-                label: "Доставка кур'єром",
-                date: "Відправимо 8 січня",
-                price: "за тарифами перевізника",
-              },
-            ]}
-          />
-          <PaymentGuaranteeBlock
-            items={[
-              {
-                id: "payment",
-                icon: <PaymentIcon />,
-                title: "Оплата",
-                description:
-                  "Оплата під час отримання товару, Картою онлайн, Google Pay, -5% знижки від ПриватБанк та Mastercard від 500 грн, Безготівковими для юридичних осіб, Покупка частинами monobank, Безготівковий для фізичних осіб, PrivatPay, Apple Pay, Кредит, Оплата частинами, Оплата карткою у відділенні",
-              },
-              {
-                id: "guarantee",
-                icon: <GuaranteeIcon />,
-                title: "Гарантія",
-                description:
-                  "12 місяців Обмін/повернення товару впродовж 14 днів",
-              },
-            ]}
-          />
-        </div>
-      </section>
-      <section id="specs" className="h-100 scroll-mt-(--scroll-offset)">
-        Specifications
-      </section>
-      <ReviewsSection productId={productId} productSlug={product.slug} />
-      <section id="video" className="h-100 scroll-mt-(--scroll-offset)">
-        Video
-      </section>
-      <section id="photos" className="h-100 scroll-mt-(--scroll-offset)">
+      <div className="flex flex-col gap-12">
+        <section className="mt-10 flex flex-col gap-5 lg:flex-row">
+          <div className="flex flex-col gap-5 lg:w-1/2">
+            <ProductGallery
+              images={product.images
+                .sort((a, b) => a.sortOrder - b.sortOrder)
+                .map((img) => `${API_URL}${img.url}`)}
+              alt={product.name}
+              isLoading={isLoading}
+            />
+            {specs.length > 0 && <ProductSpecsBlock specs={specs} />}
+          </div>
+          <div className="flex flex-1 flex-col gap-5">
+            <div ref={purchaseRef}>
+              <PurchaseBlock
+                productId={productId}
+                offerId={offer?.offerId!}
+                price={offer?.priceAmount ?? 0}
+                oldPrice={offer?.oldPriceAmount ?? undefined}
+                stockStatus={getStockStatus(offer)}
+                onBuy={() => {}}
+                onFavorite={() => {}}
+                onCompare={() => {}}
+              />
+            </div>
+            <ServicesBlock />
+            <DeliveryBlock
+              city="Одеса"
+              options={[
+                {
+                  id: "pickup",
+                  icon: <PickUpIcon />,
+                  label: "Самовивіз з відділень поштових операторів",
+                  sublabel: "Показати на карті",
+                  date: "Відправимо 8 січня",
+                  price: "за тарифами перевізника",
+                },
+                {
+                  id: "courier",
+                  icon: <CourierIcon />,
+                  label: "Доставка кур'єром",
+                  date: "Відправимо 8 січня",
+                  price: "за тарифами перевізника",
+                },
+              ]}
+            />
+            <PaymentGuaranteeBlock
+              items={[
+                {
+                  id: "payment",
+                  icon: <PaymentIcon />,
+                  title: "Оплата",
+                  description:
+                    "Оплата під час отримання товару, Картою онлайн, Google Pay, -5% знижки від ПриватБанк та Mastercard від 500 грн, Безготівковими для юридичних осіб, Покупка частинами monobank, Безготівковий для фізичних осіб, PrivatPay, Apple Pay, Кредит, Оплата частинами, Оплата карткою у відділенні",
+                },
+                {
+                  id: "guarantee",
+                  icon: <GuaranteeIcon />,
+                  title: "Гарантія",
+                  description:
+                    "12 місяців Обмін/повернення товару впродовж 14 днів",
+                },
+              ]}
+            />
+          </div>
+        </section>
         <ProductDescriptionBlock
           html={`Ноутбук Lenovo V15-ADA (82C700DPRA) Iron Grey - це надійний та потужний пристрій, який ідеально підходить для роботи та розваг. Оснащений 4-ядерним процесором AMD Ryzen 3 7320U з тактовою частотою від 2.4 до 4.1 ГГц, цей ноутбук забезпечує швидку та ефективну роботу з будь-якими завданнями. Відеокарта Radeon 610M дозволяє насолоджуватися якісною графікою, а обсяг SSD в 512 ГБ забезпечує достатньо місця для зберігання файлів та програм. Ноутбук має стильний дизайн в кольорі Iron Grey, що додає йому елегантності та сучасності.`}
           collapsedHeight={300}
         />
-      </section>
-      <section id="together" className="h-100 scroll-mt-(--scroll-offset)">
+        <section id="specs" className="h-100 scroll-mt-(--scroll-offset)">
+          Specifications
+        </section>
+        <ReviewsSection productId={productId} productSlug={product.slug} />
+        {/* <section id="video" className="h-100 scroll-mt-(--scroll-offset)">
+        Video
+      </section> */}
+        {/* <section id="photos" className="h-100 scroll-mt-(--scroll-offset)">
+        Photos
+      </section> */}
+        {/* <section id="together" className="h-100 scroll-mt-(--scroll-offset)">
         Buy with
-      </section>
+      </section> */}
+        <RecentlyViewedProducts slidesCount={6} />
+      </div>
     </>
   );
 }

@@ -5,6 +5,7 @@ export type Product = {
   imageUrl: string | null;
   oldPrice: number | null;
   currentPrice: number | null;
+  currency: string | null;
   isActive: boolean;
   isAwaited?: boolean | null;
   inStock?: number | null;

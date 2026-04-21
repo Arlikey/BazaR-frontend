@@ -6,6 +6,13 @@ import {
   type ReactNode,
 } from "react";
 import type { Product } from "../model/Product";
+import {
+  formatPrice,
+  getCurrencySymbol,
+} from "../../../shared/lib/formatMoney";
+import { isDiscount } from "../../../shared/lib/price";
+
+import placeholder from "../../../shared/assets/images/placeholder.webp";
 
 const card = tv({
   slots: {
@@ -16,16 +23,16 @@ const card = tv({
     img: "max-h-full max-w-full object-contain",
     topLeft: "absolute left-4 top-3 z-10 flex flex-col gap-2",
     RootRight: "absolute right-1 top-3 z-10 flex flex-col gap-2",
-    body: "mt-6 px-5 min-w-0",
+    body: "mt-6 px-3 sm:px-5 min-w-0",
     title:
       "w-full min-w-0 text-sm font-normal line-clamp-2 [overflow-wrap:anywhere]",
     meta: "text-sm min-w-0 [overflow-wrap:anywhere]",
-    prices: "grid gap-2 min-w-0",
+    prices: "grid gap-2 min-w-0 items-end",
     oldPrice: "min-w-0 truncate text-sm text-neutral-300 leading-none",
     currentPrice: "min-w-0 truncate text-base font-normal leading-none",
     currency: "text-[11px]",
     currencyOldPrice: "text-xs",
-    footer: "flex flex-col pl-2 sm:pl-5 pr-1 min-w-0",
+    footer: "flex flex-col pl-3 sm:pl-5 pr-1 min-w-0",
   },
   variants: {
     size: {
@@ -94,7 +101,6 @@ type ProductCardVariants = VariantProps<typeof card>;
 
 type ProductCardRootProps = {
   product: Product;
-  formatPrice?: (v: number) => string;
   children: ReactNode;
 } & ProductCardVariants &
   Omit<HTMLAttributes<HTMLElement>, "children">;
@@ -102,7 +108,6 @@ type ProductCardRootProps = {
 type ProductCardContextValue = {
   product: Product;
   styles: ReturnType<typeof card>;
-  formatPrice: (value: number) => string;
 };
 
 const ProductCardContext = createContext<ProductCardContextValue | null>(null);
@@ -118,16 +123,11 @@ export function useProductCardProduct(): Product {
   return useProductCard().product;
 }
 
-function formatPriceUAH(value: number): string {
-  return new Intl.NumberFormat("uk-UA").format(value);
-}
-
 function Root({
   product,
   size,
   variant = "compact",
   disabled,
-  formatPrice = formatPriceUAH,
   className,
   children,
   ...rest
@@ -135,9 +135,9 @@ function Root({
   const styles = card({ variant, size, disabled });
 
   return (
-    <ProductCardContext.Provider value={{ product, styles, formatPrice }}>
+    <ProductCardContext.Provider value={{ product, styles }}>
       <article className={styles.root({ className })} {...rest}>
-        <div className="contents">{children}</div>
+        {children}
       </article>
     </ProductCardContext.Provider>
   );
@@ -161,21 +161,16 @@ function Media({ alt, className, fallback }: MediaProps) {
 
   return (
     <div className={styles.media({ className })}>
-      {product.imageUrl ? (
-        <img
-          src={product.imageUrl}
-          alt={alt ?? product.name}
-          loading="lazy"
-          decoding="async"
-          className={styles.img()}
-        />
-      ) : (
-        (fallback ?? (
-          <div className="flex h-full w-full items-center justify-center text-sm text-neutral-400">
-            No image
-          </div>
-        ))
-      )}
+      <img
+        src={product.imageUrl ?? placeholder}
+        alt={alt ?? product.name}
+        loading="lazy"
+        decoding="async"
+        className={styles.img()}
+        onError={(e) => {
+          e.currentTarget.src = placeholder;
+        }}
+      />
     </div>
   );
 }
@@ -210,37 +205,42 @@ type PricesProps = {
   currency?: string;
 };
 
-function Prices({ className, currency = "₴" }: PricesProps) {
-  const { product, styles, formatPrice } = useProductCard();
+function Prices({ className }: PricesProps) {
+  const { product, styles } = useProductCard();
+
   const old = product.oldPrice;
   const current = product.currentPrice;
 
   const hasOld = old != null;
   const hasCurrent = current != null;
-  const isPromo = hasOld && hasCurrent && old > current;
+
+  const isPromo = isDiscount(old, current);
 
   return (
     <div className={styles.prices({ className })}>
-      <div className={styles.oldPrice()}>
-        {hasOld && isPromo && (
-          <>
-            <span className="line-through">
-              {formatPrice(product.oldPrice!)}{" "}
-            </span>
-            <span className={styles.currencyOldPrice()}>{currency}</span>
-          </>
-        )}
-      </div>
-      <div
-        className={`${styles.currentPrice()} ${isPromo ? "text-promotion" : ""}`}
-      >
-        {hasCurrent && (
-          <>
-            {formatPrice(product.currentPrice!)}{" "}
-            <span className={styles.currency()}>{currency}</span>
-          </>
-        )}
-      </div>
+      {hasOld && isPromo && (
+        <div className={styles.oldPrice()}>
+          <span className="line-through">{formatPrice(old)}</span>
+          {"\u00A0"}
+          <span className={styles.currencyOldPrice()}>
+            {getCurrencySymbol(product.currency!)}
+          </span>
+        </div>
+      )}
+
+      {hasCurrent && (
+        <div
+          className={`${styles.currentPrice()} ${
+            isPromo ? "text-promotion" : ""
+          }`}
+        >
+          {formatPrice(current)}
+          {"\u00A0"}
+          <span className={styles.currency()}>
+            {getCurrencySymbol(product.currency!)}
+          </span>
+        </div>
+      )}
     </div>
   );
 }

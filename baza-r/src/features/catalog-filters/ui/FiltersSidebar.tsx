@@ -10,7 +10,7 @@ type Props = {
   filters: CatalogFilters;
   setFilters: Dispatch<SetStateAction<CatalogFilters>>;
 };
-export function CatalogFilters({ categoryId, filters, setFilters }: Props) {
+export function FiltersSidebar({ categoryId, filters, setFilters }: Props) {
   const { data, isLoading } = useCategorySidebar(categoryId);
 
   if (isLoading)

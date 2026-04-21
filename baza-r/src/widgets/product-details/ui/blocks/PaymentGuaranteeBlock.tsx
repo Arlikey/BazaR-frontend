@@ -14,7 +14,7 @@ type PaymentGuaranteeBlockProps = {
 
 export function PaymentGuaranteeBlock({ items }: PaymentGuaranteeBlockProps) {
   return (
-    <Block rounded="xl" className="flex flex-col gap-4 px-8 py-5 pr-25">
+    <Block rounded="xl" className="flex flex-col gap-4 px-4 md:px-8 py-5 pr-25">
       {items.map((item) => (
         <div key={item.id} className="flex items-start gap-4">
           <div className="mt-0.5 shrink-0">{item.icon}</div>

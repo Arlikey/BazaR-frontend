@@ -10,6 +10,10 @@ import { PlusIcon } from "../../../shared/components/icons/ui/PlusIcon";
 import { MinusIcon } from "../../../shared/components/icons/ui/MinusIcon";
 import { useEffect, useState } from "react";
 import { API_URL } from "../../../shared/config/env";
+import {
+  formatPrice,
+  getCurrencySymbol,
+} from "../../../shared/lib/formatMoney";
 
 type Props = { item: CartItemType };
 
@@ -88,8 +92,8 @@ export function CartItem({ item }: Props) {
         </div>
 
         <span className="hidden min-w-30 text-right text-xl font-medium tabular-nums md:inline">
-          {item.totalPrice.toLocaleString("uk-UA")}{" "}
-          <span className="text-md">₴</span>
+          {formatPrice(item.totalPrice)}{" "}
+          <span className="text-md">{getCurrencySymbol(item.currency)}</span>
         </span>
 
         <button

@@ -1,7 +1,3 @@
-export function calcDiscount(currentPrice: number, oldPrice: number): number {
-  return Math.round((1 - currentPrice / oldPrice) * 100);
-}
-
 export type StockStatusType = "available" | "ending" | "unavailable";
 
 export function getStockStatus(

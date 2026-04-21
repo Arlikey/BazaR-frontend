@@ -15,7 +15,7 @@ export function ProductGallery({ images, alt = "", isLoading }: Props) {
   if (isLoading || !images?.length) return <GallerySkeleton />;
 
   return (
-    <div className="flex flex-col-reverse gap-5 lg:flex-row">
+    <div className="flex gap-5 flex-row">
       <GalleryThumbnails
         images={images}
         activeIndex={activeIndex}

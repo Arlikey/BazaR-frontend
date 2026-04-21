@@ -1,6 +1,6 @@
 import { tokenStorage } from "./token.storage";
 
-const BASE_URL = "http://localhost:8080";
+const BASE_URL = "https://bazar-api-agh9e3fegygfe7c0.westeurope-01.azurewebsites.net";
 
 export async function api<T = void>(
   url: string,

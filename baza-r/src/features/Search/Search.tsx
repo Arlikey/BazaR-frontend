@@ -4,6 +4,7 @@ import SearchInput from "./ui/SearchInput";
 import SearchDropdown from "./ui/SearchDropdown";
 import { Button } from "../../shared/components/ui/Button";
 import { uiText } from "../../shared/config/ui-text";
+import { createPortal } from "react-dom";
 
 const Search = () => {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -43,7 +44,9 @@ const Search = () => {
 
   return (
     <div ref={containerRef} className="flex flex-1">
-      <div className="bg-surface flex h-10 flex-1 items-center justify-between rounded-[20px]">
+      <div
+        className={`bg-surface z-50 flex h-10 flex-1 items-center justify-between rounded-[20px] ${showDropdown && "max-xl:absolute max-xl:top-1/2 max-xl:left-1/2 max-xl:w-[calc(100%-1rem)] max-xl:-translate-x-1/2 max-xl:-translate-y-1/2"}`}
+      >
         <div className="relative flex h-full flex-1 items-center">
           <SearchInput
             query={query}
@@ -74,12 +77,14 @@ const Search = () => {
             <span className="capitalize">{uiText.search.submitLabel}</span>
           </Button>
         </div>
-        {showDropdown && (
-          <div
-            className="fixed inset-0 mt-(--top-offset) bg-black/40"
-            onMouseDown={() => setFocused(false)}
-          />
-        )}
+        {showDropdown &&
+          createPortal(
+            <div
+              className="fixed inset-0 z-40 bg-black/40"
+              onMouseDown={() => setFocused(false)}
+            />,
+            document.body,
+          )}
       </div>
     </div>
   );

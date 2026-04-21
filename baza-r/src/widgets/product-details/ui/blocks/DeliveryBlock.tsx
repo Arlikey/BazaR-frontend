@@ -23,7 +23,7 @@ export function DeliveryBlock({
   options,
 }: DeliveryBlockProps) {
   return (
-    <Block rounded="xl" className="flex flex-col gap-4 px-8 xl:pr-20 py-5 text-base">
+    <Block rounded="xl" className="flex flex-col gap-4 px-4 md:px-8 xl:pr-20 py-5 text-base">
       <div className="flex items-center gap-2">
         <span>Доставка в:</span>
         <CustomLink

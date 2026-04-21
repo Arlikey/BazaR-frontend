@@ -17,7 +17,7 @@ export default function Header() {
   return (
     <header
       data-app-header
-      className="bg-brand pointer-events-auto sticky top-0 z-50 h-16 w-full px-4 md:px-6 lg:h-18 xl:px-8 2xl:px-14"
+      className="bg-brand pointer-events-auto sticky top-0 z-50 h-16 w-full px-2 md:px-6 lg:h-18 xl:px-8 2xl:px-14"
     >
       <div className="mx-auto flex h-full max-w-480 items-center">
         <HeaderLeft />

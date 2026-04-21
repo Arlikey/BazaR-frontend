@@ -16,6 +16,7 @@ export type PaymentBadge = {
 
 export type PurchaseBlockProps = {
   productId: string;
+  offerId: string;
   price: number;
   oldPrice?: number;
 

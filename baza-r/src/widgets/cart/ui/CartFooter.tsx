@@ -2,10 +2,14 @@ import { useNavigate } from "react-router";
 import Block from "../../../shared/components/ui/Block";
 import { Button } from "../../../shared/components/ui/Button";
 import { useUiStore } from "../../../shared/model/ui.store";
+import {
+  formatPrice,
+  getCurrencySymbol,
+} from "../../../shared/lib/formatMoney";
 
-type Props = { totalAmount: number };
+type Props = { totalAmount: number; currency: string };
 
-export function CartFooter({ totalAmount }: Props) {
+export function CartFooter({ totalAmount, currency }: Props) {
   const closeCart = useUiStore((s) => s.closeCart);
   const navigate = useNavigate();
   return (
@@ -15,20 +19,20 @@ export function CartFooter({ totalAmount }: Props) {
         rounded="pill"
         color="subtle"
         size="lg"
-        className="border-accent text-accent hover:bg-accent hidden h-11 px-8 lg:px-15 text-base leading-none hover:text-white md:flex"
+        className="border-accent text-accent hover:bg-accent hidden h-11 px-8 text-base leading-none hover:text-white md:flex lg:px-15"
         onClick={() => closeCart()}
       >
         Продовжити покупки
       </Button>
       <Block
         rounded="lg"
-        className="flex w-full md:w-fit flex-col items-center justify-between gap-5 py-5 px-6 lg:px-10 md:flex-row lg:gap-25 ml-auto"
+        className="ml-auto flex w-full flex-col items-center justify-between gap-5 px-6 py-5 md:w-fit md:flex-row lg:gap-25 lg:px-10"
       >
         <div className="flex w-full justify-between text-[20px] font-medium">
           <span className="inline md:hidden">Разом</span>
           <span className="tabular-nums">
-            {totalAmount.toLocaleString("uk-UA")}{" "}
-            <span className="text-xl">₴</span>
+            {formatPrice(totalAmount)}{" "}
+            <span className="text-xl">{getCurrencySymbol(currency)}</span>
           </span>
         </div>
         <Button

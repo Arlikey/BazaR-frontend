@@ -1,4 +1,4 @@
-export type ProductOffer = {
+export type OfferResponse = {
   offerId: string;
   productId: string;
   sellerId: string;
@@ -6,6 +6,7 @@ export type ProductOffer = {
   priceCurrency: string;
   oldPriceAmount: number | null;
   stock: number;
+  sellerSku: string;
   deliveryDays: number | null;
   minOrderQuantity: number;
   status: string;
