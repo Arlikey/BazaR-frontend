@@ -15,3 +15,12 @@ export type Offer = {
 
   status: string;
 };
+
+export type ListOffer = {
+  id: string;
+  priceAmount: number;
+  priceCurrency: string;
+  oldPriceAmount: number | null;
+  stockQuantity: number;
+  isFavorite: boolean;
+};

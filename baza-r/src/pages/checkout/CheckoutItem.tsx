@@ -1,38 +1,35 @@
-import type { CartItem } from "../../entities/cart/model/cart";
-import { API_URL } from "../../shared/config/env";
+import type { CheckoutLine } from "../../entities/checkout/model/types";
 import { formatPrice, getCurrencySymbol } from "../../shared/lib/formatMoney";
 
-type Props = { item: CartItem };
+import placeholder from "../../shared/assets/images/placeholder.webp";
 
-export function CheckoutItem({ item }: Props) {
+type Props = { line: CheckoutLine };
+
+export function CheckoutItem({ line }: Props) {
   return (
     <article className="flex items-center text-base">
       <figure className="mr-4 h-16 w-16 shrink-0">
-        {item.mainImageUrl ? (
-          <img
-            src={`${API_URL}${item.mainImageUrl}`}
-            alt=""
-            className="h-full w-full object-contain"
-          />
-        ) : (
-          <div className="h-full w-full rounded-lg bg-neutral-100" />
-        )}
+        <img
+          src={line.productMainImageUrl ?? placeholder}
+          alt={line.productTitle}
+          onError={(e) => (e.currentTarget.src = placeholder)}
+        />
       </figure>
-      <p className="flex-1">{item.productName}</p>
+      <p className="flex-1">{line.productTitle}</p>
       <CheckoutItemCol label="Ціна">
-        {formatPrice(item.priceAmount)}
-        {getCurrencySymbol(item.currency)}
+        {formatPrice(line.unitPrice)}
+        {getCurrencySymbol(line.currency)}
       </CheckoutItemCol>
-      <CheckoutItemCol label="Кількість">{item.quantity}</CheckoutItemCol>
+      <CheckoutItemCol label="Кількість">{line.quantity}</CheckoutItemCol>
       <CheckoutItemCol label="Сума" align="end">
-        {formatPrice(item.totalPrice)}
-        {getCurrencySymbol(item.currency)}
+        {formatPrice(line.lineTotal)}
+        {getCurrencySymbol(line.currency)}
       </CheckoutItemCol>
     </article>
   );
 }
 
-function CheckoutItemCol({
+export function CheckoutItemCol({
   label,
   children,
   align = "center",
@@ -42,7 +39,9 @@ function CheckoutItemCol({
   align?: "center" | "end";
 }) {
   return (
-    <div className={`flex h-full w-30 flex-col gap-3 items-${align}`}>
+    <div
+      className={`flex h-full w-30 flex-col justify-center gap-3 items-${align}`}
+    >
       <p className="text-sm">{label}</p>
       <p className="font-medium">{children}</p>
     </div>

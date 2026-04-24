@@ -25,6 +25,7 @@ import OrderPage from "../../pages/checkout/CheckoutPage";
 import SearchPage from "../../pages/search/SearсhPage";
 import { ViewedPage } from "../../pages/account/ui/pages/customer/viewed/ViewedPage";
 import { CategoryPage } from "../../pages/category/ui/CategoryPage";
+import { OrderSuccess } from "../../pages/order/OrderSuccess";
 
 export const routes: RouteObject[] = [
   {
@@ -34,6 +35,7 @@ export const routes: RouteObject[] = [
       { path: "/product/:productId", element: <ProductPage /> },
       { path: "/catalog/:categoryId", element: <CategoryPage /> },
       { path: "/search", element: <SearchPage /> },
+      { path: "/order/success", element: <OrderSuccess /> },
       {
         element: <AuthGuard />,
         children: [

@@ -6,12 +6,26 @@ import {
   formatPrice,
   getCurrencySymbol,
 } from "../../../shared/lib/formatMoney";
+import { useMutation } from "@tanstack/react-query";
+import { checkoutApi } from "../../../entities/checkout/api/checkoutApi";
 
 type Props = { totalAmount: number; currency: string };
 
 export function CartFooter({ totalAmount, currency }: Props) {
   const closeCart = useUiStore((s) => s.closeCart);
   const navigate = useNavigate();
+
+  const { mutate: createCheckout, isPending } = useMutation({
+    mutationFn: () => checkoutApi.create(),
+    onSuccess: ({ checkoutId }) => {
+      closeCart();
+      navigate(`/order?checkoutId=${checkoutId}`);
+    },
+    onError: () => {
+      // TODO: показати помилку
+    },
+  });
+
   return (
     <div className="flex w-full items-center justify-between py-2">
       <Button
@@ -41,9 +55,10 @@ export function CartFooter({ totalAmount, currency }: Props) {
           rounded="pill"
           size="lg"
           className="h-11 px-8 text-base font-medium"
-          onClick={() => navigate("/order")}
+          onClick={() => createCheckout()}
+          disabled={isPending}
         >
-          Оформити замовлення
+          {isPending ? "Зачекайте..." : "Оформити замовлення"}
         </Button>
       </Block>
     </div>

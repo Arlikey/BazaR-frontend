@@ -9,7 +9,7 @@ export function CategoryCenteredTile({ category }: { category: Category }) {
       {category.imageUrl && (
         <Link to={`/catalog/${category.id}`} className="h-full max-h-30 w-full">
           <img
-            src={`${API_URL}${category.imageUrl}`}
+            src={category.imageUrl}
             className="h-full w-full object-contain"
           />
         </Link>

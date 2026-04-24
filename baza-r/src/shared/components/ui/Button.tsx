@@ -20,13 +20,13 @@ export const buttonVariants = tv({
     },
     color: {
       default: "bg-transparent",
-      primary: "bg-brand text-inverse hover:bg-brand-hover",
+      primary: "bg-brand text-background hover:bg-brand-hover",
       secondary: "bg-accent text-foreground hover:bg-accent-hover",
       premium: "bg-premium text-foreground hover:bg-premium-hover",
-      black: "bg-ink text-inverse hover:bg-ink-hover",
+      black: "bg-ink text-background hover:bg-ink-hover",
       link: "text-link hover:text-link-hover",
       subtle: "hover:bg-subtle/15 bg-surface text-subtle",
-      inverse: "text-inverse hover:text-accent",
+      inverse: "text-background hover:text-accent",
     },
     size: {
       sm: "h-8 px-2",

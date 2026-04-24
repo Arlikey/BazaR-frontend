@@ -25,7 +25,7 @@ export function ReviewsSummaryBlock({ reviewsSummary, productId }: Props) {
 
   return (
     <div className="w-full lg:w-1/3">
-      <div className="sticky top-(--scroll-offset) w-full lg:w-3/4 space-y-3">
+      <div className="sticky top-(--scroll-offset) w-full space-y-3 lg:w-3/4">
         <h2 className="mb-6 text-2xl">Відгуки та питання</h2>
         {reviewsSummary.reviewsCount > 0 && (
           <>

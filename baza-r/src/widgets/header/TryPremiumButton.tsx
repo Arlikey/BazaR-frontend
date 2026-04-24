@@ -9,7 +9,7 @@ export function TryPremiumButton() {
         rounded="sm"
         className="mx-20 w-21 flex-col gap-1 2xl:ml-24"
       >
-        <span className="text-inverse text-xs font-normal capitalize">
+        <span className="text-background text-xs font-normal capitalize">
           {uiText.header.premiumTryLabel}
         </span>
         <span className="bg-premium rounded-[10px] px-2.5 py-1 text-xs font-medium text-black uppercase">

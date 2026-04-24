@@ -1,3 +1,4 @@
+import type { ListOffer } from "../../../entities/offer/model/offer";
 import { api } from "../../../shared/api/client";
 
 export type SellerMe = {
@@ -12,7 +13,7 @@ export type SellerProductOffer = {
   priceAmount: number;
   priceCurrency: string;
   oldPriceAmount: number | null;
-  inStock: boolean;
+  stockQuantity: number;
 };
 
 export type SellerProduct = {
@@ -20,7 +21,7 @@ export type SellerProduct = {
   name: string;
   slug: string;
   mainImageUrl: string | null;
-  offer: SellerProductOffer | null;
+  offer: ListOffer | null;
 };
 
 export const sellerApi = {

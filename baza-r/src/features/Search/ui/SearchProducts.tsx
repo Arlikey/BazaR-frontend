@@ -5,17 +5,15 @@ import IconWrapper from "../../../shared/components/ui/IconWrapper";
 import type { ProductListItem } from "../../../entities/product/model/ProductListItem";
 import { API_URL } from "../../../shared/config/env";
 
+import placeholder from "../../../shared/assets/images/placeholder.webp";
+
 type Props = {
   query: string;
   products: ProductListItem[];
   categories: Category[];
 };
 
-export function SearchProducts({
-  query,
-  products,
-  categories,
-}: Props) {
+export function SearchProducts({ query, products, categories }: Props) {
   const q = query.toLowerCase();
 
   const matchedCategories = categories
@@ -32,8 +30,9 @@ export function SearchProducts({
             className="hover:text-accent flex flex-1 items-center gap-4 py-2 text-left underline-offset-3 transition hover:underline"
           >
             <img
-              src={`${API_URL}${s.mainImageUrl!}`}
+              src={s.mainImageUrl ?? placeholder}
               className="w-12"
+              onError={(e) => (e.currentTarget.src = placeholder)}
             />
             <span className="flex flex-col text-base">
               {s.name}

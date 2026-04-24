@@ -55,6 +55,33 @@
         var(--countSlides) / var(--countSlides)
     );
   }
+
+  .label {
+    position: relative;
+    width: 100%;
+  }
+
+  .label span {
+    position: relative;
+    padding-right: calc(var(--spacing) * 4);
+    background-color: var(--color-background);
+  }
+
+  .label::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    display: none;
+    bottom: var(--spacing);
+    width: 100%;
+    border-bottom: 1px dotted var(--color-neutral-200);
+  }
+
+  @media (min-width: 768px) {
+    .label::before {
+      display: block;
+    }
+  }
 }
 
 @layer components {

@@ -16,17 +16,18 @@ import {
   useProductAttributes,
   useProductOffer,
 } from "../../../entities/product/queries";
-import { getAttributeValue } from "../../../entities/product/model/getAttributeValue";
 import { buildCategoryBreadcrumbs } from "../../../entities/category/model/buildBreadcrumbs";
 import { useCatalogCategories } from "../../catalog/model/useCategories";
 import { useElementOffset } from "../../../shared/hooks/useElementOffset";
 import { API_URL } from "../../../shared/config/env";
 import { ReviewsSection } from "./blocks/reviews-section/ReviewsSection";
 import { useEffect, useRef } from "react";
-// import { addRecentProduct } from "../../../features/recently-viewed/recentlyViewedProducts";
 import { RecentlyViewedProducts } from "../../home/recently-viewed-products/ui/RecentlyViewedProducts";
 import { useIntersection } from "../../../shared/hooks/useIntersection";
 import { getStockStatus } from "../../../entities/product/model/productUtils";
+import { SpecificationsSection } from "./blocks/specifications-section/SpecificationsSection";
+import { useAttributeSections } from "../../../entities/product/hooks/useAttributesSection";
+import { DescriptionSection } from "./blocks/description-section/DescriptionSection";
 
 type Props = {
   productId: string;
@@ -39,12 +40,9 @@ export default function ProductDetails({ productId }: Props) {
   const { flat } = useCatalogCategories();
   const breadcrumbs = buildCategoryBreadcrumbs(product?.categoryId, flat);
   const purchaseRef = useRef<HTMLDivElement>(null);
-  const specs = (attributesView?.attributes ?? [])
-    .map((attr) => ({
-      label: attr.name,
-      value: getAttributeValue(attr),
-    }))
-    .filter((spec) => spec.value && spec.value.trim() !== "");
+  const sections = useAttributeSections(attributesView?.attributes);
+
+  const mainSpecs = sections.find((s) => s.name === "Основные характеристики");
 
   const isPurchaseVisible = useIntersection(purchaseRef, {
     threshold: 0.1,
@@ -55,12 +53,6 @@ export default function ProductDetails({ productId }: Props) {
     cssVarName: "--tabs-height",
     measure: "height",
   });
-
-  // useEffect(() => {
-  //   if (productId) {
-  //     addRecentProduct(productId);
-  //   }
-  // }, [productId]);
 
   if (!product) return null;
 
@@ -89,13 +81,13 @@ export default function ProductDetails({ productId }: Props) {
         <section className="mt-10 flex flex-col gap-5 lg:flex-row">
           <div className="flex flex-col gap-5 lg:w-1/2">
             <ProductGallery
-              images={product.images
-                .sort((a, b) => a.sortOrder - b.sortOrder)
-                .map((img) => `${API_URL}${img.url}`)}
+              images={product.images.map((img) => img.url)}
               alt={product.name}
               isLoading={isLoading}
             />
-            {specs.length > 0 && <ProductSpecsBlock specs={specs} />}
+            {mainSpecs && mainSpecs?.specs.length > 0 && (
+              <ProductSpecsBlock section={mainSpecs} />
+            )}
           </div>
           <div className="flex flex-1 flex-col gap-5">
             <div ref={purchaseRef}>
@@ -151,13 +143,8 @@ export default function ProductDetails({ productId }: Props) {
             />
           </div>
         </section>
-        <ProductDescriptionBlock
-          html={`Ноутбук Lenovo V15-ADA (82C700DPRA) Iron Grey - це надійний та потужний пристрій, який ідеально підходить для роботи та розваг. Оснащений 4-ядерним процесором AMD Ryzen 3 7320U з тактовою частотою від 2.4 до 4.1 ГГц, цей ноутбук забезпечує швидку та ефективну роботу з будь-якими завданнями. Відеокарта Radeon 610M дозволяє насолоджуватися якісною графікою, а обсяг SSD в 512 ГБ забезпечує достатньо місця для зберігання файлів та програм. Ноутбук має стильний дизайн в кольорі Iron Grey, що додає йому елегантності та сучасності.`}
-          collapsedHeight={300}
-        />
-        <section id="specs" className="h-100 scroll-mt-(--scroll-offset)">
-          Specifications
-        </section>
+        <DescriptionSection description={product.description} />
+        <SpecificationsSection sections={sections} />
         <ReviewsSection productId={productId} productSlug={product.slug} />
         {/* <section id="video" className="h-100 scroll-mt-(--scroll-offset)">
         Video

@@ -13,7 +13,7 @@ export function PromoTile({ title, subtitle, href, image, className }: Props) {
   return (
     <div className={`overflow-hidden rounded-xl ${className ?? ""}`}>
       <div className="flex h-full items-center justify-between p-5 pr-12.5 pb-10">
-        <div className="text-inverse flex h-full max-w-105 flex-1 flex-col justify-between gap-7.5 leading-[150%]">
+        <div className="text-background flex h-full max-w-105 flex-1 flex-col justify-between gap-7.5 leading-[150%]">
           <div className="flex max-w-90 flex-col items-start justify-start">
             <div className="text-xl font-medium">
               Добірка подарунків у розділі

@@ -27,7 +27,7 @@ export function ProductTabs({
   const productTabsRef = useRef<HTMLDivElement>(null);
   const { activeId } = useProductTabs();
   const hasDiscount = isDiscount(oldPrice, price);
-  const isIntersection = !useIntersection(productTabsRef, {
+  const tabsSticked = !useIntersection(productTabsRef, {
     threshold: 0.1,
   });
   return (
@@ -35,7 +35,7 @@ export function ProductTabs({
       <div ref={productTabsRef} />
       <div
         {...props}
-        className={`sticky top-(--top-offset) z-20 flex h-16 items-center justify-between overflow-hidden bg-neutral-50 transition lg:left-0 lg:-ml-14 lg:w-screen! lg:px-14 ${isIntersection && "shadow-md lg:bg-white"}`}
+        className={`sticky top-(--top-offset) z-20 flex h-16 items-center justify-between bg-neutral-50 px-4 transition ${tabsSticked && "rounded-b-md shadow-md bg-white"}`}
       >
         <div className="scrollbar-hidden flex gap-x-4 overflow-x-auto lg:gap-x-11">
           {PRODUCT_TABS.map((tab) => (

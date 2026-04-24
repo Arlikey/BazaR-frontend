@@ -15,6 +15,8 @@ import {
   getCurrencySymbol,
 } from "../../../shared/lib/formatMoney";
 
+import placeholder from "../../../shared/assets/images/placeholder.webp";
+
 type Props = { item: CartItemType };
 
 export function CartItem({ item }: Props) {
@@ -30,15 +32,14 @@ export function CartItem({ item }: Props) {
     <Block rounded="lg" className="flex flex-col gap-4 py-6 lg:px-6">
       <div className="flex items-center gap-2 px-4 md:gap-5 lg:gap-10">
         <div className="h-24 w-20 shrink-0">
-          {item.mainImageUrl ? (
-            <img
-              src={`${API_URL}${item.mainImageUrl}`}
-              alt={item.productName}
-              className="h-full w-full object-contain"
-            />
-          ) : (
-            <div className="h-full w-full rounded-lg bg-neutral-100" />
-          )}
+          <img
+            src={item.mainImageUrl ?? placeholder}
+            alt={item.productName}
+            className="h-full w-full object-contain"
+            onError={(e) => {
+              e.currentTarget.src = placeholder;
+            }}
+          />
         </div>
 
         <div className="flex min-w-0 flex-1 flex-col gap-1">

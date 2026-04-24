@@ -66,7 +66,7 @@ const Drawer = () => {
             className="h-9 w-9 self-end"
             onClick={() => closeDrawer()}
           >
-            <IconWrapper size={16} className="text-inverse">
+            <IconWrapper size={16} className="text-background">
               <CrossIcon />
             </IconWrapper>
           </Button>
@@ -76,7 +76,7 @@ const Drawer = () => {
             </CustomLink>
           ) : (
             <div className="flex items-center gap-6 pl-2">
-              <IconWrapper size={45} className="text-inverse">
+              <IconWrapper size={45} className="text-background">
                 <UserIcon />
               </IconWrapper>
               <div className="flex flex-col gap-0.5">
@@ -92,7 +92,7 @@ const Drawer = () => {
                   >
                     <span>{uiText.drawer.login}</span>
                   </Button>
-                  <div className="border-inverse h-5.5 border-r"></div>
+                  <div className="border-background h-5.5 border-r"></div>
                   <Button
                     variant="link"
                     color="inverse"

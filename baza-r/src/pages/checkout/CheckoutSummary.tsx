@@ -1,20 +1,33 @@
-import { useCart } from "../../entities/cart/queries";
+import { useNavigate } from "react-router";
 import Block from "../../shared/components/ui/Block";
 import { Button } from "../../shared/components/ui/Button";
-import { formatPrice, getCurrencySymbol } from "../../shared/lib/formatMoney";
 import { pluralize, PLURALS } from "../../shared/lib/pluralize";
+import { useMutation } from "@tanstack/react-query";
+import { checkoutApi } from "../../entities/checkout/api/checkoutApi";
 
 type Props = {
   totalQuantity: number;
   totalAmount: string;
   currency: string;
+  checkoutId: string;
 };
 
 export function CheckoutSummary({
   totalQuantity,
   totalAmount,
   currency,
+  checkoutId,
 }: Props) {
+  const navigate = useNavigate();
+
+  const { mutate: submit, isPending } = useMutation({
+    mutationFn: () => checkoutApi.submit(checkoutId),
+    onSuccess: () =>
+      navigate("/order/success", { state: { fromCheckout: true } }),
+    onError: () => {
+      // TODO: показати помилку
+    },
+  });
   return (
     <div className="sticky top-5 w-full max-w-85 self-start">
       <Block className="flex flex-col gap-5 p-6">
@@ -47,8 +60,10 @@ export function CheckoutSummary({
           className="mt-4 py-4"
           rounded="pill"
           fullWidth
+          disabled={isPending}
+          onClick={() => submit()}
         >
-          Замовлення підтверджую
+          {isPending ? "Обробка..." : "Замовлення підтверджую"}
         </Button>
         <div className="mt-5 flex flex-col gap-4 text-sm text-black/50">
           <p className="font-medium">

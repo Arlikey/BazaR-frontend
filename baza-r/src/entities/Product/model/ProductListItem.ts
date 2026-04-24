@@ -1,4 +1,5 @@
 import { API_URL } from "../../../shared/config/env";
+import type { ListOffer } from "../../offer/model/offer";
 import type { Product } from "./Product";
 
 export type ProductListItem = {
@@ -7,14 +8,7 @@ export type ProductListItem = {
   slug: string;
   description: string | null;
   mainImageUrl: string | null;
-  offer: {
-    id: string;
-    priceAmount: number;
-    priceCurrency: string;
-    oldPriceAmount: number | null;
-    stockQuantity: number;
-    isFavorite: boolean;
-  } | null;
+  offer: ListOffer | null;
 };
 
 export function toProduct(item: ProductListItem, categoryId?: string): Product {
@@ -22,9 +16,7 @@ export function toProduct(item: ProductListItem, categoryId?: string): Product {
     id: item.id,
     categoryId,
     name: item.name,
-    imageUrl: item.mainImageUrl
-      ? `${API_URL}${item.mainImageUrl}`
-      : null,
+    imageUrl: item.mainImageUrl,
     currentPrice: item.offer?.priceAmount ?? null,
     oldPrice: item.offer?.oldPriceAmount ?? null,
     currency: item.offer?.priceCurrency ?? null,

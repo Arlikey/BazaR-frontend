@@ -4,6 +4,8 @@ import { Link } from "react-router";
 import { useSellerMe } from "../../../../../features/seller/api/queries";
 import { API_URL } from "../../../../../shared/config/env";
 
+import placeholder from "../../../../../shared/assets/images/placeholder.webp";
+
 function formatPrice(amount: number) {
   return new Intl.NumberFormat("uk-UA").format(amount);
 }
@@ -59,16 +61,13 @@ export default function SellerProductsPage() {
             key={p.id}
             className="flex items-center gap-4 rounded-xl border border-neutral-100 bg-white p-4"
           >
-            {p.mainImageUrl ? (
-              <img
-                src={`${API_URL}${p.mainImageUrl}`}
-                className="h-20 w-20 shrink-0 rounded-xl object-contain"
-              />
-            ) : (
-              <div className="flex h-20 w-20 shrink-0 items-center justify-center rounded-xl bg-neutral-100 text-xs text-neutral-300">
-                Немає фото
-              </div>
-            )}
+            <img
+              src={p.mainImageUrl ?? placeholder}
+              className="h-20 w-20 shrink-0 rounded-xl object-contain"
+              onError={(e) => {
+                e.currentTarget.src = placeholder;
+              }}
+            />
 
             <div className="flex min-w-0 flex-1 flex-col gap-1">
               <span className="line-clamp-2 text-base font-medium">
@@ -89,11 +88,11 @@ export default function SellerProductsPage() {
                   <span className="text-lg font-medium">
                     {formatPrice(p.offer.priceAmount)} ₴
                   </span>
-                  <span
-                    className={`text-xs font-medium ${p.offer.inStock ? "text-accent" : "text-neutral-400"}`}
-                  >
-                    {p.offer.inStock ? "Є в наявності" : "Немає в наявності"}
-                  </span>
+                  {p.offer.stockQuantity > 0 && (
+                    <span className="text-xs text-neutral-400">
+                      {p.offer.stockQuantity} шт.
+                    </span>
+                  )}
                 </>
               ) : (
                 <span className="text-sm text-neutral-400">Немає офферу</span>

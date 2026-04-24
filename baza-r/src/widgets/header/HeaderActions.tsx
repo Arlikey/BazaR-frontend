@@ -19,7 +19,7 @@ export function HeaderActions({ isAuthenticated, favCount, cartCount }: Props) {
   const openCart = useUiStore((s) => s.openCart);
 
   return (
-    <div className="text-inverse flex justify-end gap-1">
+    <div className="text-background flex justify-end gap-1">
       {isAuthenticated ? (
         <Button
           size="icon"

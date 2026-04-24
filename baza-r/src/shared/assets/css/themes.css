@@ -24,7 +24,7 @@
 
   /*    Base     */
   --color-foreground: #000000; /* black       */
-  --color-inverse: #ffffff; /* white       */
+  --color-background: #ffffff; /* white       */
   --color-foreground-muted: #515151; /* dark gray   */
   --color-muted: #848383; /* dark gray   */
   --color-subtle: #74789f; /* dusky blue  */

@@ -17,7 +17,7 @@ export function CategoryListTile({ category }: { category: Category }) {
           className="mb-7.5 flex h-full max-h-30 w-full justify-center"
         >
           <img
-            src={`${API_URL}${category.imageUrl}`}
+            src={category.imageUrl}
             className="h-full w-3/4 object-contain"
             alt={category.name}
           />

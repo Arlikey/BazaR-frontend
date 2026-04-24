@@ -33,7 +33,7 @@ export function Layout() {
         visibleToasts={2}
         toastOptions={{
           classNames: {
-            toast: "w-full",
+            toast: "w-full bottom-15! md:bottom-0!",
           },
         }}
       />

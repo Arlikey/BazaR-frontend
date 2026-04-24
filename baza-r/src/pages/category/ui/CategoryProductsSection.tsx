@@ -5,21 +5,31 @@ import { pluralize, PLURALS } from "../../../shared/lib/pluralize";
 import { useDebounce } from "../../../shared/hooks/useDebounce";
 import { useFilteredProducts } from "../../../entities/product/queries";
 import { useCatalogFilters } from "../../../features/catalog-filters/model/useCatalogFilters";
+import { Pagination } from "../../../widgets/pagination/Pagination";
+import { PAGE_SIZE } from "../../../shared/model/constants";
 
 type Props = {
   categoryId: string;
 };
 
 export function CategoryProductsSection({ categoryId }: Props) {
-  const { filters, setFilters } = useCatalogFilters();
+  const { filters, setFilters, setFiltersAndReset } = useCatalogFilters();
   const debouncedFilters = useDebounce(filters, 300);
-  const { data: products, isLoading } = useFilteredProducts(
-    categoryId!,
-    debouncedFilters,
-  );
+  const {
+    data: products,
+    isLoading,
+    isFetching,
+  } = useFilteredProducts(categoryId!, debouncedFilters);
+
+  const totalPages = Math.ceil((products?.totalCount ?? 0) / PAGE_SIZE);
+
+  function handlePageChange(page: number) {
+    setFilters((prev) => ({ ...prev, page }));
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }
   return (
     <div className="mt-8 flex flex-col gap-2.5">
-      {isLoading && (
+      {isFetching && (
         <div className="fixed top-(--top-offset) left-0 z-50 h-full w-full bg-white/60" />
       )}
       <div
@@ -36,7 +46,7 @@ export function CategoryProductsSection({ categoryId }: Props) {
           <FiltersSidebar
             categoryId={categoryId!}
             filters={filters}
-            setFilters={setFilters}
+            setFilters={setFiltersAndReset}
           />
         </div>
         {isLoading && (
@@ -53,10 +63,20 @@ export function CategoryProductsSection({ categoryId }: Props) {
           <p className="text-neutral-400">Товарів не знайдено</p>
         )}
         {!isLoading && products?.items.length > 0 && (
-          <div className="grid w-full h-fit grid-cols-2 gap-1 md:grid-cols-[repeat(auto-fill,minmax(285px,1fr))] lg:gap-2.5">
-            {products.items.map((p) => (
-              <ProductCardRich key={p.id} product={toProduct(p, categoryId!)} />
-            ))}
+          <div className="flex flex-1 flex-col gap-15">
+            <div className="grid h-fit w-full grid-cols-2 gap-1 md:grid-cols-[repeat(auto-fill,minmax(285px,1fr))] lg:gap-2.5">
+              {products.items.map((p) => (
+                <ProductCardRich
+                  key={p.id}
+                  product={toProduct(p, categoryId!)}
+                />
+              ))}
+            </div>
+            <Pagination
+              page={filters.page}
+              totalPages={totalPages}
+              onPageChange={handlePageChange}
+            />
           </div>
         )}
       </div>

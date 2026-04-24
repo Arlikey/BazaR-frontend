@@ -116,7 +116,7 @@ export default function LoginDialog({ onRegisterClick }: Props) {
               color="secondary"
               type="submit"
               fullWidth
-              className="text-inverse mt-9 h-12 rounded-[30px] text-base"
+              className="text-background mt-9 h-12 rounded-[30px] text-base"
               disabled={!isValid || isSubmitting}
             >
               <span>{uiText.auth.loginSubmit}</span>

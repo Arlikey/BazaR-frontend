@@ -13,7 +13,7 @@ export function DrawerButton() {
         size="icon"
         rounded="sm"
         aria-label={uiText.header.openMenuAriaLabel}
-        className="text-inverse"
+        className="text-background"
         onClick={() => openDrawer()}
       >
         <IconWrapper>

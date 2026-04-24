@@ -1,22 +1,19 @@
-import type { Cart } from "../../entities/cart/model/cart";
-import { EMPTY_CART } from "../../entities/cart/model/emptyCart";
-import { useCart } from "../../entities/cart/queries";
+import type { CheckoutLine } from "../../entities/checkout/model/types";
 import Block from "../../shared/components/ui/Block";
-import { formatPrice, getCurrencySymbol } from "../../shared/lib/formatMoney";
 import { CheckoutItem } from "./CheckoutItem";
 import { CheckoutStep } from "./CheckoutStep";
 
 type Props = {
-  cart: Cart;
+  lines: CheckoutLine[];
 };
 
-export function CheckoutOrderItems({ cart }: Props) {
+export function CheckoutOrderItems({ lines }: Props) {
   return (
-    <div className="flex flex-col gap-1">
-      <CheckoutStep number={1} title="Товари продавця BAZA-R" />
+    <div className="flex flex-col gap-3">
+      <CheckoutStep number={1} title="Товари" />
       <Block className="flex flex-col gap-6 p-6 pl-10">
-        {cart.items.map((item) => (
-          <CheckoutItem key={item.offerId} item={item} />
+        {lines.map((line) => (
+          <CheckoutItem key={line.id} line={line} />
         ))}
       </Block>
     </div>
