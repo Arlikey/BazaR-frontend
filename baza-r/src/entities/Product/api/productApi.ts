@@ -5,7 +5,7 @@ import type { ProductsResponse } from "../model/product.response";
 import type { ProductAttributesView } from "../model/ProductAttributeView";
 import type { ProductDetails } from "../model/ProductDetails";
 import type { ProductFilterRequest } from "../model/ProductFilterRequest";
-import type { ProductListItem } from "../model/ProductListItem";
+import type { ProductListItem } from "../model/ProductListItem.ts";
 
 export const productApi = {
   getById: (id: string) => api<ProductDetails>(`/api/catalog/products/${id}`),

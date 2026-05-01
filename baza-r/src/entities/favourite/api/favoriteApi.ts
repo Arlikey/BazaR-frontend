@@ -1,5 +1,5 @@
 import { api } from "@/shared/api/client";
-import type { ProductListItem } from "../../product/model/ProductListItem";
+import type { ProductListItem } from "../../product/model/ProductListItem.ts";
 
 export const favoritesApi = {
   getAll: () => api<ProductListItem[]>("/api/customer/favorites"),

@@ -1,4 +1,4 @@
-import type { ProductListItem } from "./ProductListItem";
+import type { ProductListItem } from "./ProductListItem.ts";
 
 export type ProductsResponse = {
   items: ProductListItem[];
