@@ -1,6 +1,6 @@
 import { useFavorites } from "@/entities/favourite/queries";
 import { ProductCardRich } from "@/widgets/product-card/ProductCardRich";
-import { toProduct } from "@/entities/product/model/ProductListItem.ts";
+import { toProduct } from "@/entities/product/model/ProductListItem";
 
 export default function WishlistPage() {
   const { data: favorites } = useFavorites();

@@ -1,5 +1,5 @@
 import { useSearchParams } from "react-router";
-import { toProduct } from "@/entities/product/model/ProductListItem.ts";
+import { toProduct } from "@/entities/product/model/ProductListItem";
 import { useSearchProducts } from "./useSearchProducts";
 import { pluralize, PLURALS } from "@/shared/lib/pluralize";
 import { ProductCardRich } from "@/widgets/product-card/ProductCardRich";

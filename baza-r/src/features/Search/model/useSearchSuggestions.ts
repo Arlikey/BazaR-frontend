@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import { api } from "@/shared/api/client";
-import type { ProductListItem } from "@/entities/product/model/ProductListItem.ts";
+import type { ProductListItem } from "@/entities/product/model/ProductListItem";
 
 type SearchResult = {
   items: ProductListItem[];

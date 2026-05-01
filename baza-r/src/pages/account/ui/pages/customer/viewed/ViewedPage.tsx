@@ -1,4 +1,4 @@
-import { toProduct } from "@/entities/product/model/ProductListItem.ts";
+import { toProduct } from "@/entities/product/model/ProductListItem";
 import { useRecentlyViewedProducts } from "@/entities/product/queries";
 import { ProductCardRich } from "@/widgets/product-card/ProductCardRich";
 

@@ -1,5 +1,5 @@
 import { ProductCardRich } from "@/widgets/product-card/ProductCardRich";
-import { toProduct } from "@/entities/product/model/ProductListItem.ts";
+import { toProduct } from "@/entities/product/model/ProductListItem";
 import { FiltersSidebar } from "@/features/catalog-filters/ui/FiltersSidebar";
 import { pluralize, PLURALS } from "@/shared/lib/pluralize";
 import { useDebounce } from "@/shared/hooks/useDebounce";
