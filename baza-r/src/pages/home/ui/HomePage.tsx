@@ -1,5 +1,4 @@
 import { Sidebar } from "../../../widgets/sidebar/Sidebar";
-// import { RecommendedProducts } from "../../../widgets/home/recommended-products/ui/RecommendedProducts";
 import { GiftsSection } from "../../../widgets/home/gifts-section/ui/GiftsSection";
 import { TrendingProducts } from "../../../widgets/home/trending-products/ui/TrendingProducts";
 import { HomePromoBanners } from "../../../widgets/home/promo-banners/ui/HomePromoBanners";

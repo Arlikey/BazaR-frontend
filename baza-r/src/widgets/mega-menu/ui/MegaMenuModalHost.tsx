@@ -3,8 +3,10 @@ import { Modal } from "../../../shared/components/ui/modal/Modal";
 import { useUiStore } from "../../../shared/model/ui.store";
 import Megamenu from "./MegaMenu";
 import { useEffect } from "react";
+import { useLocation } from "react-router";
 
 export default function MegaMenuModalHost() {
+  const location = useLocation();
   const open = useUiStore((s) => s.megamenu.open);
   const setMegamenuOpen = useUiStore((s) => s.setMegamenuOpen);
 
@@ -18,6 +20,10 @@ export default function MegaMenuModalHost() {
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, [setMegamenuOpen]);
+
+  useEffect(() => {
+    setMegamenuOpen(false);
+  }, [location.pathname]);
 
   return (
     <Modal.Root open={open} onOpenChange={setMegamenuOpen}>

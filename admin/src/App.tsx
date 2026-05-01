@@ -9,6 +9,7 @@ import { CategoryAttributesPage } from "./pages/CategoryAttributesPage";
 import { AttributeOptionsPage } from "./pages/AttributeOptionsPage";
 import { AttributeFormPage } from "./pages/AttributeFormPage";
 import { CategoryImagePage } from "./pages/CategoryImagePage";
+import { AdminPendingReviews } from "./pages/PendingReviews";
 
 function RequireAuth({ children }: { children: React.ReactNode }) {
   if (!tokenStorage.getAccess()) return <Navigate to="/login" replace />;
@@ -42,6 +43,7 @@ export function App() {
           path="attributes/:id/options"
           element={<AttributeOptionsPage />}
         />
+        <Route path="reviews" element={<AdminPendingReviews />} />
       </Route>
     </Routes>
   );

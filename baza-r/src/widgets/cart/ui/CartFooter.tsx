@@ -22,7 +22,6 @@ export function CartFooter({ totalAmount, currency }: Props) {
       navigate(`/order?checkoutId=${checkoutId}`);
     },
     onError: () => {
-      // TODO: показати помилку
     },
   });
 

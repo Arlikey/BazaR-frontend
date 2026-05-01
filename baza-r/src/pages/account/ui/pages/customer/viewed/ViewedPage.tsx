@@ -5,6 +5,10 @@ import { ProductCardRich } from "../../../../../../widgets/product-card/ProductC
 export function ViewedPage() {
   const { data } = useRecentlyViewedProducts();
 
+  if (!data) {
+    return <p>Завантаження...</p>;
+  }
+
   return (
     <div className="flex flex-col gap-4">
       <h1 className="text-3xl font-medium">

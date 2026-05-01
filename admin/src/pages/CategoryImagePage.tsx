@@ -21,7 +21,7 @@ export function CategoryImagePage() {
 
   useEffect(() => {
     if (category?.imageUrl) {
-      setPreview(`http://localhost:8080${category.imageUrl}`);
+      setPreview(category.imageUrl);
     }
   }, [category]);
 

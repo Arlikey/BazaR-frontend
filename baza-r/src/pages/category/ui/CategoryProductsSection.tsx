@@ -19,7 +19,7 @@ export function CategoryProductsSection({ categoryId }: Props) {
     data: products,
     isLoading,
     isFetching,
-  } = useFilteredProducts(categoryId!, debouncedFilters);
+  } = useFilteredProducts(categoryId, debouncedFilters);
 
   const totalPages = Math.ceil((products?.totalCount ?? 0) / PAGE_SIZE);
 
@@ -27,6 +27,8 @@ export function CategoryProductsSection({ categoryId }: Props) {
     setFilters((prev) => ({ ...prev, page }));
     window.scrollTo({ top: 0, behavior: "smooth" });
   }
+
+  const items = products?.items ?? [];
   return (
     <div className="mt-8 flex flex-col gap-2.5">
       {isFetching && (
@@ -59,13 +61,13 @@ export function CategoryProductsSection({ categoryId }: Props) {
             ))}
           </div>
         )}
-        {!isLoading && products?.items.length === 0 && (
+        {!isLoading && items.length === 0 && (
           <p className="text-neutral-400">Товарів не знайдено</p>
         )}
-        {!isLoading && products?.items.length > 0 && (
+        {!isLoading && items.length > 0 && (
           <div className="flex flex-1 flex-col gap-15">
             <div className="grid h-fit w-full grid-cols-2 gap-1 md:grid-cols-[repeat(auto-fill,minmax(285px,1fr))] lg:gap-2.5">
-              {products.items.map((p) => (
+              {items.map((p) => (
                 <ProductCardRich
                   key={p.id}
                   product={toProduct(p, categoryId!)}

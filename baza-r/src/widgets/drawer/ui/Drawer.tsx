@@ -23,8 +23,13 @@ import { PlayStoreIcon } from "../../../shared/components/icons/apps/PlayStoreIc
 import { AppleStoreIcon } from "../../../shared/components/icons/apps/AppleStoreIcon";
 import { useMe } from "../../../entities/user/queries";
 import { AccountUserCard } from "../../../pages/account/ui/AccountUserCard";
+import { useMediaQuery } from "react-responsive";
+import { useNavigate } from "react-router";
 
 const Drawer = () => {
+  const isMobile = useMediaQuery({ maxWidth: 1023 });
+  const navigate = useNavigate();
+
   const { data: user } = useMe();
 
   const openAuth = useUiStore((s) => s.openAuth);
@@ -41,8 +46,13 @@ const Drawer = () => {
       icon: AltCatalogIcon,
       label: uiText.drawer.menuItems[0].label,
       onClick: () => {
-        closeDrawer();
-        window.setTimeout(() => openMegamenu(), 200);
+        if (isMobile) {
+          navigate("/catalog");
+          closeDrawer();
+        } else {
+          closeDrawer();
+          openMegamenu();
+        }
       },
     },
     {
@@ -143,7 +153,7 @@ const Drawer = () => {
               color="default"
               rounded="md"
               key={label}
-              className="flex flex-1 gap-4 py-3 px-3 justify-start font-normal hover:text-accent hover:underline hover:bg-accent/15"
+              className="hover:text-accent hover:bg-accent/15 flex flex-1 justify-start gap-4 px-3 py-3 font-normal hover:underline"
               onClick={onClick}
             >
               <IconWrapper className="flex h-5 w-5 items-center justify-center">

@@ -1,4 +1,4 @@
-import { useEffect, type Dispatch, type SetStateAction } from "react";
+import { type Dispatch, type SetStateAction } from "react";
 import { useCategorySidebar } from "../queries";
 import { FacetFilter } from "./FacetFilter";
 import Block from "../../../shared/components/ui/Block";

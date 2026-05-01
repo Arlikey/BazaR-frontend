@@ -1,10 +1,7 @@
 import { useAddToCart, useCart } from "../../../../../entities/cart/queries";
 import { CartIcon } from "../../../../../shared/components/icons/ui/CartIcon";
-import { CheckIcon } from "../../../../../shared/components/icons/ui/CheckIcon";
-import { Badge } from "../../../../../shared/components/ui/Badge";
 import {
   Button,
-  type ButtonProps,
 } from "../../../../../shared/components/ui/Button";
 import IconWrapper from "../../../../../shared/components/ui/IconWrapper";
 import { toast } from "../../../../../shared/components/ui/Toast";

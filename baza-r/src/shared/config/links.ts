@@ -34,14 +34,14 @@ export const footerGroups: LinkType[] = [
       { label: "Premium", to: "/services/premium" },
       { label: "Подарункові сертифікати", to: "/services/gift-cards" },
       { label: "Обмін", to: "/services/exchange" },
-      { label: "Rozetka Travel", to: "/services/travel" },
+      { label: "Baza-R Travel", to: "/services/travel" },
     ],
   },
   {
     title: "Партнерам",
     links: [
       { label: "Франчайзинг", to: "/partners/franchise" },
-      { label: "Продавати на Розетці", to: "/partners/sell" },
+      { label: "Продавати на Baza-R", to: "/newseller" },
       { label: "Співпраця з нами", to: "/partners/cooperation" },
     ],
   },

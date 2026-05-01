@@ -1,4 +1,5 @@
 import Block from "../../../../../shared/components/ui/Block";
+import placeholder from "../../../../../shared/assets/images/placeholder.webp";
 
 type Props = {
   src: string;
@@ -14,9 +15,10 @@ export function GalleryMainImage({ src, alt, onClick }: Props) {
       onClick={onClick}
     >
       <img
-        src={src}
+        src={src ?? placeholder}
         alt={alt}
         className="h-full w-full object-contain p-6"
+        fetchPriority="high"
       />
     </Block>
   );

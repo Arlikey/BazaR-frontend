@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { useNavigate } from "react-router";
+import { useEffect, useState } from "react";
+import { useLocation, useNavigate } from "react-router";
 import { useSearchHistory } from "./useSearchHistory";
 import { useCatalogCategories } from "../../../widgets/catalog/model/useCategories";
 import { useDebounce } from "../../../shared/hooks/useDebounce";
@@ -9,6 +9,7 @@ export function useSearch() {
   const [query, setQuery] = useState("");
   const [focused, setFocused] = useState(false);
   const [history, setHistory] = useState<string[]>([]);
+  const location = useLocation();
 
   const navigate = useNavigate();
   const { getHistory, addToHistory, clearHistory } = useSearchHistory();
@@ -33,6 +34,9 @@ export function useSearch() {
   const handleSubmit = () => {
     if (!query.trim()) return;
 
+    const active = document.activeElement as HTMLElement;
+    active?.blur();
+
     addToHistory(query.trim());
     setFocused(false);
     navigate(`/search?q=${encodeURIComponent(query.trim())}`);
@@ -42,6 +46,10 @@ export function useSearch() {
     clearHistory();
     setHistory([]);
   };
+
+  useEffect(() => {
+    setFocused(false);
+  }, [location.pathname]);
 
   return {
     query,

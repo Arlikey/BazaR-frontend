@@ -26,6 +26,8 @@ import SearchPage from "../../pages/search/SearсhPage";
 import { ViewedPage } from "../../pages/account/ui/pages/customer/viewed/ViewedPage";
 import { CategoryPage } from "../../pages/category/ui/CategoryPage";
 import { OrderSuccess } from "../../pages/order/OrderSuccess";
+import { CatalogPage } from "../../pages/category/ui/CatalogPage";
+import { BecomeSellerPage } from "../../pages/seller/NewSellerPage";
 
 export const routes: RouteObject[] = [
   {
@@ -34,8 +36,11 @@ export const routes: RouteObject[] = [
       { path: "/", element: <HomePage /> },
       { path: "/product/:productId", element: <ProductPage /> },
       { path: "/catalog/:categoryId", element: <CategoryPage /> },
+      { path: "/catalog", element: <CatalogPage /> },
       { path: "/search", element: <SearchPage /> },
       { path: "/order/success", element: <OrderSuccess /> },
+      { path: "/newseller", element: <BecomeSellerPage /> },
+
       {
         element: <AuthGuard />,
         children: [
@@ -58,7 +63,6 @@ export const routes: RouteObject[] = [
               { path: "reviews", element: <ReviewsPage /> },
               { path: "messages", element: <MessagesPage /> },
               { path: "promotions", element: <PromotionsPage /> },
-
               {
                 element: <SellerGuard />,
                 children: [

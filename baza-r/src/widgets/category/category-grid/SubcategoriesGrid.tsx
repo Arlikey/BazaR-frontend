@@ -1,13 +1,10 @@
 import { useCatalogCategories } from "../../catalog/model/useCategories";
 import { CategoryTile } from "../category-tile/CategoryTile";
-import { CATEGORY_LAYOUTS } from "../config/categoryLayouts";
 
 type Props = { categoryId: string };
 
 export function SubcategoriesGrid({ categoryId }: Props) {
   const { flat } = useCatalogCategories();
-
-  const layout = CATEGORY_LAYOUTS[categoryId] ?? CATEGORY_LAYOUTS.default;
 
   const children = flat
     .filter((c) => c.parentId === categoryId)
@@ -16,12 +13,10 @@ export function SubcategoriesGrid({ categoryId }: Props) {
   if (!children.length) return null;
 
   return (
-    <ul
-      className={`grid h-full grid-flow-dense gap-3 ${layout.columns} ${layout.rowHeight}`}
-    >
+    <ul className="grid h-full grid-cols-2 gap-3 md:grid-cols-3 lg:grid-cols-6">
       {children.map((c) => (
-        <li key={c.id} className={layout.defaultTile}>
-          <CategoryTile variant={layout.tileVariant} category={c} />
+        <li key={c.id}>
+          <CategoryTile variant={"centered"} category={c} />
         </li>
       ))}
     </ul>

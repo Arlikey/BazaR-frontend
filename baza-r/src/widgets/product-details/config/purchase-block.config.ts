@@ -18,7 +18,7 @@ export type PurchaseBlockProps = {
   productId: string;
   offerId: string;
   price: number;
-  oldPrice?: number;
+  oldPrice?: number | null;
 
   stockStatus: StockStatus;
 

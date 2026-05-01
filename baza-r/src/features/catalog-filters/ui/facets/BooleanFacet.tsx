@@ -1,4 +1,3 @@
-import React from "react";
 import type { FilterFacet } from "../../model/CategorySidebarResponse";
 
 type Props = {

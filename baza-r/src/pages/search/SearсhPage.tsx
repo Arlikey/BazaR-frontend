@@ -1,7 +1,4 @@
-import React from "react";
 import { useSearchParams } from "react-router";
-import { ProductsGrid } from "../../widgets/product-grid/ui/ProductGrid";
-import { ProductCardCompact } from "../../widgets/product-card/ProductCardCompact";
 import { toProduct } from "../../entities/product/model/ProductListItem";
 import { useSearchProducts } from "./useSearchProducts";
 import { pluralize, PLURALS } from "../../shared/lib/pluralize";
@@ -12,7 +9,7 @@ export default function SearchPage() {
 
   const query = params.get("q") ?? "";
 
-  const { data: products, isLoading } = useSearchProducts(query);
+  const { data: products } = useSearchProducts(query);
 
   const items = products?.items ?? [];
 

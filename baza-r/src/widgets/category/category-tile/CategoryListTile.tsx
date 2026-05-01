@@ -2,7 +2,6 @@ import { Link } from "react-router";
 import type { Category } from "../../../entities/category/model/Category";
 import CustomLink from "../../../shared/components/ui/CustomLink";
 import { useCatalogCategories } from "../../catalog/model/useCategories";
-import { API_URL } from "../../../shared/config/env";
 
 export function CategoryListTile({ category }: { category: Category }) {
   const { flat } = useCatalogCategories();

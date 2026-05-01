@@ -1,6 +1,5 @@
 import { FavoriteButton } from "../../../../../entities/product/ui/FavoriteButton";
 import { CompareIcon } from "../../../../../shared/components/icons/ui/CompareIcon";
-import { FavoriteAltIcon } from "../../../../../shared/components/icons/ui/FavouriteIcon";
 import { InfoIcon } from "../../../../../shared/components/icons/ui/InfoIcon";
 import Block from "../../../../../shared/components/ui/Block";
 import { Button } from "../../../../../shared/components/ui/Button";
@@ -33,7 +32,6 @@ export function PurchaseBlock({
   paymentBadges,
   creditAvailable,
   onBuy,
-  isFavorite,
   isCompared,
 }: PurchaseBlockProps) {
   const stockLabel = STOCK_LABELS[stockStatus];
@@ -43,7 +41,7 @@ export function PurchaseBlock({
   return (
     <Block
       rounded="xl"
-      className="flex flex-col justify-center gap-4 px-4 md:px-8 py-5"
+      className="flex flex-col justify-center gap-4 px-4 py-5 md:px-8"
     >
       {colors && colors.length > 0 && (
         <div className="flex items-center gap-4">
@@ -77,7 +75,9 @@ export function PurchaseBlock({
                 {oldPrice.toLocaleString("uk-UA")} ₴
               </span>
             )}
-            <span className={`text-4xl md:text-5xl ${hasDiscount ? "text-promotion" : ""}`}>
+            <span
+              className={`text-4xl md:text-5xl ${hasDiscount ? "text-promotion" : ""}`}
+            >
               {price.toLocaleString("uk-UA")}
               <span className="text-2xl md:text-4xl">₴</span>
             </span>

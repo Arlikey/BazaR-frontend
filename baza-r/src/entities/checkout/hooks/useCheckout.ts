@@ -1,5 +1,4 @@
 import { useMutation, useQuery } from "@tanstack/react-query";
-import { useState } from "react";
 import { checkoutApi } from "../api/checkoutApi";
 
 export function useCheckout(checkoutId: string | null) {

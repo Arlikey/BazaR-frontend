@@ -9,7 +9,7 @@ import type { CheckoutLine } from "../../entities/checkout/model/types";
 type Props = {
   checkoutId: string;
   lines: CheckoutLine[];
-  initialData?: {
+  contacts: {
     firstName: string;
     lastName: string;
     phone: string;
@@ -20,15 +20,15 @@ type Props = {
 export function CheckoutRecipientForm({
   checkoutId,
   lines,
-  initialData,
+  contacts,
 }: Props) {
   const qc = useQueryClient();
 
   const [form, setForm] = useState({
-    firstName: initialData?.firstName ?? "",
-    lastName: initialData?.lastName ?? "",
-    phone: initialData?.phone ?? "",
-    email: initialData?.email ?? "",
+    firstName: contacts?.firstName ?? "",
+    lastName: contacts?.lastName ?? "",
+    phone: contacts?.phone ?? "",
+    email: contacts?.email ?? "",
     isCustomerRecipient: false,
   });
 
@@ -64,6 +64,8 @@ export function CheckoutRecipientForm({
     setForm((prev) => ({ ...prev, [field]: value }));
   }
 
+  console.log(form);
+
   return (
     <div className="flex flex-col gap-3">
       <CheckoutStep number={4} title="Контактні дані отримувача" />
@@ -73,12 +75,15 @@ export function CheckoutRecipientForm({
           <input
             type="checkbox"
             checked={form.isCustomerRecipient}
-            onChange={(e) =>
+            onChange={(e) => {
+              const checked = e.target.checked;
               setForm((prev) => ({
                 ...prev,
-                isCustomerRecipient: e.target.checked,
-              }))
-            }
+                isCustomerRecipient: checked,
+                ...(checked ? contacts : {}),
+              }));
+              if (checked) updateRecipient();
+            }}
             className="accent-accent h-4 w-4"
           />
           <span className="text-sm">Я є отримувачем</span>

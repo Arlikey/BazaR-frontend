@@ -156,7 +156,7 @@ type MediaProps = {
   fallback?: ReactNode;
 };
 
-function Media({ alt, className, fallback }: MediaProps) {
+function Media({ alt, className }: MediaProps) {
   const { product, styles } = useProductCard();
 
   return (

@@ -4,12 +4,14 @@ import { Button } from "../../shared/components/ui/Button";
 import { pluralize, PLURALS } from "../../shared/lib/pluralize";
 import { useMutation } from "@tanstack/react-query";
 import { checkoutApi } from "../../entities/checkout/api/checkoutApi";
+import { formatPrice } from "../../shared/lib/formatMoney";
 
 type Props = {
   totalQuantity: number;
   totalAmount: string;
   currency: string;
   checkoutId: string;
+  shippingTotal: number;
 };
 
 export function CheckoutSummary({
@@ -17,6 +19,7 @@ export function CheckoutSummary({
   totalAmount,
   currency,
   checkoutId,
+  shippingTotal,
 }: Props) {
   const navigate = useNavigate();
 
@@ -25,7 +28,6 @@ export function CheckoutSummary({
     onSuccess: () =>
       navigate("/order/success", { state: { fromCheckout: true } }),
     onError: () => {
-      // TODO: показати помилку
     },
   });
   return (
@@ -45,7 +47,16 @@ export function CheckoutSummary({
           </div>
           <div className="flex justify-between">
             <p>Вартість доставки</p>
-            <p>Безкоштовно</p>
+            <p>
+              {shippingTotal > 0 ? (
+                <>
+                  {formatPrice(shippingTotal)}
+                  <span className="text-sm">{currency}</span>
+                </>
+              ) : (
+                "Безкоштовно"
+              )}
+            </p>
           </div>
         </div>
         <div className="mt-2 flex items-end justify-between">

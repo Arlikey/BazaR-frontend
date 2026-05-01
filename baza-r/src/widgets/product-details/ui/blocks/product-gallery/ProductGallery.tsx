@@ -9,13 +9,13 @@ type Props = {
   isLoading?: boolean;
 };
 
-export function ProductGallery({ images, alt = "", isLoading }: Props) {
+export function ProductGallery({ images = [], alt = "", isLoading }: Props) {
   const [activeIndex, setActiveIndex] = useState(0);
 
-  if (isLoading || !images?.length) return <GallerySkeleton />;
+  if (isLoading) return <GallerySkeleton />;
 
   return (
-    <div className="flex gap-5 flex-row">
+    <div className="flex flex-row gap-5">
       <GalleryThumbnails
         images={images}
         activeIndex={activeIndex}

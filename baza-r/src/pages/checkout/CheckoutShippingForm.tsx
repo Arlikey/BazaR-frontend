@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import Block from "../../shared/components/ui/Block";
 import InputField from "../../shared/components/ui/InputField";
@@ -23,7 +23,7 @@ export function CheckoutShippingForm({ checkoutId, lines }: Props) {
   const [method, setMethod] = useState<string | null>(null);
 
   const [form, setForm] = useState({
-    country: "Україна", // дефолт
+    country: "Україна",
     region: "",
     city: "",
     postalCode: "",
@@ -71,16 +71,23 @@ export function CheckoutShippingForm({ checkoutId, lines }: Props) {
     setMethod(type);
   }
 
+  useEffect(() => {
+    if (options.length > 0 && !method) {
+      setMethod(options[0].type);
+    }
+  }, [options]);
+
   if (isLoading) {
     return <div>Loading shipping methods...</div>;
   }
+
+  console.log(form);
 
   return (
     <div className="flex flex-col gap-3">
       <CheckoutStep number={2} title="Доставка" />
 
       <div className="flex flex-col gap-2">
-        {/* Методи доставки */}
         {options.map((opt: ShippingMethod) => {
           const isSelected = method === opt.type;
 
@@ -91,7 +98,6 @@ export function CheckoutShippingForm({ checkoutId, lines }: Props) {
               onClick={() => handleMethodSelect(opt.type)}
             >
               <div className="flex items-center gap-4">
-                {/* Radio */}
                 <div className="relative flex h-5 w-5 shrink-0 items-center justify-center">
                   <div
                     className={`h-5 w-5 rounded-full border-2 transition ${
@@ -135,24 +141,11 @@ export function CheckoutShippingForm({ checkoutId, lines }: Props) {
                       onChange={(e) => handleChange("country", e.target.value)}
                       onBlur={() => updateShipping()}
                     />
-                    <InputField
-                      placeholder="Регіон"
-                      value={form.region}
-                      onChange={(e) => handleChange("region", e.target.value)}
-                      onBlur={() => updateShipping()}
-                    />
+
                     <InputField
                       placeholder="Місто"
                       value={form.city}
                       onChange={(e) => handleChange("city", e.target.value)}
-                      onBlur={() => updateShipping()}
-                    />
-                    <InputField
-                      placeholder="Поштовий індекс"
-                      value={form.postalCode}
-                      onChange={(e) =>
-                        handleChange("postalCode", e.target.value)
-                      }
                       onBlur={() => updateShipping()}
                     />
                   </div>
@@ -178,8 +171,22 @@ export function CheckoutShippingForm({ checkoutId, lines }: Props) {
                     </>
                   )}
 
-                  {isNovaPoshta(opt.type) && (
+                  {!isNovaPoshta(opt.type) && (
                     <div className="grid grid-cols-2 gap-3">
+                      <InputField
+                        placeholder="Регіон"
+                        value={form.region}
+                        onChange={(e) => handleChange("region", e.target.value)}
+                        onBlur={() => updateShipping()}
+                      />
+                      <InputField
+                        placeholder="Поштовий індекс"
+                        value={form.postalCode}
+                        onChange={(e) =>
+                          handleChange("postalCode", e.target.value)
+                        }
+                        onBlur={() => updateShipping()}
+                      />
                       <InputField
                         placeholder="Вулиця"
                         value={form.street}

@@ -1,4 +1,3 @@
-import { API_URL } from "../../../shared/config/env";
 import type { ListOffer } from "../../offer/model/offer";
 import type { Product } from "./Product";
 
@@ -8,6 +7,8 @@ export type ProductListItem = {
   slug: string;
   description: string | null;
   mainImageUrl: string | null;
+  ratingAverage: number | null;
+  reviewsCount: number | null;
   offer: ListOffer | null;
 };
 
@@ -22,8 +23,8 @@ export function toProduct(item: ProductListItem, categoryId?: string): Product {
     currency: item.offer?.priceCurrency ?? null,
     isActive: true,
     inStock: item.offer?.stockQuantity ?? null,
-    rating: null,
-    reviewCount: null,
+    rating: item.ratingAverage,
+    reviewCount: item.reviewsCount,
     offerId: item.offer?.id ?? null,
   };
 }

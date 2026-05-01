@@ -17,6 +17,7 @@ export function AdminLayout() {
         <nav className="flex flex-col p-4 gap-1 flex-1">
           <CustomNavLink to="/categories">Категорії</CustomNavLink>
           <CustomNavLink to="/attributes">Атрибути</CustomNavLink>
+          <CustomNavLink to="/reviews">Відгуки</CustomNavLink>
         </nav>
         <div className="p-4 border-t border-neutral-100">
           <button

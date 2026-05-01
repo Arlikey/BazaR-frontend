@@ -1,3 +1,5 @@
+import type { ProductListItem } from "./ProductListItem";
+
 export type Product = {
   id: string;
   categoryId?: string;
@@ -15,7 +17,7 @@ export type Product = {
 };
 
 export type ProductFilterResponse = {
-  items: Product[];
+  items: ProductListItem[];
   totalCount: number;
   page: number;
   pageSize: number;

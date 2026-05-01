@@ -3,9 +3,12 @@ import { AltCatalogIcon } from "../../../shared/components/icons/ui/AltCatalogIc
 import CustomLink from "../../../shared/components/ui/CustomLink";
 import IconWrapper from "../../../shared/components/ui/IconWrapper";
 import type { ProductListItem } from "../../../entities/product/model/ProductListItem";
-import { API_URL } from "../../../shared/config/env";
 
 import placeholder from "../../../shared/assets/images/placeholder.webp";
+import {
+  formatPrice,
+  getCurrencySymbol,
+} from "../../../shared/lib/formatMoney";
 
 type Props = {
   query: string;
@@ -36,10 +39,14 @@ export function SearchProducts({ query, products, categories }: Props) {
             />
             <span className="flex flex-col text-base">
               {s.name}
-              <span className="font-medium">
-                <span>{s.offer?.priceAmount}</span>
-                <span className="ml-1">{s.offer?.priceCurrency}</span>
-              </span>
+              {s.offer && (
+                <span className="font-medium">
+                  <span>{formatPrice(s.offer?.priceAmount)}</span>
+                  <span className="ml-1">
+                    {getCurrencySymbol(s.offer?.priceCurrency)}
+                  </span>
+                </span>
+              )}
             </span>
           </CustomLink>
         ))}

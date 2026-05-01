@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import Block from "../../shared/components/ui/Block";
 import { CheckoutStep } from "./CheckoutStep";
@@ -42,9 +42,17 @@ export function CheckoutPaymentForm({ checkoutId, lines }: Props) {
     updatePayment(type);
   }
 
+  useEffect(() => {
+    if (options.length > 0 && !selected) {
+      handleSelect(options[0].type);
+    }
+  }, [options]);
+
   if (isLoading) {
     return <div>Loading payment methods...</div>;
   }
+
+  console.log(selected);
 
   return (
     <div className="flex flex-col gap-3">

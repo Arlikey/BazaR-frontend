@@ -27,8 +27,6 @@ export function buildFilterRequest(filters: CatalogFilters) {
       max: range.max,
     }));
 
-  const priceRange = filters.range["price"];
-
   return {
     selectFilters,
 
@@ -43,8 +41,8 @@ export function buildFilterRequest(filters: CatalogFilters) {
 
     sellerGroups,
 
-    priceMin: filters.price.min,
-    priceMax: filters.price.max,
+    priceMin: filters.price.min ?? undefined,
+    priceMax: filters.price.max ?? undefined,
 
     page: filters.page,
     pageSize: PAGE_SIZE,

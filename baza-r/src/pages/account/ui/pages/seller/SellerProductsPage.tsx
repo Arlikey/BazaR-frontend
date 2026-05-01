@@ -2,7 +2,6 @@ import { useQuery } from "@tanstack/react-query";
 import { sellerProductApi } from "../../../../../features/seller/api/sellerProductApi";
 import { Link } from "react-router";
 import { useSellerMe } from "../../../../../features/seller/api/queries";
-import { API_URL } from "../../../../../shared/config/env";
 
 import placeholder from "../../../../../shared/assets/images/placeholder.webp";
 
@@ -76,7 +75,7 @@ export default function SellerProductsPage() {
               <span className="text-sm text-neutral-400">{p.slug}</span>
             </div>
 
-            <div className="flex min-w-[140px] shrink-0 flex-col items-end gap-1">
+            <div className="flex min-w-35 shrink-0 flex-col items-end gap-1">
               {p.offer ? (
                 <>
                   {p.offer.oldPriceAmount &&

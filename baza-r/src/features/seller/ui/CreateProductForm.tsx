@@ -93,7 +93,7 @@ export function CreateProductForm() {
                   {...descriptionField}
                   rows={5}
                   placeholder="Опишіть товар докладно..."
-                  className="w-full rounded-xl border border-neutral-200 px-4 py-3 text-base outline-none focus:border-accent focus:ring-2 focus:ring-accent/20 transition-colors resize-none"
+                  className="w-full rounded-xl border border-neutral-200 px-4 py-3 text-base outline-none focus:border-accent focus:ring-2 focus:ring-accent/20 transition-colors max-h-screen"
                 />
               </div>
             </div>

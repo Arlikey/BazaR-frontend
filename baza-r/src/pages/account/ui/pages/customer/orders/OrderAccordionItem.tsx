@@ -1,4 +1,3 @@
-// OrderAccordionItem.tsx
 import * as Accordion from "@radix-ui/react-accordion";
 import { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
@@ -12,10 +11,7 @@ import { CaretIcon } from "../../../../../../shared/components/icons/ui/CaretIco
 import placeholder from "../../../../../../shared/assets/images/placeholder.webp";
 import IconWrapper from "../../../../../../shared/components/ui/IconWrapper";
 import CustomLink from "../../../../../../shared/components/ui/CustomLink";
-import {
-  CheckoutItem,
-  CheckoutItemCol,
-} from "../../../../../checkout/CheckoutItem";
+import { CheckoutItemCol } from "../../../../../checkout/CheckoutItem";
 import Skeleton from "../../../../../../shared/components/ui/loaders/Skeleton";
 
 const STATUS_COLOR: Record<number, string> = {

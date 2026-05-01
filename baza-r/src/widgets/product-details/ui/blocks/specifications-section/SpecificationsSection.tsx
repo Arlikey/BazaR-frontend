@@ -1,8 +1,4 @@
 import type { AttributeSection } from "../../../../../entities/product/model/attributesSection";
-import {
-  useProductReviews,
-  useProductReviewsSummary,
-} from "../../../../../entities/review/queries";
 import Block from "../../../../../shared/components/ui/Block";
 
 type Props = {

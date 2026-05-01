@@ -1,7 +1,7 @@
 import { useEffect, useState, type RefObject } from "react";
 
-export function useIntersection(
-  ref: RefObject<Element>,
+export function useIntersection<T extends Element>(
+  ref: RefObject<T | null>,
   options?: IntersectionObserverInit,
 ) {
   const [isVisible, setIsVisible] = useState(true);

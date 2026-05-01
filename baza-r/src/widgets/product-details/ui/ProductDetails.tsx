@@ -6,7 +6,6 @@ import { ProductGallery } from "./blocks/product-gallery/ProductGallery";
 import { DeliveryBlock } from "./blocks/DeliveryBlock";
 import { PaymentGuaranteeBlock } from "./blocks/PaymentGuaranteeBlock";
 import { ProductSpecsBlock } from "./blocks/ProductSpecsBlock";
-import { ProductDescriptionBlock } from "./blocks/ProductDescriptionBlock";
 import { PickUpIcon } from "../../../shared/components/icons/ui/PickUpIcon";
 import { CourierIcon } from "../../../shared/components/icons/ui/CourierIcon";
 import { PaymentIcon } from "../../../shared/components/icons/ui/PaymentIcon";
@@ -19,15 +18,28 @@ import {
 import { buildCategoryBreadcrumbs } from "../../../entities/category/model/buildBreadcrumbs";
 import { useCatalogCategories } from "../../catalog/model/useCategories";
 import { useElementOffset } from "../../../shared/hooks/useElementOffset";
-import { API_URL } from "../../../shared/config/env";
 import { ReviewsSection } from "./blocks/reviews-section/ReviewsSection";
-import { useEffect, useRef } from "react";
+import { useRef } from "react";
 import { RecentlyViewedProducts } from "../../home/recently-viewed-products/ui/RecentlyViewedProducts";
 import { useIntersection } from "../../../shared/hooks/useIntersection";
 import { getStockStatus } from "../../../entities/product/model/productUtils";
 import { SpecificationsSection } from "./blocks/specifications-section/SpecificationsSection";
 import { useAttributeSections } from "../../../entities/product/hooks/useAttributesSection";
 import { DescriptionSection } from "./blocks/description-section/DescriptionSection";
+
+export type OfferResponse = {
+  offerId: string;
+  productId: string;
+  sellerId: string;
+  priceAmount: number;
+  priceCurrency: string;
+  oldPriceAmount: number | null;
+  stock: number;
+  sellerSku: string;
+  deliveryDays: number | null;
+  minOrderQuantity: number;
+  status: string;
+};
 
 type Props = {
   productId: string;
@@ -36,7 +48,14 @@ type Props = {
 export default function ProductDetails({ productId }: Props) {
   const { data: product, isLoading } = useProduct(productId);
   const { data: attributesView } = useProductAttributes(productId);
-  const { data: offer } = useProductOffer(productId);
+  const {
+    data: offer = {
+      offerId: "",
+      priceAmount: 0,
+      oldPriceAmount: null,
+      stock: 0,
+    },
+  } = useProductOffer(productId);
   const { flat } = useCatalogCategories();
   const breadcrumbs = buildCategoryBreadcrumbs(product?.categoryId, flat);
   const purchaseRef = useRef<HTMLDivElement>(null);
@@ -71,9 +90,9 @@ export default function ProductDetails({ productId }: Props) {
       <ProductTabs
         data-app-tabs
         showMiniPurchase={!isPurchaseVisible}
-        price={offer?.priceAmount}
-        oldPrice={offer?.oldPriceAmount}
-        offerId={offer?.offerId}
+        price={offer.priceAmount}
+        oldPrice={offer.oldPriceAmount}
+        offerId={offer.offerId}
         productId={productId}
       />
 
@@ -85,7 +104,7 @@ export default function ProductDetails({ productId }: Props) {
               alt={product.name}
               isLoading={isLoading}
             />
-            {mainSpecs && mainSpecs?.specs.length > 0 && (
+            {mainSpecs && mainSpecs.specs.length > 0 && (
               <ProductSpecsBlock section={mainSpecs} />
             )}
           </div>
@@ -93,10 +112,10 @@ export default function ProductDetails({ productId }: Props) {
             <div ref={purchaseRef}>
               <PurchaseBlock
                 productId={productId}
-                offerId={offer?.offerId!}
-                price={offer?.priceAmount ?? 0}
-                oldPrice={offer?.oldPriceAmount ?? undefined}
-                stockStatus={getStockStatus(offer)}
+                offerId={offer.offerId}
+                price={offer.priceAmount}
+                oldPrice={offer.oldPriceAmount}
+                stockStatus={getStockStatus(offer.stock)}
                 onBuy={() => {}}
                 onFavorite={() => {}}
                 onCompare={() => {}}

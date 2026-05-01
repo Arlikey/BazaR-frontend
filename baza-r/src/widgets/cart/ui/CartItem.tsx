@@ -9,7 +9,6 @@ import IconWrapper from "../../../shared/components/ui/IconWrapper";
 import { PlusIcon } from "../../../shared/components/icons/ui/PlusIcon";
 import { MinusIcon } from "../../../shared/components/icons/ui/MinusIcon";
 import { useEffect, useState } from "react";
-import { API_URL } from "../../../shared/config/env";
 import {
   formatPrice,
   getCurrencySymbol,
