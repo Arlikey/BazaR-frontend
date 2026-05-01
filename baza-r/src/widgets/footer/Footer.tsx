@@ -1,11 +1,11 @@
-import { footerGroups, socialMediaLinks } from "../../shared/config/links";
-import { uiText } from "../../shared/config/ui-text";
-import SocialLinks from "../../shared/components/ui/SocialLinks";
-import CustomLink from "../../shared/components/ui/CustomLink";
+import { footerGroups, socialMediaLinks } from "@/shared/config/links";
+import { uiText } from "@/shared/config/ui-text";
+import SocialLinks from "@/shared/components/ui/SocialLinks";
+import CustomLink from "@/shared/components/ui/CustomLink";
 import { LinkGroup } from "../link-groups/LinkGroup";
-import { ClockIcon } from "../../shared/components/icons/ui/ClockIcon";
-import { MastercardLogo } from "../../shared/components/icons/payments/MastercardLogo";
-import { VisaLogo } from "../../shared/components/icons/payments/VisaLogo";
+import { ClockIcon } from "@/shared/components/icons/ui/ClockIcon";
+import { MastercardLogo } from "@/shared/components/icons/payments/MastercardLogo";
+import { VisaLogo } from "@/shared/components/icons/payments/VisaLogo";
 
 const Footer = () => {
   return (

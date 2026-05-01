@@ -1,11 +1,11 @@
 import { useCart, useAddToCart } from "../../cart/queries";
-import { useUiStore } from "../../../shared/model/ui.store";
-import { toast } from "../../../shared/components/ui/Toast";
-import { Button } from "../../../shared/components/ui/Button";
-import IconWrapper from "../../../shared/components/ui/IconWrapper";
-import { CartIcon } from "../../../shared/components/icons/ui/CartIcon";
-import { CheckIcon } from "../../../shared/components/icons/ui/CheckIcon";
-import { Badge } from "../../../shared/components/ui/Badge";
+import { useUiStore } from "@/shared/model/ui.store";
+import { toast } from "@/shared/components/ui/Toast";
+import { Button } from "@/shared/components/ui/Button";
+import IconWrapper from "@/shared/components/ui/IconWrapper";
+import { CartIcon } from "@/shared/components/icons/ui/CartIcon";
+import { CheckIcon } from "@/shared/components/icons/ui/CheckIcon";
+import { Badge } from "@/shared/components/ui/Badge";
 
 type Props = { offerId: string };
 

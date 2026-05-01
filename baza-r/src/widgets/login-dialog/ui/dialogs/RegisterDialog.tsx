@@ -1,22 +1,22 @@
 import { useState } from "react";
-import CustomLink from "../../../../shared/components/ui/CustomLink";
-import InputField from "../../../../shared/components/ui/InputField";
+import CustomLink from "@/shared/components/ui/CustomLink";
+import InputField from "@/shared/components/ui/InputField";
 import { useForm, useWatch } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import {
   registerSchema,
   type RegisterFormValues,
-} from "../../../../features/auth/model/schemas/registerSchema";
-import IconWrapper from "../../../../shared/components/ui/IconWrapper";
-import { EyeOffIcon } from "../../../../shared/components/icons/ui/EyeOffIcon";
-import { EyeIcon } from "../../../../shared/components/icons/ui/EyeIcon";
-import { Button } from "../../../../shared/components/ui/Button";
-import { uiText } from "../../../../shared/config/ui-text";
+} from "@/features/auth/model/schemas/registerSchema";
+import IconWrapper from "@/shared/components/ui/IconWrapper";
+import { EyeOffIcon } from "@/shared/components/icons/ui/EyeOffIcon";
+import { EyeIcon } from "@/shared/components/icons/ui/EyeIcon";
+import { Button } from "@/shared/components/ui/Button";
+import { uiText } from "@/shared/config/ui-text";
 import { Divider } from "../components/Divider";
 import { SocialLogin } from "../components/SocialLogin";
-import { useRegister } from "../../../../features/auth/model/auth.mutations";
-import { useUiStore } from "../../../../shared/model/ui.store";
-import { getApiErrorMessage } from "../../../../shared/lib/getApiErrorMessage";
+import { useRegister } from "@/features/auth/model/auth.mutations";
+import { useUiStore } from "@/shared/model/ui.store";
+import { getApiErrorMessage } from "@/shared/lib/getApiErrorMessage";
 
 type Props = {
   onLoginClick?: () => void;

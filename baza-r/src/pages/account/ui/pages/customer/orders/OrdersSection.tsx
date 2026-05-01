@@ -1,6 +1,6 @@
-import NoOrdersIcon from "../../../../../../shared/components/icons/ui/NoOrdersIcon";
-import { Button } from "../../../../../../shared/components/ui/Button";
-import { useOrders } from "../../../../../../entities/order/hooks/useOrders";
+import NoOrdersIcon from "@/shared/components/icons/ui/NoOrdersIcon";
+import { Button } from "@/shared/components/ui/Button";
+import { useOrders } from "@/entities/order/hooks/useOrders";
 import { OrderAccordionItem } from "./OrderAccordionItem";
 import * as Accordion from "@radix-ui/react-accordion";
 import { useNavigate } from "react-router";

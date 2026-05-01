@@ -1,6 +1,6 @@
-import Block from "../../shared/components/ui/Block";
-import InputField from "../../shared/components/ui/InputField";
-import { useMe } from "../../entities/user/queries";
+import Block from "@/shared/components/ui/Block";
+import InputField from "@/shared/components/ui/InputField";
+import { useMe } from "@/entities/user/queries";
 import { useEffect } from "react";
 
 type Contacts = {

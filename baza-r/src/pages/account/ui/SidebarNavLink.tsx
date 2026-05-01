@@ -1,5 +1,5 @@
 import { NavLink } from "react-router";
-import IconWrapper from "../../../shared/components/ui/IconWrapper";
+import IconWrapper from "@/shared/components/ui/IconWrapper";
 
 type Props = {
   to: string;

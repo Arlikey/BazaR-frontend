@@ -1,18 +1,15 @@
 import * as Accordion from "@radix-ui/react-accordion";
 import { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
-import { orderApi } from "../../../../../../entities/order/api/orderApi";
-import type { OrderItem } from "../../../../../../entities/order/model/types";
-import {
-  formatPrice,
-  getCurrencySymbol,
-} from "../../../../../../shared/lib/formatMoney";
-import { CaretIcon } from "../../../../../../shared/components/icons/ui/CaretIcon";
-import placeholder from "../../../../../../shared/assets/images/placeholder.webp";
-import IconWrapper from "../../../../../../shared/components/ui/IconWrapper";
-import CustomLink from "../../../../../../shared/components/ui/CustomLink";
+import { orderApi } from "@/entities/order/api/orderApi";
+import type { OrderItem } from "@/entities/order/model/types";
+import { formatPrice, getCurrencySymbol } from "@/shared/lib/formatMoney";
+import { CaretIcon } from "@/shared/components/icons/ui/CaretIcon";
+import placeholder from "@/shared/assets/images/placeholder.webp";
+import IconWrapper from "@/shared/components/ui/IconWrapper";
+import CustomLink from "@/shared/components/ui/CustomLink";
 import { CheckoutItemCol } from "../../../../../checkout/CheckoutItem";
-import Skeleton from "../../../../../../shared/components/ui/loaders/Skeleton";
+import Skeleton from "@/shared/components/ui/loaders/Skeleton";
 
 const STATUS_COLOR: Record<number, string> = {
   1: "bg-yellow-400", // Pending

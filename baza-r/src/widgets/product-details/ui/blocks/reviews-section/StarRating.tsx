@@ -1,4 +1,4 @@
-import { StarIcon } from "../../../../../shared/components/icons/ui/StarIcon";
+import { StarIcon } from "@/shared/components/icons/ui/StarIcon";
 
 type StarRatingProps = {
   rating: number;

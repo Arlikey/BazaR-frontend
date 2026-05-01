@@ -1,6 +1,6 @@
 import { VisuallyHidden } from "radix-ui";
-import { Modal } from "../../../shared/components/ui/modal/Modal";
-import { useUiStore } from "../../../shared/model/ui.store";
+import { Modal } from "@/shared/components/ui/modal/Modal";
+import { useUiStore } from "@/shared/model/ui.store";
 import { CreateReviewForm } from "./CreateReviewForm";
 
 export default function CreateReviewModalHost() {

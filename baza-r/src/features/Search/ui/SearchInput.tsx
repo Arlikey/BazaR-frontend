@@ -1,9 +1,9 @@
-import { CrossIcon } from "../../../shared/components/icons/ui/CrossIcon";
-import { MicrophoneIcon } from "../../../shared/components/icons/ui/MicrophoneIcon";
-import { SearchIcon } from "../../../shared/components/icons/ui/SearchIcon";
-import { Button } from "../../../shared/components/ui/Button";
-import IconWrapper from "../../../shared/components/ui/IconWrapper";
-import { uiText } from "../../../shared/config/ui-text";
+import { CrossIcon } from "@/shared/components/icons/ui/CrossIcon";
+import { MicrophoneIcon } from "@/shared/components/icons/ui/MicrophoneIcon";
+import { SearchIcon } from "@/shared/components/icons/ui/SearchIcon";
+import { Button } from "@/shared/components/ui/Button";
+import IconWrapper from "@/shared/components/ui/IconWrapper";
+import { uiText } from "@/shared/config/ui-text";
 
 type Props = {
   query: string;

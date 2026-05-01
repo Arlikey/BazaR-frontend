@@ -1,17 +1,17 @@
 import { Controller } from "react-hook-form";
-import { Button } from "../../../shared/components/ui/Button";
-import InputField from "../../../shared/components/ui/InputField";
+import { Button } from "@/shared/components/ui/Button";
+import InputField from "@/shared/components/ui/InputField";
 import { StarPicker } from "./StarPicker";
 import { useCreateReviewForm } from "../model/useCreateReviewForm";
 import { ReviewImageUpload } from "./ReviewImageUpload";
 import { useImageUpload } from "../../seller/model/useImageUpload";
-import { useUiStore } from "../../../shared/model/ui.store";
-import IconWrapper from "../../../shared/components/ui/IconWrapper";
-import { CrossIcon } from "../../../shared/components/icons/ui/CrossIcon";
+import { useUiStore } from "@/shared/model/ui.store";
+import IconWrapper from "@/shared/components/ui/IconWrapper";
+import { CrossIcon } from "@/shared/components/icons/ui/CrossIcon";
 import {
   type CreateReviewFormValues,
 } from "../model/review.schema";
-import { useAddReview } from "../../../entities/review/queries";
+import { useAddReview } from "@/entities/review/queries";
 
 const formInput = "flex flex-col gap-1 flex-1";
 

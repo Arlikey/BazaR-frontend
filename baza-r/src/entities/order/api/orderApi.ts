@@ -1,4 +1,4 @@
-import { api } from "../../../shared/api/client";
+import { api } from "@/shared/api/client";
 import type { OrderDetails, OrdersResponse } from "../model/types";
 
 export const orderApi = {

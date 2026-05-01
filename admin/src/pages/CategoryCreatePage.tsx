@@ -4,10 +4,10 @@ import { useForm, useWatch } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import z from "zod/v3";
 import { useEffect, useState } from "react";
-import { categoryApi } from "../api/categoryApi";
-import { CascadingCategorySelect } from "../components/categories/CascadingCategorySelect";
-import { FormPageLayout } from "../layouts/FormPageLayout";
-import { slugify } from "../utils/slugify";
+import { categoryApi } from "@api/categoryApi";
+import { CascadingCategorySelect } from "@components/categories/CascadingCategorySelect";
+import { FormPageLayout } from "@layouts/FormPageLayout";
+import { slugify } from "@utils/slugify";
 
 const schema = z.object({
   name: z.string().min(1, "Назва обов'язкова"),

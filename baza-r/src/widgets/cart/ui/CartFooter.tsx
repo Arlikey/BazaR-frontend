@@ -1,13 +1,13 @@
 import { useNavigate } from "react-router";
-import Block from "../../../shared/components/ui/Block";
-import { Button } from "../../../shared/components/ui/Button";
-import { useUiStore } from "../../../shared/model/ui.store";
+import Block from "@/shared/components/ui/Block";
+import { Button } from "@/shared/components/ui/Button";
+import { useUiStore } from "@/shared/model/ui.store";
 import {
   formatPrice,
   getCurrencySymbol,
-} from "../../../shared/lib/formatMoney";
+} from "@/shared/lib/formatMoney";
 import { useMutation } from "@tanstack/react-query";
-import { checkoutApi } from "../../../entities/checkout/api/checkoutApi";
+import { checkoutApi } from "@/entities/checkout/api/checkoutApi";
 
 type Props = { totalAmount: number; currency: string };
 

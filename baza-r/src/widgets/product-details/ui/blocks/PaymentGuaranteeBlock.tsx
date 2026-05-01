@@ -1,5 +1,5 @@
 import type { ReactNode } from "react";
-import Block from "../../../../shared/components/ui/Block";
+import Block from "@/shared/components/ui/Block";
 
 type PaymentGuaranteeItem = {
   id: string;

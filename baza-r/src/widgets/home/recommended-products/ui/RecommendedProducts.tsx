@@ -1,11 +1,11 @@
 // import { useEffect, useState } from "react";
-// import ProductCardSkeleton from "../../../../shared/components/ui/loaders/ProductCardSkeleton";
-// import { Section } from "../../../../shared/components/ui/product-section/ui/Section";
-// import { tryCatch } from "../../../../shared/lib/try-catch";
-// import { ProductCardCompact } from "../../../product-card/ProductCardCompact";
-// import { ProductsGrid } from "../../../product-grid/ui/ProductGrid";
-// import { uiText } from "../../../../shared/config/ui-text";
-// import type { Product } from "../../../../entities/product/model/Product";
+// import ProductCardSkeleton from "@/shared/components/ui/loaders/ProductCardSkeleton";
+// import { Section } from "@/shared/components/ui/product-section/ui/Section";
+// import { tryCatch } from "@/shared/lib/try-catch";
+// import { ProductCardCompact } from "@product-card/ProductCardCompact";
+// import { ProductsGrid } from "@product-grid/ui/ProductGrid";
+// import { uiText } from "@/shared/config/ui-text";
+// import type { Product } from "@/entities/product/model/Product";
 
 // export function RecommendedProducts() {
 //   const [data, setData] = useState<Product[]>([]);

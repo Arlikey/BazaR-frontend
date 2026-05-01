@@ -1,4 +1,4 @@
-import { useMe } from "../../../../../../../entities/user/queries";
+import { useMe } from "@/entities/user/queries";
 
 export function PersonalSection() {
   const { data: user } = useMe();

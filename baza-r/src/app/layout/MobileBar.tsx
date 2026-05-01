@@ -1,9 +1,9 @@
-import CustomLink from "../../shared/components/ui/CustomLink";
-import IconWrapper from "../../shared/components/ui/IconWrapper";
-import { HomeIcon } from "../../shared/components/icons/ui/HomeIcon";
-import { FavoriteAlt3Icon } from "../../shared/components/icons/ui/FavouriteIcon";
-import { UserAlt2Icon } from "../../shared/components/icons/ui/UserIcon";
-import { AltCatalogIcon } from "../../shared/components/icons/ui/AltCatalogIcon";
+import CustomLink from "@/shared/components/ui/CustomLink";
+import IconWrapper from "@/shared/components/ui/IconWrapper";
+import { HomeIcon } from "@/shared/components/icons/ui/HomeIcon";
+import { FavoriteAlt3Icon } from "@/shared/components/icons/ui/FavouriteIcon";
+import { UserAlt2Icon } from "@/shared/components/icons/ui/UserIcon";
+import { AltCatalogIcon } from "@/shared/components/icons/ui/AltCatalogIcon";
 
 export function MobileBar() {
   const items = [

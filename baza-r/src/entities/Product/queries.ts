@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { productApi } from "./api/productApi";
-import type { CatalogFilters } from "../../features/catalog-filters/model/catalogFilters";
-import { buildFilterRequest } from "../../features/catalog-filters/model/buildFilterRequest";
+import type { CatalogFilters } from "@/features/catalog-filters/model/catalogFilters";
+import { buildFilterRequest } from "@/features/catalog-filters/model/buildFilterRequest";
 
 export function useProduct(id: string | undefined) {
   return useQuery({

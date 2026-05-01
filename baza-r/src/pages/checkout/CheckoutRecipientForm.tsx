@@ -1,10 +1,10 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import Block from "../../shared/components/ui/Block";
-import InputField from "../../shared/components/ui/InputField";
-import { checkoutApi } from "../../entities/checkout/api/checkoutApi";
+import Block from "@/shared/components/ui/Block";
+import InputField from "@/shared/components/ui/InputField";
+import { checkoutApi } from "@/entities/checkout/api/checkoutApi";
 import { useState } from "react";
 import { CheckoutStep } from "./CheckoutStep";
-import type { CheckoutLine } from "../../entities/checkout/model/types";
+import type { CheckoutLine } from "@/entities/checkout/model/types";
 
 type Props = {
   checkoutId: string;

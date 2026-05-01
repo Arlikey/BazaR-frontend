@@ -1,5 +1,5 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-import { useAuthStore } from "../../shared/model/auth.store";
+import { useAuthStore } from "@/shared/model/auth.store";
 import { favoritesApi } from "./api/favoriteApi";
 
 export const favoritesQueryKey = ["favorites"] as const;

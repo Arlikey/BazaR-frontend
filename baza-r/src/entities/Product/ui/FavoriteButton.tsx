@@ -3,10 +3,10 @@ import {
   FavoriteAlt3Icon,
   FavoriteAltIcon,
   FavoriteIcon,
-} from "../../../shared/components/icons/ui/FavouriteIcon";
-import { Button } from "../../../shared/components/ui/Button";
-import IconWrapper from "../../../shared/components/ui/IconWrapper";
-import { toast } from "../../../shared/components/ui/Toast";
+} from "@/shared/components/icons/ui/FavouriteIcon";
+import { Button } from "@/shared/components/ui/Button";
+import IconWrapper from "@/shared/components/ui/IconWrapper";
+import { toast } from "@/shared/components/ui/Toast";
 import { useFavorites, useToggleFavorite } from "../../favourite/queries";
 
 type Props = {

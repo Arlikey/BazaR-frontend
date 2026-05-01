@@ -1,7 +1,7 @@
-import { CheckIcon } from "../../../../shared/components/icons/ui/CheckIcon";
-import { InfoIcon } from "../../../../shared/components/icons/ui/InfoIcon";
-import Block from "../../../../shared/components/ui/Block";
-import IconWrapper from "../../../../shared/components/ui/IconWrapper";
+import { CheckIcon } from "@/shared/components/icons/ui/CheckIcon";
+import { InfoIcon } from "@/shared/components/icons/ui/InfoIcon";
+import Block from "@/shared/components/ui/Block";
+import IconWrapper from "@/shared/components/ui/IconWrapper";
 import { SERVICES } from "../../config/services.config";
 import { useServicesState } from "../../hooks/useServicesState";
 

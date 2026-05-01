@@ -1,8 +1,8 @@
-import type { Category } from "../../../entities/category/model/Category";
-import type { ProductListItem } from "../../../entities/product/model/ProductListItem";
-import { ArrowIcon } from "../../../shared/components/icons/ui/ArrowIcon";
-import CustomLink from "../../../shared/components/ui/CustomLink";
-import IconWrapper from "../../../shared/components/ui/IconWrapper";
+import type { Category } from "@/entities/category/model/Category";
+import type { ProductListItem } from "@/entities/product/model/ProductListItem";
+import { ArrowIcon } from "@/shared/components/icons/ui/ArrowIcon";
+import CustomLink from "@/shared/components/ui/CustomLink";
+import IconWrapper from "@/shared/components/ui/IconWrapper";
 import { SearchHistory } from "./SearchHistory";
 import { SearchProducts } from "./SearchProducts";
 

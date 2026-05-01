@@ -1,5 +1,5 @@
 import type { Dispatch, SetStateAction } from "react";
-import { Checkbox } from "../../../../shared/components/ui/Checkbox";
+import { Checkbox } from "@/shared/components/ui/Checkbox";
 import type { CatalogFilters } from "../../model/catalogFilters";
 import type { FilterFacet } from "../../model/CategorySidebarResponse";
 

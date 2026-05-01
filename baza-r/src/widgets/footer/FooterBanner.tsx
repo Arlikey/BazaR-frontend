@@ -1,5 +1,5 @@
-import { Button } from "../../shared/components/ui/Button";
-import InputField from "../../shared/components/ui/InputField";
+import { Button } from "@/shared/components/ui/Button";
+import InputField from "@/shared/components/ui/InputField";
 
 export function FooterBanner() {
   return (

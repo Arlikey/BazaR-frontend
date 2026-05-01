@@ -1,9 +1,9 @@
 import { useQuery } from "@tanstack/react-query";
-import { sellerProductApi } from "../../../../../features/seller/api/sellerProductApi";
+import { sellerProductApi } from "@/features/seller/api/sellerProductApi";
 import { Link } from "react-router";
-import { useSellerMe } from "../../../../../features/seller/api/queries";
+import { useSellerMe } from "@/features/seller/api/queries";
 
-import placeholder from "../../../../../shared/assets/images/placeholder.webp";
+import placeholder from "@/shared/assets/images/placeholder.webp";
 
 function formatPrice(amount: number) {
   return new Intl.NumberFormat("uk-UA").format(amount);

@@ -1,8 +1,8 @@
 import { useNavigate, useParams } from "react-router";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { useEffect, useState } from "react";
-import { categoryApi } from "../api/categoryApi";
-import { FormPageLayout } from "../layouts/FormPageLayout";
+import { categoryApi } from "@api/categoryApi";
+import { FormPageLayout } from "@layouts/FormPageLayout";
 
 export function CategoryImagePage() {
   const { id } = useParams<{ id: string }>();

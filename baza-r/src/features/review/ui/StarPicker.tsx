@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { StarIcon } from "../../../shared/components/icons/ui/StarIcon";
+import { StarIcon } from "@/shared/components/icons/ui/StarIcon";
 import { cn } from "tailwind-variants";
 
 type StarPickerProps = {

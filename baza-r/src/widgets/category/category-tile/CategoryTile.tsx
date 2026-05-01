@@ -1,5 +1,5 @@
-import type { Category } from "../../../entities/category/model/Category";
-import Block from "../../../shared/components/ui/Block";
+import type { Category } from "@/entities/category/model/Category";
+import Block from "@/shared/components/ui/Block";
 import { CategoryCenteredTile } from "./CategoryCenteredTile";
 import { CategoryListTile } from "./CategoryListTile";
 import { CategoryRowTile } from "./CategoryRowTile";

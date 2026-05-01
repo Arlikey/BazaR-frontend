@@ -1,6 +1,6 @@
 import { VisuallyHidden } from "radix-ui";
-import { Modal } from "../../../shared/components/ui/modal/Modal";
-import { useUiStore } from "../../../shared/model/ui.store";
+import { Modal } from "@/shared/components/ui/modal/Modal";
+import { useUiStore } from "@/shared/model/ui.store";
 import Megamenu from "./MegaMenu";
 import { useEffect } from "react";
 import { useLocation } from "react-router";

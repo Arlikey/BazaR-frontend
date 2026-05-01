@@ -1,6 +1,6 @@
-import { uiText } from "../../../../shared/config/ui-text";
-import { useProductsByCategory } from "../../../../entities/product/queries";
-import { toProduct } from "../../../../entities/product/model/ProductListItem";
+import { uiText } from "@/shared/config/ui-text";
+import { useProductsByCategory } from "@/entities/product/queries";
+import { toProduct } from "@/entities/product/model/ProductListItem";
 import { ProductSection } from "../../../product-section/ProductSection";
 
 export function TrendingProducts() {

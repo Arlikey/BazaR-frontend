@@ -1,4 +1,4 @@
-import { api } from "../../../shared/api/client";
+import { api } from "@/shared/api/client";
 import type { User } from "../model/types";
 
 export const userApi = {

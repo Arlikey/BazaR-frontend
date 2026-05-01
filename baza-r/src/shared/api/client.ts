@@ -1,5 +1,5 @@
-import { meQueryKey } from "../../entities/user/queries";
-import { tokenStorage } from "../../features/auth/model/token.storage";
+import { meQueryKey } from "@/entities/user/queries";
+import { tokenStorage } from "@/features/auth/model/token.storage";
 import { API_URL } from "../config/env";
 import { queryClient } from "../lib/queryClient";
 import { useAuthStore } from "../model/auth.store";

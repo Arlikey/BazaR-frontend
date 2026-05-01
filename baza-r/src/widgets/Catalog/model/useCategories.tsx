@@ -1,6 +1,6 @@
 import { useMemo } from "react";
-import { categoryApi } from "../../../entities/category/api/categoryApi";
-import { buildCategoryTree } from "../../../entities/category/model/buildCategoryTree";
+import { categoryApi } from "@/entities/category/api/categoryApi";
+import { buildCategoryTree } from "@/entities/category/model/buildCategoryTree";
 import { useQuery } from "@tanstack/react-query";
 
 export function useCatalogCategories() {

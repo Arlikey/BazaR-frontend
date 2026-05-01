@@ -1,12 +1,12 @@
-import { CartIcon } from "../../shared/components/icons/ui/CartIcon";
-import { FavoriteIcon } from "../../shared/components/icons/ui/FavouriteIcon";
-import { ListIcon } from "../../shared/components/icons/ui/ListIcon";
-import { UserIcon } from "../../shared/components/icons/ui/UserIcon";
-import { Badge } from "../../shared/components/ui/Badge";
-import { Button } from "../../shared/components/ui/Button";
-import CustomLink from "../../shared/components/ui/CustomLink";
-import IconWrapper from "../../shared/components/ui/IconWrapper";
-import { useUiStore } from "../../shared/model/ui.store";
+import { CartIcon } from "@/shared/components/icons/ui/CartIcon";
+import { FavoriteIcon } from "@/shared/components/icons/ui/FavouriteIcon";
+import { ListIcon } from "@/shared/components/icons/ui/ListIcon";
+import { UserIcon } from "@/shared/components/icons/ui/UserIcon";
+import { Badge } from "@/shared/components/ui/Badge";
+import { Button } from "@/shared/components/ui/Button";
+import CustomLink from "@/shared/components/ui/CustomLink";
+import IconWrapper from "@/shared/components/ui/IconWrapper";
+import { useUiStore } from "@/shared/model/ui.store";
 
 type Props = {
   isAuthenticated: boolean;

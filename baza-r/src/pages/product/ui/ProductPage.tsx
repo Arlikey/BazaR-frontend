@@ -1,5 +1,5 @@
 import { useParams } from "react-router";
-import ProductDetails from "../../../widgets/product-details/ui/ProductDetails";
+import ProductDetails from "@/widgets/product-details/ui/ProductDetails";
 
 export default function ProductPage() {
   const { productId } = useParams();

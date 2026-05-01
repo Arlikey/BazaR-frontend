@@ -1,5 +1,5 @@
-import { tokenStorage } from "../../features/auth/model/token.storage";
-import { authApi } from "../../features/auth/api/authApi";
+import { tokenStorage } from "@/features/auth/model/token.storage";
+import { authApi } from "@/features/auth/api/authApi";
 import { create } from "zustand";
 
 export const useAuthStore = create<{

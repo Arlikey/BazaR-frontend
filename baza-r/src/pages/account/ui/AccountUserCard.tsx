@@ -1,6 +1,6 @@
-import { useMe } from "../../../entities/user/queries";
-import { UserAltIcon } from "../../../shared/components/icons/ui/UserIcon";
-import IconWrapper from "../../../shared/components/ui/IconWrapper";
+import { useMe } from "@/entities/user/queries";
+import { UserAltIcon } from "@/shared/components/icons/ui/UserIcon";
+import IconWrapper from "@/shared/components/ui/IconWrapper";
 import { tv, type VariantProps } from "tailwind-variants";
 
 const userCard = tv({

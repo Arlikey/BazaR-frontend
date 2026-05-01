@@ -4,7 +4,7 @@ import {
   createReviewSchema,
   type CreateReviewFormValues,
 } from "./review.schema";
-import { useMe } from "../../../entities/user/queries";
+import { useMe } from "@/entities/user/queries";
 
 export function useCreateReviewForm() {
   const { data: user } = useMe();

@@ -4,9 +4,9 @@ import { z } from "zod";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useNavigate } from "react-router";
 import { toast } from "sonner";
-import InputField from "../../shared/components/ui/InputField";
-import { Button } from "../../shared/components/ui/Button";
-import { sellerApi } from "../../features/seller/api/sellerApi";
+import InputField from "@/shared/components/ui/InputField";
+import { Button } from "@/shared/components/ui/Button";
+import { sellerApi } from "@/features/seller/api/sellerApi";
 
 const schema = z.object({
   name: z.string().min(2, "Мінімум 2 символи"),

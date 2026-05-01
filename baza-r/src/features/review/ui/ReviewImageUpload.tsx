@@ -1,6 +1,6 @@
-import IconWrapper from "../../../shared/components/ui/IconWrapper";
-import { ArrowIcon } from "../../../shared/components/icons/ui/ArrowIcon";
-import { TrashIcon } from "../../../shared/components/icons/ui/TrashIcon";
+import IconWrapper from "@/shared/components/ui/IconWrapper";
+import { ArrowIcon } from "@/shared/components/icons/ui/ArrowIcon";
+import { TrashIcon } from "@/shared/components/icons/ui/TrashIcon";
 
 type Props = {
   images: File[];

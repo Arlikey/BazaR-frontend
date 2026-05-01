@@ -1,9 +1,9 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { tokenStorage } from "./token.storage";
-import { meQueryKey } from "../../../entities/user/queries";
+import { meQueryKey } from "@/entities/user/queries";
 import { useNavigate } from "react-router";
 import { authApi } from "../api/authApi";
-import { useAuthStore } from "../../../shared/model/auth.store";
+import { useAuthStore } from "@/shared/model/auth.store";
 
 export function useLogin() {
   const qc = useQueryClient();

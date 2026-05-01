@@ -1,4 +1,4 @@
-import type { Money } from "../../../shared/model/types";
+import type { Money } from "@/shared/model/types";
 
 export type Offer = {
   id: string;

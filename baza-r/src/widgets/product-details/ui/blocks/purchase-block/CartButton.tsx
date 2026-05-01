@@ -1,11 +1,11 @@
-import { useAddToCart, useCart } from "../../../../../entities/cart/queries";
-import { CartIcon } from "../../../../../shared/components/icons/ui/CartIcon";
+import { useAddToCart, useCart } from "@/entities/cart/queries";
+import { CartIcon } from "@/shared/components/icons/ui/CartIcon";
 import {
   Button,
-} from "../../../../../shared/components/ui/Button";
-import IconWrapper from "../../../../../shared/components/ui/IconWrapper";
-import { toast } from "../../../../../shared/components/ui/Toast";
-import { useUiStore } from "../../../../../shared/model/ui.store";
+} from "@/shared/components/ui/Button";
+import IconWrapper from "@/shared/components/ui/IconWrapper";
+import { toast } from "@/shared/components/ui/Toast";
+import { useUiStore } from "@/shared/model/ui.store";
 
 type Props = {
   offerId: string;

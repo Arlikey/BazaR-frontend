@@ -1,7 +1,7 @@
 import { usePromotions } from "../model/usePromotions";
 import { PromoBannersCarousel } from "./PromoBanners";
-import CustomLink from "../../../../shared/components/ui/CustomLink";
-import { uiText } from "../../../../shared/config/ui-text";
+import CustomLink from "@/shared/components/ui/CustomLink";
+import { uiText } from "@/shared/config/ui-text";
 
 export function HomePromoBanners() {
   const { promotions, isLoading } = usePromotions();

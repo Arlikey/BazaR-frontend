@@ -1,6 +1,6 @@
-import { Modal } from "../../../shared/components/ui/modal/Modal";
+import { Modal } from "@/shared/components/ui/modal/Modal";
 import { VisuallyHidden } from "radix-ui";
-import { useUiStore } from "../../../shared/model/ui.store";
+import { useUiStore } from "@/shared/model/ui.store";
 import AuthDialog from "./AuthDialog";
 
 export default function AuthModalHost() {

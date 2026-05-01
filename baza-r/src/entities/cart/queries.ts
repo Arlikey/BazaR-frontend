@@ -1,6 +1,6 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { cartApi } from "./api/cartApi";
-import { useAuthStore } from "../../shared/model/auth.store";
+import { useAuthStore } from "@/shared/model/auth.store";
 import type { Cart } from "./model/cart";
 import { EMPTY_CART } from "./model/emptyCart";
 

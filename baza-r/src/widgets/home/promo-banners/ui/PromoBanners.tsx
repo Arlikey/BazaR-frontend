@@ -8,10 +8,10 @@ import {
   CarouselNext,
   CarouselPrevious,
   type CarouselApi,
-} from "../../../../shared/components/ui/Carousel";
-import PromoBannerSkeleton from "../../../../shared/components/ui/loaders/PromoBannerSkeleton";
-import type { Promotion } from "../../../../entities/promotion/model/Promotion";
-import { uiText } from "../../../../shared/config/ui-text";
+} from "@/shared/components/ui/Carousel";
+import PromoBannerSkeleton from "@/shared/components/ui/loaders/PromoBannerSkeleton";
+import type { Promotion } from "@/entities/promotion/model/Promotion";
+import { uiText } from "@/shared/config/ui-text";
 
 type Props = {
   promotions: Promotion[];

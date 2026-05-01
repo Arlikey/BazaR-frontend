@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import type { FilterFacet } from "../../model/CategorySidebarResponse";
 import { Slider } from "radix-ui";
-import InputField from "../../../../shared/components/ui/InputField";
+import InputField from "@/shared/components/ui/InputField";
 import type { CatalogFilters } from "../../model/catalogFilters";
 
 type Props = {

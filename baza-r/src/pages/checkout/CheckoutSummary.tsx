@@ -1,10 +1,10 @@
 import { useNavigate } from "react-router";
-import Block from "../../shared/components/ui/Block";
-import { Button } from "../../shared/components/ui/Button";
-import { pluralize, PLURALS } from "../../shared/lib/pluralize";
+import Block from "@/shared/components/ui/Block";
+import { Button } from "@/shared/components/ui/Button";
+import { pluralize, PLURALS } from "@/shared/lib/pluralize";
 import { useMutation } from "@tanstack/react-query";
-import { checkoutApi } from "../../entities/checkout/api/checkoutApi";
-import { formatPrice } from "../../shared/lib/formatMoney";
+import { checkoutApi } from "@/entities/checkout/api/checkoutApi";
+import { formatPrice } from "@/shared/lib/formatMoney";
 
 type Props = {
   totalQuantity: number;

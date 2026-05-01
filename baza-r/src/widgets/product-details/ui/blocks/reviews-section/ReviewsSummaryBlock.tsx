@@ -1,7 +1,7 @@
-import type { ReviewsSummaryResponse } from "../../../../../entities/review/model/review";
-import { StarIcon } from "../../../../../shared/components/icons/ui/StarIcon";
-import CreateReviewButton from "../../../../../features/review/ui/CreateReviewButton";
-import { pluralize, PLURALS } from "../../../../../shared/lib/pluralize";
+import type { ReviewsSummaryResponse } from "@/entities/review/model/review";
+import { StarIcon } from "@/shared/components/icons/ui/StarIcon";
+import CreateReviewButton from "@/features/review/ui/CreateReviewButton";
+import { pluralize, PLURALS } from "@/shared/lib/pluralize";
 
 type Props = {
   reviewsSummary: ReviewsSummaryResponse;

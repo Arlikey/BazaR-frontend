@@ -2,8 +2,8 @@ import { useRef, useEffect } from "react";
 import { useSearch } from "./model/useSearch";
 import SearchInput from "./ui/SearchInput";
 import SearchDropdown from "./ui/SearchDropdown";
-import { Button } from "../../shared/components/ui/Button";
-import { uiText } from "../../shared/config/ui-text";
+import { Button } from "@/shared/components/ui/Button";
+import { uiText } from "@/shared/config/ui-text";
 import { createPortal } from "react-dom";
 
 const Search = () => {

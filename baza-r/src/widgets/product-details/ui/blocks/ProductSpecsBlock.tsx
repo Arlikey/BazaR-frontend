@@ -1,7 +1,7 @@
 import { useState } from "react";
-import Block from "../../../../shared/components/ui/Block";
-import { Button } from "../../../../shared/components/ui/Button";
-import type { AttributeSection } from "../../../../entities/product/model/attributesSection";
+import Block from "@/shared/components/ui/Block";
+import { Button } from "@/shared/components/ui/Button";
+import type { AttributeSection } from "@/entities/product/model/attributesSection";
 
 type Props = {
   section?: AttributeSection;

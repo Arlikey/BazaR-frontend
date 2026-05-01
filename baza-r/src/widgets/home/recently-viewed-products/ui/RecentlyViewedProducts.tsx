@@ -1,6 +1,6 @@
-import { uiText } from "../../../../shared/config/ui-text";
-import { useRecentlyViewedProducts } from "../../../../entities/product/queries";
-import { toProduct } from "../../../../entities/product/model/ProductListItem";
+import { uiText } from "@/shared/config/ui-text";
+import { useRecentlyViewedProducts } from "@/entities/product/queries";
+import { toProduct } from "@/entities/product/model/ProductListItem";
 import { ProductSection } from "../../../product-section/ProductSection";
 
 type Props = {

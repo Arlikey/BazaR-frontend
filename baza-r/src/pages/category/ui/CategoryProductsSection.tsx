@@ -1,12 +1,12 @@
-import { ProductCardRich } from "../../../widgets/product-card/ProductCardRich";
-import { toProduct } from "../../../entities/product/model/ProductListItem";
-import { FiltersSidebar } from "../../../features/catalog-filters/ui/FiltersSidebar";
-import { pluralize, PLURALS } from "../../../shared/lib/pluralize";
-import { useDebounce } from "../../../shared/hooks/useDebounce";
-import { useFilteredProducts } from "../../../entities/product/queries";
-import { useCatalogFilters } from "../../../features/catalog-filters/model/useCatalogFilters";
-import { Pagination } from "../../../widgets/pagination/Pagination";
-import { PAGE_SIZE } from "../../../shared/model/constants";
+import { ProductCardRich } from "@/widgets/product-card/ProductCardRich";
+import { toProduct } from "@/entities/product/model/ProductListItem";
+import { FiltersSidebar } from "@/features/catalog-filters/ui/FiltersSidebar";
+import { pluralize, PLURALS } from "@/shared/lib/pluralize";
+import { useDebounce } from "@/shared/hooks/useDebounce";
+import { useFilteredProducts } from "@/entities/product/queries";
+import { useCatalogFilters } from "@/features/catalog-filters/model/useCatalogFilters";
+import { Pagination } from "@/widgets/pagination/Pagination";
+import { PAGE_SIZE } from "@/shared/model/constants";
 
 type Props = {
   categoryId: string;

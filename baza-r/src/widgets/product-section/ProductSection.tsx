@@ -1,6 +1,6 @@
-import type { Product } from "../../entities/product/model/Product";
-import ProductCardSkeleton from "../../shared/components/ui/loaders/ProductCardSkeleton";
-import { Section } from "../../shared/components/ui/product-section/ui/Section";
+import type { Product } from "@/entities/product/model/Product";
+import ProductCardSkeleton from "@/shared/components/ui/loaders/ProductCardSkeleton";
+import { Section } from "@/shared/components/ui/product-section/ui/Section";
 import { ProductCardCompact } from "../product-card/ProductCardCompact";
 import { ProductsGrid } from "../product-grid/ui/ProductGrid";
 

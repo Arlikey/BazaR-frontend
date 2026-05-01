@@ -1,15 +1,15 @@
-import { FavoriteButton } from "../../../../../entities/product/ui/FavoriteButton";
-import { CompareIcon } from "../../../../../shared/components/icons/ui/CompareIcon";
-import { InfoIcon } from "../../../../../shared/components/icons/ui/InfoIcon";
-import Block from "../../../../../shared/components/ui/Block";
-import { Button } from "../../../../../shared/components/ui/Button";
-import CustomLink from "../../../../../shared/components/ui/CustomLink";
-import IconWrapper from "../../../../../shared/components/ui/IconWrapper";
-import { isDiscount } from "../../../../../shared/lib/price";
+import { FavoriteButton } from "@/entities/product/ui/FavoriteButton";
+import { CompareIcon } from "@/shared/components/icons/ui/CompareIcon";
+import { InfoIcon } from "@/shared/components/icons/ui/InfoIcon";
+import Block from "@/shared/components/ui/Block";
+import { Button } from "@/shared/components/ui/Button";
+import CustomLink from "@/shared/components/ui/CustomLink";
+import IconWrapper from "@/shared/components/ui/IconWrapper";
+import { isDiscount } from "@/shared/lib/price";
 import type {
   PurchaseBlockProps,
   StockStatus,
-} from "../../../config/purchase-block.config";
+} from "@config/purchase-block.config";
 import { CartButton } from "./CartButton";
 const STOCK_LABELS: Record<
   StockStatus,

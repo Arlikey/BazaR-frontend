@@ -1,6 +1,6 @@
 import { sellerNav } from "../model/sidebar.config";
-import IconWrapper from "../../../shared/components/ui/IconWrapper";
-import { ShopStarIcon } from "../../../shared/components/icons/ui/ShopStarIcon";
+import IconWrapper from "@/shared/components/ui/IconWrapper";
+import { ShopStarIcon } from "@/shared/components/icons/ui/ShopStarIcon";
 import { SidebarNavLink } from "./SidebarNavLink";
 
 export function SellerSidebarSection() {

@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
-import type { Promotion } from "../../../../entities/promotion/model/Promotion";
-import PromotionDao from "../../../../entities/promotion/api/__mocks__/PromotionDao";
+import type { Promotion } from "@/entities/promotion/model/Promotion";
+import PromotionDao from "@/entities/promotion/api/__mocks__/PromotionDao";
 
 export function usePromotions() {
   const [data, setData] = useState<Promotion[]>([]);

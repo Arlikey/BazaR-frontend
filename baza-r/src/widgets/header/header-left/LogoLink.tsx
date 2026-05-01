@@ -1,5 +1,5 @@
-import { LogoIcon } from "../../../shared/components/icons/ui/LogoIcon";
-import CustomLink from "../../../shared/components/ui/CustomLink";
+import { LogoIcon } from "@/shared/components/icons/ui/LogoIcon";
+import CustomLink from "@/shared/components/ui/CustomLink";
 
 export function LogoLink() {
   return (

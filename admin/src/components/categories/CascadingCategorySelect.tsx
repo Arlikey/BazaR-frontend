@@ -1,5 +1,5 @@
 import { useMemo } from "react";
-import { type CategoryDto } from "../../api/categoryApi";
+import { type CategoryDto } from "@api/categoryApi";
 
 type Props = {
   categories: CategoryDto[];

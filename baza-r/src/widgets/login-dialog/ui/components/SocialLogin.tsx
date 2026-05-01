@@ -1,9 +1,9 @@
 import type { ReactNode } from "react";
-import { uiText } from "../../../../shared/config/ui-text";
-import CustomLink from "../../../../shared/components/ui/CustomLink";
-import IconWrapper from "../../../../shared/components/ui/IconWrapper";
-import { FacebookIcon } from "../../../../shared/components/icons/login/FacebookIcon";
-import { GoogleIcon } from "../../../../shared/components/icons/login/GoogleIcon";
+import { uiText } from "@/shared/config/ui-text";
+import CustomLink from "@/shared/components/ui/CustomLink";
+import IconWrapper from "@/shared/components/ui/IconWrapper";
+import { FacebookIcon } from "@/shared/components/icons/login/FacebookIcon";
+import { GoogleIcon } from "@/shared/components/icons/login/GoogleIcon";
 
 export const SocialButton = ({
   label,

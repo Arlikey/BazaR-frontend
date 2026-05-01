@@ -1,4 +1,4 @@
-import type { Category } from "../api/categoryApi";
+import type { Category } from "@api/categoryApi";
 
 export type CategoryNode = Category & {
   children: CategoryNode[];

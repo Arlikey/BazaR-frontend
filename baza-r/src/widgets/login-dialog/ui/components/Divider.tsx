@@ -1,4 +1,4 @@
-import { uiText } from "../../../../shared/config/ui-text";
+import { uiText } from "@/shared/config/ui-text";
 
 export const Divider = () => (
   <div

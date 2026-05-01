@@ -9,10 +9,10 @@ import type { Product } from "../model/Product";
 import {
   formatPrice,
   getCurrencySymbol,
-} from "../../../shared/lib/formatMoney";
-import { isDiscount } from "../../../shared/lib/price";
+} from "@/shared/lib/formatMoney";
+import { isDiscount } from "@/shared/lib/price";
 
-import placeholder from "../../../shared/assets/images/placeholder.webp";
+import placeholder from "@/shared/assets/images/placeholder.webp";
 
 const card = tv({
   slots: {

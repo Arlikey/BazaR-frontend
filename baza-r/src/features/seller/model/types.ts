@@ -1,4 +1,4 @@
-import type { ListOffer } from "../../../entities/offer/model/offer";
+import type { ListOffer } from "@/entities/offer/model/offer";
 
 export type SellerMe = {
   id: string;

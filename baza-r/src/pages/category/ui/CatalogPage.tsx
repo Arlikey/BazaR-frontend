@@ -1,5 +1,5 @@
-import { useCatalogCategories } from "../../../widgets/catalog/model/useCategories";
-import { CategoryTile } from "../../../widgets/category/category-tile/CategoryTile";
+import { useCatalogCategories } from "@/widgets/catalog/model/useCategories";
+import { CategoryTile } from "@/widgets/category/category-tile/CategoryTile";
 
 export function CatalogPage() {
   const categories = useCatalogCategories();

@@ -1,7 +1,7 @@
-import { NotFoundIcon } from "../../../shared/components/icons/ui/NotFoundIcon";
-import CustomLink from "../../../shared/components/ui/CustomLink";
-import IconWrapper from "../../../shared/components/ui/IconWrapper";
-import { uiText } from "../../../shared/config/ui-text";
+import { NotFoundIcon } from "@/shared/components/icons/ui/NotFoundIcon";
+import CustomLink from "@/shared/components/ui/CustomLink";
+import IconWrapper from "@/shared/components/ui/IconWrapper";
+import { uiText } from "@/shared/config/ui-text";
 
 export const NotFound = () => {
   return (

@@ -1,8 +1,8 @@
 import {
   useProductReviews,
   useProductReviewsSummary,
-} from "../../../../../entities/review/queries";
-import Block from "../../../../../shared/components/ui/Block";
+} from "@/entities/review/queries";
+import Block from "@/shared/components/ui/Block";
 import { ProductReviewsBlock } from "./ProductReviewsBlock";
 import { ReviewsSummaryBlock } from "./ReviewsSummaryBlock";
 

@@ -1,5 +1,5 @@
 import { Navigate, Outlet } from "react-router";
-import { useAuthStore } from "../../../shared/model/auth.store";
+import { useAuthStore } from "@/shared/model/auth.store";
 
 export function SellerGuard() {
   const isSeller = useAuthStore((s) => s.isSeller);

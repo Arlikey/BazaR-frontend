@@ -1,7 +1,7 @@
-import Search from "../../features/search/Search";
-import { useCart } from "../../entities/cart/queries";
-import { useFavorites } from "../../entities/favourite/queries";
-import { useAuthStore } from "../../shared/model/auth.store";
+import Search from "@/features/search/Search";
+import { useCart } from "@/entities/cart/queries";
+import { useFavorites } from "@/entities/favourite/queries";
+import { useAuthStore } from "@/shared/model/auth.store";
 import { HeaderActions } from "./HeaderActions";
 import { HeaderLeft } from "./HeaderLeft";
 import { TryPremiumButton } from "./TryPremiumButton";

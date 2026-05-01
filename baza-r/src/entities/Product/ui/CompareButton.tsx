@@ -1,6 +1,6 @@
-import { Button } from "../../../shared/components/ui/Button";
-import IconWrapper from "../../../shared/components/ui/IconWrapper";
-import { CompareIcon } from "../../../shared/components/icons/ui/CompareIcon";
+import { Button } from "@/shared/components/ui/Button";
+import IconWrapper from "@/shared/components/ui/IconWrapper";
+import { CompareIcon } from "@/shared/components/icons/ui/CompareIcon";
 
 export function CompareButton() {
   return (

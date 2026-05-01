@@ -1,9 +1,9 @@
-import { Sidebar } from "../../../widgets/sidebar/Sidebar";
-import { GiftsSection } from "../../../widgets/home/gifts-section/ui/GiftsSection";
-import { TrendingProducts } from "../../../widgets/home/trending-products/ui/TrendingProducts";
-import { HomePromoBanners } from "../../../widgets/home/promo-banners/ui/HomePromoBanners";
-import { RecentlyViewedProducts } from "../../../widgets/home/recently-viewed-products/ui/RecentlyViewedProducts";
-import { useAuthStore } from "../../../shared/model/auth.store";
+import { Sidebar } from "@/widgets/sidebar/Sidebar";
+import { GiftsSection } from "@/widgets/home/gifts-section/ui/GiftsSection";
+import { TrendingProducts } from "@/widgets/home/trending-products/ui/TrendingProducts";
+import { HomePromoBanners } from "@/widgets/home/promo-banners/ui/HomePromoBanners";
+import { RecentlyViewedProducts } from "@/widgets/home/recently-viewed-products/ui/RecentlyViewedProducts";
+import { useAuthStore } from "@/shared/model/auth.store";
 
 export const HomePage = () => {
   const isAuth = useAuthStore((state) => state.isAuthenticated);

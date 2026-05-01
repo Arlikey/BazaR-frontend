@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import type { CarouselApi } from "../../../../shared/components/ui/Carousel";
+import type { CarouselApi } from "@/shared/components/ui/Carousel";
 
 export function useCarouselIndex() {
   const [api, setApi] = useState<CarouselApi | null>(null);

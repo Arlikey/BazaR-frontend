@@ -1,11 +1,11 @@
 import { useRef, type HTMLAttributes } from "react";
-import CustomLink from "../../../../shared/components/ui/CustomLink";
+import CustomLink from "@/shared/components/ui/CustomLink";
 import { useProductTabs } from "../../hooks/useProductTabs";
 import { PRODUCT_TABS } from "../../config/product-tabs.config";
 import { CartButton } from "./purchase-block/CartButton";
-import { isDiscount } from "../../../../shared/lib/price";
-import { FavoriteButton } from "../../../../entities/product/ui/FavoriteButton";
-import { useIntersection } from "../../../../shared/hooks/useIntersection";
+import { isDiscount } from "@/shared/lib/price";
+import { FavoriteButton } from "@/entities/product/ui/FavoriteButton";
+import { useIntersection } from "@/shared/hooks/useIntersection";
 
 type Props = HTMLAttributes<HTMLDivElement> & {
   showMiniPurchase?: boolean;

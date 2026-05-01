@@ -1,4 +1,4 @@
-import { EmptyCartIcon } from "../../../shared/components/icons/ui/EmptyCartIcon";
+import { EmptyCartIcon } from "@/shared/components/icons/ui/EmptyCartIcon";
 
 export function CartEmpty() {
   return (

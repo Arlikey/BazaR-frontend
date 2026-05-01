@@ -1,5 +1,5 @@
 import type { ReactNode } from "react";
-import { AccordionItem } from "../../../../../../shared/components/ui/AccordionItem";
+import { AccordionItem } from "@/shared/components/ui/AccordionItem";
 
 type Props = {
   value: string;

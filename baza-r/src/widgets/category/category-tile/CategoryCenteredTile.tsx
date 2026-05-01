@@ -1,7 +1,7 @@
 import { Link } from "react-router";
-import type { Category } from "../../../entities/category/model/Category";
-import CustomLink from "../../../shared/components/ui/CustomLink";
-import placeholder from "../../../shared/assets/images/placeholder.webp";
+import type { Category } from "@/entities/category/model/Category";
+import CustomLink from "@/shared/components/ui/CustomLink";
+import placeholder from "@/shared/assets/images/placeholder.webp";
 
 export function CategoryCenteredTile({ category }: { category: Category }) {
   return (

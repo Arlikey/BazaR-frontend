@@ -1,5 +1,5 @@
-import { CaretIcon } from "../../shared/components/icons/ui/CaretIcon";
-import { Button } from "../../shared/components/ui/Button";
+import { CaretIcon } from "@/shared/components/icons/ui/CaretIcon";
+import { Button } from "@/shared/components/ui/Button";
 import { useMediaQuery } from "react-responsive";
 type Props = {
   page: number;

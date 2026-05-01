@@ -1,20 +1,20 @@
-import { Button } from "../../shared/components/ui/Button";
-import Block from "../../shared/components/ui/Block";
-import CustomLink from "../../shared/components/ui/CustomLink";
-import SocialLinks from "../../shared/components/ui/SocialLinks";
-import { footerGroups, socialMediaLinks } from "../../shared/config/links";
-import { uiText } from "../../shared/config/ui-text";
-import { useUiStore } from "../../shared/model/ui.store";
+import { Button } from "@/shared/components/ui/Button";
+import Block from "@/shared/components/ui/Block";
+import CustomLink from "@/shared/components/ui/CustomLink";
+import SocialLinks from "@/shared/components/ui/SocialLinks";
+import { footerGroups, socialMediaLinks } from "@/shared/config/links";
+import { uiText } from "@/shared/config/ui-text";
+import { useUiStore } from "@/shared/model/ui.store";
 import { useCatalogCategories } from "../catalog/model/useCategories";
 import CatalogMenu from "../catalog/ui/CatalogMenu";
 import { LinkGroup } from "../link-groups/LinkGroup";
-import { QuestionIcon } from "../../shared/components/icons/ui/QuestionIcon";
-import { PlayStoreIcon } from "../../shared/components/icons/apps/PlayStoreIcon";
-import { AppleStoreIcon } from "../../shared/components/icons/apps/AppleStoreIcon";
-import { MastercardLogo } from "../../shared/components/icons/payments/MastercardLogo";
-import { VisaLogo } from "../../shared/components/icons/payments/VisaLogo";
-import { AccountUserCard } from "../../pages/account/ui/AccountUserCard";
-import { useAuthStore } from "../../shared/model/auth.store";
+import { QuestionIcon } from "@/shared/components/icons/ui/QuestionIcon";
+import { PlayStoreIcon } from "@/shared/components/icons/apps/PlayStoreIcon";
+import { AppleStoreIcon } from "@/shared/components/icons/apps/AppleStoreIcon";
+import { MastercardLogo } from "@/shared/components/icons/payments/MastercardLogo";
+import { VisaLogo } from "@/shared/components/icons/payments/VisaLogo";
+import { AccountUserCard } from "@/pages/account/ui/AccountUserCard";
+import { useAuthStore } from "@/shared/model/auth.store";
 
 export function Sidebar() {
   const openAuth = useUiStore((s) => s.openAuth);

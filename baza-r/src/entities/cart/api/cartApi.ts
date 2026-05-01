@@ -1,4 +1,4 @@
-import { api } from "../../../shared/api/client";
+import { api } from "@/shared/api/client";
 import type { Cart } from "../model/cart";
 
 export const cartApi = {

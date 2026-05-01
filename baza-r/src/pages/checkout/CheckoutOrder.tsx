@@ -1,4 +1,4 @@
-import Block from "../../shared/components/ui/Block";
+import Block from "@/shared/components/ui/Block";
 
 type Props = {
   orderNumber: number;

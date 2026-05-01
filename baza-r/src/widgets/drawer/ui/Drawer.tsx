@@ -1,28 +1,28 @@
 import * as Accordion from "@radix-ui/react-accordion";
 
-import Block from "../../../shared/components/ui/Block";
-import SocialLinks from "../../../shared/components/ui/SocialLinks";
-import { footerGroups, socialMediaLinks } from "../../../shared/config/links";
-import { Button } from "../../../shared/components/ui/Button";
+import Block from "@/shared/components/ui/Block";
+import SocialLinks from "@/shared/components/ui/SocialLinks";
+import { footerGroups, socialMediaLinks } from "@/shared/config/links";
+import { Button } from "@/shared/components/ui/Button";
 
-import CustomLink from "../../../shared/components/ui/CustomLink";
-import IconWrapper from "../../../shared/components/ui/IconWrapper";
+import CustomLink from "@/shared/components/ui/CustomLink";
+import IconWrapper from "@/shared/components/ui/IconWrapper";
 import { LinkGroup } from "../../link-groups/LinkGroup";
 import { LinksGroupAccordionItem } from "../../link-groups/LinkGroupAccordion";
 
-import { useUiStore } from "../../../shared/model/ui.store";
-import { uiText } from "../../../shared/config/ui-text";
-import { AltCatalogIcon } from "../../../shared/components/icons/ui/AltCatalogIcon";
-import { AltCartIcon } from "../../../shared/components/icons/ui/AltCartIcon";
-import { AltQuestionIcon } from "../../../shared/components/icons/ui/AltQuestionIcon";
-import { TelephoneIcon } from "../../../shared/components/icons/ui/TelephoneIcon";
-import { CrossIcon } from "../../../shared/components/icons/ui/CrossIcon";
-import { UserIcon } from "../../../shared/components/icons/ui/UserIcon";
-import { ArrowIcon } from "../../../shared/components/icons/ui/ArrowIcon";
-import { PlayStoreIcon } from "../../../shared/components/icons/apps/PlayStoreIcon";
-import { AppleStoreIcon } from "../../../shared/components/icons/apps/AppleStoreIcon";
-import { useMe } from "../../../entities/user/queries";
-import { AccountUserCard } from "../../../pages/account/ui/AccountUserCard";
+import { useUiStore } from "@/shared/model/ui.store";
+import { uiText } from "@/shared/config/ui-text";
+import { AltCatalogIcon } from "@/shared/components/icons/ui/AltCatalogIcon";
+import { AltCartIcon } from "@/shared/components/icons/ui/AltCartIcon";
+import { AltQuestionIcon } from "@/shared/components/icons/ui/AltQuestionIcon";
+import { TelephoneIcon } from "@/shared/components/icons/ui/TelephoneIcon";
+import { CrossIcon } from "@/shared/components/icons/ui/CrossIcon";
+import { UserIcon } from "@/shared/components/icons/ui/UserIcon";
+import { ArrowIcon } from "@/shared/components/icons/ui/ArrowIcon";
+import { PlayStoreIcon } from "@/shared/components/icons/apps/PlayStoreIcon";
+import { AppleStoreIcon } from "@/shared/components/icons/apps/AppleStoreIcon";
+import { useMe } from "@/entities/user/queries";
+import { AccountUserCard } from "@/pages/account/ui/AccountUserCard";
 import { useMediaQuery } from "react-responsive";
 import { useNavigate } from "react-router";
 

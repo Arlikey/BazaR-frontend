@@ -1,7 +1,7 @@
-import type { CheckoutLine } from "../../entities/checkout/model/types";
-import { formatPrice, getCurrencySymbol } from "../../shared/lib/formatMoney";
+import type { CheckoutLine } from "@/entities/checkout/model/types";
+import { formatPrice, getCurrencySymbol } from "@/shared/lib/formatMoney";
 
-import placeholder from "../../shared/assets/images/placeholder.webp";
+import placeholder from "@/shared/assets/images/placeholder.webp";
 
 type Props = { line: CheckoutLine };
 

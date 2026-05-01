@@ -1,14 +1,14 @@
-import type { Category } from "../../../entities/category/model/Category";
-import { AltCatalogIcon } from "../../../shared/components/icons/ui/AltCatalogIcon";
-import CustomLink from "../../../shared/components/ui/CustomLink";
-import IconWrapper from "../../../shared/components/ui/IconWrapper";
-import type { ProductListItem } from "../../../entities/product/model/ProductListItem";
+import type { Category } from "@/entities/category/model/Category";
+import { AltCatalogIcon } from "@/shared/components/icons/ui/AltCatalogIcon";
+import CustomLink from "@/shared/components/ui/CustomLink";
+import IconWrapper from "@/shared/components/ui/IconWrapper";
+import type { ProductListItem } from "@/entities/product/model/ProductListItem";
 
-import placeholder from "../../../shared/assets/images/placeholder.webp";
+import placeholder from "@/shared/assets/images/placeholder.webp";
 import {
   formatPrice,
   getCurrencySymbol,
-} from "../../../shared/lib/formatMoney";
+} from "@/shared/lib/formatMoney";
 
 type Props = {
   query: string;

@@ -1,6 +1,6 @@
-import { Section } from "../../../../shared/components/ui/product-section/ui/Section";
-import { PromoTile } from "../../../../shared/components/ui/promo-tile/ui/PromoTile";
-import { uiText } from "../../../../shared/config/ui-text";
+import { Section } from "@/shared/components/ui/product-section/ui/Section";
+import { PromoTile } from "@/shared/components/ui/promo-tile/ui/PromoTile";
+import { uiText } from "@/shared/config/ui-text";
 
 export function GiftsSection() {
   const [forHer, forHim] = uiText.home.giftsTiles;

@@ -1,7 +1,7 @@
 import { tv, type VariantProps } from "tailwind-variants";
-import { CategoryItem } from "../../../entities/category/ui/CategoryItem";
-import CategoryItemSkeleton from "../../../shared/components/ui/loaders/CategoryItemSkeleton";
-import type { Category } from "../../../entities/category/model/Category";
+import { CategoryItem } from "@/entities/category/ui/CategoryItem";
+import CategoryItemSkeleton from "@/shared/components/ui/loaders/CategoryItemSkeleton";
+import type { Category } from "@/entities/category/model/Category";
 
 const catalogMenu = tv({
   base: "bg-surface bw-thin border-neutral-100",

@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { RoutesProvider } from "./_providers/RoutesProvider";
-import { useAuthStore } from "../shared/model/auth.store";
+import { useAuthStore } from "@/shared/model/auth.store";
 
 export function App() {
   const initialize = useAuthStore((s) => s.initialize);

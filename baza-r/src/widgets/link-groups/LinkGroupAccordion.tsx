@@ -1,6 +1,6 @@
-import type { LinkType } from "../../shared/config/types";
+import type { LinkType } from "@/shared/config/types";
 import { LinkGroup } from "./LinkGroup";
-import { AccordionItem } from "../../shared/components/ui/AccordionItem";
+import { AccordionItem } from "@/shared/components/ui/AccordionItem";
 
 type AccordionItemProps = {
   group: LinkType;

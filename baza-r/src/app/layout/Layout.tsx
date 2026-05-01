@@ -1,14 +1,14 @@
-import Header from "../../widgets/header/Header";
-import Footer from "../../widgets/footer/Footer";
+import Header from "@/widgets/header/Header";
+import Footer from "@/widgets/footer/Footer";
 import { Outlet } from "react-router";
 import { ModalProvider } from "../_providers/ModalProvider";
 
 import { useEffect } from "react";
 import { useLocation } from "react-router";
-import PromoBanner from "../../widgets/header/PromoBanner";
+import PromoBanner from "@/widgets/header/PromoBanner";
 import { Toaster } from "sonner";
-import { useElementOffset } from "../../shared/hooks/useElementOffset";
-import { FooterBanner } from "../../widgets/footer/FooterBanner";
+import { useElementOffset } from "@/shared/hooks/useElementOffset";
+import { FooterBanner } from "@/widgets/footer/FooterBanner";
 import MobileBar from "./MobileBar";
 
 function ScrollToTop() {

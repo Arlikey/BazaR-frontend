@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router";
 import { useSearchHistory } from "./useSearchHistory";
-import { useCatalogCategories } from "../../../widgets/catalog/model/useCategories";
-import { useDebounce } from "../../../shared/hooks/useDebounce";
+import { useCatalogCategories } from "@/widgets/catalog/model/useCategories";
+import { useDebounce } from "@/shared/hooks/useDebounce";
 import { useSearchSuggestions } from "./useSearchSuggestions";
 
 export function useSearch() {

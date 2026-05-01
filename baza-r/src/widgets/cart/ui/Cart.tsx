@@ -1,8 +1,8 @@
-import { useCart } from "../../../entities/cart/queries";
-import { CrossIcon } from "../../../shared/components/icons/ui/CrossIcon";
-import { Button } from "../../../shared/components/ui/Button";
-import IconWrapper from "../../../shared/components/ui/IconWrapper";
-import { useUiStore } from "../../../shared/model/ui.store";
+import { useCart } from "@/entities/cart/queries";
+import { CrossIcon } from "@/shared/components/icons/ui/CrossIcon";
+import { Button } from "@/shared/components/ui/Button";
+import IconWrapper from "@/shared/components/ui/IconWrapper";
+import { useUiStore } from "@/shared/model/ui.store";
 import { CartEmpty } from "./CartEmpty";
 import { CartFooter } from "./CartFooter";
 import { CartItem } from "./CartItem";

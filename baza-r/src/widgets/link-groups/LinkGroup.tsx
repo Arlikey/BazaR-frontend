@@ -1,5 +1,5 @@
-import CustomLink from "../../shared/components/ui/CustomLink";
-import type { LinkType } from "../../shared/config/types";
+import CustomLink from "@/shared/components/ui/CustomLink";
+import type { LinkType } from "@/shared/config/types";
 
 type Props = {
   group: LinkType;

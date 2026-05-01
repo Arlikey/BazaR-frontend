@@ -1,4 +1,4 @@
-import { api } from "../../../shared/api/client";
+import { api } from "@/shared/api/client";
 import type { ProductListItem } from "../../product/model/ProductListItem";
 
 export const favoritesApi = {

@@ -1,8 +1,8 @@
 import { NavLink } from "react-router";
-import Block from "../../../shared/components/ui/Block";
+import Block from "@/shared/components/ui/Block";
 import { AccountUserCard } from "./AccountUserCard";
 import { sidebarNav } from "../model/sidebar.config";
-import { useAuthStore } from "../../../shared/model/auth.store";
+import { useAuthStore } from "@/shared/model/auth.store";
 import { SellerSidebarSection } from "./SellerSidebarSection";
 import { SidebarNavLink } from "./SidebarNavLink";
 

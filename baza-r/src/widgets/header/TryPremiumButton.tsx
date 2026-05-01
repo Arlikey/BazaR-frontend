@@ -1,5 +1,5 @@
-import { Button } from "../../shared/components/ui/Button";
-import { uiText } from "../../shared/config/ui-text";
+import { Button } from "@/shared/components/ui/Button";
+import { uiText } from "@/shared/config/ui-text";
 
 export function TryPremiumButton() {
   return (

@@ -1,5 +1,5 @@
 import { useMemo } from "react";
-import type { Category } from "../../../entities/category/model/Category";
+import type { Category } from "@/entities/category/model/Category";
 
 type Props = {
   categories: Category[];

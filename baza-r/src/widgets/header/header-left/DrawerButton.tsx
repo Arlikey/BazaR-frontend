@@ -1,8 +1,8 @@
-import { BurgerIcon } from "../../../shared/components/icons/ui/BurgerIcon";
-import { Button } from "../../../shared/components/ui/Button";
-import IconWrapper from "../../../shared/components/ui/IconWrapper";
-import { uiText } from "../../../shared/config/ui-text";
-import { useUiStore } from "../../../shared/model/ui.store";
+import { BurgerIcon } from "@/shared/components/icons/ui/BurgerIcon";
+import { Button } from "@/shared/components/ui/Button";
+import IconWrapper from "@/shared/components/ui/IconWrapper";
+import { uiText } from "@/shared/config/ui-text";
+import { useUiStore } from "@/shared/model/ui.store";
 
 export function DrawerButton() {
   const openDrawer = useUiStore((s) => s.openDrawer);

@@ -1,12 +1,12 @@
 import { FormProvider } from "react-hook-form";
 import { useEffect, useRef } from "react";
-import { useCatalogCategories } from "../../../widgets/catalog/model/useCategories";
+import { useCatalogCategories } from "@/widgets/catalog/model/useCategories";
 import { useImageUpload } from "../model/useImageUpload";
 import { useAttributeTemplate } from "../model/useAttributeTemplate";
 import { useProductForm } from "../model/useProductForm";
 import { CascadingCategorySelect } from "./CascadingCategorySelect";
 import { AttributeField } from "./AttributeField";
-import InputField from "../../../shared/components/ui/InputField";
+import InputField from "@/shared/components/ui/InputField";
 
 const labelClass = "mb-1 block text-sm font-medium text-neutral-700";
 const hintClass = "mb-1.5 text-xs text-neutral-400";

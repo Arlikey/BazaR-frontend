@@ -1,4 +1,4 @@
-import { api } from "../../../shared/api/client";
+import { api } from "@/shared/api/client";
 import type { OfferResponse } from "../../offer/model/offer.response";
 import type { ProductFilterResponse } from "../model/Product";
 import type { ProductsResponse } from "../model/product.response";

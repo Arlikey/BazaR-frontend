@@ -1,20 +1,20 @@
 import {
   useRemoveCartItem,
   useUpdateCartItem,
-} from "../../../entities/cart/queries";
-import type { CartItem as CartItemType } from "../../../entities/cart/model/cart";
-import Block from "../../../shared/components/ui/Block";
-import { TrashIcon } from "../../../shared/components/icons/ui/TrashIcon";
-import IconWrapper from "../../../shared/components/ui/IconWrapper";
-import { PlusIcon } from "../../../shared/components/icons/ui/PlusIcon";
-import { MinusIcon } from "../../../shared/components/icons/ui/MinusIcon";
+} from "@/entities/cart/queries";
+import type { CartItem as CartItemType } from "@/entities/cart/model/cart";
+import Block from "@/shared/components/ui/Block";
+import { TrashIcon } from "@/shared/components/icons/ui/TrashIcon";
+import IconWrapper from "@/shared/components/ui/IconWrapper";
+import { PlusIcon } from "@/shared/components/icons/ui/PlusIcon";
+import { MinusIcon } from "@/shared/components/icons/ui/MinusIcon";
 import { useEffect, useState } from "react";
 import {
   formatPrice,
   getCurrencySymbol,
-} from "../../../shared/lib/formatMoney";
+} from "@/shared/lib/formatMoney";
 
-import placeholder from "../../../shared/assets/images/placeholder.webp";
+import placeholder from "@/shared/assets/images/placeholder.webp";
 
 type Props = { item: CartItemType };
 

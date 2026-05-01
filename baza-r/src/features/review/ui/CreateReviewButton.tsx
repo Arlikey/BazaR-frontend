@@ -1,6 +1,6 @@
 import type { ReactNode } from "react";
-import { Button } from "../../../shared/components/ui/Button";
-import { useUiStore } from "../../../shared/model/ui.store";
+import { Button } from "@/shared/components/ui/Button";
+import { useUiStore } from "@/shared/model/ui.store";
 import { cn } from "tailwind-variants";
 
 type Props = {

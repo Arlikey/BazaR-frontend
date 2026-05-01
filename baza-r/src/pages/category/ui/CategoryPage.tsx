@@ -1,10 +1,10 @@
 import { useParams, Navigate } from "react-router";
-import { useCatalogCategories } from "../../../widgets/catalog/model/useCategories";
-import { buildCategoryBreadcrumbs } from "../../../entities/category/model/buildBreadcrumbs";
-import { Breadcrumbs } from "../../../shared/components/ui/Breadcrumbs";
-import { CategoryPromoBanners } from "../../../widgets/category/promo-banners/CategoryPromoBanners";
-import { SubcategoriesGrid } from "../../../widgets/category/category-grid/SubcategoriesGrid";
-import { useElementOffset } from "../../../shared/hooks/useElementOffset";
+import { useCatalogCategories } from "@/widgets/catalog/model/useCategories";
+import { buildCategoryBreadcrumbs } from "@/entities/category/model/buildBreadcrumbs";
+import { Breadcrumbs } from "@/shared/components/ui/Breadcrumbs";
+import { CategoryPromoBanners } from "@/widgets/category/promo-banners/CategoryPromoBanners";
+import { SubcategoriesGrid } from "@/widgets/category/category-grid/SubcategoriesGrid";
+import { useElementOffset } from "@/shared/hooks/useElementOffset";
 import { CategoryProductsSection } from "./CategoryProductsSection";
 
 export function CategoryPage() {

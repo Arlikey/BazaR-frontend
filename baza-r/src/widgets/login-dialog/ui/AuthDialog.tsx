@@ -1,4 +1,4 @@
-import type { AuthMode } from "../../../shared/model/ui.store";
+import type { AuthMode } from "@/shared/model/ui.store";
 import LoginDialog from "./dialogs/LoginDialog";
 import RegisterDialog from "./dialogs/RegisterDialog";
 

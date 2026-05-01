@@ -1,10 +1,10 @@
 import { useSearchParams } from "react-router";
-import CustomLink from "../../shared/components/ui/CustomLink";
-import { formatPrice, getCurrencySymbol } from "../../shared/lib/formatMoney";
+import CustomLink from "@/shared/components/ui/CustomLink";
+import { formatPrice, getCurrencySymbol } from "@/shared/lib/formatMoney";
 import { CheckoutContactsForm } from "./CheckoutContactsForm";
 import { CheckoutSummary } from "./CheckoutSummary";
-import { useCheckout } from "../../entities/checkout/hooks/useCheckout";
-import { groupLinesBySeller } from "../../entities/checkout/model/groupLines";
+import { useCheckout } from "@/entities/checkout/hooks/useCheckout";
+import { groupLinesBySeller } from "@/entities/checkout/model/groupLines";
 import { CheckoutSellerBlock } from "./CheckoutSellerBlock";
 import { useState } from "react";
 

@@ -1,4 +1,4 @@
-import type { BreadcrumbItem } from "../../../shared/components/ui/Breadcrumbs";
+import type { BreadcrumbItem } from "@/shared/components/ui/Breadcrumbs";
 import type { Category } from "./Category";
 
 export function buildCategoryBreadcrumbs(

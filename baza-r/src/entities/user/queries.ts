@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import { userApi } from "./api/userApi";
-import { useAuthStore } from "../../shared/model/auth.store";
+import { useAuthStore } from "@/shared/model/auth.store";
 
 export const meQueryKey = ["me"] as const;
 

@@ -1,6 +1,6 @@
-import { SearchIcon } from "../../../shared/components/icons/ui/SearchIcon";
-import CustomLink from "../../../shared/components/ui/CustomLink";
-import IconWrapper from "../../../shared/components/ui/IconWrapper";
+import { SearchIcon } from "@/shared/components/icons/ui/SearchIcon";
+import CustomLink from "@/shared/components/ui/CustomLink";
+import IconWrapper from "@/shared/components/ui/IconWrapper";
 
 type Props = {
   history: string[];

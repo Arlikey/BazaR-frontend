@@ -1,4 +1,4 @@
-import { api } from "../../../shared/api/client";
+import { api } from "@/shared/api/client";
 import { mapCategory } from "../model/map";
 import type { CategoryDto } from "./CategoryDto";
 

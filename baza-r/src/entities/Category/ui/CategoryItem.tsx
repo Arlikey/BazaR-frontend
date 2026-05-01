@@ -2,9 +2,9 @@ import { tv, type VariantProps } from "tailwind-variants";
 import type { ReactNode } from "react";
 import { type To } from "react-router";
 import type { Category } from "../model/Category";
-import CustomLink from "../../../shared/components/ui/CustomLink";
+import CustomLink from "@/shared/components/ui/CustomLink";
 import { getCategoryIcon } from "../model/category.config";
-import IconWrapper from "../../../shared/components/ui/IconWrapper";
+import IconWrapper from "@/shared/components/ui/IconWrapper";
 
 const categoryItem = tv({
   slots: {

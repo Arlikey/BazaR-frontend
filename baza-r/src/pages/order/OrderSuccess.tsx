@@ -1,5 +1,5 @@
-import { Button } from "../../shared/components/ui/Button";
-import cartImage from "../../shared/assets/images/Корзина_иллюстрация.png";
+import { Button } from "@/shared/components/ui/Button";
+import cartImage from "@/shared/assets/images/Корзина_иллюстрация.png";
 import { Navigate, useLocation, useNavigate } from "react-router";
 
 export function OrderSuccess() {

@@ -1,9 +1,9 @@
 import { type Dispatch, type SetStateAction } from "react";
 import { useCategorySidebar } from "../queries";
 import { FacetFilter } from "./FacetFilter";
-import Block from "../../../shared/components/ui/Block";
+import Block from "@/shared/components/ui/Block";
 import type { CatalogFilters } from "../model/catalogFilters";
-import Skeleton from "../../../shared/components/ui/loaders/Skeleton";
+import Skeleton from "@/shared/components/ui/loaders/Skeleton";
 
 type Props = {
   categoryId: string;

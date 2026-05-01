@@ -1,30 +1,30 @@
 import { ServicesBlock } from "./blocks/ServicesBlock";
-import { Breadcrumbs } from "../../../shared/components/ui/Breadcrumbs";
+import { Breadcrumbs } from "@/shared/components/ui/Breadcrumbs";
 import { ProductTabs } from "./blocks/ProductTabs";
 import { PurchaseBlock } from "./blocks/purchase-block/PurchaseBlock";
 import { ProductGallery } from "./blocks/product-gallery/ProductGallery";
 import { DeliveryBlock } from "./blocks/DeliveryBlock";
 import { PaymentGuaranteeBlock } from "./blocks/PaymentGuaranteeBlock";
 import { ProductSpecsBlock } from "./blocks/ProductSpecsBlock";
-import { PickUpIcon } from "../../../shared/components/icons/ui/PickUpIcon";
-import { CourierIcon } from "../../../shared/components/icons/ui/CourierIcon";
-import { PaymentIcon } from "../../../shared/components/icons/ui/PaymentIcon";
-import { GuaranteeIcon } from "../../../shared/components/icons/ui/GuaranteeIcon";
+import { PickUpIcon } from "@/shared/components/icons/ui/PickUpIcon";
+import { CourierIcon } from "@/shared/components/icons/ui/CourierIcon";
+import { PaymentIcon } from "@/shared/components/icons/ui/PaymentIcon";
+import { GuaranteeIcon } from "@/shared/components/icons/ui/GuaranteeIcon";
 import {
   useProduct,
   useProductAttributes,
   useProductOffer,
-} from "../../../entities/product/queries";
-import { buildCategoryBreadcrumbs } from "../../../entities/category/model/buildBreadcrumbs";
+} from "@/entities/product/queries";
+import { buildCategoryBreadcrumbs } from "@/entities/category/model/buildBreadcrumbs";
 import { useCatalogCategories } from "../../catalog/model/useCategories";
-import { useElementOffset } from "../../../shared/hooks/useElementOffset";
+import { useElementOffset } from "@/shared/hooks/useElementOffset";
 import { ReviewsSection } from "./blocks/reviews-section/ReviewsSection";
 import { useRef } from "react";
 import { RecentlyViewedProducts } from "../../home/recently-viewed-products/ui/RecentlyViewedProducts";
-import { useIntersection } from "../../../shared/hooks/useIntersection";
-import { getStockStatus } from "../../../entities/product/model/productUtils";
+import { useIntersection } from "@/shared/hooks/useIntersection";
+import { getStockStatus } from "@/entities/product/model/productUtils";
 import { SpecificationsSection } from "./blocks/specifications-section/SpecificationsSection";
-import { useAttributeSections } from "../../../entities/product/hooks/useAttributesSection";
+import { useAttributeSections } from "@/entities/product/hooks/useAttributesSection";
 import { DescriptionSection } from "./blocks/description-section/DescriptionSection";
 
 export type OfferResponse = {

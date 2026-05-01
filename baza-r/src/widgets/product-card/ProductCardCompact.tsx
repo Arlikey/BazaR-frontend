@@ -1,9 +1,9 @@
 import { Link } from "react-router";
-import { uiText } from "../../shared/config/ui-text";
-import CustomLink from "../../shared/components/ui/CustomLink";
-import type { Product } from "../../entities/product/model/Product";
-import { ProductCard } from "../../entities/product/ui/ProductCard";
-import { FavoriteButton } from "../../entities/product/ui/FavoriteButton";
+import { uiText } from "@/shared/config/ui-text";
+import CustomLink from "@/shared/components/ui/CustomLink";
+import type { Product } from "@/entities/product/model/Product";
+import { ProductCard } from "@/entities/product/ui/ProductCard";
+import { FavoriteButton } from "@/entities/product/ui/FavoriteButton";
 
 type CompactProps = {
   product: Product;

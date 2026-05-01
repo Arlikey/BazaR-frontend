@@ -1,5 +1,5 @@
-import type { SellerGroup } from "../../entities/checkout/model/groupLines";
-import Block from "../../shared/components/ui/Block";
+import type { SellerGroup } from "@/entities/checkout/model/groupLines";
+import Block from "@/shared/components/ui/Block";
 import { CheckoutOrder } from "./CheckoutOrder";
 import { CheckoutOrderItems } from "./CheckoutOrderItems";
 import { CheckoutPaymentForm } from "./CheckoutPaymentForm";

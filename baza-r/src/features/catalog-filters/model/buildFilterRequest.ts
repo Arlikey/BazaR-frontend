@@ -1,4 +1,4 @@
-import { PAGE_SIZE } from "../../../shared/model/constants";
+import { PAGE_SIZE } from "@/shared/model/constants";
 import type { CatalogFilters } from "./catalogFilters";
 
 export function buildFilterRequest(filters: CatalogFilters) {

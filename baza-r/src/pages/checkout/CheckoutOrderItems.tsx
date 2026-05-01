@@ -1,5 +1,5 @@
-import type { CheckoutLine } from "../../entities/checkout/model/types";
-import Block from "../../shared/components/ui/Block";
+import type { CheckoutLine } from "@/entities/checkout/model/types";
+import Block from "@/shared/components/ui/Block";
 import { CheckoutItem } from "./CheckoutItem";
 import { CheckoutStep } from "./CheckoutStep";
 

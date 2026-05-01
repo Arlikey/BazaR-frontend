@@ -1,5 +1,5 @@
-import type { AttributeSection } from "../../../../../entities/product/model/attributesSection";
-import Block from "../../../../../shared/components/ui/Block";
+import type { AttributeSection } from "@/entities/product/model/attributesSection";
+import Block from "@/shared/components/ui/Block";
 
 type Props = {
   sections: AttributeSection[];

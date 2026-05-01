@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { GalleryThumbnails } from "./GalleryThumbnails";
 import { GalleryMainImage } from "./GalleryMainImage";
-import { GallerySkeleton } from "../../../../../shared/components/ui/loaders/GallerySkeleten";
+import { GallerySkeleton } from "@/shared/components/ui/loaders/GallerySkeleten";
 
 type Props = {
   images?: string[];

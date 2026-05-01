@@ -1,10 +1,10 @@
-import type { Review } from "../../../../../entities/review/model/review";
-import CreateReviewButton from "../../../../../features/review/ui/CreateReviewButton";
-import { ArrowIcon } from "../../../../../shared/components/icons/ui/ArrowIcon";
-import Block from "../../../../../shared/components/ui/Block";
-import { Button } from "../../../../../shared/components/ui/Button";
-import CustomLink from "../../../../../shared/components/ui/CustomLink";
-import IconWrapper from "../../../../../shared/components/ui/IconWrapper";
+import type { Review } from "@/entities/review/model/review";
+import CreateReviewButton from "@/features/review/ui/CreateReviewButton";
+import { ArrowIcon } from "@/shared/components/icons/ui/ArrowIcon";
+import Block from "@/shared/components/ui/Block";
+import { Button } from "@/shared/components/ui/Button";
+import CustomLink from "@/shared/components/ui/CustomLink";
+import IconWrapper from "@/shared/components/ui/IconWrapper";
 import { ReviewCard } from "./ReviewCard";
 
 type Props = {

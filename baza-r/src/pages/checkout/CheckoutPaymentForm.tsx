@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import Block from "../../shared/components/ui/Block";
+import Block from "@/shared/components/ui/Block";
 import { CheckoutStep } from "./CheckoutStep";
-import { checkoutApi } from "../../entities/checkout/api/checkoutApi";
-import { usePaymentMethods } from "../../entities/checkout/hooks/usePaymentMethods";
-import type { PaymentMethod } from "../../entities/checkout/model/methods";
-import { PAYMENT_METHOD_MAP } from "../../entities/checkout/model/mapper";
-import type { CheckoutLine } from "../../entities/checkout/model/types";
+import { checkoutApi } from "@/entities/checkout/api/checkoutApi";
+import { usePaymentMethods } from "@/entities/checkout/hooks/usePaymentMethods";
+import type { PaymentMethod } from "@/entities/checkout/model/methods";
+import { PAYMENT_METHOD_MAP } from "@/entities/checkout/model/mapper";
+import type { CheckoutLine } from "@/entities/checkout/model/types";
 
 type Props = {
   checkoutId: string;

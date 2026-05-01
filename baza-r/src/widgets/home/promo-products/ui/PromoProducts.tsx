@@ -1,8 +1,8 @@
 // import { useEffect, useState } from "react";
-// import ProductCardSkeleton from "../../../../shared/components/ui/loaders/ProductCardSkeleton";
-// import { Section } from "../../../../shared/components/ui/product-section/ui/Section";
-// import { ProductCardCompact } from "../../../product-card/ProductCardCompact";
-// import { uiText } from "../../../../shared/config/ui-text";
+// import ProductCardSkeleton from "@/shared/components/ui/loaders/ProductCardSkeleton";
+// import { Section } from "@/shared/components/ui/product-section/ui/Section";
+// import { ProductCardCompact } from "@product-card/ProductCardCompact";
+// import { uiText } from "@/shared/config/ui-text";
 
 // export function PromoProducts() {
 //   const [data, setData] = useState<Product[]>([]);

@@ -1,4 +1,4 @@
-import Block from "../../../../../shared/components/ui/Block";
+import Block from "@/shared/components/ui/Block";
 import ReactMarkdown from "react-markdown";
 
 type Props = {

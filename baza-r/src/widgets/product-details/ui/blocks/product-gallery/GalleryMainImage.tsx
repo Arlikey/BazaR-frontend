@@ -1,5 +1,5 @@
-import Block from "../../../../../shared/components/ui/Block";
-import placeholder from "../../../../../shared/assets/images/placeholder.webp";
+import Block from "@/shared/components/ui/Block";
+import placeholder from "@/shared/assets/images/placeholder.webp";
 
 type Props = {
   src: string;
