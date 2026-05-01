@@ -1,0 +1,15 @@
+@utility bw-thin {
+  border-width: var(--border-thin);
+}
+@utility bw-t-thin {
+  border-top-width: var(--border-thin);
+}
+@utility bw-r-thin {
+  border-right-width: var(--border-thin);
+}
+@utility bw-b-thin {
+  border-bottom-width: var(--border-thin);
+}
+@utility bw-l-thin {
+  border-left-width: var(--border-thin);
+}

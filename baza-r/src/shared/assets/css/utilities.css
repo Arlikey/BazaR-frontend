@@ -1,0 +1,28 @@
+@utility bw-thin {
+  border-width: var(--border-thin);
+}
+@utility bw-t-thin {
+  border-top-width: var(--border-thin);
+}
+@utility bw-r-thin {
+  border-right-width: var(--border-thin);
+}
+@utility bw-b-thin {
+  border-bottom-width: var(--border-thin);
+}
+@utility bw-l-thin {
+  border-left-width: var(--border-thin);
+}
+
+@layer utilities {
+  ::-webkit-scrollbar-thumb {
+    @apply cursor-pointer bg-neutral-100;
+  }
+  ::-webkit-scrollbar {
+    @apply h-1 w-1 bg-transparent;
+  }
+
+  .scrollbar-hidden::-webkit-scrollbar {
+    @apply h-0 w-0;
+  }
+}

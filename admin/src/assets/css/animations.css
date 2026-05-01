@@ -1,0 +1,104 @@
+@keyframes shimmer {
+  from {
+    transform: translateX(0%);
+  }
+  to {
+    transform: translateX(200%);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+@keyframes slideOutLeft {
+  from {
+    transform: translateX(0px);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}
+
+@keyframes slideDown {
+  from {
+    height: 0px;
+  }
+  to {
+    height: var(--radix-accordion-content-height);
+  }
+}
+@keyframes slideUp {
+  from {
+    height: var(--radix-accordion-content-height);
+  }
+  to {
+    height: 0px;
+  }
+}
+
+@keyframes show {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes hide {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes popIn {
+  from {
+    opacity: 0;
+    transform: scale3d(0.3, 0.3, 0.3);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes popOut {
+  from {
+    opacity: 1;
+    transform: scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: scale3d(0.3, 0.3, 0.3);
+  }
+}
+
+@keyframes megaIn {
+  from {
+    transform: translateY(-100%) scale(0.985);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0%) scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes megaOut {
+  from {
+    transform: translateY(0%) scale(1);
+    opacity: 1;
+  }
+  to {
+    transform: translateY(-100%) scale(0.99);
+    opacity: 0;
+  }
+}
