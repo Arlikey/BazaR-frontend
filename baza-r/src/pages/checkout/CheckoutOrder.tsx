@@ -1,4 +1,5 @@
 import Block from "@/shared/components/ui/Block";
+import { formatPrice, getCurrencySymbol } from "@/shared/lib/formatMoney";
 
 type Props = {
   orderNumber: number;
@@ -14,8 +15,8 @@ export function CheckoutOrder({ orderNumber, subtotal, currency }: Props) {
       <p className="text-xl">
         на суму:{" "}
         <span>
-          {subtotal}
-          <span className="text-base">{currency}</span>
+          {formatPrice(subtotal)}
+          <span className="text-base">{getCurrencySymbol(currency)}</span>
         </span>
       </p>
     </Block>
