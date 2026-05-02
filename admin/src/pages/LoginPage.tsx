@@ -1,9 +1,9 @@
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { api } from "@api/client";
+import { api } from "../api/client";
 import { useNavigate } from "react-router";
-import { getRole, tokenStorage } from "@api/token.storage";
+import { getRole, tokenStorage } from "../api/token.storage";
 
 const schema = z.object({
   email: z.string().email(),

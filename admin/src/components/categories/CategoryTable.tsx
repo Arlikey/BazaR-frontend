@@ -1,6 +1,6 @@
-import type { CategoryDto } from "@api/categoryApi";
+import type { CategoryDto } from "../../api/categoryApi";
 import { useNavigate } from "react-router";
-import type { CategoryNode } from "@utils/buildCategoryTree";
+import type { CategoryNode } from "../../utils/buildCategoryTree";
 import { CategoryRow } from "./CategoryRow";
 
 type Props = {

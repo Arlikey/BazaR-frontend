@@ -44,7 +44,7 @@ export function CategoryProductsSection({ categoryId }: Props) {
         </p>
       </div>
       <div className="flex gap-2.5">
-        <div className="sticky top-(--top-position) hidden h-full w-full max-w-71.25 self-start lg:flex">
+        <div className="sticky top-(--top-position) hidden h-full max-h-[calc(100vh-var(--top-offset))] w-full max-w-71.25 self-start overflow-y-scroll lg:flex">
           <FiltersSidebar
             categoryId={categoryId!}
             filters={filters}

@@ -1,6 +1,6 @@
 import { NavLink, Outlet, useNavigate } from "react-router";
-import { tokenStorage } from "@api/token.storage";
-import { CustomNavLink } from "@/shared/CustomNavLink";
+import { tokenStorage } from "../api/token.storage";
+import { CustomNavLink } from "../shared/CustomNavLink";
 
 export function AdminLayout() {
   const navigate = useNavigate();

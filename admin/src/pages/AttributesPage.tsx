@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
-import { attributeApi, valueTypeLabels } from "@api/attributeApi";
-import { CustomButton } from "@/shared/CustomButton";
+import { attributeApi, valueTypeLabels } from "../api/attributeApi";
+import { CustomButton } from "../shared/CustomButton";
 import { useNavigate } from "react-router";
 
 export function AttributesPage() {

@@ -3,8 +3,8 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import z from "zod/v3";
-import { attributeApi, type AttributeDto } from "@api/attributeApi";
-import { FormPageLayout } from "@layouts/FormPageLayout";
+import { attributeApi, type AttributeDto } from "../api/attributeApi";
+import { FormPageLayout } from "../layouts/FormPageLayout";
 
 const schema = z.object({
   name: z.string().min(1, "Назва обов'язкова"),

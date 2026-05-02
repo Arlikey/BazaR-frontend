@@ -61,7 +61,7 @@ export default function ProductDetails({ productId }: Props) {
   const purchaseRef = useRef<HTMLDivElement>(null);
   const sections = useAttributeSections(attributesView?.attributes);
 
-  const mainSpecs = sections.find((s) => s.name === "Основные характеристики");
+  const mainSpecs = sections.find((s) => s.name === "Основні характеристики");
 
   const isPurchaseVisible = useIntersection(purchaseRef, {
     threshold: 0.1,

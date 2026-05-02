@@ -1,10 +1,10 @@
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
-import { categoryApi } from "@api/categoryApi";
-import { CustomButton } from "@/shared/CustomButton";
+import { categoryApi } from "../api/categoryApi";
+import { CustomButton } from "../shared/CustomButton";
 import { useNavigate } from "react-router";
 import { useState, useMemo } from "react";
-import { buildCategoryTree } from "@utils/buildCategoryTree";
-import { CategoryTable } from "@components/categories/CategoryTable";
+import { buildCategoryTree } from "../utils/buildCategoryTree";
+import { CategoryTable } from "../components/categories/CategoryTable";
 
 export function CategoriesPage() {
   const qc = useQueryClient();

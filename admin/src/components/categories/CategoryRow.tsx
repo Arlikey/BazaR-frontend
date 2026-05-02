@@ -1,8 +1,8 @@
 import { useNavigate } from "react-router";
-import type { CategoryDto } from "@api/categoryApi";
-import IconWrapper from "@/shared/IconWrapper";
-import { CaretIcon } from "@/shared/CaretIcon";
-import type { CategoryNode } from "@utils/buildCategoryTree";
+import type { CategoryDto } from "../../api/categoryApi";
+import IconWrapper from "../../shared/IconWrapper";
+import { CaretIcon } from "../../shared/CaretIcon";
+import type { CategoryNode } from "../../utils/buildCategoryTree";
 
 type Props = {
   node: CategoryNode;

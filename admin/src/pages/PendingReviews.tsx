@@ -2,7 +2,7 @@ import {
   useApproveReview,
   usePendingReviews,
   useRejectReview,
-} from "@api/reviewApi";
+} from "../api/reviewApi";
 
 export function AdminPendingReviews() {
   const { data, isLoading } = usePendingReviews();

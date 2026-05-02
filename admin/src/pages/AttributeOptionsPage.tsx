@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { useNavigate, useParams } from "react-router";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
-import { attributeApi } from "@api/attributeApi";
-import { FormPageLayout } from "@layouts/FormPageLayout";
+import { attributeApi } from "../api/attributeApi";
+import { FormPageLayout } from "../layouts/FormPageLayout";
 
 type OptionRow = { value: string; sortOrder: number };
 
