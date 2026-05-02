@@ -89,7 +89,7 @@ export default function ProductDetails({ productId }: Props) {
 
       <ProductTabs
         data-app-tabs
-        showMiniPurchase={!isPurchaseVisible}
+        showMiniPurchase={!isPurchaseVisible && offer.stock > 0}
         price={offer.priceAmount}
         oldPrice={offer.oldPriceAmount}
         offerId={offer.offerId}
