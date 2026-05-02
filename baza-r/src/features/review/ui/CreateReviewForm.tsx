@@ -8,10 +8,9 @@ import { useImageUpload } from "../../seller/model/useImageUpload";
 import { useUiStore } from "@/shared/model/ui.store";
 import IconWrapper from "@/shared/components/ui/IconWrapper";
 import { CrossIcon } from "@/shared/components/icons/ui/CrossIcon";
-import {
-  type CreateReviewFormValues,
-} from "../model/review.schema";
+import { type CreateReviewFormValues } from "../model/review.schema";
 import { useAddReview } from "@/entities/review/queries";
+import { toast } from "sonner";
 
 const formInput = "flex flex-col gap-1 flex-1";
 
@@ -35,14 +34,24 @@ export function CreateReviewForm({ productId }: Props) {
   const { images, previews, handleFiles, removeImage } = useImageUpload();
 
   const onSubmit = (data: CreateReviewFormValues) => {
-    mutate({
-      productId,
-      rating: data.rating,
-      advantages: data.advantages,
-      disadvantages: data.disadvantages,
-      body: data.comment,
-    });
-    closeCreateReview();
+    mutate(
+      {
+        productId,
+        rating: data.rating,
+        advantages: data.advantages,
+        disadvantages: data.disadvantages,
+        body: data.comment,
+      },
+      {
+        onSuccess: () => {
+          toast.success("Відгук відправлено на модерацію");
+          closeCreateReview();
+        },
+        onError: () => {
+          toast.error("Помилка при відправці відгуку");
+        },
+      },
+    );
   };
 
   const handleImageUpload = (files: FileList | null) => {
@@ -113,12 +122,12 @@ export function CreateReviewForm({ productId }: Props) {
         </div>
 
         {/* images */}
-        <ReviewImageUpload
+        {/* <ReviewImageUpload
           images={images}
           previews={previews}
           onFiles={handleImageUpload}
           onRemove={removeImage}
-        />
+        /> */}
 
         {/* name + email */}
         <div className="flex gap-4">
