@@ -35,7 +35,7 @@ export function ProductSpecsBlock({ section }: Props) {
               <dt className="label flex">
                 <span>{spec.label}</span>
               </dt>
-              <dd className="pl-3 text-left text-base">{spec.value}</dd>
+              <dd className="pl-3 text-left text-base shrink-0">{spec.value}</dd>
             </div>
           ))}
         </div>
