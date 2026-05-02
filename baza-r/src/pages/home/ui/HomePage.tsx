@@ -15,9 +15,8 @@ export const HomePage = () => {
       <div className="mb-3.5 flex w-full flex-col gap-11 lg:w-[calc(100%-360px)]">
         <HomePromoBanners />
         <TrendingProducts />
-        {isAuth && <RecentlyViewedProducts />}
         <GiftsSection />
-        {/* <RecommendedProducts /> */}
+        {isAuth && <RecentlyViewedProducts />}
       </div>
     </>
   );
