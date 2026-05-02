@@ -37,8 +37,16 @@ export function CheckoutSellerBlock({
 
       <CheckoutOrderItems lines={group.lines} />
 
-      <CheckoutShippingForm checkoutId={checkoutId} lines={group.lines} />
-      <CheckoutPaymentForm checkoutId={checkoutId} lines={group.lines} />
+      <CheckoutShippingForm
+        checkoutId={checkoutId}
+        lines={group.lines}
+        sellerId={group.sellerId}
+      />
+      <CheckoutPaymentForm
+        checkoutId={checkoutId}
+        lines={group.lines}
+        sellerId={group.sellerId}
+      />
       <CheckoutRecipientForm
         checkoutId={checkoutId}
         lines={group.lines}

@@ -13,10 +13,10 @@ const Megamenu = () => {
 
   return (
     <div className="flex">
-      <nav className="flex max-h-180 w-full gap-5 rounded-[15px] bg-neutral-50 p-7.5">
+      <nav className="flex max-h-160 w-full gap-5 rounded-[15px] bg-neutral-50 p-7.5">
         <CatalogMenu
           variant="mega"
-          className="max-h-161.25 w-75 shrink-0"
+          className="w-75 shrink-0"
           categories={roots}
           isLoading={isLoading}
           activeCategoryId={activeId ?? undefined}
@@ -28,11 +28,14 @@ const Megamenu = () => {
           }
         />
 
-        <section className="bw-thin flex max-h-161.25 flex-1 flex-col rounded-[15px] border-neutral-100 bg-white px-10 py-5">
+        <section className="bw-thin flex flex-1 flex-col rounded-[15px] border-neutral-100 bg-white px-10 py-5">
           {active && active.children.length > 0 ? (
-            <div className="flex max-h-161.25 flex-col flex-wrap content-start gap-x-10 gap-y-3 overflow-y-auto 2xl:gap-x-20 pb-20">
+            <div className="flex flex-col flex-wrap content-start gap-x-10 gap-y-3 overflow-y-auto pb-20 2xl:gap-x-20">
               {active.children.map((group) => (
-                <div key={group.id} className="break-inside-avoid flex flex-col gap-1">
+                <div
+                  key={group.id}
+                  className="flex break-inside-avoid flex-col gap-1"
+                >
                   <CustomLink
                     to={`/catalog/${group.id}`}
                     variant="underline"

@@ -12,12 +12,13 @@ import type { CheckoutLine } from "@/entities/checkout/model/types";
 type Props = {
   checkoutId: string;
   lines: CheckoutLine[];
+  sellerId: string;
 };
 
-export function CheckoutShippingForm({ checkoutId, lines }: Props) {
+export function CheckoutShippingForm({ checkoutId, lines, sellerId }: Props) {
   const qc = useQueryClient();
 
-  const { data, isLoading } = useShippingMethods();
+  const { data, isLoading } = useShippingMethods(sellerId);
   const options = data?.methods ?? [];
 
   const [method, setMethod] = useState<string | null>(null);

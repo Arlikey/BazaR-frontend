@@ -19,13 +19,15 @@ export const checkoutApi = {
   getById: (id: string) =>
     api<CheckoutResponse>(`/api/customer/checkouts/${id}`),
 
-  getShippingMethods: async () =>
+  getShippingMethods: async (sellerId: string) =>
     api<ShippingMethodsResponse>(
-      `/api/public/shipping-profile`,
+      `/api/public/sellers/${sellerId}/shipping-profile`,
     ),
 
-  getPaymentMethods: async () =>
-    api<PaymentMethodsResponse>(`/api/public/payment-profile`),
+  getPaymentMethods: async (sellerId: string) =>
+    api<PaymentMethodsResponse>(
+      `/api/public/sellers/${sellerId}/payment-profile`,
+    ),
 
   updateRecipient: (checkoutId: string, body: RecipientDto) =>
     api(`/api/customer/checkouts/${checkoutId}/lines/recipient`, {
