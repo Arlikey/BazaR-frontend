@@ -40,7 +40,6 @@ export function CheckoutShippingForm({ checkoutId, lines, sellerId }: Props) {
     mutationFn: async () => {
       if (!method) return;
       const mappedMethod = SHIPPING_METHOD_MAP[method] ?? 0;
-      console.log(form);
       await Promise.all(
         lines.map((line) =>
           checkoutApi.updateShipping(checkoutId, line.id, {
@@ -81,8 +80,6 @@ export function CheckoutShippingForm({ checkoutId, lines, sellerId }: Props) {
   if (isLoading) {
     return <div>Loading shipping methods...</div>;
   }
-
-  console.log(form);
 
   return (
     <div className="flex flex-col gap-3">

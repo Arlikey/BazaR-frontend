@@ -6,11 +6,12 @@ import { Button } from "@/shared/components/ui/Button";
 import CustomLink from "@/shared/components/ui/CustomLink";
 import IconWrapper from "@/shared/components/ui/IconWrapper";
 import { isDiscount } from "@/shared/lib/price";
+
+import { CartButton } from "./CartButton";
 import type {
   PurchaseBlockProps,
   StockStatus,
-} from "@config/purchase-block.config";
-import { CartButton } from "./CartButton";
+} from "@/widgets/product-details/config/purchase-block.config";
 const STOCK_LABELS: Record<
   StockStatus,
   { label: string; className: string } | null

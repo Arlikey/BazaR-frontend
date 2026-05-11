@@ -27,9 +27,9 @@ const accordionItem = tv({
       },
       profile: {
         root: "rounded-2xl bg-white",
-        trigger: "py-8 px-14 text-lg",
+        trigger: "py-8 px-8 md:px-14 text-lg",
         iconWrap: "w-5",
-        contentInner: "px-14 pb-8",
+        contentInner: "md:px-14 pb-8",
         caretWrap: "w-6",
       },
     },

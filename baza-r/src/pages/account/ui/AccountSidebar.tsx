@@ -10,7 +10,7 @@ export function AccountSidebar() {
   const { isSeller } = useAuthStore();
 
   return (
-    <aside className="flex w-full max-w-90 shrink-0 flex-col gap-3">
+    <aside className="w-full max-w-90 shrink-0 flex-col gap-3 hidden xl:flex">
       <Block
         rounded="xl"
         className="sticky top-[calc(var(--top-offset)+2rem)] flex flex-col gap-1 pb-4"

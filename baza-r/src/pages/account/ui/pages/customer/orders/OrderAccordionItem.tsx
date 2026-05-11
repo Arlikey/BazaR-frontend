@@ -10,6 +10,7 @@ import IconWrapper from "@/shared/components/ui/IconWrapper";
 import CustomLink from "@/shared/components/ui/CustomLink";
 import { CheckoutItemCol } from "../../../../../checkout/CheckoutItem";
 import Skeleton from "@/shared/components/ui/loaders/Skeleton";
+import { useMediaQuery } from "react-responsive";
 
 const STATUS_COLOR: Record<number, string> = {
   1: "bg-yellow-400", // Pending
@@ -24,6 +25,7 @@ const STATUS_COLOR: Record<number, string> = {
 type Props = { order: OrderItem };
 
 export function OrderAccordionItem({ order }: Props) {
+  const isLargeScreen = useMediaQuery({ minWidth: 1560 });
   const [open, setOpen] = useState(false);
 
   const { data: details, isLoading } = useQuery({
@@ -92,7 +94,7 @@ export function OrderAccordionItem({ order }: Props) {
         )}
 
         {details && (
-          <div className="grid grid-cols-[1fr_2fr] gap-8 p-10 px-20">
+          <div className="grid gap-8 p-10 lg:grid-cols-[1fr_2fr] lg:px-20">
             <div className="flex flex-col gap-4">
               <p className="font-semibold text-neutral-800">
                 Інформація про замовлення
@@ -125,39 +127,44 @@ export function OrderAccordionItem({ order }: Props) {
               <p className="font-medium">Товари</p>
               <div className="flex flex-col gap-3">
                 {details.items.map((item) => (
-                  <div key={item.productId} className="flex items-center gap-5">
-                    <img
-                      src={item.imageUrl ?? placeholder}
-                      className="h-24 w-24 shrink-0 rounded-lg object-contain"
-                      onError={(e) => {
-                        e.currentTarget.src = placeholder;
-                      }}
-                    />
-                    <div className="flex flex-2">
-                      <CustomLink
-                        to={`/product/${item.productId}`}
-                        color="blue"
-                        className="line-clamp-3 text-base font-medium"
-                      >
-                        {item.productName}
-                      </CustomLink>
+                  <div key={item.productId} className="flex flex-col 2xl:flex-row items-center gap-5">
+                    <div className="flex w-full items-center justify-center gap-5">
+                      <img
+                        src={item.imageUrl ?? placeholder}
+                        className="h-24 w-24 shrink-0 rounded-lg object-contain"
+                        onError={(e) => {
+                          e.currentTarget.src = placeholder;
+                        }}
+                      />
+                      <div className="flex flex-1">
+                        <CustomLink
+                          to={`/product/${item.productId}`}
+                          color="blue"
+                          className="line-clamp-3 text-base font-medium"
+                        >
+                          {item.productName}
+                        </CustomLink>
+                      </div>
                     </div>
-                    <div className="flex flex-1">
-                      <CheckoutItemCol label="Ціна">
-                        {formatPrice(item.unitPrice)}
-                        {getCurrencySymbol(item.currency)}
-                      </CheckoutItemCol>
-                    </div>
-                    <div className="flex flex-1">
-                      <CheckoutItemCol label="Кількість">
-                        {item.quantity}
-                      </CheckoutItemCol>
-                    </div>
-                    <div className="flex flex-1">
-                      <CheckoutItemCol label="Сума" align="end">
-                        {formatPrice(item.unitPrice * item.quantity)}
-                        {getCurrencySymbol(item.currency)}
-                      </CheckoutItemCol>
+
+                    <div className="flex w-full">
+                      <div className="flex flex-1">
+                        <CheckoutItemCol label="Ціна" align="start">
+                          {formatPrice(item.unitPrice)}
+                          {getCurrencySymbol(item.currency)}
+                        </CheckoutItemCol>
+                      </div>
+                      <div className="flex flex-1">
+                        <CheckoutItemCol label="Кількість">
+                          {item.quantity}
+                        </CheckoutItemCol>
+                      </div>
+                      <div className="flex flex-1">
+                        <CheckoutItemCol label="Сума" align="end">
+                          {formatPrice(item.unitPrice * item.quantity)}
+                          {getCurrencySymbol(item.currency)}
+                        </CheckoutItemCol>
+                      </div>
                     </div>
                   </div>
                 ))}

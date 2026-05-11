@@ -43,7 +43,7 @@ export function SelectFacet({ facet, filters, setFilters }: Props) {
                   } else {
                     nextSelect[key] = nextValues;
                   }
-
+                  window.scrollTo({ top: 0, behavior: "smooth" });
                   return {
                     ...prev,
                     select: nextSelect,

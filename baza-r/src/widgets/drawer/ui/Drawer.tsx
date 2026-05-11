@@ -25,6 +25,7 @@ import { useMe } from "@/entities/user/queries";
 import { AccountUserCard } from "@/pages/account/ui/AccountUserCard";
 import { useMediaQuery } from "react-responsive";
 import { useNavigate } from "react-router";
+import { ListIcon } from "@/shared/components/icons/ui/ListIcon";
 
 const Drawer = () => {
   const isMobile = useMediaQuery({ maxWidth: 1023 });
@@ -43,8 +44,16 @@ const Drawer = () => {
   const partners = footerGroups[3];
   const drawerMenuItems = [
     {
-      icon: AltCatalogIcon,
+      icon: ListIcon,
       label: uiText.drawer.menuItems[0].label,
+      onClick: () => {
+        navigate("/account/orders");
+        closeDrawer();
+      },
+    },
+    {
+      icon: AltCatalogIcon,
+      label: uiText.drawer.menuItems[1].label,
       onClick: () => {
         if (isMobile) {
           navigate("/catalog");
@@ -57,14 +66,14 @@ const Drawer = () => {
     },
     {
       icon: AltCartIcon,
-      label: uiText.drawer.menuItems[1].label,
+      label: uiText.drawer.menuItems[2].label,
       onClick: () => {
         closeDrawer();
         openCart();
       },
     },
-    { icon: AltQuestionIcon, label: uiText.drawer.menuItems[2].label },
-    { icon: TelephoneIcon, label: uiText.drawer.menuItems[3].label },
+    { icon: AltQuestionIcon, label: uiText.drawer.menuItems[3].label },
+    { icon: TelephoneIcon, label: uiText.drawer.menuItems[4].label },
   ];
 
   return (

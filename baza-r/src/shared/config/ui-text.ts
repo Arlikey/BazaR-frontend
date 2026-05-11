@@ -40,6 +40,7 @@ export const uiText = {
     premiumLabel: "преміум",
     premiumDescription: "Безкоштовна доставка весь рік",
     menuItems: [
+      { label: "Мої замовлення" },
       { label: "Каталог товарів" },
       { label: "Кошик" },
       { label: "Довідковий центр" },

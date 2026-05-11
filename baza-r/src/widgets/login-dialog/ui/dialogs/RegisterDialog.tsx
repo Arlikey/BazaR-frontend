@@ -17,6 +17,7 @@ import { SocialLogin } from "../components/SocialLogin";
 import { useRegister } from "@/features/auth/model/auth.mutations";
 import { useUiStore } from "@/shared/model/ui.store";
 import { getApiErrorMessage } from "@/shared/lib/getApiErrorMessage";
+import { useAuthStore } from "@/shared/model/auth.store";
 
 type Props = {
   onLoginClick?: () => void;
@@ -57,7 +58,10 @@ export default function RegisterDialog({ onLoginClick }: Props) {
                 phone: data.phone,
               },
               {
-                onSuccess: () => closeAuth(),
+                onSuccess: () => {
+                  closeAuth();
+                  useAuthStore.getState().setAuthenticated(true);
+                },
                 onError: (err) =>
                   setError("email", { message: getApiErrorMessage(err) }),
               },
@@ -142,6 +146,7 @@ export default function RegisterDialog({ onLoginClick }: Props) {
               </CustomLink>
             </span>
             <Button
+              loading={registerUser.isPending}
               color="secondary"
               type="submit"
               fullWidth

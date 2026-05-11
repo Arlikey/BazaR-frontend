@@ -27,8 +27,7 @@ export function CheckoutSummary({
     mutationFn: () => checkoutApi.submit(checkoutId),
     onSuccess: () =>
       navigate("/order/success", { state: { fromCheckout: true } }),
-    onError: () => {
-    },
+    onError: () => {},
   });
   return (
     <div className="sticky top-5 w-full max-w-85 self-start">
@@ -71,10 +70,11 @@ export function CheckoutSummary({
           className="mt-4 py-4"
           rounded="pill"
           fullWidth
+          loading={isPending}
           disabled={isPending}
           onClick={() => submit()}
         >
-          {isPending ? "Обробка..." : "Замовлення підтверджую"}
+          Замовлення підтверджую
         </Button>
         <div className="mt-5 flex flex-col gap-4 text-sm text-black/50">
           <p className="font-medium">

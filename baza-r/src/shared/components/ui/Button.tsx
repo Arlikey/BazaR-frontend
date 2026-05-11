@@ -1,6 +1,7 @@
 import * as React from "react";
 import { Slot } from "@radix-ui/react-slot";
 import { cn, tv, type VariantProps } from "tailwind-variants";
+import { Spinner } from "./loaders/Spinner";
 
 export const buttonVariants = tv({
   base: [
@@ -72,6 +73,7 @@ export const buttonVariants = tv({
 export type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> &
   VariantProps<typeof buttonVariants> & {
     asChild?: boolean;
+    loading?: boolean;
   };
 
 export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
@@ -86,6 +88,9 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       textSize,
       fullWidth,
       asChild = false,
+      loading = false,
+      disabled,
+      children,
       type,
       ...props
     },
@@ -103,6 +108,7 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         data-rounded={rounded}
         data-border={border}
         type={type}
+        disabled={disabled || loading}
         className={cn(
           buttonVariants({
             variant,
@@ -116,7 +122,15 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
           className,
         )}
         {...props}
-      />
+      >
+        {loading ? (
+          <span className="flex items-center gap-2">
+            <Spinner />
+          </span>
+        ) : (
+          children
+        )}
+      </Comp>
     );
   },
 );

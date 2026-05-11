@@ -26,7 +26,6 @@ export function CheckoutPaymentForm({ checkoutId, lines, sellerId }: Props) {
     mutationFn: async (type: string) => {
       const mapped = PAYMENT_METHOD_MAP[type];
       if (!mapped) return;
-      console.log(mapped);
       await Promise.all(
         lines.map((line) =>
           checkoutApi.updatePayment(checkoutId, line.id, mapped),
@@ -53,7 +52,6 @@ export function CheckoutPaymentForm({ checkoutId, lines, sellerId }: Props) {
     return <div>Loading payment methods...</div>;
   }
 
-  console.log(selected);
 
   return (
     <div className="flex flex-col gap-3">

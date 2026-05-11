@@ -114,9 +114,10 @@ export default function LoginDialog({ onRegisterClick }: Props) {
           <div className="flex flex-col items-center">
             <Button
               color="secondary"
+              loading={login.isPending}
               type="submit"
               fullWidth
-              className="text-background mt-9 h-12 rounded-[30px] text-base"
+              className={`text-background mt-9 h-12 rounded-[30px] text-base ${isSubmitting && "bg-red"}`}
               disabled={!isValid || isSubmitting}
             >
               <span>{uiText.auth.loginSubmit}</span>

@@ -64,7 +64,6 @@ export function CheckoutRecipientForm({
     setForm((prev) => ({ ...prev, [field]: value }));
   }
 
-  console.log(form);
 
   return (
     <div className="flex flex-col gap-3">

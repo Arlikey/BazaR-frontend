@@ -30,6 +30,7 @@ export function RangeFacet({ facet, filters, setFilters }: Props) {
       range: { ...prev.range, [key]: { min, max } },
       ...(isPrice ? { price: { min, max } } : {}),
     }));
+    window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   const clamp = (value: number, min: number, max: number) =>

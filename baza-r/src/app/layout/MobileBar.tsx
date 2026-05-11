@@ -5,6 +5,7 @@ import { FavoriteAlt3Icon } from "@/shared/components/icons/ui/FavouriteIcon";
 import { UserAlt2Icon } from "@/shared/components/icons/ui/UserIcon";
 import { AltCatalogIcon } from "@/shared/components/icons/ui/AltCatalogIcon";
 import { useEffect, useState } from "react";
+import { ListIcon } from "@/shared/components/icons/ui/ListIcon";
 
 export function MobileBar() {
   const items = [
@@ -22,6 +23,11 @@ export function MobileBar() {
       to: "/account/wishlist",
       label: "Обране",
       icon: FavoriteAlt3Icon,
+    },
+    {
+      to: "/account/orders",
+      label: "Замовлення",
+      icon: ListIcon,
     },
     {
       to: "/account/profile",

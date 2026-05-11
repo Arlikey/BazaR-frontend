@@ -40,7 +40,6 @@ export function useFilteredProducts(
   filters: CatalogFilters,
 ) {
   const body = buildFilterRequest(filters);
-  console.log(body);
   return useQuery({
     queryKey: ["products", categoryId, body],
     queryFn: () => productApi.filterProducts(categoryId, body),

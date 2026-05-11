@@ -51,7 +51,10 @@ export function ProductGallery({ images = [], alt = "", isLoading }: Props) {
           opts={{ loop: false }}
           className="w-full"
         >
-          <Block rounded="xl" className="flex h-80 overflow-hidden md:h-134.5">
+          <Block
+            rounded="xl"
+            className="flex h-80 justify-center overflow-hidden md:h-134.5"
+          >
             <CarouselContent className="h-full">
               {srcs.map((src, i) => (
                 <CarouselItem
