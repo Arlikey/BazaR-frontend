@@ -1,4 +1,7 @@
 import Block from "@/shared/components/ui/Block";
+import { Button } from "@/shared/components/ui/Button";
+import { Expandable } from "@/shared/components/ui/Expandable";
+import { useRef } from "react";
 import ReactMarkdown from "react-markdown";
 
 type Props = {
@@ -15,10 +18,12 @@ export function DescriptionSection({ description }: Props) {
           <h2 className="sticky top-(--scroll-offset) text-2xl">Опис</h2>
         </div>
 
-        <div className="relative flex flex-1 flex-col">
-          <div className="prose max-w-full">
-            <ReactMarkdown>{description}</ReactMarkdown>
-          </div>
+        <div className="relative flex-1 flex-col">
+          <Expandable labelMore="Читати повністю">
+            <div className="prose max-w-full">
+              <ReactMarkdown>{description}</ReactMarkdown>
+            </div>
+          </Expandable>
         </div>
       </Block>
     </section>

@@ -8,7 +8,7 @@ type Props = {
 
 export function GalleryThumbnails({ images, activeIndex, onSelect }: Props) {
   return (
-    <div className="scrollbar-hidden hidden gap-6.25 overflow-x-auto lg:flex lg:max-h-134.5 lg:flex-col lg:overflow-x-hidden lg:overflow-y-auto">
+    <div className="scrollbar-hidden hidden shrink-0 gap-6.25 overflow-x-auto xl:flex lg:max-h-134.5 lg:flex-col lg:overflow-x-hidden lg:overflow-y-auto">
       {images.map((src, i) => (
         <button key={src} onClick={() => onSelect(i)} className="shrink-0">
           <Block

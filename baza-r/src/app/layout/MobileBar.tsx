@@ -4,6 +4,7 @@ import { HomeIcon } from "@/shared/components/icons/ui/HomeIcon";
 import { FavoriteAlt3Icon } from "@/shared/components/icons/ui/FavouriteIcon";
 import { UserAlt2Icon } from "@/shared/components/icons/ui/UserIcon";
 import { AltCatalogIcon } from "@/shared/components/icons/ui/AltCatalogIcon";
+import { useEffect, useState } from "react";
 
 export function MobileBar() {
   const items = [
@@ -28,9 +29,25 @@ export function MobileBar() {
       icon: UserAlt2Icon,
     },
   ];
+  const [hidden, setHidden] = useState(false);
+
+  useEffect(() => {
+    const footer = document.querySelector("#copyright");
+    if (!footer) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => setHidden(entry.isIntersecting),
+      { threshold: 0 },
+    );
+
+    observer.observe(footer);
+    return () => observer.disconnect();
+  }, []);
 
   return (
-    <div className="fixed bottom-0 left-0 z-20 flex w-full rounded-t-xl bg-white p-2 shadow-[0_-4px_6px_rgba(0,0,0,0.1)] md:hidden">
+    <div
+      className={`fixed bottom-0 left-0 z-20 flex w-full rounded-t-xl bg-white p-2 shadow-[0_-4px_6px_rgba(0,0,0,0.1)] transition-transform duration-300 md:hidden ${hidden ? "translate-y-full" : "translate-y-0"}`}
+    >
       {items.map((item) => {
         const Icon = item.icon;
 

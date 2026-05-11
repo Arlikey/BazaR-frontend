@@ -10,6 +10,7 @@ import { Toaster } from "sonner";
 import { useElementOffset } from "@/shared/hooks/useElementOffset";
 import { FooterBanner } from "@/widgets/footer/FooterBanner";
 import MobileBar from "./MobileBar";
+import { TopScrollButton } from "@/shared/components/ui/TopScrollButton";
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -49,6 +50,7 @@ export function Layout() {
           <FooterBanner />
           <Footer />
         </div>
+        <TopScrollButton />
         <MobileBar />
       </div>
     </>

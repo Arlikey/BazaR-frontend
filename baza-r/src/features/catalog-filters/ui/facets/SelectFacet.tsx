@@ -10,19 +10,13 @@ type Props = {
 };
 
 export function SelectFacet({ facet, filters, setFilters }: Props) {
-  const totalCount = facet.options.length;
-
   const key = facet.kind === "attribute" ? facet.attributeId! : facet.code;
 
   const selectedValues = filters.select[key] ?? [];
 
   return (
     <>
-      <h3 className="text-base font-medium">
-        {facet.name} <span className="text-muted">{totalCount}</span>
-      </h3>
-
-      <div className="mt-3 flex flex-col gap-3">
+      <div className="flex flex-col gap-3">
         {facet.options.map((option) => {
           const selected = selectedValues.includes(option.value);
 

@@ -21,7 +21,7 @@ export function FiltersSidebar({ categoryId, filters, setFilters }: Props) {
     );
 
   return (
-    <div className="sticky flex flex-1 flex-col gap-2.5">
+    <div className="sticky flex flex-1 flex-col gap-2.5 pr-1">
       {data?.facets.map((facet) => (
         <Block key={facet.code} className="p-5 pr-4">
           <FacetFilter

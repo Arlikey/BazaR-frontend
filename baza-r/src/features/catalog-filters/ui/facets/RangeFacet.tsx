@@ -37,9 +37,7 @@ export function RangeFacet({ facet, filters, setFilters }: Props) {
 
   return (
     <div className="flex flex-col">
-      <h3 className="font-medium">{facet.name}</h3>
-
-      <div className="mt-2 flex flex-1 items-center gap-2">
+      <div className="flex flex-1 items-center gap-2">
         <InputField
           type="text"
           inputMode="numeric"
