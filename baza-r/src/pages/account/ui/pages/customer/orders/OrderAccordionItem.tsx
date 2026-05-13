@@ -57,7 +57,7 @@ export function OrderAccordionItem({ order }: Props) {
           </div>
 
           <div
-            className={`flex flex-1 flex-col items-start gap-1 text-lg transition ${open ? "opacity-0" : ""}`}
+            className={`sm:flex flex-1 hidden flex-col items-start gap-1 text-lg transition ${open ? "opacity-0" : ""}`}
           >
             <span className="text-neutral-300">Сума замовлення</span>
             <span className="font-medium">

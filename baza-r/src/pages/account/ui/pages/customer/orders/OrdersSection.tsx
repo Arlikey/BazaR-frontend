@@ -4,10 +4,28 @@ import { useOrders } from "@/entities/order/hooks/useOrders";
 import { OrderAccordionItem } from "./OrderAccordionItem";
 import * as Accordion from "@radix-ui/react-accordion";
 import { useNavigate } from "react-router";
+import { Pagination } from "@/widgets/pagination/Pagination";
+import { ORDERS_PAGE_SIZE } from "@/shared/model/constants";
+import { useState } from "react";
+import Skeleton from "@/shared/components/ui/loaders/Skeleton";
 
 const OrdersSection = () => {
-  const { data: orders, isLoading } = useOrders(1, 10);
+  const [page, setPage] = useState(1);
+  const { data: orders, isLoading } = useOrders(page, ORDERS_PAGE_SIZE);
   const navigate = useNavigate();
+
+  const totalPages = Math.ceil((orders?.totalCount ?? 0) / ORDERS_PAGE_SIZE);
+
+  function handlePageChange(newPage: number) {
+    setPage(newPage);
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }
+
+  if (isLoading) return <>
+    {[...Array(ORDERS_PAGE_SIZE)].map(() => (
+      <Skeleton className="w-full h-26 rounded-2xl"/>
+    ))}
+  </>;
 
   if (!orders || orders.items.length === 0) {
     return (
@@ -30,16 +48,20 @@ const OrdersSection = () => {
     );
   }
 
-  if (isLoading) {
-    return <div>Завантаження...</div>;
-  }
-
   return (
-    <Accordion.Root type="multiple" className="mt-4 flex flex-col gap-3">
-      {orders.items.map((order) => (
-        <OrderAccordionItem key={order.id} order={order} />
-      ))}
-    </Accordion.Root>
+    <>
+      <Accordion.Root type="multiple" className="mt-4 flex flex-col gap-3">
+        {orders.items.map((order) => (
+          <OrderAccordionItem key={order.id} order={order} />
+        ))}
+      </Accordion.Root>
+
+      <Pagination
+        totalPages={totalPages}
+        page={page}
+        onPageChange={handlePageChange}
+      />
+    </>
   );
 };
 

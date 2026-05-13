@@ -1,3 +1,4 @@
 const PAGE_SIZE = 15;
+const ORDERS_PAGE_SIZE = 5;
 
-export { PAGE_SIZE };
+export { PAGE_SIZE, ORDERS_PAGE_SIZE };

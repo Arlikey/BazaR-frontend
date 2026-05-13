@@ -23,7 +23,7 @@ export const uiText = {
     openMenuAriaLabel: "Відкрити меню",
     catalog: "каталог",
     premiumTryLabel: "спробуйте",
-    premiumLabel: "преміум",
+    premiumLabel: "premium",
     userAriaLabel: "Користувач",
     cartAriaLabel: "Кошик",
   },
@@ -37,7 +37,7 @@ export const uiText = {
     login: "Вхід",
     register: "Реєстрація",
     authDescription: "Авторизуйтесь для отримання розширених можливостей",
-    premiumLabel: "преміум",
+    premiumLabel: "premium",
     premiumDescription: "Безкоштовна доставка весь рік",
     menuItems: [
       { label: "Мої замовлення" },

@@ -52,11 +52,11 @@ export function CategoryProductsSection({ categoryId }: Props) {
           />
         </div>
         {isLoading && (
-          <div className="grid grid-cols-5 gap-3">
-            {Array.from({ length: 10 }).map((_, i) => (
+          <div className="grid h-fit w-full grid-cols-2 gap-1 md:grid-cols-[repeat(auto-fill,minmax(285px,1fr))] lg:gap-2.5">
+            {[...Array(PAGE_SIZE)].map((_, i) => (
               <div
                 key={i}
-                className="h-75 animate-pulse rounded-xl bg-neutral-100"
+                className="h-125 animate-pulse rounded-xl bg-neutral-100"
               />
             ))}
           </div>

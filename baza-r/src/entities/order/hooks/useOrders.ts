@@ -5,5 +5,6 @@ export function useOrders(page: number, pageSize: number) {
   return useQuery({
     queryKey: ["orders", page, pageSize],
     queryFn: () => orderApi.getOrders(page, pageSize),
+    placeholderData: (prev) => prev,
   });
 }
