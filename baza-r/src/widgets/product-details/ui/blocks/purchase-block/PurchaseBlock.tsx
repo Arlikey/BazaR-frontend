@@ -12,6 +12,7 @@ import type {
   PurchaseBlockProps,
   StockStatus,
 } from "@/widgets/product-details/config/purchase-block.config";
+import Skeleton from "@/shared/components/ui/loaders/Skeleton";
 const STOCK_LABELS: Record<
   StockStatus,
   { label: string; className: string } | null
@@ -101,16 +102,6 @@ export function PurchaseBlock({
 
         {isAvailable && (
           <div className="1.5xl:flex-row 1.5xl:items-center flex flex-col gap-4">
-            {/* <Button
-              variant="solid"
-              rounded="pill"
-              color="secondary"
-              size="lg"
-              className="1.5xl:w-50 h-11 w-full text-base text-white"
-              onClick={onBuy}
-            >
-              Купити
-            </Button> */}
             <CartButton offerId={offerId} />
             {creditAvailable && (
               <Button
@@ -158,6 +149,24 @@ export function PurchaseBlock({
           ))}
         </div>
       )}
+    </Block>
+  );
+}
+
+export function PurchaseBlockSkeleton() {
+  return (
+    <Block
+      rounded="xl"
+      className="flex flex-col justify-center gap-4 px-4 py-5 md:flex-row md:items-center md:px-8"
+    >
+      <div className="flex flex-1 flex-col gap-2">
+        <Skeleton className="h-5 w-22" />
+        <Skeleton className="h-10 w-48 md:h-12" />
+      </div>
+
+      <div className="flex flex-1 flex-col gap-3">
+        <Skeleton className="h-11 w-full rounded-full" />
+      </div>
     </Block>
   );
 }

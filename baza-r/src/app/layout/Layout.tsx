@@ -44,7 +44,7 @@ export function Layout() {
           <PromoBanner />
           <Header />
 
-          <main className="mx-auto flex w-full max-w-480 min-w-0 gap-10 px-2 pb-8 md:px-10 2xl:px-14">
+          <main className="mx-auto flex min-h-screen w-full max-w-480 min-w-0 gap-10 px-2 pb-8 md:px-10 2xl:px-14">
             <Outlet />
           </main>
           <FooterBanner />

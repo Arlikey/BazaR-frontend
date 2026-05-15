@@ -6,11 +6,10 @@ import { CategoryPromoBanners } from "@/widgets/category/promo-banners/CategoryP
 import { SubcategoriesGrid } from "@/widgets/category/category-grid/SubcategoriesGrid";
 import { useElementOffset } from "@/shared/hooks/useElementOffset";
 import { CategoryProductsSection } from "./CategoryProductsSection";
-import { PAGE_SIZE } from "@/shared/model/constants";
 
 export function CategoryPage() {
   const { categoryId } = useParams();
-  const { flat, isLoading } = useCatalogCategories();
+  const { flat } = useCatalogCategories();
 
   if (!categoryId) {
     return <Navigate to="/not-found" replace />;
@@ -30,7 +29,9 @@ export function CategoryPage() {
   return (
     <div className="flex w-full flex-col">
       <Breadcrumbs items={breadcrumbs} />
-      <h1 className="mt-8 text-2xl font-medium md:text-4xl">{category && category.name}</h1>
+      <h1 className="mt-8 text-2xl font-medium md:text-4xl">
+        {category && category.name}
+      </h1>
 
       <div className="flex flex-col gap-11">
         {hasChildren && <CategoryPromoBanners />}

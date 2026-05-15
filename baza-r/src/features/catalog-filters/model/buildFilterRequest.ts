@@ -1,4 +1,4 @@
-import { PAGE_SIZE } from "@/shared/model/constants";
+import { CATALOG_PAGE_SIZE } from "@/shared/model/constants";
 import type { CatalogFilters } from "./catalogFilters";
 
 export function buildFilterRequest(filters: CatalogFilters) {
@@ -45,6 +45,6 @@ export function buildFilterRequest(filters: CatalogFilters) {
     priceMax: filters.price.max ?? undefined,
 
     page: filters.page,
-    pageSize: PAGE_SIZE,
+    pageSize: CATALOG_PAGE_SIZE,
   };
 }

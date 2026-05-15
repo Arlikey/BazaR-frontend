@@ -1,7 +1,10 @@
 import { ServicesBlock } from "./blocks/ServicesBlock";
 import { Breadcrumbs } from "@/shared/components/ui/Breadcrumbs";
 import { ProductTabs } from "./blocks/ProductTabs";
-import { PurchaseBlock } from "./blocks/purchase-block/PurchaseBlock";
+import {
+  PurchaseBlock,
+  PurchaseBlockSkeleton,
+} from "./blocks/purchase-block/PurchaseBlock";
 import { ProductGallery } from "./blocks/product-gallery/ProductGallery";
 import { DeliveryBlock } from "./blocks/DeliveryBlock";
 import { PaymentGuaranteeBlock } from "./blocks/PaymentGuaranteeBlock";
@@ -23,9 +26,19 @@ import { useRef } from "react";
 import { RecentlyViewedProducts } from "../../home/recently-viewed-products/ui/RecentlyViewedProducts";
 import { useIntersection } from "@/shared/hooks/useIntersection";
 import { getStockStatus } from "@/entities/product/model/productUtils";
-import { SpecificationsSection } from "./blocks/specifications-section/SpecificationsSection";
+import {
+  SpecificationsSection,
+  SpecificationsSkeletonSection,
+} from "./blocks/specifications-section/SpecificationsSection";
 import { useAttributeSections } from "@/entities/product/hooks/useAttributesSection";
-import { DescriptionSection } from "./blocks/description-section/DescriptionSection";
+import {
+  DescriptionSection,
+  DescriptionSkeletonSection,
+} from "./blocks/description-section/DescriptionSection";
+import Skeleton from "@/shared/components/ui/loaders/Skeleton";
+import { Helmet } from "react-helmet-async";
+import { getSiteUrl } from "@/shared/lib/getSiteUrl";
+import { NotFound } from "@/pages/not-found/ui/NotFound";
 
 export type OfferResponse = {
   offerId: string;
@@ -46,19 +59,19 @@ type Props = {
 };
 
 export default function ProductDetails({ productId }: Props) {
-  const { data: product, isLoading } = useProduct(productId);
-  const { data: attributesView } = useProductAttributes(productId);
+  const purchaseRef = useRef<HTMLDivElement>(null);
+  const siteUrl = getSiteUrl();
+
   const {
-    data: offer = {
-      offerId: "",
-      priceAmount: 0,
-      oldPriceAmount: null,
-      stock: 0,
-    },
-  } = useProductOffer(productId);
+    data: product,
+    isLoading: isProductLoading,
+    isError,
+  } = useProduct(productId);
+  const { data: attributesView, isLoading: isAttributesLoading } =
+    useProductAttributes(productId);
+  const { data: offer, isLoading: isOfferLoading } = useProductOffer(productId);
   const { flat } = useCatalogCategories();
   const breadcrumbs = buildCategoryBreadcrumbs(product?.categoryId, flat);
-  const purchaseRef = useRef<HTMLDivElement>(null);
   const sections = useAttributeSections(attributesView?.attributes);
 
   const mainSpecs = sections.find((s) => s.name === "Основні характеристики");
@@ -73,26 +86,67 @@ export default function ProductDetails({ productId }: Props) {
     measure: "height",
   });
 
-  if (!product) return null;
+  // SEO tags
+  const title = product?.name
+    ? `${product.name} - Baza-R`
+    : "Інтернет-магазин BAZA-R";
+  const description = product?.name
+    ? `Купити ${product.name} — інтернет-магазин Baza-R. Швидка доставка по Україні.`
+    : "Інтернет-магазин Baza-R";
+  const canonical = `${siteUrl}/product/${productId}`;
+
+  if (isProductLoading) return null;
+
+  if (!product || isError) {
+    return <NotFound />;
+  }
 
   return (
     <>
+      <Helmet>
+        <title>{title}</title>
+        <meta name="description" content={description} />
+        <link rel="canonical" href={canonical} />
+
+        {/*   OpenGraph tags   */}
+        <meta property="og:type" content="product" />
+        <meta property="og:title" content={title} />
+        <meta property="og:description" content={description} />
+        <meta property="og:url" content={canonical} />
+        <meta property="og:image" content={product.images?.[0]?.url} />
+
+        {/*   Twitter tags   */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={title} />
+        <meta name="twitter:description" content={description} />
+        <meta name="twitter:image" content={product.images?.[0]?.url} />
+      </Helmet>
+
       <div id="all" className="scroll-mt-(--scroll-offset)" />
       <Breadcrumbs items={breadcrumbs} />
 
       <div className="mt-9 flex flex-col gap-2">
-        <h2 className="text-xl md:text-3xl">{product.name}</h2>
-        <span className="text-muted text-base">
-          Код: <span>{product.vendorCode}</span>
+        {isProductLoading ? (
+          <Skeleton className="h-16 w-full" />
+        ) : (
+          <h1 className="text-xl md:text-3xl">{product.name}</h1>
+        )}
+        <span className="text-muted flex items-center gap-2 text-base">
+          Код:{" "}
+          {isProductLoading ? (
+            <Skeleton className="inline-block h-4 w-1/8" />
+          ) : (
+            <span>{product.vendorCode}</span>
+          )}
         </span>
       </div>
 
       <ProductTabs
         data-app-tabs
-        showMiniPurchase={!isPurchaseVisible && offer.stock > 0}
-        price={offer.priceAmount}
-        oldPrice={offer.oldPriceAmount}
-        offerId={offer.offerId}
+        showMiniPurchase={!isPurchaseVisible && offer && offer?.stock > 0}
+        price={offer?.priceAmount ?? 0}
+        oldPrice={offer?.oldPriceAmount ?? 0}
+        offerId={offer?.offerId ?? ""}
         productId={productId}
       />
 
@@ -100,9 +154,9 @@ export default function ProductDetails({ productId }: Props) {
         <section className="mt-10 flex flex-col gap-5 lg:flex-row">
           <div className="flex flex-col gap-5 lg:w-1/2">
             <ProductGallery
-              images={product.images.map((img) => img.url)}
+              images={product?.images?.map((img) => img.url) ?? []}
               alt={product.name}
-              isLoading={isLoading}
+              isLoading={isProductLoading}
             />
             {mainSpecs && mainSpecs.specs.length > 0 && (
               <ProductSpecsBlock section={mainSpecs} />
@@ -110,16 +164,20 @@ export default function ProductDetails({ productId }: Props) {
           </div>
           <div className="flex flex-1 flex-col gap-5">
             <div ref={purchaseRef}>
-              <PurchaseBlock
-                productId={productId}
-                offerId={offer.offerId}
-                price={offer.priceAmount}
-                oldPrice={offer.oldPriceAmount}
-                stockStatus={getStockStatus(offer.stock)}
-                onBuy={() => {}}
-                onFavorite={() => {}}
-                onCompare={() => {}}
-              />
+              {isOfferLoading ? (
+                <PurchaseBlockSkeleton />
+              ) : (
+                <PurchaseBlock
+                  productId={productId}
+                  offerId={offer?.offerId ?? ""}
+                  price={offer?.priceAmount ?? 0}
+                  oldPrice={offer?.oldPriceAmount ?? null}
+                  stockStatus={getStockStatus(offer?.stock ?? 0)}
+                  onBuy={() => {}}
+                  onFavorite={() => {}}
+                  onCompare={() => {}}
+                />
+              )}
             </div>
             <ServicesBlock />
             <DeliveryBlock
@@ -162,18 +220,18 @@ export default function ProductDetails({ productId }: Props) {
             />
           </div>
         </section>
-        <DescriptionSection description={product.description} />
-        <SpecificationsSection sections={sections} />
+
+        {isProductLoading ? (
+          <DescriptionSkeletonSection />
+        ) : (
+          <DescriptionSection description={product.description} />
+        )}
+        {isAttributesLoading ? (
+          <SpecificationsSkeletonSection />
+        ) : (
+          <SpecificationsSection sections={sections} />
+        )}
         <ReviewsSection productId={productId} productSlug={product.slug} />
-        {/* <section id="video" className="h-100 scroll-mt-(--scroll-offset)">
-        Video
-      </section> */}
-        {/* <section id="photos" className="h-100 scroll-mt-(--scroll-offset)">
-        Photos
-      </section> */}
-        {/* <section id="together" className="h-100 scroll-mt-(--scroll-offset)">
-        Buy with
-      </section> */}
         <RecentlyViewedProducts slidesCount={6} />
       </div>
     </>

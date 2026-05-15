@@ -60,22 +60,24 @@ export function ProductCardRich({ product }: Props) {
           <ProductCard.Title />
         </CustomLink>
         <ProductCard.Meta>
-          {product.reviewCount != null && product.reviewCount > 0 ? (
-            <div className="flex items-center gap-2">
-              <StarRating rating={product.rating ?? 0} />
-              <span>
-                {product.reviewCount}{" "}
-                {pluralize(product.reviewCount, PLURALS.review)}
-              </span>
-            </div>
-          ) : (
-            <CustomLink to={""} variant="primary" className="gap-1">
-              <IconWrapper size={13}>
-                <DialogueIcon />
-              </IconWrapper>
-              Залишити відгук
-            </CustomLink>
-          )}
+          <CustomLink to={`/product/${product.id}`} variant="primary" className="gap-1">
+            {product.reviewCount != null && product.reviewCount > 0 ? (
+              <div className="flex items-center gap-2">
+                <StarRating rating={product.rating ?? 0} />
+                <span>
+                  {product.reviewCount}{" "}
+                  {pluralize(product.reviewCount, PLURALS.review)}
+                </span>
+              </div>
+            ) : (
+              <>
+                <IconWrapper size={13}>
+                  <DialogueIcon />
+                </IconWrapper>
+                Залишити відгук
+              </>
+            )}
+          </CustomLink>
         </ProductCard.Meta>
       </ProductCard.Body>
 

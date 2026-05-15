@@ -6,7 +6,8 @@ import { useDebounce } from "@/shared/hooks/useDebounce";
 import { useFilteredProducts } from "@/entities/product/queries";
 import { useCatalogFilters } from "@/features/catalog-filters/model/useCatalogFilters";
 import { Pagination } from "@/widgets/pagination/Pagination";
-import { PAGE_SIZE } from "@/shared/model/constants";
+import { CATALOG_PAGE_SIZE } from "@/shared/model/constants";
+import LoadingOverlay from "@/shared/components/ui/loaders/LoadingOverlay";
 
 type Props = {
   categoryId: string;
@@ -21,7 +22,7 @@ export function CategoryProductsSection({ categoryId }: Props) {
     isFetching,
   } = useFilteredProducts(categoryId, debouncedFilters);
 
-  const totalPages = Math.ceil((products?.totalCount ?? 0) / PAGE_SIZE);
+  const totalPages = Math.ceil((products?.totalCount ?? 0) / CATALOG_PAGE_SIZE);
 
   function handlePageChange(page: number) {
     setFilters((prev) => ({ ...prev, page }));
@@ -31,9 +32,7 @@ export function CategoryProductsSection({ categoryId }: Props) {
   const items = products?.items ?? [];
   return (
     <div className="mt-8 flex flex-col gap-2.5">
-      {isFetching && (
-        <div className="fixed top-(--top-offset) left-0 z-50 h-full w-full bg-white/60" />
-      )}
+      <LoadingOverlay show={isFetching} />
       <div
         data-app-filter
         className="sticky top-(--top-offset) z-25 bg-neutral-50 py-2 text-base"
@@ -53,7 +52,7 @@ export function CategoryProductsSection({ categoryId }: Props) {
         </div>
         {isLoading && (
           <div className="grid h-fit w-full grid-cols-2 gap-1 md:grid-cols-[repeat(auto-fill,minmax(285px,1fr))] lg:gap-2.5">
-            {[...Array(PAGE_SIZE)].map((_, i) => (
+            {[...Array(CATALOG_PAGE_SIZE)].map((_, i) => (
               <div
                 key={i}
                 className="h-125 animate-pulse rounded-xl bg-neutral-100"

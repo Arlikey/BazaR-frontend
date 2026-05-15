@@ -29,16 +29,18 @@ export function ProductSpecsBlock({ section }: Props) {
       <div className="flex flex-1 flex-col gap-4">
         <h3 className="text-xl font-medium">Основні характеристики:</h3>
 
-        <div className="flex flex-col gap-1.5">
+        <dl className="flex flex-col gap-1.5">
           {visibleSpecs.map((spec) => (
             <div key={spec.label} className="flex items-baseline gap-1">
               <dt className="label flex">
                 <span>{spec.label}</span>
               </dt>
-              <dd className="pl-3 text-left text-base shrink-0">{spec.value}</dd>
+              <dd className="shrink-0 pl-3 text-left text-base">
+                {spec.value}
+              </dd>
             </div>
           ))}
-        </div>
+        </dl>
 
         {hasMore && (
           <Button

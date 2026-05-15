@@ -2,6 +2,7 @@ import type { ReviewsSummaryResponse } from "@/entities/review/model/review";
 import { StarIcon } from "@/shared/components/icons/ui/StarIcon";
 import CreateReviewButton from "@/features/review/ui/CreateReviewButton";
 import { pluralize, PLURALS } from "@/shared/lib/pluralize";
+import Skeleton from "@/shared/components/ui/loaders/Skeleton";
 
 type Props = {
   reviewsSummary: ReviewsSummaryResponse;
@@ -71,6 +72,17 @@ export function ReviewsSummaryBlock({ reviewsSummary, productId }: Props) {
             Написати відгук
           </CreateReviewButton>
         </div>
+      </div>
+    </div>
+  );
+}
+
+export function ReviewsSummarySkeletonBlock() {
+  return (
+    <div className="w-full lg:w-1/3">
+      <div className="sticky top-(--scroll-offset) w-full space-y-3 lg:w-3/4">
+        <h2 className="mb-6 text-2xl">Відгуки та питання</h2>
+        <Skeleton className="h-60 w-full" />
       </div>
     </div>
   );

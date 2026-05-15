@@ -5,7 +5,7 @@ import { uiText } from "@/shared/config/ui-text";
 
 export const NotFound = () => {
   return (
-    <div className="flex flex-1 flex-col items-center justify-center">
+    <div className="flex flex-1 flex-col items-center justify-center h-full">
       <h1 className="text-foreground-muted text-[32px] font-medium">
         {uiText.notFound.title}
       </h1>

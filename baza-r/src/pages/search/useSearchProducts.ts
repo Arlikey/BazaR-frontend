@@ -7,13 +7,18 @@ type SearchResult = {
   totalCount: number;
 };
 
-export function useSearchProducts(query: string) {
+export function useSearchProducts(
+  query: string,
+  page: number,
+  pageSize: number,
+) {
   return useQuery({
-    queryKey: ["search-products", query],
+    queryKey: ["search-products", query, page],
     queryFn: () =>
       api<SearchResult>(
-        `/api/catalog/products/search?q=${encodeURIComponent(query)}&page=1&pageSize=20`,
+        `/api/catalog/products/search?q=${encodeURIComponent(query)}&page=${page}&pageSize=${pageSize}`,
       ),
     enabled: query.trim().length > 0,
+    placeholderData: (prev) => prev,
   });
 }

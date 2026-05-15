@@ -35,6 +35,8 @@ export function TopScrollButton() {
       variant="outline"
       color="secondary"
       onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+      role="button"
+      aria-label="Scroll to Top"
     >
       <IconWrapper className="-rotate-90">
         <ArrowIcon />
