@@ -39,6 +39,10 @@ import Skeleton from "@/shared/components/ui/loaders/Skeleton";
 import { Helmet } from "react-helmet-async";
 import { getSiteUrl } from "@/shared/lib/getSiteUrl";
 import { NotFound } from "@/pages/not-found/ui/NotFound";
+import {
+  OG_DEFAULT_DESCRIPTION,
+  OG_DEFAULT_TITLE,
+} from "@/shared/model/constants";
 
 export type OfferResponse = {
   offerId: string;
@@ -87,13 +91,13 @@ export default function ProductDetails({ productId }: Props) {
   });
 
   // SEO tags
-  const title = product?.name
-    ? `${product.name} - Baza-R`
-    : "Інтернет-магазин BAZA-R";
+  const title = product?.name ? `${product.name} - Baza-R` : OG_DEFAULT_TITLE;
   const description = product?.name
     ? `Купити ${product.name} — інтернет-магазин Baza-R. Швидка доставка по Україні.`
-    : "Інтернет-магазин Baza-R";
+    : OG_DEFAULT_DESCRIPTION;
   const canonical = `${siteUrl}/product/${productId}`;
+  const ogImage =
+    product?.images?.[0]?.url ?? `${siteUrl}/Baza-R_OG_Image.webp`;
 
   if (isProductLoading) return null;
 
@@ -113,13 +117,13 @@ export default function ProductDetails({ productId }: Props) {
         <meta property="og:title" content={title} />
         <meta property="og:description" content={description} />
         <meta property="og:url" content={canonical} />
-        <meta property="og:image" content={product.images?.[0]?.url} />
+        <meta property="og:image" content={ogImage} />
 
         {/*   Twitter tags   */}
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content={title} />
         <meta name="twitter:description" content={description} />
-        <meta name="twitter:image" content={product.images?.[0]?.url} />
+        <meta name="twitter:image" content={ogImage} />
       </Helmet>
 
       <div id="all" className="scroll-mt-(--scroll-offset)" />
